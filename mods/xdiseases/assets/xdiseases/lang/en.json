@@ -25,5 +25,9 @@
   "infection-effect": "Infection",
   "infection-effectdesc": "",
   "d-blindness-effect": "Blindness",
-  "d-blindness-effectdesc": ""
+  "d-blindness-effectdesc": "",
+  "pneumonia-effect": "Pneumonia",
+  "pneumonia-effectdesc": "",
+  "tetanus-effect": "Tetanus",
+  "tetanus-effectdesc": ""
 }

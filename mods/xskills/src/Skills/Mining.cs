@@ -292,10 +292,7 @@ namespace XSkills
             }
             if (nearestBlock != null && nearest > 1)
             {
-                ClientMain client = capi.World as ClientMain;
-                ClientEventManager eventManager =
-                    client?.GetType().GetField("eventManager",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(client) as ClientEventManager;
+                ClientEventManager eventManager = (capi.World as ClientMain)?.eventManager;
                 if (eventManager == null) return;
                 Vec3i rel = byPlayer?.Entity?.Pos.XYZInt;
                 if (rel == null) return;

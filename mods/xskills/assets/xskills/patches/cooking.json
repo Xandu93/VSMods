@@ -1,0 +1,92 @@
+[
+  {
+    "file": "game:blocktypes/wood/firepit",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": [
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "game:blocktypes/clay/oven",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value":[ 
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "game:blocktypes/wood/fruitpress",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value":[ 
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "chiseltools:blocktypes/chiseledoven",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value":[ 
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "stonebakeoven:blocktypes/ovenbakingtopbrick",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value":[ 
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "stonebakeoven:blocktypes/ovenbakingtopcobble",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value":[ 
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "stonebakeoven:blocktypes/ovenbakingtopplain",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value":[ 
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "aculinaryartillery:blocktypes/mixingbowl",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": [
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
+    "file": "aculinaryartillery:blocktypes/mixingbowlmini",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value":[ 
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  }
+]

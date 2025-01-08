@@ -1,0 +1,34 @@
+{
+  "adrenalinerush": {
+    "code": "condition",
+    "defaults": {
+      "effects": {
+        "walkspeed": {
+          "intensity": 0.1
+        },
+        "receivedDamageMultiplier": {
+          "intensity": 0.1
+        },
+        "trigger": {
+          "effectname": "exhaustion",
+          "effectintensity": -0.1,
+          "effectduration": 10.0
+        }
+      }
+    }
+  },
+
+  "bloodlust": {
+    "code": "condition",
+    "defaults": {
+      "effects": {
+        "meleeWeaponsDamage": {
+
+        },
+        "receivedDamageMultiplier": {
+
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,221 @@
+﻿using HarmonyLib;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.Config;
+using Vintagestory.API.Server;
+using Vintagestory.Client.NoObf;
+using Vintagestory.Common;
+using Vintagestory.GameContent;
+using Vintagestory.Server;
+using XLib.XLeveling;
+
+namespace XSkills
+{
+    public class XSkills : ModSystem
+    {
+        private static Harmony harmony;
+
+        /// <summary>
+        /// Gets an instance of this class.
+        /// This is only used to get an instance for harmony prepare methods.
+        /// </summary>
+        /// <value>
+        /// The instance.
+        /// </value>
+        public static XSkills Instance { get; private set; }
+
+        public Dictionary<string, Skill> Skills { get; set; }
+
+        public ICoreAPI Api { get; private set; }
+        public XLeveling XLeveling { get; private set; }
+
+        internal static void DoHarmonyPatch(ICoreAPI api)
+        {
+            if (harmony == null)
+            {
+                XSkills xskills = api.ModLoader.GetModSystem<XSkills>();
+
+                harmony = new Harmony("XSkillsPatch");
+                harmony.PatchAll(Assembly.GetExecutingAssembly());
+                Type type;
+
+                BlockEntityAnvilPatch.Apply(harmony, api.ClassRegistry.GetBlockEntity("Anvil"));
+                BlockEntityOvenPatch.Apply(harmony, api.ClassRegistry.GetBlockEntity("Oven"), xskills);
+                CookingRecipePatch.Apply(harmony, typeof(CookingRecipe));
+
+                type = api.ClassRegistry.GetBlockEntity("ExpandedOven");
+                if (type != null) BlockEntityOvenPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetBlockEntity("OvenBakingTop");
+                if (type != null) BlockEntityOvenPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetBlockEntity("MixingBowl");
+                if (type != null) BlockEntityMixingBowlPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetItemClass("ExpandedRawFood");
+                if (type != null) ItemExpandedRawFoodPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetBlockClass("BlockSaucepan");
+                if (type != null) BlockSaucepanPatch.Apply(harmony, type, xskills);
+
+                type = type?.Assembly.GetType("ACulinaryArtillery.InventoryMixingBowl");
+                if (type != null) InventoryMixingBowlPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetBlockEntity("ButcherTable");
+                if (type != null) BlockEntityButcherWorkstationPatch.Apply(harmony, type, xskills);
+            }
+        }
+
+        /// <summary>
+        /// If you need mods to be executed in a certain order, adjust this methods return value.
+        /// The server will call each Mods Start() method the ascending order of each mods execute order value. And thus, as long as every mod registers it's event handlers in the Start() method, all event handlers will be called in the same execution order.
+        /// Default execute order of some survival mod parts
+        /// Worldgen:
+        /// - GenTerra: 0
+        /// - RockStrata: 0.1
+        /// - Deposits: 0.2
+        /// - Caves: 0.3
+        /// - Blocklayers: 0.4
+        /// Asset Loading
+        /// - Json Overrides loader: 0.05
+        /// - Load hardcoded mantle block: 0.1
+        /// - Block and Item Loader: 0.2
+        /// - Recipes (Smithing, Knapping, Clayforming, Grid recipes, Alloys) Loader: 1
+        /// </summary>
+        /// <returns></returns>
+        public override double ExecuteOrder() => 0.25;
+
+        public XSkills() : base()
+        {
+            if (Instance == null) Instance = this;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            harmony?.UnpatchAll("XSkillsPatch");
+            harmony = null;
+        }
+
+        public override void StartPre(ICoreAPI api)
+        {
+            base.StartPre(api);
+            this.Api = api;
+            this.XLeveling = XLeveling.Instance(this.Api);
+            this.Skills = new Dictionary<string, Skill>();
+
+            //skills
+            Survival survival = new Survival(api);
+            this.Skills.Add(survival.Name, survival);
+            Farming farming = new Farming(api);
+            this.Skills.Add(farming.Name, farming);
+            Digging digging = new Digging(api);
+            this.Skills.Add(digging.Name, digging);
+            Forestry forestry = new Forestry(api);
+            this.Skills.Add(forestry.Name, forestry);
+            Mining mining = new Mining(api);
+            this.Skills.Add(mining.Name, mining);
+            Husbandry husbandry = new Husbandry(api);
+            this.Skills.Add(husbandry.Name, husbandry);
+            Combat combat = new Combat(api);
+            this.Skills.Add(combat.Name, combat);
+            Metalworking metalworking = new Metalworking(api);
+            this.Skills.Add(metalworking.Name, metalworking);
+            Pottery pottery = new Pottery(api);
+            this.Skills.Add(pottery.Name, pottery);
+            Cooking cooking = new Cooking(api);
+            this.Skills.Add(cooking.Name, cooking);
+
+            if (api.World.Config.GetBool("temporalStability"))
+            {
+                TemporalAdaptation adaptation = new TemporalAdaptation(api);
+                this.Skills.Add(adaptation.Name, adaptation);
+            }
+
+            api.RegisterEntityBehaviorClass("XSkillsPlayer", typeof(XSkillsPlayerBehavior));
+        }
+
+        public override void Start(ICoreAPI api)
+        {
+            base.Start(api);
+            (this.Skills["metalworking"] as Metalworking).RegisterAnvil();
+
+            //register 'quality' and 'owner' to be ignored
+            string[] temp = new string[GlobalConstants.IgnoredStackAttributes.Length + 2];
+            int count = 0;
+            for (; count < GlobalConstants.IgnoredStackAttributes.Length; ++count)
+            {
+                temp[count] = GlobalConstants.IgnoredStackAttributes[count];
+            }
+            temp[count] = "quality";
+            count++;
+            temp[count] = "owner";
+            GlobalConstants.IgnoredStackAttributes = temp;
+
+            api.RegisterBlockEntityBehaviorClass("XskillsOwnable", typeof(BlockEntityBehaviorOwnable));
+
+            ClassRegistry registry = (api as ServerCoreAPI)?.ClassRegistryNative ?? (api as ClientCoreAPI)?.ClassRegistryNative;
+            if (registry != null)
+            {
+                registry.blockEntityClassnameToTypeMapping["Sapling"] = typeof(XSkillsBlockEntitySapling);
+                registry.blockEntityTypeToClassnameMapping[typeof(XSkillsBlockEntitySapling)] = "Sapling";
+
+                if (Api.ModLoader.IsModEnabled("primitivesurvival"))
+                    HoeUtil.RegisterItemHoePrimitive(registry);
+                HoeUtil.RegisterItemHoe(registry);
+
+                registry.ItemClassToTypeMapping["ItemPlantableSeed"] = typeof(XSkillsItemPlantableSeed);
+
+                //registry.entityBehaviorClassNameToTypeMapping["commandable"] = typeof(XSkillsEntityBehaviorCommandable);
+                //registry.entityBehaviorTypeToClassNameMapping[typeof(XSkillsEntityBehaviorCommandable)] = "commandable";
+            }
+        }
+
+        public override void StartClientSide(ICoreClientAPI api)
+        {
+            base.StartClientSide(api);
+            this.XLeveling.CreateDescriptionFile();
+
+            api.Input.RegisterHotKey("xskillshotbarswitch", "Xskills hotbar switch", GlKeys.R);
+            api.Input.SetHotKeyHandler("xskillshotbarswitch", OnHotbarSwitch);
+        }
+
+        public override void StartServerSide(ICoreServerAPI api)
+        {
+            base.StartServerSide(api);
+            DoHarmonyPatch(api);
+        }
+
+        public override void AssetsLoaded(ICoreAPI api)
+        {
+            base.AssetsLoaded(api);
+
+            Survival survival = (this.Skills["survival"] as Survival);
+            LimitationRequirement specialisations = this.XLeveling.Limitations["specialisations"];
+            if (specialisations != null && survival != null) specialisations.ModifierAbility = survival[survival.AllRounderId];
+
+            foreach (Skill skill in this.Skills.Values)
+            {
+                skill.DisplayName = Lang.GetUnformatted(skill.DisplayName);
+                skill.Group = Lang.GetUnformatted(skill.Group);
+                foreach (Ability ability in skill.Abilities)
+                {
+                    ability.DisplayName = Lang.GetUnformatted(ability.DisplayName);
+                    ability.Description = Lang.GetUnformatted(ability.Description);
+                }
+            }
+        }
+
+        public bool OnHotbarSwitch(KeyCombination keys)
+        {
+            IPlayer player = (this.Api as ICoreClientAPI)?.World.Player;
+            XSkillsPlayerInventory inv = player?.InventoryManager.GetOwnInventory("xskillshotbar") as XSkillsPlayerInventory;
+            if (inv == null) return false;
+            inv.SwitchInventories();
+            return true;
+        }
+    }//!class XSkills
+}//!namespace XSkills

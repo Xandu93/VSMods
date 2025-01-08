@@ -1,0 +1,19 @@
+[
+  {
+    "type": "attribute",
+    "effect": "scurvy",
+    "attributes": {
+      "chance": 0.0002,
+      "intensity": 0.5,
+      "weights": [
+        {
+          "attribute": "foodLevel",
+          "food": "fruitLevel",
+          "min": 0.0,
+          "max": 0.1,
+          "weight": 1.0
+        }
+      ]
+    }
+  }
+]

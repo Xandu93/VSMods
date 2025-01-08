@@ -1,0 +1,58 @@
+{
+	"code": "metalbit",
+	"__comment": "ItemNugget is just for displaying the yield in units in the tooltip",
+	"class": "ItemNugget",
+	"maxstacksize": 256,
+	"dimensions": { "width": 0.0625, "height": 0.0625, "length": 0.0625 },
+	"attributes": {
+		"handbook": {
+			"excludeByType": {
+				"*-chromium": true,
+				"*-platinum": true,
+				"*-titanium": true,
+				"*-rhodium": true,
+				"*-stainlessteel": true,
+				"*-uranium": true
+			},
+			"groupBy": ["metalbit-*"]
+		},
+	},
+	"variantgroups": [
+		{ 
+			"code": "metal", 
+			"loadFromProperties": "game:block/metal", 
+			"states": ["blistersteel", "leadsolder", "silversolder"] 
+		}
+	],
+	"storageFlags": 5,
+  "shape": { "base": "xskills:item/bits/metalbit" },
+	"textures": {
+		"metal": { "base": "game:block/metal/ingot/{metal}" }
+	},
+	"creativeinventory": { "general": ["*"], "items": ["*"] },
+  "guiTransform": {
+		"rotate": true,
+    "translation": { x: 4, y: 0, z: 4 },
+		"rotation": { x: 149, y: -36, z: 0 },
+		"origin": { x: 0.5, y: 0.1, z: 0.5 },
+		"scale": 4.0
+	},
+	"fpHandTransform": {
+		"translation": { x: 0, y: 0.1, z: 0 },
+		"rotation": { x: 65, y: 21, z: -6 },
+		"origin": { x: 0.5, y: 0.1, z: 0.5 },
+		"scale": 2.15
+	},
+	"tpHandTransform": {
+		"translation": { x: -0.77, y: -0.15, z: -0.64 },
+		"rotation": { x: 0, y: -71, z: 18 },
+		"origin": { x: 0.5, y: 0.1, z: 0.5 },
+		"scale": 0.75
+	},
+	"groundTransform": {
+		"translation": { x: 0, y: 0, z: 0 },
+		"rotation": { x: 0, y: 0, z: 0 },
+		"origin": { x: 0.5, y: 0, z: 0.5 },
+		"scale": 4.8
+	}
+}

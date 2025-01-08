@@ -1,0 +1,77 @@
+[
+//  {
+//    "file": "game:blocktypes/clay/bowl",
+//    "op": "addmerge",
+//    "path": "/behaviorsByType/-",
+//   "value": {
+  //    "*-fired":[{
+  //      "name": "XLibConsumable", 
+  //      "properties": {
+  //        "triggers": [{
+  //          "effect": "diseases:foodpoisoning",
+  //          "intensity": 0.6,
+  //          "chance": 0.0,
+  //          "perishweight": 0.2
+  //          }
+  //        ]
+  //      }
+  //    }]
+  //  }
+  //},
+  {
+    "file": "game:blocktypes/clay/bowl",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": {
+        "triggers": [{
+          "effect": "diseases:foodpoisoning",
+          "chance": 0.0,
+          "perishweight": 0.5,
+          "intensity": 0.2,
+          "randomintensity": 0.2,
+          "perishintensity": 0.6
+          }
+        ]
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/clay/bowl-meal",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": {
+        "usePatch": true,
+        "triggers": [{
+          "effect": "diseases:foodpoisoning",
+          "chance": 0.0,
+          "perishweight": 0.5,
+          "intensity": 0.2,
+          "randomintensity": 0.2,
+          "perishintensity": 0.6
+          }
+        ]
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/wood/bucket",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "file": "aculinaryartillery:blocktypes/bottle",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "consumes": 0.25 }
+    }]
+  },
+]

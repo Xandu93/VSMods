@@ -1,0 +1,30 @@
+[
+  {
+    "file": "game:itemtypes/food/fruit",
+    "op": "addmerge",
+    "path": "/behaviorsByType",
+    "value":{
+      "*": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "triggers": [{
+              "effect": "diseases:diarrhea",
+              "chance": 0.005,
+              "perishweight": 0.1,
+              "intensity": 0.2,
+              "randomintensity": 0.2,
+              "perishintensity": 0.6
+            },
+            {
+              "effect": "diseases:foodpoisoning",
+              "chance": 0.0,
+              "perishweight": 0.5,
+              "intensity": 0.2,
+              "randomintensity": 0.2,
+              "perishintensity": 0.6
+            }
+          ]
+        }
+    }]}
+  }
+]

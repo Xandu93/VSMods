@@ -1,0 +1,15 @@
+[
+  {
+    "file": "game:blocktypes/charcoalpile",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [
+      {
+        "name": "XSkillsCharcoal",
+        "properties": {
+          "xp": 0.125
+        }
+      }
+    ]
+  }
+]

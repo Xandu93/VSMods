@@ -1,0 +1,61 @@
+{
+  "saturated-health": {
+    "code": "stat",
+    "group": "saturated",
+    "defaults": {
+      "statname": "maxhealthExtraPoints",
+      "intensity": 1.0,
+      "duration": 1.0,
+      "maxstacks": 1
+    }
+  },
+  "saturated-hot": {
+    "code": "hot",
+    "group": "saturated",
+    "defaults": {
+      "intensity": 0.01,
+      "duration": 1.0,
+      "maxstacks": 1
+    }
+  },
+  "saturated-hungerrate": {
+    "code": "stat",
+    "group": "saturated",
+    "defaults": {
+      "statname": "hungerrate",
+      "intensity": -0.02,
+      "duration": 1.0,
+      "maxstacks": 1
+    }
+  },
+  "saturated-miningSpeed": {
+    "code": "stat",
+    "group": "saturated",
+    "defaults": {
+      "statname": "miningSpeedMul",
+      "intensity": 0.02,
+      "duration": 1.0,
+      "maxstacks": 1
+    }
+  },
+  "saturated-expMult": {
+    "code": "stat",
+    "group": "saturated",
+    "defaults": {
+      "statname": "expMult",
+      "intensity": 0.01,
+      "duration": 1.0,
+      "maxstacks": 1
+    }
+  },
+  "saturated-heated": {
+    "code": "heated",
+    "defaults": {
+      "intensity": 0.05,
+      "duration": 0.5,
+      "maxstacks": 1,
+      "interval": 1.0,
+      "destTemp": 37.0
+    }
+  },
+}

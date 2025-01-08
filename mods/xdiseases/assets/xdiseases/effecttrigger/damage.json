@@ -1,0 +1,54 @@
+[
+  {
+    "type": "damage",
+    "effect": "brokenleg-left",
+    "attributes": {
+      "chance": -0.05,
+      "maxintensity": 1.0,
+      "minintensity": 0.1,
+      "threshold": 1.0,
+      "source": "fall",
+      "damageweight": 0.1,
+      "damageintensity": 0.1
+    }
+  },
+  {
+    "type": "damage",
+    "effect": "brokenleg-right",
+    "attributes": {
+      "chance": -0.05,
+      "maxintensity": 1.0,
+      "minintensity": 0.1,
+      "threshold": 1.0,
+      "source": "fall",
+      "damageweight": 0.1,
+      "damageintensity": 0.1
+    }
+  },
+  {
+    "type": "damage",
+    "effect": "reborn",
+    "attributes": {
+      "chance": 1.0,
+      "maxintensity": 1.0,
+      "minintensity": 1.0,
+      "threshold": 10.0,
+      "source": "revive",
+      "damageweight": 0.0,
+      "damageintensity": 0.1
+    }
+  },
+  {
+    "type": "damage",
+    "effect": "bleeding",
+    "attributes": {
+      "chance": 0.0,
+      "maxintensity": 0.2,
+      "minintensity": 0.1,
+      "threshold": 1.5,
+      "source": "entity",
+      "damageweight": 0.1,
+      "damageintensity": 0.5
+    }
+  }
+]

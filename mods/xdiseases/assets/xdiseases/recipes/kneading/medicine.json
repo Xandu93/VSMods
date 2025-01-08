@@ -1,0 +1,71 @@
+[
+  {
+    "ingredients": [
+      { "inputs": [
+          {"type": "item", "code": "game:ciderportion-*", "quantity": 30},
+          {"type": "item", "code": "game:spititportion-*", "quantity": 30},
+          {"type": "item", "code": "game:wineportion-*", "quantity": 30},
+          {"type": "item", "code": "expandedfoods:strongwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:strongspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:potentwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:potentspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildstrongwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildstrongspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildpotentwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildpotentspititportion-*", "quantity": 20},
+          {"type": "item", "code": "game:alcoholportion", "quantity": 10}
+        ]},
+      { "inputs": [{"type": "item", "code": "game:honeyportion", "quantity": 20}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]}
+    ],
+	"output": { "type": "item", "code": "xdiseases:medicineportion", "stackSize": 30}
+  },
+  {
+    "ingredients": [
+      { "inputs": [
+          {"type": "item", "code": "game:ciderportion-*", "quantity": 30},
+          {"type": "item", "code": "game:spititportion-*", "quantity": 30},
+          {"type": "item", "code": "game:wineportion-*", "quantity": 30},
+          {"type": "item", "code": "expandedfoods:strongwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:strongspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:potentwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:potentspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildstrongwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildstrongspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildpotentwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildpotentspititportion-*", "quantity": 20},
+          {"type": "item", "code": "game:alcoholportion", "quantity": 10}
+        ]},
+      { "inputs": [{"type": "item", "code": "game:honeyportion", "quantity": 20}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]}
+    ],
+	"output": { "type": "item", "code": "xdiseases:medicineportion", "stackSize": 30}
+  },
+  {
+    "ingredients": [
+      { "inputs": [
+          {"type": "item", "code": "game:ciderportion-*", "quantity": 30},
+          {"type": "item", "code": "game:spititportion-*", "quantity": 30},
+          {"type": "item", "code": "game:wineportion-*", "quantity": 30},
+          {"type": "item", "code": "expandedfoods:strongwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:strongspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:potentwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:potentspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildstrongwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildstrongspititportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildpotentwineportion-*", "quantity": 20},
+          {"type": "item", "code": "expandedfoods:wildpotentspititportion-*", "quantity": 20},
+          {"type": "item", "code": "game:alcoholportion", "quantity": 10}
+        ]},
+      { "inputs": [{"type": "item", "code": "game:honeyportion", "quantity": 20}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
+      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]}
+    ],
+	"output": { "type": "item", "code": "xdiseases:medicineportion", "stackSize": 30}
+  }
+]

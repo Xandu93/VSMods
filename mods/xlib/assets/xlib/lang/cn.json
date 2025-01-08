@@ -1,0 +1,40 @@
+{
+  "skill": "技能",
+  "skills": "技能",
+  "level": "等级",
+  "tier": "级别",
+  "experience": "经验",
+  "abilitypoints": "技能点",
+  "unlearnpoints": "遗忘点",
+  "unlearncooldown": "遗忘冷却时间",
+  "unlearn": "遗忘",
+  "unlearnAbility": "Unlearn ability",
+  "requirements": "需要",
+
+  "nexttier": "下一层：\n",
+  "requiredlevel": "\n\n所需等级： ",
+  "currenttier": "\n当前等级： ",
+  "clicktoincreasetier": "\n\n左键单击可增加此能力的等级。这需要{0}点能力点（可用：{1}）。",
+  "clicktodecreasetier": "\n\n左键单击可降低此能力的等级。这需要{0}个遗忘点（可用：{1}）。 你只能每{2:N2}分钟降低一次能力等级（剩余：{3:N2}分钟）。",
+  "notenoughpoints": "\n你的点数不够！",
+  "you receive": "你得到",
+  "levelup": "你的{1}技能达到了{0}级！",
+
+  "andrequirement": "以下所有： ",
+  "orrequirement": "以下其中一项： ",
+  "exclusivelywith": "仅限于： ",
+  "limited": "有限的",
+  "righttime": "时机已到。",
+  "wrongtime": "时机不对。",
+  "specialisations": "专业领域",
+
+  "skills-desc": "<strong>技能</strong><br><br><strong>技能</strong><br>技能是你在特定领域的知识和能力的集合。你的每个技能都有一个特定的等级。你可以通过进行与这项技能相关的活动来提高这个等级。每升一级，你还会获得一个该技能的能力点。按下【O】键（默认）可以查看你的技能和能力的概览。你可以在设置菜单中更改这个键。<br><br><strong>能力</strong><br>能力使你在特定与技能相关的活动中具有特定的优势。大多数能力有多个等级。能力的高等级提供更多优势。要提升能力的等级，你需要技能所需的一个技能点。然后你可以在技能对话框中点击能力来提升其等级。你也可以降低能力的等级。为此，你必须点击“遗忘”按钮切换到洗点模式。现在你可以点击能力来降低其等级。记得再次切换洗点按钮以退出洗点模式。请注意，降低能力等级需要遗忘点。当你降低能力等级时，你会收回使用的能力点。虽然能力点与特定技能绑定，但遗忘点在所有技能之间共享。你可以通过消耗特定物品获得遗忘点。这些物品可以在手册中找到。",
+  "sparring-desc": "<strong>陪练</strong><br>如果两名玩家开启了对拼模式并杀死了对方，死亡后双方都不会损失经验值",
+
+  "rested-effect": "优质睡眠",
+  "rested-effectdesc": "将每项技能获得的经验值增加{0:P}，持续{1}秒。",
+  "rested-effectsdesc": "将每项技能获得的经验值增加{0:P}。",
+
+  "skillbook-dsc": "授予你{0}技能的{1}经验。",
+  "skillbook-dsc2": "授予你{0}的知识。"
+}

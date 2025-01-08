@@ -1,0 +1,28 @@
+[
+  {
+    "file": "game:itemtypes/food/cheese",
+    "op": "addmerge",
+    "path": "/behaviorsByType",
+    "value":{
+      "*-1slice": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [{
+            "effect": "xdiseases:fracture",
+            "healingrate": 0.0001,
+            "maxhealingrate": 0.0006
+            }
+          ],
+          "triggers": [{
+            "effect": "diseases:foodpoisoning",
+            "chance": 0.0,
+            "perishweight": 0.75,
+            "intensity": 0.4,
+            "randomintensity": 0.2,
+            "perishintensity": 0.4
+            }
+          ]
+        }
+    }]}
+  }
+]

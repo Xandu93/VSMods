@@ -1,0 +1,41 @@
+{
+  "skill": "Fertigkeit",
+  "skills": "Fertigkeiten",
+  "level": "Level",
+  "tier": "Stufe",
+  "experience": "Erfahrung",
+  "abilitypoints": "F\u00e4higkeitspunkte",
+  "unlearnpoints": "Verlernpunkte",
+  "unlearncooldown": "Verlern Abklingzeit",
+  "unlearn": "Verlernen",
+  "unlearnAbility": "Fähigkeit verlernen",
+  "sparringmode": "Sparring-Modus",
+  "requirements": "Anforderungen",
+
+  "nexttier": "N\u00e4chste Stufe:\n",
+  "requiredlevel": "\n\nBen\u00f6tigtes Level: ",
+  "currenttier": "\nAktuelle Stufe: ",
+  "clicktoincreasetier": "\n\nKlicke mit der linken Maustaste, um die Stufe dieser Fähigkeit zu erhöhen. Dies erfordert {0} Fähigkeitspunkte (verfügbar: {1}).",
+  "clicktodecreasetier": "\n\nKlicke mit der linken Maustaste, um die Stufe dieser Fähigkeit zu verringern. Dies erfordert {0} Verlern-Punkte (verfügbar: {1}). Du kannst die Stufe einer Fähigkeit nur einmal alle {2:N2} Minuten verringern (verbleibend: {3:N2} Minuten).",
+  "notenoughpoints": "\nDu hast nicht genügend Punkte!",
+  "you receive": "Du erh\u00e4lst",
+  "levelup": "Du hast level {0} in der {1} Fertigkeit erreicht!",
+
+  "andrequirement": "Alle folgenden: ",
+  "orrequirement": "Einer der folgenden: ",
+  "exclusivelywith": "Ausschlie\u00dfend mit: ",
+  "limited": "Limitiert",
+  "righttime": "Es ist gerade nicht die richtige Zeit.",
+  "wrongtime": "Es ist gerade die richtige Zeit.",
+  "specialisations": "Spezialisierungen",
+
+  "skills-desc": "<strong>Fertigkeiten</strong><br><br><strong>Fertigkeit</strong><br>Eine Fertigkeit ist eine Sammlung deines Wissens und deiner F\u00e4higkeiten in einem bestimmten Bereich. Jede deiner Fertigkeiten hat ein bestimmtes Level. Du kannst dieses Level erh\u00f6hen, indem du Erfahrungen mit Aktivit\u00e4ten sammelst, die mit dieser F\u00e4higkeit zusammenh\u00e4ngen. Mit jedem Level erh\u00e4ltst du auch einen F\u00e4higkeitspunkt f\u00fcr diese Fertigkeit. Um einen \u00dcberblick \u00fcber deine F\u00e4higkeiten und Fertigkeiten zu erhalten, dr\u00fccke die Taste [O] (Standard). Du kannst diese Taste im Einstellungsmen\u00fc \u00e4ndern.<br><br><strong>F\u00e4higkeit</strong><br>Eine F\u00e4higkeit bietet Ihnen einen bestimmten Vorteil f\u00fcr eine bestimmte Fertigkeitsaktivit\u00e4t. Die meisten F\u00e4higkeiten haben mehr als eine Stufe. H\u00f6here Stufen einer F\u00e4higkeit bieten mehr Vorteile. Um die Stufe einer F\u00e4higkeit zu erh\u00f6hen, ben\u00f6tigst du einen F\u00e4higkeitspunkt der Fertigkeit, zu der die F\u00e4higkeit geh\u00f6rt. Dann kannst du im F\u00e4higkeitsdialog auf die F\u00e4higkeit klicken, um die Stufe zu erh\u00f6hen. Du kannst auch die Stufe einer F\u00e4higkeit verringern. Dazu musst du den Modus in den Verlernen-Modus umschalten, indem du auf die Schaltfl\u00e4che zum Verlernen klickst. Jetzt kannst du auf die F\u00e4higkeit klicken, um die Stufe der F\u00e4higkeit zu verringern. Denke daran, die Schaltfl\u00e4che zum Verlernen erneut umzuschalten, um den Verlernen-Modus zu deaktivieren. Beachte, dass du Verlernpunkte ben\u00f6tigst, um die Stufe einer F\u00e4higkeit zu verringern. Wenn du die Stufe einer F\u00e4higkeit verringerst, erh\u00e4lst du den verwendeten F\u00e4higkeitspunkt zur\u00fcck. W\u00e4hrend F\u00e4higkeitspunkte an eine bestimmte F\u00e4higkeit gebunden sind, werden Verlernpunkte auf alle F\u00e4higkeiten verteilt. Du kannst Verlernpunkte  erhalten, wenn du bestimmte Gegenst\u00e4nde konsumierst. Diese Gegenst\u00e4nde kannst du im Handbuch finden.",
+  "sparring-desc": "<strong>Sparring</strong><br>Wenn zwei Spieler den Sparringsmodus aktiviert haben und sich gegenseitig töten, verliert keiner von beiden beim Sterben Erfahrungspunkte.",
+
+  "rested-effect": "Gut Ausgeruht",
+  "rested-effectdesc": "Erhöht die Erfahrung, die du für jede Fertigkeit sammelst, um {0:P} für {1} Sekunden.",
+  "rested-effectsdesc": "Erhöht die Erfahrung, die du für jede Fertigkeit sammelst, um {0:P}.",
+  
+  "skillbook-dsc": "Gewährt dir {1} Erfahrung für die {0} Fertigkeit.",
+  "skillbook-dsc2": "Gewährt dir Wissen über {0}."
+}

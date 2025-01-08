@@ -1,0 +1,23 @@
+{
+  "ingredientPattern": "_,G,_,G,C,G,_,_,_",
+  "width": 3,
+  "height": 3,
+  "ingredients": {
+    "C": {
+      "type": "block",
+      "code": "game:labeledchest-east",
+      "attributes": { "type": "normal-labeled" },
+      "quantity": 1
+    },
+    "G": {
+      "type": "item",
+      "code": "game:gear-temporal",
+      "quantity": 1
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "advancedchests:sharedchest-east",
+    "attributes": { "type": "shared" }
+  }
+}

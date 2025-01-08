@@ -1,0 +1,44 @@
+﻿[
+  {
+    "file": "game:entities/land/wolf-female",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [{
+      "code": "Infectious",
+      "effects": [ 
+        {
+         "effect": "rabies",
+         "attributes": {
+           "chance": 0.05,
+           "intensity": 0.1,
+           "threshold": 1.5,
+           "damageweight": 0.0,
+           "source": "entity",
+           "allowprojectiles": false
+          }
+        }
+      ]
+    }]
+  },
+  {
+    "file": "game:entities/land/wolf-male",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [{
+      "code": "Infectious",
+      "effects": [ 
+        {
+         "effect": "rabies",
+         "attributes": {
+           "chance": 0.05,
+           "intensity": 0.1,
+           "threshold": 1.5,
+           "damageweight": 0.0,
+           "source": "entity",
+           "allowprojectiles": false
+          }
+        }
+      ]
+    }]
+  }
+]

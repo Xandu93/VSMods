@@ -1,0 +1,113 @@
+﻿{
+	code: "sortingchest",
+	class: "BlockLabeledChest",
+	entityclass: "SortingContainer",
+	attributes: {
+		partialAttachable: true,
+		inventoryClassName: "sortingchest",
+		defaultType: "sorting",
+		types: ["sorting"],
+		drop: {
+			"sorting": true,
+		},
+		quantitySlots: {
+			"sorting": 24,
+		},
+		quantityColumns: {
+			"sorting": 6,
+		},
+		dialogTitleLangCode: {
+			"sorting": "chestcontents",
+		},
+		storageType: {
+			"sorting": 189,
+		},
+		retrieveOnly: {
+			"sorting": false,
+		},
+		shape: {
+			"sorting": "game:block/chest/sortingchest",
+		},
+		typedOpenSound: {
+			"sorting": "game:sounds/block/largechestopen",
+		},
+		typedCloseSound: {
+			"sorting": "game:sounds/block/largechestclose",
+		},
+		variantByGroup: "side",
+		variantByGroupInventory: null
+	},
+	behaviors: [{name: "Lockable" }, {name: "Container"}, {name: "HorizontalOrientable", properties: {  dropBlockFace: "east" }}],
+	entityBehaviors: [{ name: "Animatable" }],
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: {  },
+	creativeinventoryStacksByType: {
+		"*-east": [
+			{
+				tabs: [ "general", "decorative" ],
+				stacks: [
+					{ type: "block", code: "sortingchest-east", attributes: { type: "sorting" } },
+				]
+			}
+		]
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	shapeInventory: { base: "game:block/chest/sortingchest", rotateY: 270 },
+	shapeByType: {
+		"*-north": { base: "game:block/chest/sortingchest", rotateY: 0 },
+		"*-east": { base: "game:block/chest/sortingchest", rotateY: 270 },
+		"*-west": { base: "game:block/chest/sortingchest", rotateY: 90 },
+		"*-south": { base: "game:block/chest/sortingchest", rotateY: 180 },
+	},
+	"_comment": "Must declare textures so they get added to the block texture atlas",
+	textures: {
+		"sorting-side-north": { base: "block/chest/sortingchest/side-north" },
+		"sorting-side-east": { base: "block/chest/sortingchest/side-east" },
+		"sorting-side-south": { base: "block/chest/sortingchest/side-south" },
+		"sorting-side-west": { base: "block/chest/sortingchest/side-west" },
+		"sorting-side-up": { base: "block/chest/sortingchest/side-up" },
+		"sorting-side-down": { base: "block/chest/sortingchest/side-down" },
+		"sorting-sides2": { base: "game:block/wood/trunk/sides" },
+		"sorting-label": { base: "game:block/wood/chest/label" },
+		"sorting-accessories": { base: "game:block/wood/trunk/accessories" },
+	},
+	blockmaterial: "Wood",
+	replaceable: 900,
+	resistance: 3,
+	lightAbsorption: 0,
+	sideAo: { all: false },
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	collisionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	selectionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 35,
+	},
+	sounds: {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	materialDensity: 600,
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.5, z: -0.3 },
+		rotation: { x: 0, y: 90, z: -102 },
+		scale: 0.56
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.4, z: 0.5 },
+		scale: 1.16
+	}
+}

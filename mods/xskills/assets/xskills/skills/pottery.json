@@ -1,0 +1,84 @@
+{
+  "layerlayer": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "pottery",
+        "ability": "potter",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "fastpotter": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "pottery",
+        "ability": "potter",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "jackpot": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "pottery",
+        "ability": "potter",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "infallible": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "pottery",
+        "ability": "perfectfit",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "pottery",
+        "ability": "perfectionist",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "pottery",
+        "ability": "potter",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "pottery",
+        "ability": "layerlayer",
+        "requiredTier": 2
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "pottery",
+        "requiredLevel": 8
+      }
+    ]
+  },
+  "inspiration": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "pottery",
+        "ability": "potter",
+        "requiredTier": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "ingredientPattern": "I,G,I,_,C,_,I,_,I",
+  "width": 3,
+  "height": 3,
+  "ingredients": {
+    "C": {
+      "type": "block",
+      "code": "game:labeledchest-east",
+      "attributes": { "type": "normal-labeled" },
+      "quantity": 1
+    },
+    "G": {
+      "type": "item",
+      "code": "game:gear-temporal",
+      "quantity": 1
+    },
+    "I": {
+      "type": "item",
+      "code": "game:ingot-gold",
+      "quantity": 1
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "advancedchests:personalchest-east",
+    "attributes": { "type": "personal" }
+  }
+}

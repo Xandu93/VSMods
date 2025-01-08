@@ -1,0 +1,764 @@
+[
+  {
+    "file": "game:blocktypes/bone/carcass",
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "XSkillsCarcass"
+    }
+  },
+  {
+    "file": "game:blocktypes/bone/bonyremains",
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "XSkillsCarcass"
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-baby",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-baby",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-hen",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-hen",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-rooster",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.25,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-rooster",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.25,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/fox",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-pup-*": 0.0,
+        "*": 1.0
+      },
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/fox",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-pup-*": 0.0,
+        "*": 1.0
+      },
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hare-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hare-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hare-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hare-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hare-baby",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hare-baby",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-pup",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-pup",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-piglet",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-piglet",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.75,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-pup",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-pup",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-lamb",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true",
+      "scale": 0.9
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-lamb",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true",
+      "scale": 0.9
+    }
+  },
+  {
+    "file": "game:entities/land/gazelle",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {"*-calf": 0.0, "*": 1.25},
+      "catchableByType": {"*-calf": "true", "*": "false"},
+      "scaleByType": {"*-calf": 0.6, "*": 1.0}
+    }
+  },
+  {
+    "file": "game:entities/land/gazelle",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {"*-calf": 0.0, "*": 1.25},
+      "catchableByType": {"*-calf": "true", "*": "false"},
+      "scaleByType": {"*-calf": 0.6, "*": 1.0}
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 2.0,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-pup",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-pup",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "game:entities/land/bear",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+					"*-black": 2.6,
+					"*-brown": 2.8,
+					"*-sun": 2.2,
+					"*-panda": 2.4,
+					"*-polar": 3.0
+			},
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/bear",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+					"*-black": 2.6,
+					"*-brown": 2.8,
+					"*-sun": 2.2,
+					"*-panda": 2.4,
+					"*-polar": 3.0
+			},
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/deer",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-baby": 0.0,
+        "deer-elk-*-adult": 2.0,
+        "*-adult": 1.5
+      },
+      "catchableByType": {
+        "*-baby": "true",
+        "*-adult": "false"
+      },
+      "scaleByType":{ 
+        "deer-elk-*-baby": 0.6,
+        "*-baby": 0.8,
+        "*-adult": 1.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/deer",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-baby": 0.0,
+        "deer-elk-*-adult": 2.0,
+        "*-adult": 1.5
+      },
+      "catchableByType": {
+        "*-baby": "true",
+        "*-adult": "false"
+      },
+      "scaleByType":{ 
+        "deer-elk-*-baby": 0.6,
+        "*-baby": 0.8,
+        "*-adult": 1.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/goat",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-baby": 0.0,
+        "*-adult": 1.5
+      },
+      "catchableByType": {
+        "*-baby": "true",
+        "*-adult": "false"
+      },
+      "scaleByType":{ 
+        "*-baby": 1.0,
+        "*-adult": 1.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/goat",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-baby": 0.0,
+        "*-adult": 1.5
+      },
+      "catchableByType": {
+        "*-baby": "true",
+        "*-adult": "false"
+      },
+      "scaleByType":{ 
+        "*-baby": 1.0,
+        "*-adult": 1.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/moose",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-baby": 0.0,
+        "*-adult": 1.8
+      },
+      "catchableByType": {
+        "*-baby": "false",
+        "*-adult": "false"
+      },
+      "scaleByType":{ 
+        "*-baby": 1.0,
+        "*-adult": 1.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/moose",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xpByType": {
+        "*-baby": 0.0,
+        "*-adult": 1.8
+      },
+      "catchableByType": {
+        "*-baby": "false",
+        "*-adult": "false"
+      },
+      "scaleByType":{ 
+        "*-baby": 1.0,
+        "*-adult": 1.0
+      }
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-fawn",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-fawn",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 1.5,
+      "catchable": "false"
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-lamb",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-lamb",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsAnimal",
+      "xp": 0.0,
+      "catchable": "true"
+    }
+  }
+]

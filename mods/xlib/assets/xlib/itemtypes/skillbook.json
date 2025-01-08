@@ -1,0 +1,51 @@
+{
+	code: "skillbook",
+	class: "ItemSkillBook",
+	maxstacksize: 1,
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } }
+	],
+	attributes: {
+		displaycaseable: true,
+		shelvable: true,
+		bookshelveable: true,
+		groundStorageTransform: {
+			rotation: { x: 0, y: 25, z: 90 }, origin: { x: 0.5, y: 0.0625, z: 0.3 }
+		}
+	},
+	variantgroups: [
+		{ code: "color", states: [
+			"normal-brickred", "normal-cherryred", "normal-darkbeige", "normal-darkgray", "normal-darkgreen", "normal-darkolive", "normal-gray", "normal-olive", "normal-orange", "normal-orangebrown", "normal-purple", "normal-purpleorange", "normal-teal",
+			"aged-orangebrown", "aged-orange", "aged-darkgreen", "aged-darkgray", "aged-cherryred", "aged-brickred", "aged-darkolive", "aged-darkbeige", "aged-olive", "aged-purpleorange", "aged-gray", "rotten-gray", "rotten-brown", "rotten-rust", "rotten-purple", "rotten-green"
+		] },
+	],
+	shape: { base: "game:block/clutter/bookshelves/small-normal" },
+	textures: {
+		"cover": { base: "game:item/lore/{color}" },
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -180, y: 123, z: 33 },
+		origin: { x: 0.48, y: 0.21, z: 0.5 },
+		scaleXyz: { x: -3.23, y: 3.23, z: 3.23 }
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.2, z: 0 },
+		rotation: { x: -14, y: -152, z: 28 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 2.07
+	},
+	tpHandTransform: {
+		translation: { x: -0.79, y: -0.36, z: -0.73 },
+		rotation: { x: 0, y: -84, z: 7 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.67
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 90 },
+		origin: { x: 0.41, y: 0, z: 0.5 },
+		scale: 3.4
+	}
+}

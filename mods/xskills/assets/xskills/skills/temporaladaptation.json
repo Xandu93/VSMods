@@ -1,0 +1,166 @@
+{
+  "temporalstable": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "timelord",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "temporaladaptation",
+        "ability": "temporalunstable",
+        "exclusiveTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "caveman",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "temporaladapted",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "caveman": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "timelord",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "temporalstable",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "temporaladapted",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "temporaladapted": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "timelord",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "temporalstable",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "caveman",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "shifter": {
+    "requirements": [
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "temporaladaptation",
+        "requiredLevel": 5
+      },
+      {
+        "code": "skill",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "requiredLevel": 7
+      },
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "timelord",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "fastforward": {
+    "requirements": [
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "temporaladaptation",
+        "requiredLevel": 6
+      }
+    ]
+  },
+  "temporalunstable": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "temporaladaptation",
+        "ability": "timelord",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "temporaladaptation",
+        "ability": "temporalstable",
+        "exclusiveTier": 1
+      }
+    ]
+  },
+  "timeless": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "temporaladaptation",
+        "ability": "timelord",
+        "requiredTier": 1
+      },
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "ability",
+            "minimumTier": 1,
+            "skill": "temporaladaptation",
+            "ability": "temporalstable",
+            "requiredTier": 3
+          },
+          {
+            "code": "ability",
+            "minimumTier": 1,
+            "skill": "temporaladaptation",
+            "ability": "temporalunstable",
+            "requiredTier": 3
+          },
+        ]
+      }
+    ]
+  }
+}

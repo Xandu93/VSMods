@@ -1,0 +1,110 @@
+[
+  {
+    "file": "game:blocktypes/plant/crop/cabbage",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/carrot",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/flax",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/onion",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/parsnip",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/rice",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/rye",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/soybean",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/spelt",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/turnip",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/sunflower",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/amaranth",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/peanut",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/cassava",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  },
+  {
+    "file": "game:blocktypes/plant/crop/pineapple",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop"}]
+  },
+  {
+    "file": "game:blocktypes/plant/pumpkin/vine",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsCrop",
+        "properties": {
+          "xp": 0.1
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/crop/herbcrop",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsCrop" }]
+  }
+]

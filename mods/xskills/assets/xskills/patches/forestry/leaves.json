@@ -1,0 +1,63 @@
+[
+  {
+    "file": "game:blocktypes/plant/leaves/normal",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown*-*",
+    "value": [{
+      "name": "XSkillsLeaves",
+      "properties": {
+        "xp": 0.01
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/narrow",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsLeaves",
+      "properties": {
+        "xp": 0.01
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown*-*",
+    "value": [{
+      "name": "XSkillsLeaves",
+      "properties": {
+        "xp": 0.02
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/plant/leaves/bamboo",
+    "op": "addmerge",
+    "path": "/behaviorsByType/bambooleaves-grown",
+    "value": [{ "name": "XSkillsLeaves" }]
+  },
+  {
+    "file": "wildcrafttree:blocktypes/plant/leaves/normal",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown*-*",
+    "value": [{
+      "name": "XSkillsLeaves",
+      "properties": {
+        "xp": 0.01
+      }
+    }]
+  },
+  {
+    "file": "wildcrafttree:blocktypes/plant/leaves/branchy",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown*-*",
+    "value": [{
+      "name": "XSkillsLeaves",
+      "properties": {
+        "xp": 0.02
+      }
+    }]
+  }
+]

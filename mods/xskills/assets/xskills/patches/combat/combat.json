@@ -1,0 +1,761 @@
+[
+  {
+    "file": "game:entities/land/chicken-hen",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-hen",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-rooster",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/chicken-rooster",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/drifter",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-normal": 1.0,
+        "*-deep": 1.5,
+        "*-tainted": 2.0,
+        "*-corrupt": 2.5,
+        "*-nightmare": 3.0,
+        "*-double-headed": 3.5
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/drifter",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-normal": 1.0,
+        "*-deep": 1.5,
+        "*-tainted": 2.0,
+        "*-corrupt": 2.5,
+        "*-nightmare": 3.0,
+        "*-double-headed": 3.5
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/bowtorn",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-surface": 0.5,
+        "*-deep": 1.0,
+        "*-tainted": 1.5,
+        "*-corrupt": 2.0,
+        "*-nightmare": 2.5,
+        "*-gearfoot": 3.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/bowtorn",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-surface": 0.5,
+        "*-deep": 1.0,
+        "*-tainted": 1.5,
+        "*-corrupt": 2.0,
+        "*-nightmare": 2.5,
+        "*-gearfoot": 3.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/shiver",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-surface": 1.0,
+        "*-deep": 1.5,
+        "*-tainted": 2.0,
+        "*-corrupt": 2.5,
+        "*-nightmare": 3.0,
+        "*-stilt": 3.5,
+        "*-bellhead": 4.0,
+        "*-deepsplit": 4.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/shiver",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-surface": 1.0,
+        "*-deep": 1.5,
+        "*-tainted": 2.0,
+        "*-corrupt": 2.5,
+        "*-nightmare": 3.0,
+        "*-stilt": 3.5,
+        "*-bellhead": 4.0,
+        "*-deepsplit": 4.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/eidolon-immobilized",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    }
+  },
+  {
+    "file": "game:entities/land/fox",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/fox",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hare-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hare-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hare-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hare-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.5
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.5
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.5
+    }
+  },
+  {
+    "file": "game:entities/land/hyena-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.5
+    }
+  },
+  {
+    "file": "game:entities/land/locust",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-bronze": 0.75,
+        "*-corrupt": 1.0,
+        "locust-corrupt-sawblade": 2.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/locust",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-bronze": 0.75,
+        "*-corrupt": 1.0,
+        "locust-corrupt-sawblade": 2.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/bell",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 5.0
+    }
+  },
+  {
+    "file": "game:entities/land/bell",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 5.0
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/pig-wild-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/raccoon-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/sheep-bighorn-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/gazelle",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/gazelle",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    }
+  },
+  {
+    "file": "game:entities/land/wolf-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    }
+  },
+  {
+    "file": "game:entities/land/bear",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+					"*-black": 1.6,
+					"*-brown": 1.7,
+					"*-sun": 1.4,
+					"*-panda": 1.5,
+					"*-polar": 1.8
+			}
+    }
+  },
+  {
+    "file": "game:entities/land/bear",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+					"*-black": 1.6,
+					"*-brown": 1.7,
+					"*-sun": 1.4,
+					"*-panda": 1.5,
+					"*-polar": 1.8
+			}
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/deer",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/deer",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/goat",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/goat",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/moose",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/hooved/moose",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/strawdummy",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/strawdummy",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "game:entities/land/wild-goblin",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    }
+  },
+  {
+    "file": "game:entities/land/wild-goblin",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    }
+  },
+  {
+    "file": "game:entities/land/wild-goblin_spear",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.25
+    }
+  },
+  {
+    "file": "game:entities/land/wild-goblin_spear",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.25
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/brower",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.75
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/brower",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.75
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/shintorickae",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 2.2
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/shintorickae",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 2.2
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/tickling",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 2.5
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/tickling",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 2.5
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/turtor",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "theneighbours:entities/land/turtor",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-fawn",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "lichen:entities/land/deer-fawn",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-female",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-female",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-male",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-male",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-lamb",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-lamb",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.0
+    }
+  }
+]

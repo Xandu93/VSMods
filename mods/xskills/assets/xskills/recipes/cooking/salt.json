@@ -1,0 +1,28 @@
+{
+  "code": "salt",
+  "perishableProps": {
+    "freshHours": { "avg": 1 },
+    "transitionHours": { "avg": 1 },
+    "transitionRatio": 1,
+    "transitionedStack": {
+      "type": "item",
+      "code": "game:rot"
+    }
+  },
+  "shape": { "base": "game:block/food/meal/porridge" },
+  "ingredients": [
+    {
+      "code": "water",
+      "validStacks": [
+        {
+          "type": "item",
+          "code": "game:waterportion",
+          "shapeElement": "bowl/water"
+        }
+      ],
+      "minQuantity": 4,
+      "maxQuantity": 4,
+      "portionSizeLitres": 1,
+    }
+  ]
+}

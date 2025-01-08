@@ -1,0 +1,328 @@
+[
+  {
+    "file": "wildcraftherb:itemtypes/food/herb",
+    "op": "addmerge",
+    "path": "/behaviorsByType",
+    "value":{
+      "*-basil": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:bleeding",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:cold",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-bearleek": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:rabies",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:scurvy",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-blackpepper": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:diarrhea",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:foodpoisoning",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-celery": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:infection",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:fracture",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-chamomile": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:bleeding",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:cold",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-cilantro": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:diarrhea",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:rabies",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-dill": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:tetanus",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-sorrel": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:scurvy",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-lavender": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:blindness",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:tetanus",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-marjoram": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:diarrhea",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:foodpoisoning",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-marshmallow": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:cold",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:pneumonia",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-mint": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:cold",
+              "intensity": 0.1,
+              "minintensity": 0.2,
+              "healinggain": 0.0003,
+              "maxhealing": 0.0002,
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-mustard": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:blindness",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:rabies",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-rosemary": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:cold",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.0001,
+              "maxhealing": 0.001,
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:tetanus",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-saffron": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:blindness",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:infection",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-sage": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:diarrhea",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:infection",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-stingingnettle": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:blindness",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:infection",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-stjohnswort": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:cold",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:rabies",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-thyme": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:cold",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.000005,
+              "maxhealing": 0.005,
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:pneumonia",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-minerslettuce": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:infection",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:scurvy",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+      "*-mugwort": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "cures": [
+            {
+              "effect": "xdiseases:diarrhea",
+              "ingredient": true
+            },
+            {
+              "effect": "xdiseases:rabies",
+              "ingredient": true
+            }
+          ]
+        }
+    }],
+    }
+  }
+]

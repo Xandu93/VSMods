@@ -1,0 +1,23 @@
+{
+  "scurvy": {
+    "code": "disease",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 1.0,
+      "healingrate": -0.0001,
+      "healinggrowth": 0.00002,
+      "symptoms": {
+        "health": {
+          "maxintensity": -4.0,
+          "threshold": 0.0
+        },
+        "hungry": {
+          "maxintensity": 0.4,
+          "threshold": 0.2
+        }
+      }
+    }
+  }
+}

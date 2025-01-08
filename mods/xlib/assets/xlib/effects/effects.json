@@ -1,0 +1,10 @@
+{
+  "rested": {
+    "code": "stat",
+    "defaults": {
+      "statname": "expMult",
+      "intensity": 1.0,
+      "duration": 600.0
+    }
+  }
+}

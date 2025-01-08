@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Debug\advancedchests\</IntermediateOutputPath>
+    <Deterministic>False</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Release\advancedchests\</IntermediateOutputPath>
+    <Deterministic>False</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="protobuf-net">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="VintagestoryAPI">
+      <HintPath>D:\Program Files (x86)\Vintagestory\VintagestoryAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VintagestoryLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Vintagestory\VintagestoryLib.dll</HintPath>
+    </Reference>
+    <Reference Include="VSSurvivalMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSSurvivalMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSEssentials">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSEssentials.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSCreativeMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSCreativeMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="modinfo.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\advancedchests\recipes\grid\sharedchest.json" />
+    <Content Include="assets\advancedchests\recipes\grid\filterchest.json" />
+    <Content Include="assets\advancedchests\recipes\grid\sortingchest.json" />
+    <Content Include="assets\advancedchests\recipes\grid\coffin.json" />
+    <Content Include="assets\advancedchests\recipes\grid\personalchest.json" />
+    <Content Include="assets\advancedchests\recipes\grid\infinitychest.json" />
+    <Content Include="assets\advancedchests\recipes\grid\voidchest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\advancedchests\textures\block\chest\sharedchest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="8.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <SignAssembly>False</SignAssembly>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <PackageOutputPath>./bin</PackageOutputPath>
+  </PropertyGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)&quot;&#xD;&#xA;copy &quot;$(TargetDir)\$(TargetName).pdb&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;cd $(ProjectDir)&#xD;&#xA;call tar.exe -a -c  -f  &quot;..\..\releases\$(TargetName)\$(TargetName)_vout.zip&quot; &quot;$(TargetName).dll&quot; &quot;modinfo.json&quot; &quot;assets&quot;" />
+  </Target>
+</Project>

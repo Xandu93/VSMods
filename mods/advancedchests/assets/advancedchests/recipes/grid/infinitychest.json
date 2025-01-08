@@ -1,0 +1,28 @@
+{
+  "ingredientPattern": "G,P,G,P,C,P,G,P,G",
+  "width": 3,
+  "height": 3,
+  "ingredients": {
+    "C": {
+      "type": "block",
+      "code": "game:labeledchest-east",
+      "attributes": { "type": "normal-labeled" },
+      "quantity": 1
+    },
+    "G": {
+      "type": "item",
+      "code": "game:gear-temporal",
+      "quantity": 1
+    },
+    "P": {
+      "type": "item",
+      "code": "game:metalplate-steel",
+      "quantity": 1
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "advancedchests:infinitychest-east",
+    "attributes": { "type": "infinity" }
+  }
+}

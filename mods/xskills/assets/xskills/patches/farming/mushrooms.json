@@ -1,0 +1,110 @@
+[
+  {
+    "file": "game:blocktypes/plant/mushroom",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/annuals",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/arrowhead",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/bigleafperennial",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/evergreens",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/perennials",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/sedge",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftherb:blocktypes/plant/smallannual",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "file": "game:blocktypes/plant/mycodiversity-mushroom",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+        "name": "XSkillsMushroom",
+        "properties": {
+          "xp": 0.2
+        }
+      }
+    ]
+  }, 
+]

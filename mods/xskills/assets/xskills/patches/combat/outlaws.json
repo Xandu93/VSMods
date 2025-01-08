@@ -1,0 +1,242 @@
+[
+  {
+    "file": "game:entities/mobs/bandit-axe",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/bandit-axe",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/bandit-knife",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.8
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/bandit-knife",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.8
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/bandit-spear",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.1
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/bandit-spear",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.1
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/deserter-archer",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.3
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/deserter-archer",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.3
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/deserter-bannerman",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 2.0
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/deserter-bannerman",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 2.0
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/deserter-footman",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/deserter-footman",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/hound-feral",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.7
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/hound-feral",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.7
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/hound-hunting",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.7
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/hound-hunting",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.7
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/looter",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.8
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/looter",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 0.8
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/poacher-archer",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/poacher-archer",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/poacher-spear",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/poacher-spear",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.2
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/yeoman-archer",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+  {
+    "file": "game:entities/mobs/yeoman-archer",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [{ "modid": "outlawmod" }]
+  },
+]

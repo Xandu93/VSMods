@@ -1,0 +1,18 @@
+[
+  {
+    "file": "game:entities/humanoid/player",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsPlayer"
+    }
+  },
+  {
+    "file": "game:entities/humanoid/player",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsPlayer"
+    }
+  }
+]

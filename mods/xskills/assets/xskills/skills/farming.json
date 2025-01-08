@@ -1,0 +1,194 @@
+﻿{
+  "greenthumb": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "farming",
+        "ability": "farmer",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "farming",
+        "ability": "demetersbless",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "demetersbless": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "farming",
+        "ability": "farmer",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "farming",
+        "ability": "greenthumb",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "orchardist": {
+    "requirements": [
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "farming",
+        "requiredLevel": 8
+      }
+    ]
+  },
+  "repotting": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "demetersbless",
+        "requiredTier": 2
+      }
+    ]
+  },
+  "recycler": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "farming",
+        "ability": "farmer",
+        "requiredTier": 1
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "farming",
+        "requiredLevel": 10
+      }
+    ]
+  },
+  "carefulhands": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "gatherer",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "brightharvest": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 2,
+        "requirements": [
+          {
+            "code": "ability",
+            "minimumTier": 1,
+            "skill": "farming",
+            "ability": "farmer",
+            "requiredTier": 1
+          },
+          {
+            "code": "ability",
+            "minimumTier": 1,
+            "skill": "forestry",
+            "ability": "forester",
+            "requiredTier": 1
+          },
+          {
+            "code": "class",
+            "minimumTier": 1,
+            "classes": [
+              "forager",
+              "gatherer"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cultivatedseeds": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "farmer",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "greenthumb",
+        "requiredTier": 2
+      }
+    ]
+  },
+  "beekeeper": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "farming",
+        "ability": "farmer",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "extensivefarming": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "farmer",
+        "requiredTier": 1
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "farming",
+        "requiredLevel": 10
+      }
+    ]
+  },
+  "crossbreeding": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "farmer",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "demetersbless",
+        "requiredTier": 2
+      }
+    ]
+  },
+  "beemaster": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "farming",
+        "ability": "beekeeper",
+        "requiredTier": 3
+      }
+    ]
+  }
+}

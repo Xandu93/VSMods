@@ -1,0 +1,252 @@
+﻿using ProtoBuf;
+using System.Collections.Generic;
+using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Server;
+using XLib.XLeveling;
+
+namespace XSkills
+{
+    public class Combat : XSkill
+    {
+        //ability ids
+        public int SwordsmanId { get; private set; }
+        public int ArcherId { get; private set; }
+        public int SpearmanId { get; private set; }
+        public int ToolMasteryId { get; private set; }
+        public int IronFistId { get; private set; }
+        public int MonkId { get; private set; }
+        public int LooterId { get; private set; }
+        public int SniperId { get; private set; }
+        public int FreshFleshId { get; private set; }
+        public int ShovelKnightId { get; private set; }
+        public int AdrenalineRushId { get; private set; }
+        public int VampireId { get; private set; }
+        public int BurningRageId { get; private set; }
+        public int BloodlustId { get; private set; }
+        public int MonsterExpertId { get; private set; }
+        public Combat(ICoreAPI api) : base("combat", "xskills:skill-combat", "xskills:group-survival")
+        {
+            (XLeveling.Instance(api))?.RegisterSkill(this);
+
+            // increases damage with swords
+            // 0: base value
+            // 1: value per level
+            // 2: max value
+            SwordsmanId = this.AddAbility(new Ability(
+                "swordsman",
+                "xskills:ability-swordsman",
+                "xskills:abilitydesc-swordsman",
+                1, 3, new int[] { 10, 1, 20, 20, 2, 40, 20, 2, 60 }));
+
+            // increases damage with bows
+            // 0: base value
+            // 1: value per level
+            // 2: max value
+            ArcherId = this.AddAbility(new Ability(
+                "archer",
+                "xskills:ability-archer",
+                "xskills:abilitydesc-archer",
+                1, 3, new int[] { 10, 1, 20, 20, 2, 40, 20, 2, 60 }));
+
+            // increases damage with spears
+            // 0: base value
+            // 1: value per level
+            // 2: max value
+            SpearmanId = this.AddAbility(new Ability(
+                "spearman",
+                "xskills:ability-spearman",
+                "xskills:abilitydesc-spearman",
+                1, 3, new int[] { 10, 1, 20, 20, 2, 40, 20, 2, 60 }));
+
+            // increases damage with tools
+            // 0: base value
+            // 1: value per level
+            // 2: max value
+            ToolMasteryId = this.AddAbility(new Ability(
+                "toolmastery",
+                "xskills:ability-toolmastery",
+                "xskills:abilitydesc-toolmastery",
+                1, 3, new int[] { 5, 2, 25, 15, 3, 40, 15, 3, 75 }));
+
+            // increases damage with bare hands with armor
+            // 0: base value
+            IronFistId = this.AddAbility(new Ability(
+                "ironfist",
+                "xskills:ability-ironfist",
+                "xskills:abilitydesc-ironfist",
+                1, 3, new int[] { 2, 3, 4 }));
+
+            // increases damage with bare hands without armor
+            // 0: base value
+            MonkId = this.AddAbility(new Ability(
+                "monk",
+                "xskills:ability-monk",
+                "xskills:abilitydesc-monk",
+                1, 3, new int[] { 6, 9, 12 }));
+
+            // more mob drops
+            // 0: base value
+            // 1: value per level
+            // 2: max value
+            LooterId = this.AddAbility(new Ability(
+                "looter",
+                "xskills:ability-looter",
+                "xskills:abilitydesc-looter",
+                1, 2, new int[] { 10, 1, 20, 20, 2, 40 }));
+
+            // profession
+            // 0: ep bonus
+            SpecialisationID = this.AddAbility(new Ability(
+                "warrior",
+                "xskills:ability-warrior",
+                "xskills:abilitydesc-warrior",
+                5, 1, new int[] { 40 }));
+
+            //more accuracy with bows
+            //0: value
+            SniperId = this.AddAbility(new StatAbility(
+                "sniper", "rangedWeaponsAcc",
+                "xskills:ability-sniper",
+                "xskills:abilitydesc-sniper",
+                5, 2, new int[] { 15, 30 }));
+
+            // gives saturation
+            // 0: value
+            FreshFleshId = this.AddAbility(new Ability(
+                "freshflesh",
+                "xskills:ability-freshflesh",
+                "xskills:abilitydesc-freshflesh",
+                 5, 3, new int[] { 10, 20, 30 }));
+
+            // shovels have a chance to deal 30 times more damage
+            // 0: chance
+            // 1: damage multiplier
+            ShovelKnightId = this.AddAbility(new Ability(
+                "shovelknight",
+                "xskills:ability-shovelknight",
+                "xskills:abilitydesc-shovelknight",
+                5, 2, new int[] { 3, 20, 5, 25 }));
+
+            //chance to trigger an adrenaline rush
+            //0: threshold
+            //1: speed boost
+            //2: damage reduction
+            //3: duration
+            //4: exhaustion duration
+            AdrenalineRushId = this.AddAbility(new Ability(
+                "adrenalinerush",
+                "xskills:ability-adrenalinerush",
+                "xskills:abilitydesc-adrenalinerush",
+                7, 2, new int[] {20, 20, 25, 10, 24, 20, 40, 50, 12, 20}));
+
+            // steal the health of enemies, reduces life reg at daytime
+            // 0: life steal
+            // 1: regeneration 
+            VampireId = this.AddAbility(new Ability(
+                "vampire",
+                "xskills:ability-vampire",
+                "xskills:abilitydesc-vampire",
+                7, 3, new int[] { 3, 80, 5, 65, 7, 50 }));
+
+            // chance to ignite an enemy
+            // 0: chance
+            BurningRageId = this.AddAbility(new Ability(
+                "burningrage",
+                "xskills:ability-burningrage",
+                "xskills:abilitydesc-burningrage",
+                10, 3, new int[] { 2, 4, 6 }));
+
+            // increases damage done and damage taken
+            // 0: damage increase
+            // 1: taken damage increase
+            // 2: duration
+            // 3: max stacks
+            BloodlustId = this.AddAbility(new Ability(
+                "bloodlust",
+                "xskills:ability-bloodlust",
+                "xskills:abilitydesc-bloodlust",
+                10, 1, new int[] { 2, 3, 16, 10 }));
+
+            // grants some additional informations about enemies
+            MonsterExpertId = this.AddAbility(new Ability(
+                "monsterexpert",
+                "xskills:ability-monsterexpert",
+                "xskills:abilitydesc-monsterexpert",
+                10, 1, new int[] {}));
+
+            //behaviors
+            api.RegisterEntityBehaviorClass("XSkillsEntity", typeof(XSkillsEntityBehavior));
+
+            ICoreServerAPI sapi = api as ICoreServerAPI;
+            if (sapi != null)
+            {
+                sapi.Event.PlayerJoin += OnPlayerJoin;
+            }
+
+
+            this.Config = new CombatSkillConfig();
+
+            ClassExpMultipliers["commoner"] = 0.1f;
+            ClassExpMultipliers["blackguard"] = 0.2f;
+            ClassExpMultipliers["vanguard"] = 0.15f;
+            ClassExpMultipliers["archer"] = 0.15f;
+            ClassExpMultipliers["clockmaker"] = -0.2f;
+            ClassExpMultipliers["hunter"] = 0.0f;
+            ClassExpMultipliers["malefactor"] = -0.1f;
+            ClassExpMultipliers["miner"] = -0.05f;
+            ClassExpMultipliers["forager"] = -0.15f;
+            ClassExpMultipliers["gatherer"] = -0.15f;
+            ClassExpMultipliers["mercenary"] = 0.15f;
+
+            this.ExperienceEquation = QuadraticEquation;
+            this.ExpBase = 100;
+            this.ExpMult = 50.0f;
+            this.ExpEquationValue = 4.0f;
+        }
+
+        public void OnPlayerJoin(IPlayer byPlayer)
+        {
+            if ((this.Config as CombatSkillConfig)?.enableAbilitiesInPvP ?? false)
+            {
+                XSkillsEntityBehavior beh = new XSkillsEntityBehavior(byPlayer.Entity);
+                byPlayer.Entity.AddBehavior(beh);
+            }
+        }
+
+        public override void OnConfigReceived()
+        {
+            base.OnConfigReceived();
+            if ((this.Config as CombatSkillConfig)?.enableAbilitiesInPvP ?? false)
+            {
+                Entity entity = (this.XLeveling.Api as ICoreClientAPI)?.World.Player.Entity;
+                entity?.AddBehavior(new XSkillsEntityBehavior(entity));
+            }
+        }
+
+    }//!class Combat
+
+    [ProtoContract]
+    public class CombatSkillConfig : CustomSkillConfig
+    {
+        public override Dictionary<string, string> Attributes
+        {
+            get
+            {
+                Dictionary<string, string> result = new Dictionary<string, string>();
+                result.Add("enableAbilitiesInPvP", this.enableAbilitiesInPvP.ToString());
+                return result;
+            }
+            set
+            {
+                string str;
+                value.TryGetValue("enableAbilitiesInPvP", out str);
+                if (str != null) bool.TryParse(str, out this.enableAbilitiesInPvP);
+            }
+        }
+
+        [ProtoMember(1)]
+        public bool enableAbilitiesInPvP = false;
+    }//!class CombatSkillConfig
+}//!namespace XSkills

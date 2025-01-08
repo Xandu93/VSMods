@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "advancedchests",
+  "name": "Advanced Chests",
+  "authors": [ "Xandu" ],
+  "description": "Adds chests with specific functions to the game.",
+  "version": "0.2.4",
+  "dependencies": {
+    "game": "1.20.0-rc.8",
+    "survival": "1.20.0-rc.8"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "skill": "Skill",
+  "skills": "Skills",
+  "level": "Level",
+  "tier": "Tier",
+  "experience": "Experience",
+  "abilitypoints": "Ability points",
+  "unlearnpoints": "Unlearn points",
+  "unlearncooldown": "Unlearn cooldown",
+  "unlearn": "Unlearn",
+  "unlearnAbility": "Unlearn ability",
+  "sparringmode": "Sparring mode",
+  "requirements": "Requirements",
+
+  "nexttier": "Next Tier:\n",
+  "requiredlevel": "\n\nRequired Level: ",
+  "currenttier": "\nCurrent Tier: ",
+  "clicktoincreasetier": "\n\nLeft click to increase the tier of this ability. This requires {0} ability points (available: {1}).",
+  "clicktodecreasetier": "\n\nLeft click to decrease the tier of this ability. This requires {0} unlearn points (available: {1}). You can only decrease the tier of an ability once every {2:N2} minutes (remaining: {3:N2} minutes).",
+  "notenoughpoints": "\nYou don't have enough points!",
+  "you receive": "You receive",
+  "levelup": "You reached level {0} in the {1} skill!",
+
+  "andrequirement": "All of the following: ",
+  "orrequirement": "One of the following: ",
+  "exclusivelywith": "Incompatible with: ",
+  "limited": "Limited",
+  "righttime": "The time is right.",
+  "wrongtime": "The time is not right.",
+  "specialisations": "Specialisations",
+
+  "skills-desc": "<strong>Skills</strong><br><br><strong>Skill</strong><br>A skill is a collection of your knowledge and your abilities in a specific field. Each of your skills has a specific level. You can increase this level by gathering experience doing activities related to this skill. With every level you also receive an ability point for this skill. To see an overview of your skills and abilities press the [O] key(default). You can change this key in the settings menu.<br><br><strong>Ability</strong><br>An ability gives you a specific advantage for a specific skill related activity. Most abilities have more than one tiers. Higher tiers of an ability provide more advantages. To increase the tier of an ability you need one ability point of the skill the ability belongs to. Than you can click on the ability in the skill dialog to increase its tier. You can also decrease the tier of an ability. To do so you must toggle the mode to unlearn mode by clicking the unlearn button. Now you can click on the ability to decrease the tier of the ability. Remember to toggle the unlearn button again to disable the unlearn mode. Notice that you need unlearn points to decrease the tier of an ability. When you decrease the tier of an ability you will get back the ability point you used. While ability points are bound to a specific skill, unlearn points are shared across all skills. You can receive unlearn points from consuming specific items. These items can be found in the handbook.",
+  "sparring-desc": "<strong>Sparring</strong><br>If two players have sparring mode enabled and kill each other, neither of them will loose experience points upon dying.",
+
+  "rested-effect": "Well Rested",
+  "rested-effectdesc": "Increases the experience you gain for every skill by {0:P} for {1} seconds.",
+  "rested-effectsdesc": "Increases the experience you gain for every skill by {0:P}.",
+    
+  "skillbook-dsc": "Grants you {1} experience for the {0} skill.",
+  "skillbook-dsc2": "Grants you knowledge of {0}."
+}

@@ -1,0 +1,12 @@
+{
+  "type": "content",
+  "modid": "xdiseases",
+  "name": "XDiseases",
+  "authors": [ "Xandu" ],
+  "description": "Adds diseases",
+  "version": "0.1.0",
+  "dependencies": {
+    "game": "1.20.0-rc.8",
+    "xlib": "0.8.7"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "rabies": {
+    "code": "disease",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 1.0,
+      "healingrate": -0.01,
+      "symptoms": {
+        "dot": {
+          "maxintensity": 10.0,
+          "threshold": 1.0
+        },
+        "meleeWeaponsDamage": {
+          "maxintensity": 0.5,
+          "threshold": 0.2
+        },
+        "hungry": {
+          "maxintensity": 1.0,
+          "threshold": 0.0
+        },
+        "regeneration": {
+          "maxintensity": -1.0,
+          "threshold": 0.3
+        },
+        "walkspeed": {
+          "maxintensity": 1.0,
+          "threshold": 0.2
+        },
+        "receivedDamageMultiplier": {
+          "maxintensity": 2.0,
+          "threshold": 0.4
+        },
+        "intoxication": {
+          "maxintensity": 0.4,
+          "threshold": 0.5
+        }
+      }
+    }
+  }
+}

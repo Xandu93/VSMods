@@ -1,0 +1,24 @@
+{
+  "d-blindness": {
+    "code": "disease",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 1.0,
+      "healingrate": -0.0005,
+      "healinggrowth": 0.000002,
+      "immunityduration": 7200.0,
+      "symptoms": {
+        "blindness": {
+          "maxintensity": 1.0,
+          "threshold": 0.0
+        },
+        "colorblind": {
+          "maxintensity": 1.0,
+          "threshold": 0.5
+        },
+      }
+    }
+  }
+}

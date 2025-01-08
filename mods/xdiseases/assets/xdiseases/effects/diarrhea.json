@@ -1,0 +1,35 @@
+{
+  "diarrhea": {
+    "code": "disease",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 1.0,
+      "healingrate": 0.0005,
+      "healinggrowth": 0.00001,
+      "symptoms": {
+        "nutritionFruit": {
+          "maxintensity": -2.0,
+          "threshold": 0.0
+        },
+        "nutritionVegetable": {
+          "maxintensity": -2.0,
+          "threshold": 0.0
+        },
+        "nutritionProtein": {
+          "maxintensity": -1.0,
+          "threshold": 0.0
+        },
+        "nutritionGrain": {
+          "maxintensity": -2.0,
+          "threshold": 0.0
+        },
+        "nutritionDairy": {
+          "maxintensity": -1.0,
+          "threshold": 0.0
+        },
+      }
+    }
+  }
+}

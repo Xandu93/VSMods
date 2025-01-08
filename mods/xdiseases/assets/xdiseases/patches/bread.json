@@ -1,0 +1,22 @@
+[
+  {
+    "file": "game:itemtypes/food/bread",
+    "op": "addmerge",
+    "path": "/behaviorsByType",
+    "value":{
+      "*": [{
+        "name": "XLibConsumable", 
+        "properties": {
+          "triggers": [{
+            "effect": "diseases:foodpoisoning",
+            "chance": 0.0,
+            "perishweight": 0.25,
+            "intensity": 0.1,
+            "randomintensity": 0.1,
+            "perishintensity": 0.3
+            }
+          ]
+        }
+    }]}
+  }
+]

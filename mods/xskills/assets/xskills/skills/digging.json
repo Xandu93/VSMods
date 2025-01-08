@@ -1,0 +1,128 @@
+{
+  "claydigger": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "digger",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "peatcutter",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "saltpeterdigger",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "peatcutter": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "digger",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "claydigger",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "saltpeterdigger",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "saltpeterdigger": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "digger",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "claydigger",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "peatcutter",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "shovelexpert": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "digger",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "carefuldigger": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "digger",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "mixedclay": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "digging",
+        "ability": "claydigger",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "scrapspecialist": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "digging",
+        "ability": "digger",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "digging",
+        "ability": "scrapdetector",
+        "requiredTier": 2
+      }
+    ]
+  }
+}

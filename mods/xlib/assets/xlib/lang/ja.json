@@ -1,0 +1,46 @@
+{
+    "comment_description": "Japanese localization file for 'XLib'.",
+    "comment_version": "Mod Version: v0.8.0-rc.1",
+    "comment_author": "Translated By: Macoto Hino",
+    "comment_technical_details": "Machine translation using PCOT and DeepL.",
+
+  "skill": "スキル",
+  "skills": "XLib and XSkills:スキル",
+  "level": "レベル",
+  "tier": "ティア",
+  "experience": "経験値",
+  "abilitypoints": "アビリティポイント",
+  "unlearnpoints": "学習解除ポイント",
+  "unlearncooldown": "再学習解除",
+  "unlearn": "学習解除",
+  "unlearnAbility": "Unlearn ability",
+  "sparringmode": "対戦モード",
+  "requirements": "必要条件",
+
+  "nexttier": "次のティア:\n",
+  "requiredlevel": "\n\n必要レベル: ",
+  "currenttier": "\n現在のティア: ",
+  "clicktoincreasetier": "\n\n左クリックでこのアビリティのティアを上げることが出来ます。これには{0}個のアビリティポイントが必要です（使用可能：{1}個）。",
+  "clicktodecreasetier": "\n\n左クリックでこのアビリティのティアを下げることが出来ます。これには{0}個の学習解除ポイントが必要です（使用可能なポイント：{1}個）。アビリティのティアは{2:N2}分に1度だけ減少させることが出来ます（残り：{3:N2}分）。",
+  "notenoughpoints": "\nポイントが足りません！",
+  "you receive": "受け取りました。",
+  "levelup": "スキル{1}のレベル{0}に到達しました！",
+
+  "andrequirement": "以下のすべて: ",
+  "orrequirement": "以下のいずれか: ",
+  "exclusivelywith": "重複不可: ",
+  "limited": "限定",
+  "righttime": "時が来た",
+  "wrongtime": "いまだ時は来ず",
+  "specialisations": "専門分野",
+
+  "skills-desc": "<strong>スキル</strong><br><br><strong>スキル</strong><br>スキルとは、特定の分野における知識や能力の集合体です。各スキルにはレベルが設定されています。このレベルは、このスキルに関連する活動で経験値を集めることで上げることが出来ます。また、レベルが上がるごとに、このスキルのアビリティポイントが1ポイント加算されます。スキルやアビリティの概要を見るには、[O]キーを押します（初期設定）。このキーは、設定メニューで変更することが出来ます。<br><br><strong>アビリティ</strong><br>アビリティは、特定のスキルに関連した活動において、特定のアドバンテージを与えるものです。ほとんどのアビリティは2つ以上の階層を持ちます。アビリティの階層が高いほど、より多くのアドバンテージを得ることができます。アビリティのティアを上げるには、そのアビリティが属するスキルのアビリティポイントが1ポイント必要です。その後、スキルダイアログでアビリティをクリックすると、そのティアが増加します。また、アビリティのティアを下げることも出来ます。これを行うには、学習解除ボタンをクリックして学習解除モードに切り替える必要があります。これでアビリティをクリックすると、アビリティのティアが下がります。学習解除モードを無効にするには、もう一度学習解除ボタンをクリックすることを忘れないで下さい。アビリティのレベルを下げるには、学習解除ポイントが必要です。アビリティの階層を下げると、使用したアビリティポイントが戻ってきます。アビリティポイントは特定のスキルに限定されますが、学習解除ポイントはすべてのスキルで共有されます。学習解除ポイントは、特定のアイテムを消費することで得ることが出来ます。これらのアイテムはハンドブックに記載されています。",
+  "sparring-desc": "<strong>Sparring</strong><br>If two players have sparring mode enabled and kill each other, neither of them will loose experience points upon dying.",
+
+  "rested-effect": "よく眠った",
+  "rested-effectdesc": "{1}秒間、全スキルの獲得経験値を{0:P}増加します。",
+  "rested-effectsdesc": "全スキルの獲得経験値を{0:P}増加します。",
+    
+  "skillbook-dsc": "{0}のスキルに対して{1}の経験値を付与します。",
+  "skillbook-dsc2": "Grants you knowledge of {0}."
+}

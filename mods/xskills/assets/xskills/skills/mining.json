@@ -1,0 +1,243 @@
+{
+  "stonebreaker": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "miner",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "stonecutter",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "oreminer",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "gemstoneminer",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "stonecutter": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "miner",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "stonebreaker",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "oreminer",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "gemstoneminer",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "oreminer": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "miner",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "stonebreaker",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "stonecutter",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "gemstoneminer",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "gemstoneminer": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "miner",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "stonebreaker",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "stonecutter",
+        "exclusiveTier": 3
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "oreminer",
+        "exclusiveTier": 3
+      }
+    ]
+  },
+  "pickaxeexpert": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "miner",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "carefulminer": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "miner",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "crystalseeker": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "mining",
+        "ability": "oreminer",
+        "requiredTier": 2
+      }
+    ]
+  },
+  "geologist": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "mining",
+        "ability": "miner",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "veinminer": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "ability",
+            "skill": "mining",
+            "ability": "oreminer",
+            "requiredTier": 3
+          },
+          {
+            "code": "ability",
+            "skill": "mining",
+            "ability": "gemstoneminer",
+            "requiredTier": 3
+          }
+        ]
+      }
+    ]
+  },
+  "tunneldigger": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "ability",
+            "skill": "mining",
+            "ability": "stonebreaker",
+            "requiredTier": 3
+          },
+          {
+            "code": "ability",
+            "skill": "mining",
+            "ability": "stonecutter",
+            "requiredTier": 3
+          }
+        ]
+      }
+    ]
+  },
+  "blaster": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "mining",
+        "ability": "bomberman",
+        "requiredTier": 3
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "mining",
+        "ability": "oreminer",
+        "requiredTier": 2
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "mining",
+        "ability": "stonebreaker",
+        "requiredTier": 2
+      }
+    ]
+  }
+}

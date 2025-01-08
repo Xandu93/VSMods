@@ -1,0 +1,160 @@
+[
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "game:blocktypes/clay/bowl",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "game:blocktypes/wood/bucket",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "aculinaryartillery:blocktypes/bottle",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "consumes": 0.25 }
+    }]
+  },
+  {
+    "file": "game:itemtypes/liquid/alcohol",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 2.0 }
+      }
+    ]
+  },
+  {
+    "file": "game:itemtypes/liquid/cider",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 0.1 }
+      }
+    ]
+  },
+  {
+    "file": "game:itemtypes/liquid/spirit",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 1.0 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/strongspiritportion",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 1.25 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/strongwine",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 0.25 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/potentspiritportion",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 1.5 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/potentwine",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 0.5 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/wildpotentspirit",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 1.5 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/wildpotentwine",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 0.5 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/wildstrongspirit",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 1.25 }
+      }
+    ]
+  },
+  {
+    "file": "expandedfoods:itemtypes/liquid/wildstrongwine",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 0.25 }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftfruit:itemtypes/liquid/alcohol/cider",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 0.1 }
+      }
+    ]
+  },
+  {
+    "file": "wildcraftfruit:itemtypes/liquid/alcohol/spirit",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable", 
+      "properties": { "unlearnPoints": 1.0 }
+      }
+    ]
+  },
+]

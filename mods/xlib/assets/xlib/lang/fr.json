@@ -1,0 +1,41 @@
+{
+  "skill": "Compétence",
+  "skills": "Compétences",
+  "level": "Niveau",
+  "tier": "Grade",
+  "experience": "Expérience",
+  "abilitypoints": "Points d'aptitude",
+  "unlearnpoints": "Points d'oubli",
+  "unlearncooldown": "Décompte d'oubli",
+  "unlearn": "Oublier",
+  "unlearnAbility": "Unlearn ability",
+  "sparringmode": "Sparring mode",
+  "requirements": "Exigences",
+
+  "nexttier": "Prochain grade:\n",
+  "requiredlevel": "\n\nNiveau requis: ",
+  "currenttier": "\nGrade actuel: ",
+  "clicktoincreasetier": "\n\nClic gauche pour augmenter le grade de cette aptitude. Cela coûte {0} point(s) d'aptitude (disponible: {1}).",
+  "clicktodecreasetier": "\n\nClic gauche pour diminuer le grade de cette aptitude. Cela coûte {0} points d'oubli (disponible: {1}). Vous ne pouvez réduire le grade d'une aptitude qu'une fois toutes les {2:N2} minutes (restant: {3:N2} minutes).",
+  "notenoughpoints": "\nVous n'avez pas assez de points!",
+  "you receive": "Vous recevez",
+  "levelup": "Vous avez atteint le niveau {0} dans la compétence {1}!",
+
+  "andrequirement": "Tout ce qui suit: ",
+  "orrequirement": "Un de ceux-là: ",
+  "exclusivelywith": "Exclusif avec: ",
+  "limited": "Limité",
+  "righttime": "Le moment est bon.",
+  "wrongtime": "Ce n'est pas le bon moment.",
+  "specialisations": "Spécialisations",
+
+  "skills-desc": "<strong>Compétences</strong><br><br><strong>Compétence</strong><br>Une compétence est une collection de votre savoir et de vos aptitudes dans un champ spécifique. Chacune de vos compétences ont un niveau spécifique. Vous pouvez augmenter ce niveau en accumulant de l'expérience en faisant des activités en relation avec celles-ci. Avec chaque niveau, vous recevez également un point d'aptitude pour cette compétence. Pour avoir une vue d'ensemble de vos compétences et aptitudes, appuyez sur la touche [O] (par défaut). Vous pouvez changer cette touche dans le menu des paramètres.<br><br><strong>Aptitude</strong><br>Une aptitude vous donne un avantage spécifique pour une activité dans vos compétences. La plupart des aptitudes ont plus d'un grade. Les grades élevés vous procurent plus d'avantages. Pour augmenter le grade d'une aptitude, vous devez dépenser un point d'aptitude dans la compétence qui vous intéresse. Puis vous pouvez cliquer sur l'aptitude en question pour en augmenter le grade. Vous pouvez également réduire le grade d'une aptitude. Pour ce faire, vous devez activer le mode oubli en cliquant sur le bouton oubli. Vous pouvez maintenant appuyer sur l'aptitude que vous souhaitez réduire. N'oubliez pas de ré-appuyer sur le bouton d'oubli pour désactiver le mode oubli. Notez que vous avez besoin de points d'oubli pour réduire le grade d'une aptitude. Quand vous réduisez le grade d'une aptitude vous recevrez un point d'aptitude en retour. Les points d'oubli sont partagés entre toutes les compétences. Vous pouvez recevoir des points d'oubli en consumant certains objets. Ces objets peuvent être trouvés dans le manuel d'aide.",
+  "sparring-desc": "<strong>Sparring</strong><br>If two players have sparring mode enabled and kill each other, neither of them will loose experience points upon dying.",
+
+  "rested-effect": "Bien reposé",
+  "rested-effectdesc": "Augmente l'expérience que vous gagnez pour chaque compétence de {0:P} pendant {1} secondes.",
+  "rested-effectsdesc": "Augmente l'expérience que vous gagnez pour chaque compétence de {0:P}.",
+    
+  "skillbook-dsc": "Grants you {1} experience for the {0} skill.",
+  "skillbook-dsc2": "Grants you knowledge of {0}."
+}

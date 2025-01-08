@@ -1,0 +1,291 @@
+{
+  "longlife": {
+    "requirements": [
+      {
+        "minimumTier": 2,
+        "code": "skill",
+        "skill": "combat",
+        "requiredLevel": 3
+      },
+      {
+        "minimumTier": 3,
+        "code": "skill",
+        "skill": "combat",
+        "requiredLevel": 5
+      }
+    ]
+  },
+
+  "hugestomach": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 2,
+        "requirements": [
+          {
+            "code": "skill",
+            "skill": "farming",
+            "requiredLevel": 3
+          },
+          {
+            "code": "skill",
+            "skill": "cooking",
+            "requiredLevel": 3
+          }
+        ]
+      },
+      {
+        "code": "or",
+        "minimumTier": 3,
+        "requirements": [
+          {
+            "code": "skill",
+            "skill": "farming",
+            "requiredLevel": 5
+          },
+          {
+            "code": "skill",
+            "skill": "cooking",
+            "requiredLevel": 5
+          }
+        ]
+      }
+    ]
+  },
+  "wellrested": {
+    "requirements": [
+      {
+        "minimumTier": 2,
+        "code": "skill",
+        "skill": "survival",
+        "requiredLevel": 6
+      }
+    ]
+  },
+  "meatshield": {
+    "requirements": [
+      {
+        "minimumTier": 1,
+        "code": "ability",
+        "skill": "survival",
+        "ability": "hugestomach",
+        "requiredTier": 1
+      },
+      {
+        "minimumTier": 2,
+        "code": "ability",
+        "skill": "survival",
+        "ability": "hugestomach",
+        "requiredTier": 2
+      },
+      {
+        "minimumTier": 3,
+        "code": "ability",
+        "skill": "survival",
+        "ability": "hugestomach",
+        "requiredTier": 3
+      }
+    ]
+  },
+  "photosynthesis": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "skill",
+            "skill": "farming",
+            "requiredLevel": 5
+          },
+          {
+            "code": "skill",
+            "skill": "forestry",
+            "requiredLevel": 5
+          }
+        ]
+      },
+      {
+        "code": "or",
+        "minimumTier": 2,
+        "requirements": [
+          {
+            "code": "skill",
+            "skill": "farming",
+            "requiredLevel": 7
+          },
+          {
+            "code": "skill",
+            "skill": "forestry",
+            "requiredLevel": 7
+          }
+        ]
+      },
+      {
+        "code": "or",
+        "minimumTier": 3,
+        "requirements": [
+          {
+            "code": "ability",
+            "skill": "farming",
+            "ability": "farmer",
+            "requiredTier": 1
+          },
+          {
+            "code": "ability",
+            "skill": "forestry",
+            "ability": "forester",
+            "requiredTier": 1
+          }
+        ]
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "vampire",
+        "exclusiveTier": 1
+      }
+    ]
+  },
+  "strongback": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "skill",
+            "skill": "mining",
+            "requiredLevel": 3
+          },
+          {
+            "code": "skill",
+            "skill": "metalworking",
+            "requiredLevel": 3
+          }
+        ]
+      },
+      {
+        "code": "or",
+        "minimumTier": 2,
+        "requirements": [
+          {
+            "code": "skill",
+            "skill": "mining",
+            "requiredLevel": 5
+          },
+          {
+            "code": "skill",
+            "skill": "metalworking",
+            "requiredLevel": 5
+          }
+        ]
+      }
+    ]
+  },
+  "ontheroad": {
+    "requirements": [
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "survival",
+        "ability": "scout",
+        "exclusiveTier": 1
+      }
+    ]
+  },
+  "scout": {
+    "requirements": [
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "survival",
+        "ability": "ontheroad",
+        "exclusiveTier": 1
+      }
+    ]
+  },
+  "steeplechaser": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "ability",
+            "skill": "survival",
+            "ability": "ontheroad",
+            "requiredTier": 1
+          },
+          {
+            "code": "ability",
+            "skill": "survival",
+            "ability": "scout",
+            "requiredTier": 1
+          }
+        ]
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "survival",
+        "requiredLevel": 10
+      }
+    ]
+  },
+  "sprinter": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "ability",
+            "skill": "survival",
+            "ability": "ontheroad",
+            "requiredTier": 1
+          },
+          {
+            "code": "ability",
+            "skill": "survival",
+            "ability": "scout",
+            "requiredTier": 1
+          }
+        ]
+      }
+    ]
+  },
+  "soulboundbag": {
+    "requirements": [
+      {
+        "code": "ability",
+        "skill": "survival",
+        "ability": "strongback",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "luminiferous": {
+    "requirements": [
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "survival",
+        "ability": "cateyes",
+        "exclusiveTier": 1
+      }
+    ]
+  },
+  "cateyes": {
+    "requirements": [
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "survival",
+        "ability": "luminiferous",
+        "exclusiveTier": 1
+      }
+    ]
+  }
+}

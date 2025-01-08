@@ -1,0 +1,109 @@
+﻿{
+	code: "voidchest",
+	class: "BlockLabeledChest",
+	entityclass: "VoidContainer",
+	attributes: {
+		partialAttachable: true,
+		inventoryClassName: "voidchest",
+		defaultType: "void",
+		types: ["void"],
+		drop: {
+			"void": true,
+		},
+		quantitySlots: {
+			"void": 4,
+		},
+		quantityColumns: {
+			"void": 4,
+		},
+		dialogTitleLangCode: {
+			"void": "chestcontents",
+		},
+		storageType: {
+			"void": 189,
+		},
+		retrieveOnly: {
+			"void": false,
+		},
+		shape: {
+			"void": "game:block/chest/voidchest",
+		},
+		typedOpenSound: {
+			"void": "game:sounds/block/largechestopen",
+		},
+		typedCloseSound: {
+			"void": "game:sounds/block/largechestclose",
+		},
+		variantByGroup: "side",
+		variantByGroupInventory: null
+	},
+	behaviors: [{name: "Lockable" }, {name: "Container"}, {name: "HorizontalOrientable", properties: {  dropBlockFace: "east" }}],
+	entityBehaviors: [{ name: "Animatable" }],
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: {  },
+	creativeinventoryStacksByType: {
+		"*-east": [
+			{
+				tabs: [ "general", "decorative" ],
+				stacks: [
+					{ type: "block", code: "voidchest-east", attributes: { type: "void" } },
+				]
+			}
+		]
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	shapeInventory: { base: "game:block/chest/voidchest", rotateY: 270 },
+	shapeByType: {
+		"*-north": { base: "game:block/chest/voidchest", rotateY: 0 },
+		"*-east": { base: "game:block/chest/voidchest", rotateY: 270 },
+		"*-west": { base: "game:block/chest/voidchest", rotateY: 90 },
+		"*-south": { base: "game:block/chest/voidchest", rotateY: 180 },
+	},
+	"_comment": "Must declare textures so they get added to the block texture atlas",
+	textures: {
+		"void-lid": { base: "game:block/wood/trunk/lid" },
+		"void-sides2": { base: "block/chest/voidchest/sides" },
+		"void-label": { base: "game:block/wood/chest/label" },
+		"void-accessories": { base: "game:block/wood/trunk/accessories" },
+		"void-interior": { base: "block/chest/voidchest/interior" },
+	},
+	blockmaterial: "Wood",
+	replaceable: 900,
+	resistance: 3,
+	lightAbsorption: 0,
+	sideAo: { all: false },
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	collisionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	selectionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 35,
+	},
+	sounds: {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	materialDensity: 600,
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.5, z: -0.3 },
+		rotation: { x: 0, y: 90, z: -102 },
+		scale: 0.56
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.4, z: 0.5 },
+		scale: 1.16
+	}
+}

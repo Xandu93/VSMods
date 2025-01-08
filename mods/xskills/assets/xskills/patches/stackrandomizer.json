@@ -1,0 +1,81 @@
+[
+  {
+    "file": "game:itemtypes/meta/stackrandomizer-library",
+    "op": "addmerge",
+    "path": "/attributesByType/*-library/stacks",
+    "value": [
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-darkgray",
+         "chance": 1, 
+         "attributes": {"skill": "combat", "knowledge": "xskills:monster"}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-darkgreen",
+         "chance": 1, 
+         "attributes": {"skill": "farming", "experience": 100.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-cherryred",
+         "chance": 1, 
+         "attributes": {"skill": "cooking", "experience": 20.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-olive",
+         "chance": 1, 
+         "attributes": {"skill": "survival", "experience": 5.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-orange",
+         "chance": 1, 
+         "attributes": {"skill": "digging", "experience": 100.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-darkolive",
+         "chance": 1, 
+         "attributes": {"skill": "forestry", "experience": 100.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-darkgray",
+         "chance": 1, 
+         "attributes": {"skill": "mining", "experience": 100.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-brickred",
+         "chance": 1, 
+         "attributes": {"skill": "metalworking", "experience": 20.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-purpleorange",
+         "chance": 1, 
+         "attributes": {"skill": "combat", "experience": 50.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-orangebrown",
+         "chance": 1, 
+         "attributes": {"skill": "husbandry", "experience": 50.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-darkbeige",
+         "chance": 1, 
+         "attributes": {"skill": "pottery", "experience": 20.0}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-gray",
+         "chance": 1, 
+         "attributes": {"skill": "temporaladaptation", "experience": 100.0}
+      },
+    ]
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "file": "game:blocktypes/wood/woodtyped/log",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.4
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/wood/woodtyped/log-section",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.25
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/plant/bamboo",
+    "op": "addmerge",
+    "path": "/behaviorsByType/bamboo-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.2
+      }
+    }]
+  },
+  {
+    "file": "wildcrafttree:blocktypes/wood/woodtyped/log",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.4
+      }
+    }]
+  },
+  {
+    "file": "wildcrafttree:blocktypes/wood/woodtyped/log-section",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.25
+      }
+    }]
+  },
+  {
+    "file": "floralzonesneozeylandicregion:blocktypes/wood/woodtyped/log",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.4
+      }
+    }]
+  },
+  {
+    "file": "floralzonesneozeylandicregion:blocktypes/wood/woodtyped/log-section",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.25
+      }
+    }]
+  },
+  {
+    "file": "floralzonescentralaustralianregion:blocktypes/wood/woodtyped/log",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.4
+      }
+    }]
+  },
+  {
+    "file": "\floralzonescaribbeanregion:blocktypes/wood/woodtyped/log",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.4
+      }
+    }]
+  },
+  {
+    "file": "floralzonescaperegion:blocktypes/wood/woodtyped/log",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.4
+      }
+    }]
+  },
+  {
+    "file": "floralzonescaperegion:blocktypes/wood/woodtyped/log-section",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-grown-*",
+    "value": [{
+      "name": "XSkillsWood",
+      "properties": {
+        "xp": 0.25
+      }
+    }]
+  },
+]

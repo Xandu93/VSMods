@@ -1,0 +1,74 @@
+{
+  "fastfood": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "cooking",
+        "ability": "chef",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "dilution": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "cooking",
+        "ability": "chef",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "welldone": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "cooking",
+        "ability": "chef",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "desalinate": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "cooking",
+        "ability": "chef",
+        "requiredTier": 1
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "cooking",
+        "requiredLevel": 5
+      }
+    ]
+  },
+  "gourmet": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "cooking",
+        "ability": "chef",
+        "requiredTier": 1
+      },
+    ]
+  },
+  "happymeal": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "cooking",
+        "ability": "chef",
+        "requiredTier": 1
+      }
+    ]
+  }
+}

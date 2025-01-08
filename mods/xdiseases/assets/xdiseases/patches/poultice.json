@@ -1,0 +1,166 @@
+[
+  {
+    "file": "game:itemtypes/poultice",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value":[{
+      "name": "XLibConsumable",
+      "propertiesByType": {
+        "*-linen-honey-sulfur": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.1,
+            "minintensity": 0.2,
+            "healingrate": 0.0005,
+            "maxhealingrate": 0.002
+            }
+          ]
+        },
+        "*-reed-honey-sulfur": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.06,
+            "minintensity": 0.3,
+            "healingrate": 0.0005,
+            "maxhealingrate": 0.002
+            }
+          ]
+        },
+        "*-linen-*": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.1,
+            "minintensity": 0.2,
+            "healingrate": 0.0003,
+            "maxhealingrate": 0.0015
+            }
+          ]
+        },
+        "*": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.06,
+            "minintensity": 0.3,
+            "healingrate": 0.0003,
+            "maxhealingrate": 0.0015
+            }
+          ]
+        }
+      }
+    }]
+  },
+  {
+    "file": "game:itemtypes/bandage",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value":[{
+      "name": "XLibConsumable",
+      "propertiesByType": {
+        "*-clean": {
+          "usePatch": true,
+          "cures": [{
+              "effect": "xdiseases:bleeding",
+              "intensity": 0.1,
+              "minintensity": 0.2,
+              "healingrate": 0.0003,
+              "maxhealingrate": 0.0015
+            },
+            {
+              "effect": "xdiseases:fracture",
+              "intensity": 0.2,
+              "minintensity": 0.5,
+              "healingrate": 0.00005,
+              "maxhealingrate": 0.0004
+            }
+          ]
+        },
+        "*-alcoholed": {
+          "usePatch": true,
+          "cures": [{
+              "effect": "xdiseases:bleeding",
+              "intensity": 0.2,
+              "minintensity": 0.1,
+              "healingrate": 0.0006,
+              "maxhealingrate": 0.003
+            },
+            {
+              "effect": "xdiseases:fracture",
+              "intensity": 0.2,
+              "minintensity": 0.5,
+              "healingrate": 0.00005,
+              "maxhealingrate": 0.0004
+            }
+          ]
+        }
+      }
+    }]
+  },
+  {
+    "file": "wildcraftherb:itemtypes/poultice",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value":[{
+      "name": "XLibConsumable",
+      "propertiesByType": {
+        "*-linen-*": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.1,
+            "minintensity": 0.2,
+            "healingrate": 0.0003,
+            "maxhealingrate": 0.0015
+            }
+          ]
+        },
+        "*": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.06,
+            "minintensity": 0.3,
+            "healingrate": 0.0003,
+            "maxhealingrate": 0.0015
+            }
+          ]
+        }
+      }
+    }]
+  },
+  {
+    "file": "wildcraftherb:itemtypes/advancedpoultice",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value":[{
+      "name": "XLibConsumable",
+      "propertiesByType": {
+        "*-linen-*": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.1,
+            "minintensity": 0.2,
+            "healingrate": 0.0005,
+            "maxhealingrate": 0.002
+            }
+          ]
+        },
+        "*": {
+          "usePatch": true,
+          "cures": [{
+            "effect": "xdiseases:bleeding",
+            "intensity": 0.06,
+            "minintensity": 0.3,
+            "healingrate": 0.0005,
+            "maxhealingrate": 0.002
+            }
+          ]
+        }
+      }
+    }]
+  }
+]

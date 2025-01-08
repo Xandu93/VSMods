@@ -1,0 +1,40 @@
+{
+  "brokenleg-left": {
+    "code": "disease",
+    "category": "fracture",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 1.0,
+      "healingrate": 0.0002,
+      "minhealingrate": 0.0002,
+      "maxhealingrate": 0.002,
+      "symptoms": {
+        "walkspeed": {
+          "maxintensity": -0.5,
+          "threshold": 0.0
+        } 
+      }
+    }
+  },
+  "brokenleg-right": {
+    "code": "disease",
+    "category": "fracture",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 1.0,
+      "healingrate": 0.0002,
+      "minhealingrate": 0.0002,
+      "maxhealingrate": 0.002,
+      "symptoms": {
+        "walkspeed": {
+          "maxintensity": -0.5,
+          "threshold": 0.0
+        } 
+      }
+    }
+  }
+}

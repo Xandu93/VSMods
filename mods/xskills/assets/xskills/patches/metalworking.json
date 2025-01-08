@@ -1,0 +1,185 @@
+[
+  {
+    "file": "game:entities/land/locust",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "disassemblable",
+      "duration": 2
+    }
+  },
+  {
+    "file": "game:entities/land/locust",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "disassemblable",
+      "duration": 2,
+      "dropsByType": {
+        "*-bronze": [
+          {
+            "type": "item",
+            "code": "game:metalbit-tinbronze",
+            "quantity": {
+              "avg": 0.1,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:metalbit-tin",
+            "quantity": {
+              "avg": 0.1,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:metalbit-copper",
+            "quantity": {
+              "avg": 0.35,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:clearquartz",
+            "quantity": {
+              "avg": 0.05,
+              "var": 0
+            }
+          }
+        ],
+        "*-corrupt": [
+          {
+            "type": "item",
+            "code": "game:metalbit-blackbronze",
+            "quantity": {
+              "avg": 0.1,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:metalbit-lead",
+            "quantity": {
+              "avg": 0.2,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:metalbit-copper",
+            "quantity": {
+              "avg": 0.35,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:clearquartz",
+            "quantity": {
+              "avg": 0.1,
+              "var": 0
+            }
+          }
+        ],
+        "*-corrupt-sawblade": [
+          {
+            "type": "item",
+            "code": "game:gear-rusty",
+            "quantity": {
+              "avg": 0.25,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:metalbit-blackbronze",
+            "quantity": {
+              "avg": 0.2,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:metalbit-lead",
+            "quantity": {
+              "avg": 0.35,
+              "var": 0
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:metalbit-iron",
+            "quantity": {
+              "avg": 0.25,
+              "var": 0
+            }
+          }
+        ],
+        "*": []
+      }
+    }
+  },
+  {
+    "file": "game:entities/land/bell",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "disassemblable",
+      "duration": 2
+    }
+  },
+  {
+    "file": "game:entities/land/bell",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "disassemblable",
+      "duration": 2,
+      "drops": [
+        {
+          "type": "item",
+          "code": "game:gear-rusty",
+          "quantity": {
+            "avg": 0.25,
+            "var": 0
+          }
+        },
+        {
+          "type": "item",
+          "code": "game:metalbit-iron",
+          "quantity": {
+            "avg": 0.5,
+            "var": 0
+          }
+        },
+        {
+          "type": "item",
+          "code": "game:metalbit-blackbronze",
+          "quantity": {
+            "avg": 0.1,
+            "var": 0
+          }
+        },
+        {
+          "type": "item",
+          "code": "game:metalbit-lead",
+          "quantity": {
+            "avg": 0.15,
+            "var": 0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "file": "game:blocktypes/clay/bloomerybase",
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "XSkillsBloomery"
+    }
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "skill": "Habilidad",
+  "skills": "Habilidades",
+  "level": "Nivel",
+  "tier": "Tier",
+  "experience": "Experiencia",
+  "abilitypoints": "Puntos de habilidad",
+  "unlearnpoints": "Puntos para desaprender",
+  "unlearncooldown": "Tiempo de espera para desaprender",
+  "unlearn": "Desaprender",
+  "unlearnAbility": "Unlearn ability",
+  "sparringmode": "Sparring mode",
+  "requirements": "Requisitos",
+
+  "nexttier": "Siguiente tier:\n",
+  "requiredlevel": "\n\nNivel requerido: ",
+  "currenttier": "\nTier actual: ",
+  "clicktoincreasetier": "\n\nClick izquierdo para mejorar a esta habilidad. Esto requiere {0} puntos de habilidad (disponible: {1}).",
+  "clicktodecreasetier": "\n\nClick izquierdo para disminuir el tier de esta habilidad. Esto requiere {0} puntos para desaprender (disponible: {1}). Puedes disminuir el tier de una habilidad cada {2:N2} minutos (tiempo restante: {3:N2} minutos).",
+  "notenoughpoints": "\nNo tienes puntos suficientes!",
+  "you receive": "Recibes",
+  "levelup": "Has alcanzado el nivel {0} en la habilidad {1}!",
+
+  "andrequirement": "Todas las siguientes: ",
+  "orrequirement": "Una de las siguientes: ",
+  "exclusivelywith": "Exclusivamente con: ",
+  "limited": "Limitado",
+  "righttime": "Es el momento.",
+  "wrongtime": "No es el momento.",
+  "specialisations": "Especializaciones",
+
+  "skills-desc": "<strong>Skills</strong><br><br><strong>Skill</strong><br>Una habilidad (skill) es el conjunto de tus conocimientos en un campo específico (Supervivencia, Agricultura, Combate, etc.). Cada una de tus habilidades tiene un nivel específico. Este nivel puede incrementarse acumulando experiencia, que puede conseguirse realizando actividades relacionadas con esta habilidad. Con cada nivel también recibes un punto que permite mejorar esa habilidad, a través de 'Mejoras'. Para ver una descripción general de sus habilidades y niveles presione la tecla [O] (predeterminada, puedes cambiarla en el menú de configuración).<br><br><strong>Ability</strong><br>Una mejora te da una ventaja específica para sus actividades relacionadas. La mayoría de las mejoras tienen más de un nivel, y por supuesto los niveles más altos proporcionan más ventajas. Para aumentar el nivel de una 'Mejora', necesitas un punto de la 'Habilidad' a la que pertenece. Haz clic en la pestaña de tu 'Habilidad' para invertir tus puntos en 'Mejoras'. También puedes disminuir el nivel de una 'Mejora'. Para hacerlo, empieza por cambiar al modo de desaprendizaje con el botón 'Desaprender'. Luego, haz clic en la 'Mejora' de la que quieres disminuir su nivel. Recuerda presionar el botón de 'Desaprender' nuevamente para desactivar este modo. Tenga en cuenta que necesita 'Puntos de desaprendizaje' para disminuir el nivel de una 'Mejora'. Cuando disminuyas el nivel de una 'Mejora', recuperarás el punto que usaste previamente. Mientras que los puntos de habilidad están vinculados a una Habilidad específica, los puntos de desaprendizaje se comparten entre todas. Puedes recibir 'Puntos de desaprendizaje' al consumir objetos específicos que puedes encontrar en el manual.",
+  "sparring-desc": "<strong>Sparring</strong><br>If two players have sparring mode enabled and kill each other, neither of them will loose experience points upon dying.",
+
+  "rested-effect": "Bien descansado",
+  "rested-effectdesc": "Incrementa la experiencia obtenida de cada habilidad en {0:P} por {1} segundos.",
+  "rested-effectsdesc": "Incrementa la experiencia obtenida de cada habilidad en {0:P}.",
+      
+  "skillbook-dsc": "Te otorga {1} puntos de experiencia para la habilidad {0}.",
+  "skillbook-dsc2": "Grants you knowledge of {0}."
+}

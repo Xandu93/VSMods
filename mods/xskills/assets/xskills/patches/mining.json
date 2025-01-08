@@ -1,0 +1,91 @@
+[
+  {
+    "file": "game:itemtypes/tool/pickaxe",
+    "op": "add",
+    "path": "/class",
+    "value": "XSkillsItemPickaxe" 
+  },
+  {
+    "file": "swordz:itemtypes/tool/pickaxe",
+    "op": "add",
+    "path": "/class",
+    "value": "XSkillsItemPickaxe" 
+  },
+  {
+    "file": "game:blocktypes/stone/rock",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XSkillsStone",
+      "properties": {
+        "xp": 0.05
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/stone/crackedrock",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XSkillsStone",
+      "properties": {
+        "xp": 0.05
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/stone/ore-gem",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XSkillsGems",
+      "properties": {
+        "xp": 0.7
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/stone/ore-graded",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XSkillsOres",
+      "properties": {
+        "xpByType": {
+          "*-poor-*": "0.5",
+          "*-medium-*": "0.7",
+          "*-rich-*": "0.9",
+          "*-bountiful-*": "1.0"
+        }
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/stone/ore-ungraded",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XSkillsOres",
+      "properties": {
+        "xp": 0.3
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/stone/meteorite",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XSkillsOres",
+      "properties": {
+        "xp": 0.5
+      }
+    }]
+  },
+  {
+    "file": "game:blocktypes/cloth/oreblastingbomb",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{ "name": "XSkillsBomb" }]
+  }
+]

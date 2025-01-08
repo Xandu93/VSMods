@@ -1,0 +1,130 @@
+{
+  "walkspeed": {
+    "code": "stat",
+    "defaults": {
+      "statname": "walkspeed",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+  "exhaustion": {
+    "code": "stat",
+    "defaults": {
+      "statname": "walkspeed",
+      "intensity": -1.0,
+      "duration": 1.0
+    }
+  },
+  "health": {
+    "code": "stat",
+    "defaults": {
+      "statname": "maxhealthExtraPoints",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+  "regeneration": {
+    "code": "stat",
+    "defaults": {
+      "statname": "healingeffectivness",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+  "meleeWeaponsDamage": {
+    "code": "stat",
+    "defaults": {
+      "statname": "meleeWeaponsDamage",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+  "rangedWeaponsDamage": {
+    "code": "stat",
+    "defaults": {
+      "statname": "rangedWeaponsDamage",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+  "hungry": {
+    "code": "stat",
+    "defaults": {
+      "statname": "hungerrate",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+  "nutritionFruit": {
+    "code": "nutrition",
+    "defaults": {
+      "foodcategory": "Fruit",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+
+  "nutritionVegetable": {
+    "code": "nutrition",
+    "defaults": {
+      "foodcategory": "Vegetable",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+
+  "nutritionProtein": {
+    "code": "nutrition",
+    "defaults": {
+      "foodcategory": "Protein",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+
+  "nutritionGrain": {
+    "code": "nutrition",
+    "defaults": {
+      "foodcategory": "Grain",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+
+  "nutritionDairy": {
+    "code": "nutrition",
+    "defaults": {
+      "foodcategory": "Dairy",
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+
+  "intoxication": {
+    "code": "attribute",
+    "defaults": {
+      "attributename": "intoxication",
+      "repeats": true,
+      "intensity": 1.0,
+      "duration": 1.0
+    }
+  },
+
+  "blindness": {
+    "code": "shader",
+    "defaults": {
+      "shader": "xeffects:blindness",
+      "intensity": 1.0,
+      "duration": 60.0
+    }
+  },
+
+  "colorblind": {
+    "code": "shader",
+    "defaults": {
+      "shader": "xeffects:colorblind",
+      "intensity": 1.0,
+      "duration": 60.0
+    }
+  },
+}

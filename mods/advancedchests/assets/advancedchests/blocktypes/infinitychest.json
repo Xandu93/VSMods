@@ -1,0 +1,108 @@
+﻿{
+	code: "infinitychest",
+	class: "BlockLabeledChest",
+	entityclass: "InfinityContainer",
+	attributes: {
+		partialAttachable: true,
+		inventoryClassName: "infinitychest",
+		defaultType: "infinity",
+		types: ["infinity"],
+		drop: {
+			"infinity": true,
+		},
+		quantitySlots: {
+			"infinity": 4,
+		},
+		quantityColumns: {
+			"infinity": 4,
+		},
+		dialogTitleLangCode: {
+			"infinity": "chestcontents",
+		},
+		storageType: {
+			"infinity": 189,
+		},
+		retrieveOnly: {
+			"infinity": false,
+		},
+		shape: {
+			"infinity": "game:block/wood/chest/normal-labeled",
+		},
+		typedOpenSound: {
+			"infinity": "game:sounds/block/largechestopen",
+		},
+		typedCloseSound: {
+			"infinity": "game:sounds/block/largechestclose",
+		},
+		variantByGroup: "side",
+		variantByGroupInventory: null
+	},
+	behaviors: [{name: "Lockable" }, {name: "Container"}, {name: "HorizontalOrientable", properties: {  dropBlockFace: "east" }}],
+	entityBehaviors: [{ name: "Animatable" }],
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: {  },
+	creativeinventoryStacksByType: {
+		"*-east": [
+			{
+				tabs: [ "general", "decorative" ],
+				stacks: [
+					{ type: "block", code: "infinitychest-east", attributes: { type: "infinity" } },
+				]
+			}
+		]
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	shapeInventory: { base: "game:block/wood/chest/normal-labeled", rotateY: 270 },
+	shapeByType: {
+		"*-north": { base: "game:block/wood/chest/normal-labeled", rotateY: 0 },
+		"*-east": { base: "game:block/wood/chest/normal-labeled", rotateY: 270 },
+		"*-west": { base: "game:block/wood/chest/normal-labeled", rotateY: 90 },
+		"*-south": { base: "game:block/wood/chest/normal-labeled", rotateY: 180 },
+	},
+	"_comment": "Must declare textures so they get added to the block texture atlas",
+	textures: {
+		"infinity-lid": { base: "game:item/resource/plate/steel" },
+		"infinity-sides2": { base: "block/chest/infinitychest/sides" },
+		"infinity-label": { base: "game:block/wood/chest/label" },
+		"infinity-accessories": { base: "game:block/wood/trunk/accessories" },
+	},
+	blockmaterial: "Wood",
+	replaceable: 900,
+	resistance: 3,
+	lightAbsorption: 0,
+	sideAo: { all: false },
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	collisionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	selectionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 35,
+	},
+	sounds: {
+		"place": "game:block/planks",
+		"hit": "game:block/planks",
+		"break": "game:block/planks",
+		"walk": "game:walk/wood"
+	},
+	materialDensity: 600,
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.5, z: -0.3 },
+		rotation: { x: 0, y: 90, z: -102 },
+		scale: 0.56
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.4, z: 0.5 },
+		scale: 1.16
+	}
+}

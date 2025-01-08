@@ -1,0 +1,22 @@
+{
+  "ingredientPattern": "W,W,W,N,W,N,W,W,W",
+  "requiresTrait": "ability-catcher",
+  "width": 3,
+  "height": 3,
+  "ingredients": {
+    "W": {
+      "type": "item",
+      "code": "game:plank-*",
+      "quantity": 3
+    },
+    "N": {
+      "type": "item",
+      "code": "game:metalnailsandstrips-*",
+      "quantity": 1
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "xskills:cage-wooden-south"
+  }
+}

@@ -1,0 +1,16 @@
+//{
+//  "code": "mead",
+//  "sealHours": 480,
+//  "ingredients": [
+//    {
+//      "type": "item",
+//      "code": "game:honeyportion",
+//      "quantity": 8
+//    }
+//  ],
+//  "output": {
+//    "type": "item",
+//    "code": "meadportion",
+//    "stackSize": 1
+//  }
+//}

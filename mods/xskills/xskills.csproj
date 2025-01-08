@@ -1,0 +1,123 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Debug\xskills\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Release\xskills\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Vintagestory\Lib\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="ACulinaryArtillery">
+      <HintPath>..\..\..\vshelper\dependencies\ACulinaryArtillery.dll</HintPath>
+    </Reference>
+    <Reference Include="cairo-sharp">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Lib\cairo-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="primitivesurvival">
+      <HintPath>..\..\..\vshelper\dependencies\primitivesurvival.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.1.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Vintagestory\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="VintagestoryAPI">
+      <HintPath>D:\Program Files (x86)\Vintagestory\VintagestoryAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VintagestoryLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Vintagestory\VintagestoryLib.dll</HintPath>
+    </Reference>
+    <Reference Include="VSSurvivalMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSSurvivalMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSEssentials">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSEssentials.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSCreativeMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSCreativeMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xskills\lang\ar.json" />
+    <Content Include="assets\xskills\lang\cn.json" />
+    <Content Include="assets\xskills\lang\de.json" />
+    <Content Include="assets\xskills\lang\en.json" />
+    <Content Include="assets\xskills\lang\es-es.json" />
+    <Content Include="assets\xskills\lang\fr.json" />
+    <Content Include="assets\xskills\lang\it.json" />
+    <Content Include="assets\xskills\lang\nl.json" />
+    <Content Include="assets\xskills\lang\pl.json" />
+    <Content Include="assets\xskills\lang\pt-br.json" />
+    <Content Include="assets\xskills\lang\ro.json" />
+    <Content Include="assets\xskills\lang\ru.json" />
+    <Content Include="assets\xskills\lang\sv.json" />
+    <Content Include="assets\xskills\lang\uk.json" />
+    <Content Include="assets\xskills\patches\combat\combat.json" />
+    <Content Include="assets\xskills\patches\digging.json" />
+    <Content Include="assets\xskills\patches\farming\crops.json" />
+    <Content Include="assets\xskills\patches\forestry\forestry.json" />
+    <Content Include="assets\xskills\patches\metalworking.json" />
+    <Content Include="assets\xskills\patches\mining.json" />
+    <Content Include="assets\xskills\patches\xskills.json" />
+    <Content Include="assets\xskills\recipes\barrel\mead.json" />
+    <Content Include="assets\xskills\recipes\cooking\salt.json" />
+    <Content Include="assets\xskills\recipes\grid\ingot-blistersteel.json" />
+    <Content Include="assets\xskills\shapes\item\bits\metalbit.json" />
+    <Content Include="assets\xskills\skills\combat.json" />
+    <Content Include="assets\xskills\skills\digging.json" />
+    <Content Include="assets\xskills\skills\farming.json" />
+    <Content Include="assets\xskills\skills\forestry.json" />
+    <Content Include="assets\xskills\skills\mining.json" />
+    <Content Include="assets\xskills\skills\survival.json" />
+    <Content Include="assets\xskills\skills\temporaladaptation.json" />
+    <Content Include="modinfo.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xlib\xlib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xskills\patches\husbandry.json" />
+    <Content Include="assets\xskills\blocktypes\cage.json" />
+    <Content Include="assets\xskills\effects\saturated.json" />
+    <Content Include="assets\xskills\recipes\grid\cage.json" />
+    <Content Include="assets\xskills\effects\effects.json" />
+    <Content Include="assets\xskills\lang\ja.json" />
+    <Content Include="assets\xskills\patches\cooking.json" />
+    <Content Include="assets\xskills\lang\es-419.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <PropertyGroup>
+    <BaseOutputPath>./bin</BaseOutputPath>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties assets_4xskills_4lang_4en_1json__JsonSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;copy &quot;$(TargetDir)\$(TargetName).pdb&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call tar.exe -a -c  -f  &quot;..\..\releases\$(TargetName)\$(TargetName)_vout.zip&quot; &quot;$(TargetName).dll&quot; &quot;modinfo.json&quot; &quot;assets&quot;" />
+  </Target>
+</Project>

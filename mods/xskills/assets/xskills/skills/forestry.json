@@ -1,0 +1,104 @@
+{
+  "lumberjack": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "forestry",
+        "ability": "forester",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "treenursery": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "forestry",
+        "ability": "forester",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "forestry",
+        "ability": "afforestation",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "axeexpert": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "forestry",
+        "ability": "forester",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "carefullumberjack": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "forestry",
+        "ability": "forester",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "charcoalburner": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "forestry",
+        "ability": "forester",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "grafter": {
+    "requirements": [
+      {
+        "code": "skill",
+        "minimumTier": 1,
+        "skill": "farming",
+        "requiredLevel": 4
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "forestry",
+        "requiredLevel": 10
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "farming",
+        "requiredLevel": 6
+      }
+    ]
+  },
+  "resinextractor": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "forestry",
+        "ability": "forester",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "forestry",
+        "ability": "resinfarmer",
+        "requiredTier": 1
+      }
+    ]
+  }
+}

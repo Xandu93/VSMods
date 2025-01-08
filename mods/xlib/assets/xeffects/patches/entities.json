@@ -1,0 +1,19 @@
+[
+  {
+    "file": "game:entities/humanoid/player",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "Affected"
+    }
+  },
+
+  {
+    "file": "game:entities/humanoid/player",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "Affected"
+    }
+  }
+]

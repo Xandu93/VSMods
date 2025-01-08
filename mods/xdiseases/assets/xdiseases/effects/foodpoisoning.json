@@ -1,0 +1,27 @@
+{
+  "foodpoisoning": {
+    "code": "disease",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 0.6,
+      "healingrate": 0.0005,
+      "healinggrowth": 0.00001,
+      "symptoms": {
+        "intoxication": {
+          "maxintensity": 1.0,
+          "threshold": 0.2
+        },
+        "regeneration": {
+          "maxintensity": -0.2,
+          "threshold": 0.0
+        },
+        "exhaustion": {
+          "maxintensity": -0.3,
+          "threshold": 0.0
+        },
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "metalrecovery": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "hammerexpert": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "blacksmith": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      },
+    ]
+  },
+  "finishingtouch": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "duplicator": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "mastersmith": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "salvager": {
+    "requirements": [
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "ability",
+            "minimumTier": 1,
+            "skill": "metalworking",
+            "ability": "metalworker",
+            "requiredTier": 1
+          },
+          {
+            "code": "class",
+            "minimumTier": 1,
+            "classes": [
+              "clockmaker"
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      },
+      {
+        "code": "class",
+        "minimumTier": 2,
+        "classes": [
+          "clockmaker"
+        ]
+      }
+    ]
+  },
+  "bloomeryexpert": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "metalworking",
+        "ability": "smelter",
+        "requiredTier": 2
+      }
+    ]
+  },
+  "automatedsmithing": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "metalworking",
+        "ability": "metalworker",
+        "requiredTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "metalworking",
+        "ability": "machinelearning",
+        "requiredTier": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "reborn": {
+    "code": "disease",
+    "defaults": {
+      "duration": 0.0,
+      "expiresovertime": false,
+      "expiresthroughintensity": true,
+      "interval": 1.0,
+      "healingrate": 0.0005,
+      "symptoms": {
+        "regeneration": {
+          "maxintensity": -1.0,
+          "threshold": 0.0
+        },
+        "hungry": {
+          "maxintensity": 1.0,
+          "threshold": 0.0
+        },
+        "meleeWeaponsDamage": {
+          "maxintensity": -0.5,
+          "threshold": 0.0
+        },        
+        "rangedWeaponsDamage": {
+          "maxintensity": -0.5,
+          "threshold": 0.0
+        } 
+      }
+    }
+  }
+}

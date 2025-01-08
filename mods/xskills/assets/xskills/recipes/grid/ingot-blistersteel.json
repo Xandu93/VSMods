@@ -1,0 +1,34 @@
+[
+  {
+    "ingredientPattern": "B,B,B,B,_,B,B,B,B",
+    "width": 3,
+    "height": 3,
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "xskills:metalbit-*steel",
+        "quantity": 3
+      }
+    },
+    "output": {
+      "type": "item",
+      "code": "game:ingot-blistersteel"
+    }
+  },
+  {
+    "ingredientPattern": "B,B,B,B,_,B,B,B,B",
+    "width": 3,
+    "height": 3,
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "game:metalbit-*steel",
+        "quantity": 3
+      }
+    },
+    "output": {
+      "type": "item",
+      "code": "game:ingot-blistersteel"
+    }
+  }
+]

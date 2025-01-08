@@ -1,0 +1,23 @@
+{
+  "ingredientPattern": "_,P,_,P,C,P,_,P,_",
+  "width": 3,
+  "height": 3,
+  "ingredients": {
+    "C": {
+      "type": "block",
+      "code": "game:labeledchest-east",
+      "attributes": { "type": "normal-labeled" },
+      "quantity": 1
+    },
+    "P": {
+      "type": "item",
+      "code": "game:metalplate-blackbronze",
+      "quantity": 1
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "advancedchests:voidchest-east",
+    "attributes": { "type": "void" }
+  }
+}

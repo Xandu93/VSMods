@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Debug\xlib\</IntermediateOutputPath>
+    <DocumentationFile>..\..\..\..\..\..\..\bin\xlib.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Debug\xlib\</IntermediateOutputPath>
+    <DocumentationFile>..\..\..\..\..\..\..\bin\xlib.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="assets\xeffects\lang\es-419.json" />
+    <None Remove="assets\xeffects\lang\pl.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Vintagestory\Lib\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.1.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Vintagestory\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="VintagestoryAPI">
+      <HintPath>D:\Program Files (x86)\Vintagestory\VintagestoryAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VintagestoryLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Vintagestory\VintagestoryLib.dll</HintPath>
+    </Reference>
+    <Reference Include="VSSurvivalMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSSurvivalMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSEssentials">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSEssentials.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSCreativeMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSCreativeMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xeffects\effects\effects.json" />
+    <Content Include="assets\xeffects\lang\de.json" />
+    <Content Include="assets\xeffects\lang\cn.json" />
+    <Content Include="assets\xeffects\lang\pl.json" />
+    <Content Include="assets\xeffects\lang\en.json" />
+    <Content Include="assets\xeffects\lang\es-419.json" />
+    <Content Include="assets\xeffects\lang\ru.json" />
+    <Content Include="assets\xeffects\patches\entities.json" />
+    <Content Include="assets\xlib\lang\de.json" />
+    <Content Include="assets\xlib\lang\en.json" />
+    <Content Include="assets\xlib\lang\fr.json" />
+    <Content Include="assets\xlib\lang\it.json" />
+    <Content Include="assets\xlib\lang\pt-br.json" />
+    <Content Include="assets\xlib\lang\ru.json" />
+    <Content Include="modinfo.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xeffects\lang\fr.json" />
+    <Content Include="assets\xeffects\lang\ja.json" />
+    <Content Include="assets\xeffects\lang\es-es.json" />
+    <Content Include="assets\xeffects\lang\uk.json" />
+    <Content Include="assets\xlib\lang\ar.json" />
+    <Content Include="assets\xlib\lang\cn.json" />
+    <Content Include="assets\xlib\lang\es-es.json" />
+    <Content Include="assets\xlib\lang\nl.json" />
+    <Content Include="assets\xlib\lang\ro.json" />
+    <Content Include="assets\xlib\lang\sv.json" />
+    <Content Include="assets\xlib\lang\pl.json" />
+    <Content Include="assets\xlib\effects\effects.json" />
+    <Content Include="assets\xlib\lang\ja.json" />
+    <Content Include="assets\xlib\lang\es-419.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <PropertyGroup />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;copy &quot;$(TargetDir)\$(TargetName).pdb&quot; &quot;$(ProjectDir)&quot;&#xD;&#xA;copy &quot;$(TargetDir)\$(TargetName).xml&quot; &quot;$(ProjectDir)&quot;&#xD;&#xA;cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call tar.exe -a -c  -f  &quot;..\..\releases\$(TargetName)\$(TargetName)_vout.zip&quot; &quot;$(TargetName).dll&quot; &quot;$(TargetName).xml&quot; &quot;modinfo.json&quot; &quot;assets&quot;" />
+  </Target>
+  <ProjectExtensions><VisualStudio><UserProperties assets_4xeffects_4lang_4uk_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+</Project>

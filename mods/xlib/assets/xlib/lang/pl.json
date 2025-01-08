@@ -1,0 +1,41 @@
+﻿{
+  "skill": "Umiejętność",
+  "skills": "Umiejętności",
+  "level": "Poziom",
+  "tier": "Poziom zaawansowania",
+  "experience": "Doświadczenie",
+  "abilitypoints": "Punkty Umiejętności",
+  "unlearnpoints": "Punkty Zapomnienia",
+  "unlearncooldown": "Czas odnowienia umiejętności",
+  "unlearn": "Zapomnij",
+  "unlearnAbility": "Unlearn ability",
+  "sparringmode": "Tryb sparingowy",
+  "requirements": "Wymagania",
+
+  "nexttier": "Następny poziom:\n",
+  "requiredlevel": "\n\nWymagany poziom: ",
+  "currenttier": "\nAktualny poziom: ",
+  "clicktoincreasetier": "\n\nKliknij lewym przyciskiem myszy, aby zwiększyć poziom. Wymaga to {0} punktów umiejętności (dostępne: {1}).",
+  "clicktodecreasetier": "\n\nKliknij lewym przyciskiem myszy, aby obniżyć poziom. Wymaga to {0} punktów zapomnienia (dostępne: {1}). Możesz obniżyć poziom umiejętności tylko raz na {2:N2} minuty (pozostałe: {3:N2} minuty).",
+  "notenoughpoints": "\nNie masz wystarczającej liczby punktów!",
+  "you receive": "Otrzymujesz",
+  "levelup": "Osiągnąłeś poziom {0} w umiejętności {1}!",
+
+  "andrequirement": "Wszystkie z poniższych: ",
+  "orrequirement": "Jedno z poniższych: ",
+  "exclusivelywith": "Koliduje z: ",
+  "limited": "Ograniczona",
+  "righttime": "Czas jest odpowiedni.",
+  "wrongtime": "Czas nie jest odpowiedni.",
+  "specialisations": "Specjalizacje",
+
+  "skills-desc": "<strong>Umiejętności</strong><br><br><strong>Umiejętności</strong><br>Umiejętność jest zbiorem twojej wiedzy i zdolności w konkretnej dziedzinie. Każda z twoich umiejętności ma określony poziom. Możesz podnieść ten poziom poprzez zbieranie doświadczenia wykonując czynności związane z tą umiejętnością. Z każdym poziomem otrzymujesz również punkt zdolności dla tej umiejętności. Aby zobaczyć przegląd swoich umiejętności i zdolności wciśnij klawisz [O]. Możesz zmienić ten klawisz w menu ustawień.<br><br><strong>Zdolności</strong><br>Zdolność daje ci przewagę w konkretnym działaniu związanym z daną umiejętnością. Większość zdolności ma więcej niż jeden poziom. Wyższe poziomy umiejętności dają więcej korzyści. Aby podnieść poziom zdolności, potrzebujesz jednego punktu umiejętności, do której należy dana zdolność. Następnie możesz kliknąć na umiejętność w oknie dialogowym umiejętności, aby zwiększyć jej poziom. Możesz również obniżyć poziom umiejętności. Aby to zrobić, musisz przełączyć tryb na <strong>Zapomnij</strong>, klikając na przycisk. Teraz możesz kliknąć na umiejętność, aby obniżyć jej poziom. Pamiętaj, aby ponownie przełączyć przycisk, aby wyłączyć tryb <strong>Zapomnij</strong>. Zauważ, że potrzebujesz punktów zapomnienia, aby obniżyć poziom umiejętności. Kiedy obniżysz poziom umiejętności, otrzymasz z powrotem punkty umiejętności, które wykorzystałeś. Podczas gdy punkty umiejętności są związane z konkretną umiejętnością, punkty zapomnienia są wspólne dla wszystkich umiejętności. Możesz otrzymać punkty zapomnienia za spożywanie określonych przedmiotów. Przedmioty te można znaleźć w podręczniku.",
+  "sparring-desc": "<strong>Sparring</strong><br>If two players have sparring mode enabled and kill each other, neither of them will loose experience points upon dying.",
+
+  "rested-effect": "Dobrze wypoczęty",
+  "rested-effectdesc": "Zwiększa doświadczenie zdobywane za każdą umiejętność o {0:P} przez {1} sekund.",
+  "rested-effectsdesc": "Zwiększa doświadczenie zdobywane za każdą umiejętność o {0:P}.",
+    
+  "skillbook-dsc": "Daje ci {1} doświadczenia za umiejętność {0}.",
+  "skillbook-dsc2": "Grants you knowledge of {0}."
+}

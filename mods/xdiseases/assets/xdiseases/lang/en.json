@@ -1,0 +1,29 @@
+﻿{
+  "incontainer-item-medicineportion": "Medicine",
+  "item-medicineportion": "Medicine",
+
+  "fracture": "Fracture",
+
+  "cold-effect": "Cold",
+  "cold-effectdesc": "",
+  "diarrhea-effect": "Diarrhea",
+  "diarrhea-effectdesc": "",
+  "foodpoisoning-effect": "Food poisoning",
+  "foodpoisoning-effectdesc": "You ate something spoiled.",
+  "brokenleg-left-effect": "Broken left leg",
+  "brokenleg-left-effectdesc": "Your left leg is broken.",
+  "brokenleg-right-effect": "Broken right leg",
+  "brokenleg-right-effectdesc": "Your right leg is broken.",
+  "reborn-effect": "Reborn",
+  "reborn-effectdesc": "You died recently and are still suffering from the consequences.",
+  "rabies-effect": "Rabies",
+  "rabies-effectdesc": "",
+  "scurvy-effect": "Scurvy",
+  "scurvy-effectdesc": "",
+  "bleeding-effect": "Bleeding",
+  "bleeding-effectdesc": "",
+  "infection-effect": "Infection",
+  "infection-effectdesc": "",
+  "d-blindness-effect": "Blindness",
+  "d-blindness-effectdesc": ""
+}

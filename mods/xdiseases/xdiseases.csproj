@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Debug\xdiseases\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin</OutputPath>
+    <IntermediateOutputPath>.\obj\Release\xdiseases\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="assets\xdiseases\effecttrigger\cold.json" />
+    <None Remove="assets\xdiseases\effecttrigger\scurvy.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="VintagestoryAPI">
+      <HintPath>D:\Program Files (x86)\Vintagestory\VintagestoryAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSSurvivalMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSSurvivalMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSEssentials">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSEssentials.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VSCreativeMod">
+      <HintPath>D:\Program Files (x86)\Vintagestory\Mods\VSCreativeMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xdiseases\effecttrigger\scurvy.json" />
+    <Content Include="assets\xdiseases\effecttrigger\cold.json" />
+    <Content Include="modinfo.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xdiseases\effecttrigger\damage.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xdiseases\effects\fracture.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\xdiseases\lang\en.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <PropertyGroup />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call tar.exe -a -c  -f  &quot;..\..\releases\$(TargetName)\$(TargetName)_vout.zip&quot; &quot;modinfo.json&quot; &quot;assets&quot;" />
+  </Target>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+</Project>

@@ -177,8 +177,8 @@ namespace XLib.XEffects
             this.LastSpreadTrigger = (float)tree.GetDecimal("lastspreadtrigger", this.LastSpreadTrigger);
             this.LastHealingTrigger = ((float)tree.GetDecimal("lasthealingtrigger", this.LastHealingTrigger));
             this.HealingRate = (float)tree.GetDecimal("healingrate", this.HealingRate);
-            this.MinHealingRate = (float)tree.GetDecimal("minhealingrate", this.HealingRate);
-            this.MaxHealingRate = (float)tree.GetDecimal("maxhealingrate", this.HealingRate);
+            this.MinHealingRate = (float)tree.GetDecimal("minhealingrate", this.MinHealingRate);
+            this.MaxHealingRate = (float)tree.GetDecimal("maxhealingrate", this.MaxHealingRate);
             this.HealingGrowth = (float)tree.GetDecimal("healinggrowth", this.HealingGrowth);
 
             List<Symptom> symptoms = new List<Symptom>();

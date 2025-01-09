@@ -335,13 +335,30 @@ namespace XSkills
             if (playerAbility.Tier > 0)
             {
                 float dropMultipier = 0.01f * playerAbility.SkillDependentValue();
-                BlockDropItemStack drop = harvestable.harvestedStack;
-                ItemStack stack = drop.GetNextItemStack(dropMultipier);
-                if (stack == null) return;
-
-                if (!byPlayer.InventoryManager.TryGiveItemstack(stack))
+                BlockDropItemStack[] drops = harvestable.harvestedStacks;
+                if (drops == null || drops.Length == 0)
                 {
-                    world.SpawnItemEntity(stack, blockSel.Position.ToVec3d().Add(0.5, 0.5, 0.5));
+                    ItemStack stack = harvestable.harvestedStack?.GetNextItemStack(dropMultipier);
+                    if (stack == null) return;
+
+                    if (!byPlayer.InventoryManager.TryGiveItemstack(stack))
+                    {
+                        world.SpawnItemEntity(stack, blockSel.Position.ToVec3d().Add(0.5, 0.5, 0.5));
+                    }
+                }
+                else 
+                {
+                    foreach (BlockDropItemStack drop in drops)
+                    {
+                        if (drop == null) continue;
+                        ItemStack stack = drop.GetNextItemStack(dropMultipier);
+                        if (stack == null) continue;
+
+                        if (!byPlayer.InventoryManager.TryGiveItemstack(stack))
+                        {
+                            world.SpawnItemEntity(stack, blockSel.Position.ToVec3d().Add(0.5, 0.5, 0.5));
+                        }
+                    }
                 }
             }
         }

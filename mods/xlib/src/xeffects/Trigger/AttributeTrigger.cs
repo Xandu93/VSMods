@@ -333,7 +333,7 @@ namespace XLib.XEffects
         public override void FromTree(ITreeAttribute tree)
         {
             base.FromTree(tree);
-            RecoveryThreshold = tree.GetFloat("recoverythreshold");
+            RecoveryThreshold = (float)tree.GetDecimal("recoverythreshold");
             ArrayAttribute<TreeAttribute> weightsTree = (tree as TreeAttribute)?.GetAttribute("weights") as ArrayAttribute<TreeAttribute>;
             if (weightsTree == null) return;
             foreach(TreeAttribute attribute in weightsTree.value)

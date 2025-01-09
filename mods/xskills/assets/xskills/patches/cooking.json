@@ -30,6 +30,16 @@
     ]
   },
   {
+    "file": "chiseltools:blocktypes/chiseledfirepit",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": [
+      {
+        "name": "XskillsOwnable"
+      }
+    ]
+  },
+  {
     "file": "chiseltools:blocktypes/chiseledoven",
     "op": "addmerge",
     "path": "/entityBehaviors",

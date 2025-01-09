@@ -5,6 +5,7 @@
     "attributes": {
       "chance": 0.001,
       "intensity": 0.5,
+      "recoverythreshold": 0.05,
       "weights": [
         {
           "attribute": "bodyTemp",

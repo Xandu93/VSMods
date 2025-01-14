@@ -17,6 +17,7 @@ namespace XInvTweaks
             Block block = player.CurrentBlockSelection?.Block;
             if (block == null) return;
             if (player.InventoryManager.ActiveHotbarSlot.Itemstack?.Collectible.Id == block.Id) return;
+            if (player.InventoryManager.ActiveHotbarSlot is ItemSlotBackpack) return;
 
             ItemSlot bestSlot = null;
             player.InventoryManager.Find((ItemSlot slot) =>

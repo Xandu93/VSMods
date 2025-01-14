@@ -255,10 +255,6 @@ namespace XLib.XEffects
         public override void Initialize(JsonObject properties)
         {
             base.Initialize(properties);
-            if (this.collObj.Code.Path.Contains("bowl"))
-            {
-                int _ = 0;
-            }
 
             JsonObject[] cures = properties["cures"].AsArray();
             JsonObject[] triggers = properties["triggers"].AsArray();

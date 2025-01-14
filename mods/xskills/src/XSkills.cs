@@ -66,6 +66,12 @@ namespace XSkills
 
                 type = api.ClassRegistry.GetBlockEntity("ButcherTable");
                 if (type != null) BlockEntityButcherWorkstationPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetBlockEntity("beframerack");
+                if (type != null) BEFrameRackPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetBlockClass("hivetop");
+                if (type != null) ClayHiveTopPatch.Apply(harmony, type, xskills);
             }
         }
 

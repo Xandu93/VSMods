@@ -1,10 +1,8 @@
 ﻿using HarmonyLib;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
-using Vintagestory.API.Server;
 using XLib.XLeveling;
 
 namespace XSkills
@@ -171,32 +169,45 @@ namespace XSkills
         public class TryEatStopState
         {
             public float quality;
+            public float size;
             public float temperature;
+            public EnumFoodCategory foodCategory;
 
             public TryEatStopState()
             {
                 quality = 0.0f;
+                size = 0.0f;
                 temperature = 0.0f;
+                foodCategory = EnumFoodCategory.NoNutrition;
             }
         }
 
+        [HarmonyPrefix]
         [HarmonyPatch("tryEatStop")]
-        public static void Prefix(out TryEatStopState __state, ItemSlot slot, EntityAgent byEntity)
+        public static void tryEatStopPrefix(CollectibleObject __instance, out TryEatStopState __state, float secondsUsed, ItemSlot slot, EntityAgent byEntity)
         {
             __state = new TryEatStopState();
+            if (secondsUsed < 0.95f || byEntity?.World.Api.Side == EnumAppSide.Client) return;
             if (byEntity == null || slot?.Itemstack == null) return;
+            FoodNutritionProperties nutriProps = __instance.GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity);
+            if (nutriProps == null) return;
+
             __state.quality = slot.Itemstack.Attributes?.GetFloat("quality") ?? 0;
+            __state.size = slot.Itemstack.StackSize;
             __state.temperature = slot.Itemstack.Collectible.GetTemperature(byEntity.World, slot.Itemstack);
+            __state.foodCategory = nutriProps.FoodCategory;
         }
 
+        [HarmonyPostfix]
         [HarmonyPatch("tryEatStop")]
-        public static void Postfix(CollectibleObject __instance, TryEatStopState __state, float secondsUsed, ItemSlot slot, EntityAgent byEntity)
+        public static void tryEatStopPostfix(TryEatStopState __state, float secondsUsed, ItemSlot slot, EntityAgent byEntity)
         {
-            if (byEntity == null || slot == null || __state == null) return;
-            FoodNutritionProperties nutriProps = __instance.GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity);
-            if (byEntity.World is IServerWorldAccessor && nutriProps != null && secondsUsed >= 0.95f)
+            if (byEntity?.World.Api.Side == EnumAppSide.Server && __state.foodCategory != EnumFoodCategory.NoNutrition && secondsUsed >= 0.95f)
             {
-                Cooking.ApplyQuality(__state.quality, 1.0f, __state.temperature, nutriProps.FoodCategory, EnumFoodCategory.Unknown, byEntity);
+                Cooking.ApplyQuality(
+                    __state.quality, __state.size - (slot.Itemstack?.StackSize ?? 0), 
+                    __state.temperature, __state.foodCategory, 
+                    EnumFoodCategory.Unknown, byEntity);
             }
         }
 

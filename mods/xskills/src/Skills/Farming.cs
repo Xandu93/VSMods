@@ -680,8 +680,8 @@ namespace XSkills
     public class XSkillsSkepBehavior : BlockBehavior
     {
         private Farming farming;
-        private float xp;
 
+        public float xp { get; protected set; }
         public float HarvestTime { get; set; }
         public BlockDropItemStack HarvestedStack { get; set; }
 

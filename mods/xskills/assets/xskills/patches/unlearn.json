@@ -10,6 +10,15 @@
   },
   {
     "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "game:blocktypes/clay/jug",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
     "file": "game:blocktypes/wood/bucket",
     "op": "addmerge",
     "path": "/behaviors",

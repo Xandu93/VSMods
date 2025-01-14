@@ -211,7 +211,6 @@ namespace XSkills
             return result;
         }
 
-
         public float GetOreRarity(string ore)
         {
             if (ore == null) return 0.0f;
@@ -239,9 +238,9 @@ namespace XSkills
                     }
                     if (generator.SurfaceBlockChance <= 0.1f)
                     {
-                        float quantity = generator.GetAbsAvgQuantity();
+                        float quantity = (float)generator.absAvgQuantity;
                         if (!OreRarities.TryGetValue(ore, out float oldValue)) oldValue = 1.0f;
-                        quantity /= world.BlockAccessor.MapSizeY * world.BlockAccessor.ChunkSize * world.BlockAccessor.ChunkSize;
+                        quantity /= world.BlockAccessor.MapSizeY * GlobalConstants.ChunkSize * GlobalConstants.ChunkSize;
                         float rarity = oldValue - quantity;
                         mostRare = Math.Max(rarity, mostRare);
                         mostCommon = Math.Min(rarity, mostCommon);
@@ -269,6 +268,7 @@ namespace XSkills
 
             BlockOre block;
             BlockOre nearestBlock = null;
+            Vec3i nearPos = new Vec3i();
             int nearest = (range + 1) * 3;
 
             for (int ix = x - range; ix <= x + range; ix++)
@@ -285,6 +285,7 @@ namespace XSkills
                             {
                                 nearest = distance;
                                 nearestBlock = block;
+                                nearPos.Set(ix, iy, iz);
                             }
                         }
                     }
@@ -294,9 +295,7 @@ namespace XSkills
             {
                 ClientEventManager eventManager = (capi.World as ClientMain)?.eventManager;
                 if (eventManager == null) return;
-                Vec3i rel = byPlayer?.Entity?.Pos.XYZInt;
-                if (rel == null) return;
-                rel = new Vec3i(x - rel.X, y - rel.Y, z - rel.Z);
+                Vec3i rel = new Vec3i(nearPos.X - x, nearPos.Y - y, nearPos.Z - z);
 
                 string msg = "[" + rel.X.ToString() + ", " + rel.Y.ToString() + ", " + rel.Z.ToString() + "]";
                 msg += Lang.Get("game:ore-" + (nearestBlock.Variant?["type"] ?? "")) + Lang.GetUnformatted("xskills:isnearby");

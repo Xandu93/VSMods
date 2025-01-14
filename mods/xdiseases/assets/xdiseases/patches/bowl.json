@@ -1,23 +1,4 @@
 [
-//  {
-//    "file": "game:blocktypes/clay/bowl",
-//    "op": "addmerge",
-//    "path": "/behaviorsByType/-",
-//   "value": {
-  //    "*-fired":[{
-  //      "name": "XLibConsumable", 
-  //      "properties": {
-  //        "triggers": [{
-  //          "effect": "diseases:foodpoisoning",
-  //          "intensity": 0.6,
-  //          "chance": 0.0,
-  //          "perishweight": 0.2
-  //          }
-  //        ]
-  //      }
-  //    }]
-  //  }
-  //},
   {
     "file": "game:blocktypes/clay/bowl",
     "op": "addmerge",
@@ -58,6 +39,14 @@
     }]
   },
   {
+    "file": "game:blocktypes/clay/jug",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
     "file": "game:blocktypes/wood/bucket",
     "op": "addmerge",
     "path": "/behaviors",
@@ -72,6 +61,15 @@
     "value": [{
       "name": "XLibConsumable",
       "properties": { "consumes": 0.25 }
+    }]
+  },
+  {
+    "file": "tavernadditions:blocktypes/mug/mug",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "consumes": 0.5 }
     }]
   },
 ]

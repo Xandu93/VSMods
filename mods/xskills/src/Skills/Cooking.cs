@@ -17,6 +17,15 @@ using XLib.XLeveling;
 
 namespace XSkills
 {
+    public static class PlayerExtensions
+    {
+        public static float OnAcquireTransitionSpeed(this IPlayer player, EnumTransitionType transType, ItemStack stack, float mulByConfig)
+        {
+            if (transType != EnumTransitionType.Perish) return 1.0f;
+            return player.Entity.Stats.GetBlended("perishMult");
+        }
+    }
+
     public class Cooking : XSkill
     {
         //ability ids
@@ -139,12 +148,7 @@ namespace XSkills
             {
                 CookingRecipe.NamingRegistry.Add("salt", new XSkillsCookingRecipeNaming());
             }
-
-            ClassRegistry registry = (api as ServerCoreAPI)?.ClassRegistryNative ?? (api as ClientCoreAPI)?.ClassRegistryNative;
-            if (registry != null)
-            {
-                registry.inventoryClassToTypeMapping[GlobalConstants.backpackInvClassName] = typeof(XSkillInventoryBackpack);
-            }
+            this[SaltyBackpackId].OnPlayerAbilityTierChanged += OnSaltyBackpack;
 
             ClassExpMultipliers["commoner"] = 0.1f;
             ClassExpMultipliers["hunter"] = 0.15f;
@@ -640,6 +644,26 @@ namespace XSkills
             }
             if (stack != null) stack.StackSize = 1;
             return stack;
+        }
+
+        public void OnSaltyBackpack(PlayerAbility playerAbility, int oldTier)
+        {
+            IPlayer player = playerAbility.PlayerSkill.PlayerSkillSet.Player;
+            player.Entity.Stats.Set("perishMult", "ability", -playerAbility.FValue(0));
+
+            InventoryBase backPackInv = player.InventoryManager.GetOwnInventory(GlobalConstants.backpackInvClassName) as InventoryBase;
+            InventoryBase hotBarInv = player.InventoryManager.GetOwnInventory(GlobalConstants.hotBarInvClassName) as InventoryBase;
+
+            if (backPackInv != null)
+            {
+                if (playerAbility.Tier == 0 && oldTier > 0) backPackInv.OnAcquireTransitionSpeed -= player.OnAcquireTransitionSpeed;
+                if (playerAbility.Tier > 0 && oldTier == 0) backPackInv.OnAcquireTransitionSpeed += player.OnAcquireTransitionSpeed;
+            }
+            if (hotBarInv != null)
+            {
+                if (playerAbility.Tier == 0 && oldTier > 0) hotBarInv.OnAcquireTransitionSpeed -= player.OnAcquireTransitionSpeed;
+                if (playerAbility.Tier > 0 && oldTier == 0) hotBarInv.OnAcquireTransitionSpeed += player.OnAcquireTransitionSpeed;
+            }
         }
     }//!class Cooking
 

@@ -7,6 +7,7 @@
       "name": "XLibConsumable",
       "propertiesByType": {
         "*-linen-honey-sulfur": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",
@@ -18,6 +19,7 @@
           ]
         },
         "*-reed-honey-sulfur": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",
@@ -29,6 +31,7 @@
           ]
         },
         "*-linen-*": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",
@@ -40,6 +43,7 @@
           ]
         },
         "*": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",
@@ -61,6 +65,7 @@
       "name": "XLibConsumable",
       "propertiesByType": {
         "*-clean": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
               "effect": "xdiseases:bleeding",
@@ -79,6 +84,7 @@
           ]
         },
         "*-alcoholed": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
               "effect": "xdiseases:bleeding",
@@ -107,6 +113,7 @@
       "name": "XLibConsumable",
       "propertiesByType": {
         "*-linen-*": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",
@@ -118,6 +125,7 @@
           ]
         },
         "*": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",
@@ -139,6 +147,7 @@
       "name": "XLibConsumable",
       "propertiesByType": {
         "*-linen-*": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",
@@ -150,6 +159,7 @@
           ]
         },
         "*": {
+          "useTime": 0.7,
           "usePatch": true,
           "cures": [{
             "effect": "xdiseases:bleeding",

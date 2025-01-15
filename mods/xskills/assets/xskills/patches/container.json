@@ -1,0 +1,121 @@
+[
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "game:blocktypes/clay/bowl",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "game:blocktypes/clay/jug",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "game:blocktypes/wood/bucket",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "aculinaryartillery:blocktypes/bottle",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "consumes": 0.25 }
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "tavernadditions:blocktypes/mug/mug",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "consumes": 0.5 }
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/bowlcolored",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/bowlglazed",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/bowlporcelain",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/largepotcolored",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/mugcolored",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/mugglazed",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/smallpotcolored",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "bricklayers:blocktypes/clay/vat_liquid_small_colored",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable"
+    }]
+  },
+]

@@ -53,7 +53,7 @@ namespace XLib.XLeveling
         /// <summary>
         /// Saves the experience accumulated over a specific time frame.
         /// </summary>
-        private Dictionary<int, float> AccumulatedExperience = new System.Collections.Generic.Dictionary<int, float>();
+        private Dictionary<int, float> AccumulatedExperience = new Dictionary<int, float>();
 
         /// <summary>
         /// The last timestamp at which accumulated experience has been printed.
@@ -192,19 +192,12 @@ namespace XLib.XLeveling
                 if (seconds - AccumulatedTimeStamp > 10)
                 {
                     AccumulatedTimeStamp = seconds;
-
-                    ClientMain client = world as ClientMain;
-                    ClientEventManager eventManager =
-                        client?.GetType().GetField("eventManager",
-                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(client) as ClientEventManager;
-                    if (eventManager == null) return;
-
                     foreach (KeyValuePair<int, float> pair in AccumulatedExperience)
                     {
                         Skill skill = LocalPlayerSkillSet[pair.Key].Skill;
                         PlayerGroupMembership membership = Array.Find(playerSkill.PlayerSkillSet.Player.Groups, (membership) => membership.GroupName == XLeveling.XLibGroupName);
                         string msg = Lang.Get("You received {0} experience for the {1} skill.", pair.Value, skill.DisplayName);
-                        eventManager.TriggerNewServerChatLine(membership.GroupUid, msg, EnumChatType.Notification, null);
+                        (world as ClientMain).eventManager.TriggerNewServerChatLine(membership.GroupUid, msg, EnumChatType.Notification, null);
                     }
                     AccumulatedExperience.Clear();
                 }

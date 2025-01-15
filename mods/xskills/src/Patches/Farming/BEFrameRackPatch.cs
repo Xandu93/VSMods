@@ -59,5 +59,5 @@ namespace XSkills
                 world.SpawnItemEntity(new ItemStack(world.GetItem(new AssetLocation("game", "honeycomb")), playerAbility.Value(0)), player.Entity.Pos.XYZ.AddCopy(0.5, 0.5, 0.5));
             }
         }
-    }//!BlockWateringCanPatch
+    }//!BEFrameRackPatch
 }//!namespace XSkills

@@ -23,6 +23,7 @@ namespace XSkills
         private float oldOxygen;
 
         private float timeSinceUpdate;
+        private uint lastWeatherForecast;
 
         internal float HoursSlept { get; set; }
 
@@ -347,10 +348,19 @@ namespace XSkills
                 timeSinceUpdate = 0.0f;
             }
 
-            //if (entity.Api.Side == EnumAppSide.Client)
-            //{
-            //    MaxSaturationFix();
-            //}
+            if (entity.Api.Side == EnumAppSide.Client)
+            {
+                //MaxSaturationFix();
+                if (lastWeatherForecast < (uint)this.entity.World.Calendar.TotalDays)
+                {
+                    PlayerAbility ability = entity.GetBehavior<PlayerSkillSet>()?[survival.Id]?[survival.MeteorologistId];
+                    if (ability?.Tier > 0)
+                    {
+                        Survival.GenerateWheatherForecast(entity.Api, entity.Pos, ability.Value(0), ability.FValue(1));
+                    }
+                    lastWeatherForecast = (uint)this.entity.World.Calendar.TotalDays;
+                }
+            }
         }
 
         public override void OnEntityReceiveDamage(DamageSource damageSource, ref float damage)

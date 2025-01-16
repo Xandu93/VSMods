@@ -55,6 +55,8 @@
   "abilitydesc-luminiferous": "Du beginnst in dunklen Bereichen zu leuchten und erzeugst so einen hellen Bereich um dich herum mit einer Lichtstärke von {2}.",
   "ability-cateyes": "Katzenaugen",
   "abilitydesc-cateyes": "Deine Augen können sich an dunkle Bereiche anpassen und die Helligkeit bis zum {0}-fachen erhöhen. Möglicherweise verlierst du jedoch einige Farben. Sei vorsichtig mit hellen Lichtquellen, während deine Augen angepasst sind.",
+  "ability-meteorologist": "Meteorologist",
+  "abilitydesc-meteorologist": "Jeden Tag erhältst du eine Vorhersage für das Wetter der nächsten {0} Tage.",
 
   "ability-greenthumb": "Gr\u00fcner Daumen",
   "abilitydesc-greenthumb": "Erh\u00f6ht den Ertrag geernteter Pflanzen um {0}% und zus\u00e4tzlich um {1}% f\u00fcr jede Stufe der Landwirtschaft Fertigkeit. Maximal bis {2}%.",
@@ -404,4 +406,6 @@
 
   "monster": "Monster",
   "book-monster": "Monsterkompendium",
+  "meteorology": "Meteorologie",
+  "book-meteorology": "Meteorologie für Anfänger",
 }

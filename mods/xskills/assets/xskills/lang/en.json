@@ -54,7 +54,9 @@
   "ability-luminiferous": "Luminiferous",
   "abilitydesc-luminiferous": "You begin to glow in dark areas, creating a bright area around you with a light level of {2}.",
   "ability-cateyes": "Cateyes",
-  "abilitydesc-cateyes": "Your eyes can adjust to dark areas increasing the brightness up to {0} times, but you may lose some colors. Be careful with bright light sources while your eyes are adapted. ",
+  "abilitydesc-cateyes": "Your eyes can adjust to dark areas increasing the brightness up to {0} times, but you may lose some colors. Be careful with bright light sources while your eyes are adapted.",
+  "ability-meteorologist": "Meteorologist",
+  "abilitydesc-meteorologist": "Every day you will get a forecast for the weather of the next {0} days.",
 
   "ability-greenthumb": "Green Thumb",
   "abilitydesc-greenthumb": "Increases the yield of harvested crops by {0}% and additional {1}% for each level at the farming skill. Maxed out at {2}%.",
@@ -404,4 +406,6 @@
 
   "monster": "Monster",
   "book-monster": "Monster compendium",
+  "meteorology": "Meteorology",
+  "book-meteorology": "Meteorology for beginners",
 }

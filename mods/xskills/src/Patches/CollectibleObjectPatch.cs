@@ -94,7 +94,7 @@ namespace XSkills
         public static void Postfix1(ref float __result, IItemStack withItemStack)
         {
             float quality = withItemStack?.Attributes.TryGetFloat("quality") ?? 0.0f;
-            if (quality > 0.0f) __result = (float)(__result * (1.0f + quality * 0.02f));
+            if (quality > 0.0f && __result > 0.5f) __result = (float)(__result * (1.0f + quality * 0.02f));
         }
 
         [HarmonyPostfix]

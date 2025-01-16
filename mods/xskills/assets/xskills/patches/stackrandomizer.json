@@ -14,6 +14,12 @@
          "type": "item",
          "code": "xlib:skillbook-aged-darkgreen",
          "chance": 1, 
+         "attributes": {"skill": "combat", "knowledge": "xskills:meteorology"}
+      },
+      {
+         "type": "item",
+         "code": "xlib:skillbook-aged-darkgreen",
+         "chance": 1, 
          "attributes": {"skill": "farming", "experience": 100.0}
       },
       {

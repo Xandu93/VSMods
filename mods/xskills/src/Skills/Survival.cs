@@ -1,12 +1,16 @@
-﻿using ProtoBuf;
+﻿using HarmonyLib;
+using PrimitiveSurvival.ModSystem;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
 using Vintagestory.Common;
@@ -37,6 +41,7 @@ namespace XSkills
         public int SoulboundBagId { get; private set; }
         public int LuminiferousId { get; private set; }
         public int CatEyesId { get; private set; }
+        public int MeteorologistId { get; private set; }
 
         private ICoreClientAPI capi;
         private NightVisionRenderer nightVisionRenderer;
@@ -220,6 +225,15 @@ namespace XSkills
                 "xskills:abilitydesc-cateyes",
                 8, 2, new int[] { 6, 2000, 8, 2000 }));
 
+            // you will receive a weather forecast every day
+            // 0: Number of days in the future for which you receive a forecast
+            // 1: inaccuracy per day
+            MeteorologistId = this.AddAbility(new Ability(
+                "meteorologist",
+                "xskills:ability-meteorologist",
+                "xskills:abilitydesc-meteorologist",
+                8, 1, new int[] { 3, 50 }));
+
             this[LongLifeId].OnPlayerAbilityTierChanged += OnLongLife;
             this[HugeStomachId].OnPlayerAbilityTierChanged += OnHugeStomach;
             this[NudistId].OnPlayerAbilityTierChanged += OnNudist;
@@ -385,6 +399,152 @@ namespace XSkills
             EntityBehaviorControlledPhysics physics = playerAbility.PlayerSkill.PlayerSkillSet.Player.Entity.GetBehavior<EntityBehaviorControlledPhysics>();
             if (physics == null) return;
             physics.StepHeight *= mult;
+        }
+
+        public static string GenerateWheatherForecast(ICoreAPI api, EntityPos pos, int days = 3, float inaccuracy = 0.5f)
+        {
+            WeatherSystemBase weather = api.ModLoader.GetModSystem<WeatherSystemBase>();
+            IGameCalendar calendar = api.World.Calendar;
+            double today = ((int)calendar.TotalDays) + 0.25;
+            const double foo = Math.PI * 1.5f;
+
+            float[] minTemperature = new float[days];
+            float[] maxTemperature = new float[days];
+
+            float[] minRainfall = new float[days];
+            float[] maxRainfall = new float[days];
+
+            double[] minCloudness = new double[days];
+            double[] maxCloudness = new double[days];
+
+            float[] sunrise = new float[days];
+            float[] sunset = new float[days];
+
+            for (int ii = 0; ii < days; ++ii)
+            {
+                minTemperature[ii] =  100.0f;
+                maxTemperature[ii] = -100.0f;
+
+                minRainfall[ii] =  1.0f;
+                maxRainfall[ii] = -1.0f;
+
+                minCloudness[ii] =  1.0f;
+                maxCloudness[ii] = -1.0f;
+
+                sunrise[ii] = 1.0f;
+                sunset[ii]  = 0.0f;
+
+                for (int jj = 0; jj < 4; ++jj)
+                {
+                    double time = today + ii + 0.25 * jj;
+
+                    ClimateCondition conds = api.World.BlockAccessor.GetClimateAt(pos.AsBlockPos, EnumGetClimateMode.ForSuppliedDateValues, time);
+
+                    float temperature = conds.Temperature;
+                    float rainfall = conds.Rainfall;
+                    double cloudness = weather.GetRainCloudness(conds, pos.X, pos.Z, time);
+
+                    minTemperature[ii] = Math.Min(minTemperature[ii], temperature);
+                    maxTemperature[ii] = Math.Max(maxTemperature[ii], temperature);
+
+                    minRainfall[ii] = Math.Min(minRainfall[ii], rainfall);
+                    maxRainfall[ii] = Math.Max(maxRainfall[ii], rainfall);
+
+                    minCloudness[ii] = Math.Min(minCloudness[ii], cloudness);
+                    maxCloudness[ii] = Math.Max(maxCloudness[ii], cloudness);
+
+                    float yearRel = calendar.YearRel + ii / calendar.DaysPerYear;
+                    if (yearRel > 1.0f) { yearRel -= 1.0f; }
+
+                    float ftime = 0.25f;
+                    while (ftime > 0.0f && ftime < 1.0f)
+                    {
+                        float zenith = calendar.OnGetSolarSphericalCoords(
+                            pos.X, pos.Z, 
+                            calendar.YearRel,
+                            ftime).ZenithAngle;
+
+                        if (zenith >= foo) ftime -= 0.005f;
+                        else ftime += 0.005f;
+                        if (sunrise[ii] == ftime) break;
+                        if (zenith >= foo) sunrise[ii] = Math.Min(sunrise[ii], ftime);
+                    }
+
+                    ftime = 0.75f;
+                    while (ftime > 0.0f && ftime < 1.0f)
+                    {
+                        float zenith = calendar.OnGetSolarSphericalCoords(
+                            pos.X, pos.Z,
+                            calendar.YearRel,
+                            ftime).ZenithAngle;
+
+                        if (zenith <= foo) ftime -= 0.005f;
+                        else ftime += 0.005f;
+                        if (sunset[ii] == ftime) break;
+                        if (zenith <= foo) sunset[ii] = Math.Max(sunset[ii], ftime);
+                    }
+                }
+
+                //adding some inaccuracy. later days have more inaccuracy
+                minTemperature[ii] += (api.World.Rand.NextSingle() - inaccuracy) * (ii + 1);
+                maxTemperature[ii] += (api.World.Rand.NextSingle() - inaccuracy) * (ii + 1);
+                if (minTemperature[ii] > maxTemperature[ii])
+                    (minTemperature[ii], maxTemperature[ii]) = (maxTemperature[ii], minTemperature[ii]);
+
+                minRainfall[ii] = Math.Clamp(minRainfall[ii] + (api.World.Rand.NextSingle() - inaccuracy) * (ii + 1) * 0.1f, 0.0f, 1.0f);
+                maxRainfall[ii] = Math.Clamp(maxRainfall[ii] + (api.World.Rand.NextSingle() - inaccuracy) * (ii + 1) * 0.1f, 0.0f, 1.0f);
+                if (minRainfall[ii] > maxRainfall[ii])
+                    (minRainfall[ii], maxRainfall[ii]) = (maxRainfall[ii], minRainfall[ii]);
+
+                minCloudness[ii] = Math.Clamp(minCloudness[ii] + (api.World.Rand.NextSingle() - inaccuracy) * (ii + 1) * 0.1f, 0.0f, 1.0f);
+                maxCloudness[ii] = Math.Clamp(maxCloudness[ii] + (api.World.Rand.NextSingle() - inaccuracy) * (ii + 1) * 0.1f, 0.0f, 1.0f);
+                if (minCloudness[ii] > maxCloudness[ii])
+                    (minCloudness[ii], maxCloudness[ii]) = (maxCloudness[ii], minCloudness[ii]);
+            }
+
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine(Lang.Get("Wheather forecast from {0}", calendar.PrettyDate()));
+            for (int ii = 0; ii < days; ++ii)
+            {
+                if (ii == 0) builder.AppendLine(Lang.Get("Today"));
+                else if (ii == 1) builder.AppendLine(Lang.Get("Tomorrow"));
+                else if (ii == 2) builder.AppendLine(Lang.Get("The day after tomorrow"));
+                else builder.AppendLine(Lang.Get("In {0} days", ii));
+                builder.AppendLine(Lang.Get("Temperature from {0:0.0}°C to {1:0.0}°C", minTemperature[ii], maxTemperature[ii]));
+                builder.AppendLine(Lang.Get("Probability of rain from {0:P2} to {1:P2}", minRainfall[ii], maxRainfall[ii]));
+                builder.AppendLine(Lang.Get("Cloudiness between {0:P2} and {1:P2}", minCloudness[ii], maxCloudness[ii]));
+
+                int sunHour = (int)(sunrise[ii] * calendar.HoursPerDay);
+                int sunMinute = (int)(sunrise[ii] * calendar.HoursPerDay * 60) % 60;
+                builder.AppendLine(Lang.Get("Sunrise at {0}", string.Format("{0}:{1:00}", sunHour, sunMinute)));
+
+                sunHour = (int)(sunset[ii] * calendar.HoursPerDay);
+                sunMinute = (int)(sunset[ii] * calendar.HoursPerDay * 60) % 60;
+                builder.AppendLine(Lang.Get("Sunset at {0}", string.Format("{0}:{1:00}", sunHour, sunMinute)));
+            }
+
+            SystemTemporalStability temporal = api.ModLoader.GetModSystem<SystemTemporalStability>();
+            if (temporal != null)
+            {
+                if(temporal.StormData.nextStormTotalDays <= days)
+                {
+                    switch(temporal.StormData.nextStormStrength)
+                    {
+                        case EnumTempStormStrength.Light:
+                            builder.AppendLine(Lang.Get("A light temporal storm is approaching"));
+                            break;
+                        case EnumTempStormStrength.Medium:
+                            builder.AppendLine(Lang.Get("A medium temporal storm is approaching"));
+                            break;
+                        case EnumTempStormStrength.Heavy:
+                            builder.AppendLine(Lang.Get("A heavy temporal storm is approaching"));
+                            break;
+                    }
+                }
+            }
+
+            (api.World as ClientMain)?.eventManager.TriggerNewServerChatLine(GlobalConstants.InfoLogChatGroup, builder.ToString(), EnumChatType.Notification, null);
+            return builder.ToString();
         }
 
         public override void FromConfig(SkillConfig config)

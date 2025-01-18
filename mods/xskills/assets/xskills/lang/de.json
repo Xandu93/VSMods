@@ -213,6 +213,8 @@
   "abilitydesc-adrenalinerush": "Wenn deine Gesundheit unter {0}% deiner maximalen Gesundheit f\u00e4llt, erh\u00e4lst du den Adrenalinschub-Effekt, der deine Bewegungsgeschwindigkeit um {1}% erh\u00f6ht und den ankommenden Schaden f\u00fcr {3} Sekunden um {2}% verringert. Wenn dieser Effekt endet, bist du f\u00fcr {4} Sekunden ersch\u00f6pft.",
   "ability-vampire": "Vampir",
   "abilitydesc-vampire": "Jedes Mal, wenn Sie einen Feind treffen, erh\u00e4lst du {0}% des verursachten Schadens als Heilung. Aber deine Gesundheitsregeneration wird im Sonnenlicht um bis zu {1}% reduziert.",
+  "ability-drunkenmaster": "Drunken Master",
+  "abilitydesc-drunkenmaster": "Erhöht den Schaden, den du mit bloßen Händen verursachst, abhängig von deinem Betrunkenheitsgrad um bis zu {0}%. Verringert deinen Schaden jedoch um {1}%, wenn du nüchtern bist.",  
   "ability-burningrage": "Brennende Wut",
   "abilitydesc-burningrage": "Jedes Mal, wenn du einen Feind friffst, hast du eine Chance von {0}%, ihn zu entz\u00fcnden.",
   "ability-bloodlust": "Blutrausch",

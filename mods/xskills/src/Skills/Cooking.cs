@@ -716,7 +716,7 @@ namespace XSkills
         public float expBase = 0.0004f;
 
         [ProtoMember(2)]
-        [DefaultValue(0.1f)]
-        public float fruitPressExpPerLitre = 0.1f;
+        [DefaultValue(0.05f)]
+        public float fruitPressExpPerLitre = 0.05f;
     }
 }//!namespace XSkills

@@ -198,9 +198,15 @@
     "requirements": [
       {
         "code": "skill",
-        "minimumTier": 3,
+        "minimumTier": 1,
         "skill": "digging",
-        "requiredLevel": 5
+        "requiredLevel": 3
+      },
+      {
+        "code": "skill",
+        "minimumTier": 2,
+        "skill": "digging",
+        "requiredLevel": 6
       }
     ]
   },
@@ -232,6 +238,35 @@
         "skill": "survival",
         "ability": "photosynthesis",
         "exclusiveTier": 1
+      }
+    ]
+  },
+  "drunkenmaster":{
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "monk",
+        "requiredTier": 1
+      },
+      {
+        "code": "or",
+        "minimumTier": 1,
+        "requirements": [
+          {
+            "code": "ability",
+            "skill": "cooking",
+            "ability": "chef",
+            "requiredTier": 1
+          },
+          {
+            "code": "ability",
+            "skill": "combat",
+            "ability": "warrior",
+            "requiredTier": 1
+          }
+        ]
       }
     ]
   },

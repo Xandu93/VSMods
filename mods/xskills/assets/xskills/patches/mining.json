@@ -83,7 +83,7 @@
     }]
   },
   {
-    "file": "game:blocktypes/cloth/oreblastingbomb",
+    "file": "game:blocktypes/cloth/bomb",
     "op": "addmerge",
     "path": "/behaviors",
     "value": [{ "name": "XSkillsBomb" }]

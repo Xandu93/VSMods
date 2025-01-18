@@ -23,6 +23,7 @@ namespace XSkills
         public int ShovelKnightId { get; private set; }
         public int AdrenalineRushId { get; private set; }
         public int VampireId { get; private set; }
+        public int DrunkenMasterId { get; private set; }
         public int BurningRageId { get; private set; }
         public int BloodlustId { get; private set; }
         public int MonsterExpertId { get; private set; }
@@ -104,10 +105,11 @@ namespace XSkills
                 "xskills:abilitydesc-warrior",
                 5, 1, new int[] { 40 }));
 
+            string stat = api.ModLoader.IsModEnabled("combatoverhaul") ? "steadyAim" : "rangedWeaponsAcc";
             //more accuracy with bows
             //0: value
             SniperId = this.AddAbility(new StatAbility(
-                "sniper", "rangedWeaponsAcc",
+                "sniper", stat,
                 "xskills:ability-sniper",
                 "xskills:abilitydesc-sniper",
                 5, 2, new int[] { 15, 30 }));
@@ -149,6 +151,15 @@ namespace XSkills
                 "xskills:ability-vampire",
                 "xskills:abilitydesc-vampire",
                 7, 3, new int[] { 3, 80, 5, 65, 7, 50 }));
+
+            // increases your damage with your bare hands when you are drunk
+            // 0: max damage bonus
+            // 1: sober penalty
+            DrunkenMasterId = this.AddAbility(new Ability(
+                "drunkenmaster",
+                "xskills:ability-drunkenmaster",
+                "xskills:abilitydesc-drunkenmaster",
+                8, 1, new int[] { 50, 50 }));
 
             // chance to ignite an enemy
             // 0: chance

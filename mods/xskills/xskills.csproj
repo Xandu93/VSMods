@@ -28,6 +28,9 @@
     <Reference Include="cairo-sharp">
       <HintPath>D:\Program Files (x86)\Vintagestory\Lib\cairo-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="CombatOverhaul">
+      <HintPath>..\..\..\vshelper\dependencies\CombatOverhaul.dll</HintPath>
+    </Reference>
     <Reference Include="primitivesurvival">
       <HintPath>..\..\..\vshelper\dependencies\primitivesurvival.dll</HintPath>
     </Reference>

@@ -26,10 +26,6 @@ namespace XSkills
 
         public override void Initialize(EntityProperties properties, JsonObject attributes)
         {
-            if (this.entity.Code.Path.Contains("bear"))
-            {
-
-            }
             base.Initialize(properties, attributes);
             this.xp = attributes["xp"].AsFloat(0.0f);
             this.Catchable = attributes["catchable"].AsBool(false);
@@ -53,6 +49,7 @@ namespace XSkills
 
         public override void OnEntityDeath(DamageSource damageSourceForDeath)
         {
+            if (damageSourceForDeath == null) return;
             EntityPlayer byPlayer =
                 damageSourceForDeath.SourceEntity as EntityPlayer ??
                 damageSourceForDeath.CauseEntity as EntityPlayer ??
@@ -66,6 +63,5 @@ namespace XSkills
             float generationBonus = 1.0f + (Math.Min(entity.WatchedAttributes.GetInt("generation", 0), 20) * 0.05f) ;
             playerSkill.AddExperience(generationBonus * this.xp);
         }
-
     }//!class XSkillsAnimalBehavior
 }//!namespace XSkills

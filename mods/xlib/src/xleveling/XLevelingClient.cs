@@ -196,6 +196,7 @@ namespace XLib.XLeveling
                     {
                         Skill skill = LocalPlayerSkillSet[pair.Key].Skill;
                         PlayerGroupMembership membership = Array.Find(playerSkill.PlayerSkillSet.Player.Groups, (membership) => membership.GroupName == XLeveling.XLibGroupName);
+                        if (membership == null) return;
                         string msg = Lang.Get("You received {0} experience for the {1} skill.", pair.Value, skill.DisplayName);
                         (world as ClientMain).eventManager.TriggerNewServerChatLine(membership.GroupUid, msg, EnumChatType.Notification, null);
                     }

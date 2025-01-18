@@ -81,5 +81,5 @@ namespace XSkills
             if (slotId >= inv.Count || slotId < 0) return;
             __result = inv.ActivateSlot(slotId, sourceSlot, ref op);
         }
-    }//!class XSkillInventoryBackpack
+    }//!class InventoryPlayerBackPacksPatch
 }//!namespace XSkills

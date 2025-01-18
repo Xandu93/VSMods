@@ -213,6 +213,8 @@
   "abilitydesc-adrenalinerush": "If your health falls below {0}% of your maximum health you will receive the adrenaline rush effect which increases your movement speed by {1}% and reduces the incoming damage by {2}% for {3} seconds. When this effects ends you will be exhausted for {4} seconds.",
   "ability-vampire": "Vampire",
   "abilitydesc-vampire": "Every time you hit an enemy you will receive {0}% of the dealt damage as healing. But your health regeneration in the sunlight is reduced by up to {1}%.",
+  "ability-drunkenmaster": "Drunken Master",
+  "abilitydesc-drunkenmaster": "Increases the damage you deal with your bare hands by up to {0}% depending on how drunk you are, but decreases your damage by {1}% if you are sober.",
   "ability-burningrage": "Burning Rage",
   "abilitydesc-burningrage": "Every time you hit an enemy you have a chance of {0}% to ignite it.",
   "ability-bloodlust": "Bloodlust",

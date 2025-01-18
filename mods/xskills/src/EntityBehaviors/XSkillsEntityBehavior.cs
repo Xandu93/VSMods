@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CombatOverhaul.Armor;
+using CombatOverhaul.DamageSystems;
+using CombatOverhaul.RangedSystems;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Vintagestory.API;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -98,6 +100,42 @@ namespace XSkills
             }
         }
 
+        //combat overhaul compatibility method for weapon projectiles
+        private static CollectibleObject COProjectiles(DamageSource dmgSource)
+        {
+            ItemStack stack = (dmgSource as IWeaponDamageSource)?.Weapon;
+            if (stack != null) return stack.Collectible;
+            ProjectileEntity projectile2 = dmgSource.SourceEntity as ProjectileEntity;
+            if (projectile2 == null) return null;
+            if (projectile2.WeaponStack != null) return projectile2.WeaponStack.Collectible;
+            return projectile2.ProjectileStack?.Collectible;
+        }
+
+        //calculates an armor tier for combat overhaul armor sets
+        private static float COProtectionTier(InventoryCharacter inv)
+        {
+            int filled = 0;
+            int open = 0;
+            int stacks = 0;
+            float protectionTier = 0.0f;
+            for (int ii = (int)EnumCharacterDressType.ArmorLegs + 1; ii < inv.Count; ++ii)
+            {
+                ArmorSlot armorSlot = (inv[ii] as ArmorSlot);
+                if (armorSlot == null) continue;
+                if (armorSlot.Available) ++open;
+                else ++filled;
+                if (armorSlot.Itemstack != null) ++stacks;
+
+                protectionTier += (
+                    inv[ii].Itemstack?.
+                    Collectible.GetBehavior<ArmorBehavior>())?.
+                    Resists.Resists[EnumDamageType.SlashingAttack] ?? 0.0f;
+            }
+            protectionTier = (protectionTier * filled / stacks) / (filled + open);
+            protectionTier *= 0.55f;
+            return protectionTier;
+        }
+
         public float OnDamage(float damage, DamageSource dmgSource)
         {
             EntityPlayer byPlayer = 
@@ -110,11 +148,34 @@ namespace XSkills
             PlayerSkill playerSkill = playerSkillSet?[this.combat.Id];
             if (playerSkill == null) return damage;
 
+            EnumTool? tool = null; 
+            if (dmgSource.SourceEntity != null)
+            {
+                EntityProjectile projectile = dmgSource.SourceEntity as EntityProjectile;
+                CollectibleObject collectible = null;
+                if (projectile != null) collectible = projectile.ProjectileStack?.Collectible;
+                else if (dmgSource.SourceEntity.Class.Contains("Projectile"))
+                {
+                    collectible = COProjectiles(dmgSource);
+                }
+
+                if (collectible != null)
+                {
+                    tool = collectible.Tool;
+                    if (tool == null)
+                    {
+                        if (collectible.Code.Path.Contains("arrow")) tool = EnumTool.Bow;
+                    }
+                }
+                else if (dmgSource.SourceEntity is EntityThrownStone) tool = EnumTool.Sling;
+            }
+            tool = tool ?? byPlayer.Player.InventoryManager.ActiveTool;
             PlayerAbility playerAbility = null;
+            ItemStack itemStack = byPlayer.Player.InventoryManager.ActiveHotbarSlot?.Itemstack;
             int skillLevel = 0;
 
             //swordsman, spearman, archer, shovel knight, tool mastery
-            switch (byPlayer.Player.InventoryManager.ActiveTool)
+            switch (tool)
             {
                 case EnumTool.Sword:
                 case EnumTool.Club:
@@ -141,13 +202,15 @@ namespace XSkills
                     skillLevel = playerSkillSet[this.husbandry.Id]?.Level ?? 0;
                     break;
                 case EnumTool.Pickaxe:
+                case EnumTool.Chisel:
                     skillLevel = playerSkillSet[this.mining.Id]?.Level ?? 0;
                     break;
+                case EnumTool.Saw:
                 case EnumTool.Axe:
                     skillLevel = playerSkillSet[this.forestry.Id]?.Level ?? 0;
                     break;
                 case EnumTool.Hammer:
-                case EnumTool.Saw:
+                case EnumTool.Wrench:
                     skillLevel = playerSkillSet[this.metalworking.Id]?.Level ?? 0;
                     break;
                 case EnumTool.Hoe:
@@ -163,13 +226,7 @@ namespace XSkills
                     skillLevel = playerSkillSet[this.digging.Id]?.Level ?? 0;
                     break;
                 case null:
-                    //probably a thrown spear
-                    if (dmgSource.Type == EnumDamageType.PiercingAttack)
-                    {
-                        playerAbility = playerSkill[combat.SpearmanId];
-                        break;
-                    }
-                    if (byPlayer.Player.InventoryManager.ActiveHotbarSlot?.Itemstack?.Item?.FirstCodePart() == "rollingpin")
+                    if (itemStack?.Item?.FirstCodePart() == "rollingpin")
                     {
                         skillLevel = playerSkillSet[this.cooking.Id]?.Level ?? 0;
                     }
@@ -183,28 +240,11 @@ namespace XSkills
                 playerAbility = playerSkill[combat.ToolMasteryId];
                 if (playerAbility != null) damage *= 1.0f + playerAbility.SkillDependentFValue(skillLevel);
             }
+
             //iron fist, monk
-            if (byPlayer.Player.InventoryManager.ActiveHotbarSlot?.Itemstack == null)
+            if (tool == null && itemStack == null)
             {
-                InventoryCharacter inv = byPlayer.Player.InventoryManager.GetOwnInventory("character") as InventoryCharacter;
-                if (inv != null && inv.Count >= 15)
-                {
-                    PlayerAbility monkAbility = playerSkill[combat.MonkId];
-                    playerAbility = playerSkill[combat.IronFistId];
-
-                    if (playerAbility.Tier > 0 || monkAbility.Tier > 0)
-                    {
-                        float protectionTier =
-                            ((inv[12].Itemstack?.Item as ItemWearable)?.ProtectionModifiers.ProtectionTier ?? 0.0f) +
-                            ((inv[13].Itemstack?.Item as ItemWearable)?.ProtectionModifiers.ProtectionTier ?? 0.0f) +
-                            ((inv[14].Itemstack?.Item as ItemWearable)?.ProtectionModifiers.ProtectionTier ?? 0.0f);
-                        protectionTier /= 3;
-
-                        if (playerAbility.Tier > 0) damage *= protectionTier * playerAbility.Value(0);
-                        else damage *= Math.Max((monkAbility.Value(0) - ((protectionTier / 3.0f) * monkAbility.Value(0))) , 1);
-                    }
-                    playerAbility = playerSkill[combat.MonkId];
-                }
+                damage = ApplyBareHandAbilities(damage, byPlayer);
             }
 
             //stable warrior and temporal unstable
@@ -232,7 +272,48 @@ namespace XSkills
 
             //burning rage
             playerAbility = playerSkill[combat.BurningRageId];
-            if (playerAbility.Value(0) * 0.01f > byPlayer.World.Rand.NextDouble()) this.entity.Ignite();
+            if (playerAbility.FValue(0) > byPlayer.World.Rand.NextDouble()) this.entity.Ignite();
+            return damage;
+        }
+
+        protected float ApplyBareHandAbilities(float damage, EntityPlayer byPlayer)
+        {
+            InventoryCharacter inv = byPlayer.Player.InventoryManager.GetOwnInventory("character") as InventoryCharacter;
+            if (inv == null) return damage;
+
+            PlayerSkill playerSkill = byPlayer.GetBehavior<PlayerSkillSet>()?[this.combat.Id];
+            if (playerSkill == null) return damage;
+            PlayerAbility monkAbility = playerSkill[combat.MonkId];
+            PlayerAbility ironFistAbility = playerSkill[combat.IronFistId];
+            PlayerAbility drunkenMaster = playerSkill[combat.DrunkenMasterId];
+            int tier = (monkAbility?.Tier + ironFistAbility?.Tier) ?? 0;
+            if (tier == 0) return damage;
+
+            float intoxication = byPlayer.WatchedAttributes.GetFloat("intoxication");
+            float protectionTier = 0.0f;
+
+            if (inv.Count > (int)EnumCharacterDressType.ArmorLegs + 1)
+            {
+                protectionTier = COProtectionTier(inv);
+            }
+            else
+            {
+                for (int ii = (int)EnumCharacterDressType.ArmorHead; ii < inv.Count; ++ii)
+                {
+                    protectionTier += (inv[ii].Itemstack?.Collectible as ItemWearable)?.ProtectionModifiers?.ProtectionTier ?? 0.0f;
+                }
+                protectionTier /= 3;
+            }
+            protectionTier = Math.Clamp(protectionTier, 0.0f, 4.0f);
+
+            if (ironFistAbility.Tier > 0) damage *= protectionTier * ironFistAbility.Value(0);
+            else damage *= Math.Max((monkAbility.Value(0) - ((protectionTier / 3.0f) * monkAbility.Value(0))), 1);
+
+            if (drunkenMaster.Tier > 0)
+            {
+                if (intoxication > 0.0f) damage *= 1.0f + drunkenMaster.FValue(0) * Math.Min(intoxication, 1.0f);
+                else damage *= 1.0f - drunkenMaster.FValue(1);
+            }
             return damage;
         }
 

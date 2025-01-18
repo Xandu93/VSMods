@@ -1,6 +1,4 @@
-﻿using HarmonyLib;
-using PrimitiveSurvival.ModSystem;
-using ProtoBuf;
+﻿using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +8,6 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
-using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
 using Vintagestory.Common;
@@ -358,17 +355,23 @@ namespace XSkills
 
             if (inv.Count <= (int)EnumCharacterDressType.ArmorLegs) return;
             if (inv[(int)EnumCharacterDressType.Head].Itemstack != null) clothCounter += 0.5f; //head
-            if (inv[(int)EnumCharacterDressType.Shoulder].Itemstack != null) clothCounter += 1.0f; //shoulder
+            if (inv[(int)EnumCharacterDressType.Shoulder].Itemstack != null) clothCounter += 0.5f; //shoulder
             if (inv[(int)EnumCharacterDressType.UpperBody].Itemstack != null) clothCounter += 1.25f; //upperbody
             if (inv[(int)EnumCharacterDressType.LowerBody].Itemstack != null) clothCounter += 1.5f; //lowerbody
             if (inv[(int)EnumCharacterDressType.Foot].Itemstack != null) clothCounter += 0.5f; //foot
-            if (inv[(int)EnumCharacterDressType.Hand].Itemstack != null) clothCounter += 0.75f; //hand
-            if (inv[(int)EnumCharacterDressType.Face].Itemstack != null) clothCounter += 1.0f; //face
+            if (inv[(int)EnumCharacterDressType.Hand].Itemstack != null) clothCounter += 0.5f; //hand
+            if (inv[(int)EnumCharacterDressType.Face].Itemstack != null) clothCounter += 0.5f; //face
             if (inv[(int)EnumCharacterDressType.Waist].Itemstack != null) clothCounter += 0.5f; //waist
             if (inv[(int)EnumCharacterDressType.UpperBodyOver].Itemstack != null) clothCounter += 1.25f; //upperbodyover
             if (inv[(int)EnumCharacterDressType.ArmorHead].Itemstack != null) clothCounter += 1.5f; //armorhead
             if (inv[(int)EnumCharacterDressType.ArmorBody].Itemstack != null) clothCounter += 2.0f; //armorbody
             if (inv[(int)EnumCharacterDressType.ArmorLegs].Itemstack != null) clothCounter += 2.0f; //armorlegs
+
+            for (int ii = (int)EnumCharacterDressType.ArmorLegs + 1; ii < inv.Count ; ++ii)
+            {
+                if (inv[ii].Itemstack != null) clothCounter += 1.5f;
+            }
+            clothCounter = Math.Clamp(clothCounter, 0.0f, 10.0f);
 
             Survival survival = XLeveling.Instance(inv.Api)?.GetSkill("survival") as Survival;
             if (survival == null) return;

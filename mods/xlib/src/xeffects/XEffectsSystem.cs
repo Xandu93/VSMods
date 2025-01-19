@@ -162,6 +162,26 @@ namespace XLib.XEffects
                 .WithArgs(new ICommandArgumentParser[] {
                     parsers.OptionalWord("player"),
                 })
+                .EndSubCommand()
+
+                .BeginSubCommand("add")
+                .WithDescription("Adds an effect to a player.")
+                .HandleWith (OnAddEffectCommand)
+                .WithArgs(new ICommandArgumentParser[]{
+                    parsers.OnlinePlayer("player"),
+                    parsers.Word("effect"),
+                    parsers.Float("intensity"),
+                    parsers.Float("duration")
+                })
+                .EndSubCommand()
+
+                .BeginSubCommand("remove")
+                .WithDescription("Removes an effect from a player.")
+                .HandleWith(OnRemoveEffectCommand)
+                .WithArgs(new ICommandArgumentParser[]{
+                    parsers.OnlinePlayer("player"),
+                    parsers.Word("effect")
+                })
                 .EndSubCommand();
         }
 
@@ -460,7 +480,7 @@ namespace XLib.XEffects
         }
 
         /// <summary>
-        /// Called when the clear effect was called.
+        /// Called when the clear effect command was called.
         /// </summary>
         /// <param name="arguments"></param>
         /// <returns></returns>
@@ -492,5 +512,68 @@ namespace XLib.XEffects
             return TextCommandResult.Success("Cleared all effects of the player " + player.PlayerName + ".");
         }
 
+        /// <summary>
+        /// Called when the add effect command was called.
+        /// </summary>
+        /// <param name="arguments"></param>
+        /// <returns></returns>
+        private TextCommandResult OnAddEffectCommand(TextCommandCallingArgs arguments)
+        {
+            IPlayer player = arguments[0] as IPlayer;
+            string effectName = arguments[1] as string;
+            float intensity = (float)arguments[2];
+            float duration = (float)arguments[3];
+            AffectedEntityBehavior affected = player.Entity.GetBehavior<AffectedEntityBehavior>();
+            if (affected == null)
+            {
+                string msg = player.PlayerName + " has no affected behavior.";
+                return TextCommandResult.Error(msg, msg);
+            }
+
+            Effect effect = CreateEffect(effectName);
+            if (effect == null)
+            {
+                string msg = string.Format("Effect {0} could not be created. Maybe the name is wrong.", effectName);
+                return TextCommandResult.Error(msg, msg);
+            }
+            else
+            {
+                effect.Update(intensity);
+                effect.Duration = duration;
+                affected.AddEffect(effect);
+
+                string msg = string.Format("Added {0} effect to player {1}.", effect, player.PlayerName);
+                return TextCommandResult.Success(msg);
+            }
+        }
+
+        /// <summary>
+        /// Called when the add effect command was called.
+        /// </summary>
+        /// <param name="arguments"></param>
+        /// <returns></returns>
+        private TextCommandResult OnRemoveEffectCommand(TextCommandCallingArgs arguments)
+        {
+            IPlayer player = arguments[0] as IPlayer;
+            string effect = arguments[1] as string;
+            AffectedEntityBehavior affected = player.Entity.GetBehavior<AffectedEntityBehavior>();
+            if (affected == null)
+            {
+                string msg = player.PlayerName + " has no affected behavior.";
+                return TextCommandResult.Error(msg, msg);
+            }
+
+            if(affected.RemoveEffect(effect, true))
+            {
+                string msg = string.Format("Removed {0} effect from player {1}.", effect, player.PlayerName);
+                return TextCommandResult.Success(msg);
+            }
+            else
+            {
+                string msg = string.Format("Player {0} has no {1} effect.", player.PlayerName, effect);
+                return TextCommandResult.Error(msg, msg);
+            }
+
+        }
     }//!class XEffectsSystem
 }//!XLib.XEffects

@@ -135,11 +135,12 @@
               <c>true</c> if the entity is effected by an effect with the specified name; otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="M:XLib.XEffects.AffectedEntityBehavior.RemoveEffect(System.String)">
+        <member name="M:XLib.XEffects.AffectedEntityBehavior.RemoveEffect(System.String,System.Boolean)">
             <summary>
             Removes an effect with the specified name.
             </summary>
             <param name="name">The name.</param>
+            <param name="allowDisplayNames">if set to <c>true</c> the method also looks for matching display names.</param>
             <returns></returns>
         </member>
         <member name="M:XLib.XEffects.AffectedEntityBehavior.Clear">
@@ -3104,7 +3105,21 @@
         </member>
         <member name="M:XLib.XEffects.XEffectsSystem.OnClearEffectCommand(Vintagestory.API.Common.TextCommandCallingArgs)">
             <summary>
-            Called when the clear effect was called.
+            Called when the clear effect command was called.
+            </summary>
+            <param name="arguments"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XLib.XEffects.XEffectsSystem.OnAddEffectCommand(Vintagestory.API.Common.TextCommandCallingArgs)">
+            <summary>
+            Called when the add effect command was called.
+            </summary>
+            <param name="arguments"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XLib.XEffects.XEffectsSystem.OnRemoveEffectCommand(Vintagestory.API.Common.TextCommandCallingArgs)">
+            <summary>
+            Called when the add effect command was called.
             </summary>
             <param name="arguments"></param>
             <returns></returns>

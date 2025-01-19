@@ -172,9 +172,7 @@ namespace XSkills
             api.RegisterBlockBehaviorClass("XSkillsOres", typeof(XSkillsOreBehavior));
             api.RegisterBlockBehaviorClass("XSkillsGems", typeof(XSkillsGemBehavior));
             api.RegisterBlockBehaviorClass("XSkillsBomb", typeof(XSkillsBombBehavior));
-
-            //items
-            api.RegisterItemClass("XSkillsItemPickaxe", typeof(XSkillsItemPickaxe));
+            api.RegisterCollectibleBehaviorClass("XSkillsPickaxeBehaivor", typeof(PickaxeBehaivor));
 
             ClassExpMultipliers["commoner"] = 0.1f;
             ClassExpMultipliers["miner"] = 0.2f;

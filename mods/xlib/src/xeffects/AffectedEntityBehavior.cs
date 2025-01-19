@@ -383,14 +383,27 @@ namespace XLib.XEffects
         /// Removes an effect with the specified name.
         /// </summary>
         /// <param name="name">The name.</param>
+        /// <param name="allowDisplayNames">if set to <c>true</c> the method also looks for matching display names.</param>
         /// <returns></returns>
-        public bool RemoveEffect(string name)
+        public bool RemoveEffect(string name, bool allowDisplayNames = false)
         {
             if (this.Effects.TryGetValue(name, out Effect effect))
             {
                 effect.OnRemoved();
                 MarkDirty();
                 return this.Effects.Remove(name);
+            }
+            if (allowDisplayNames)
+            {
+                foreach (Effect other in this.Effects.Values)
+                {
+                    if (other.EffectType.DisplayName.Equals(name))
+                    {
+                        other.OnRemoved();
+                        MarkDirty();
+                        return this.Effects.Remove(other.EffectType.Name);
+                    }
+                }
             }
             return false;
         }

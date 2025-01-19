@@ -1,15 +1,19 @@
 [
   {
     "file": "game:itemtypes/tool/pickaxe",
-    "op": "add",
-    "path": "/class",
-    "value": "XSkillsItemPickaxe" 
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value":[{
+      "name": "XSkillsPickaxeBehaivor" 
+    }]
   },
   {
     "file": "swordz:itemtypes/tool/pickaxe",
-    "op": "add",
-    "path": "/class",
-    "value": "XSkillsItemPickaxe" 
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value":[{
+      "name": "XSkillsPickaxeBehaivor" 
+    }]
   },
   {
     "file": "game:blocktypes/stone/rock",

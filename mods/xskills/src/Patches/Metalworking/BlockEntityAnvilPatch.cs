@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
@@ -401,6 +402,11 @@ namespace XSkills
                     }
                 }
             }
+
+            //count how much tools, armor, weapons have been crafted
+            //ITreeAttribute tree = byPlayer.Entity.WatchedAttributes.GetOrAddTreeAttribute("forged");
+            //string type = __state.recipe?.Output.ResolvedItemstack?.Collectible.Attributes["type"]?.AsString();
+            //if (type != null) tree.SetInt(type, tree.GetInt(type, 0));
         }
 
         public static bool recipeVoxelsPrefix(BlockEntityAnvil __instance, out bool[,,] __result)

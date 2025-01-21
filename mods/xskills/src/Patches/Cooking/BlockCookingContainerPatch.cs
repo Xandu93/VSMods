@@ -97,10 +97,10 @@ namespace XSkills
             //desalinate
             if (recipe != null)
             {
-                if (recipe.Code == "salt")
+                if (recipe.Code == "salt" || recipe.Code == "lime")
                 {
                     PlayerAbility playerAbility = playerSkill[cooking.DesalinateId];
-                    if (playerAbility == null || stacks[0].StackSize * 0.01f < playerAbility.Value(0, 10000)) return false;
+                    if (playerAbility == null || playerAbility.Tier <= 0) return false;
                 }
                 __result = true;
             }
@@ -140,7 +140,10 @@ namespace XSkills
 
             Cooking cooking = player.Entity.Api.ModLoader.GetModSystem<XLeveling>()?.GetSkill("cooking") as Cooking;
             if (cooking == null) return;
-            cooking.ApplyAbilities(outputSlot, player, 0.0f);
+            if (outputSlot?.Itemstack != null) 
+                cooking.ApplyAbilities(outputSlot, player, 0.0f);
+            else if (cookingSlotsProvider?.Slots?[0].Itemstack != null) 
+                cooking.ApplyAbilities(cookingSlotsProvider.Slots[0], player, 0.0f);
         }
 
         /// <summary>

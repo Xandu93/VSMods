@@ -300,7 +300,7 @@
   "ability-dilution": "Dilution",
   "abilitydesc-dilution": "Augmente le nombre de portions lorsque vous cuisinez de {0}% et {1}% additionels pour chaque niveau de votre compétence de Cuisine. Plafonné à {2}%.",
   "ability-desalinate": "Désaliniser",
-  "abilitydesc-desalinate": "Vous permet de remplir un pot avec de l'eau pour en cuire le sel. Vous devez remplir tous les emplacements avec de l'eau pour en récupérer le sel. Vous recevez 1 sel pour chaque 4*{0} litres d'eau.",
+  "abilitydesc-desalinate": "Allows you to fill a pot with water to create salt or other items. You need to fill all cooking slots with water. You receive {0} primary items and {1} secondary items for every 4*6 liters of water.",
   "ability-saltybackpack": "Sac à dos salé",
   "abilitydesc-saltybackpack": "Les ingrédients de cuisine dans votre sac à dos périssent {0}% moins vite que normalement.",
   "ability-gourmet" : "Gourmet",

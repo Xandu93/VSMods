@@ -8,10 +8,7 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
-using Vintagestory.Client.NoObf;
-using Vintagestory.Common;
 using Vintagestory.GameContent;
-using Vintagestory.Server;
 using XLib.XEffects;
 using XLib.XLeveling;
 
@@ -92,7 +89,7 @@ namespace XSkills
                 "desalinate",
                 "xskills:ability-desalinate",
                 "xskills:abilitydesc-desalinate",
-                3, 3, new int[] { 4, 3, 2 }));
+                3, 3, new int[] { 1, 1, 2, 1, 4, 2 }));
 
             // ingredients in backpack perish slower
             // 0: water needed per salt
@@ -144,10 +141,6 @@ namespace XSkills
                 "xskills:abilitydesc-eggtimer",
                 8));
 
-            if (!CookingRecipe.NamingRegistry.ContainsKey("salt"))
-            {
-                CookingRecipe.NamingRegistry.Add("salt", new XSkillsCookingRecipeNaming());
-            }
             this[SaltyBackpackId].OnPlayerAbilityTierChanged += OnSaltyBackpack;
 
             ClassExpMultipliers["commoner"] = 0.1f;
@@ -453,28 +446,26 @@ namespace XSkills
 
             //desalinate
             playerAbility = skill[this.DesalinateId];
-            if (playerAbility.Tier > 0 && mealContainer?.GetRecipeCode(world, outputStack) == "salt")
+            if (playerAbility.Tier > 0 && (
+                outputStack.Collectible.Code.Path.Equals("salt") ||
+                outputStack.Collectible.Code.Path.Equals("lime")))
             {
-                int newServings = (int)(scaledCooked / playerAbility.Value(0));
-                Item itemSalt = world.GetItem(new AssetLocation("game:salt"));
-                InventorySmelting inv = outputSlot.Inventory as InventorySmelting;
-
-                if (itemSalt != null && newServings > 0 && inv != null)
+                ItemSlot slot = (outputSlot.Inventory as InventorySmelting)?.CookingSlots[1];
+                int size0 = outputStack.StackSize * playerAbility.Value(0);
+                int size1 = outputStack.StackSize * playerAbility.Value(1);
+                if (slot != null && slot.Itemstack == null)
                 {
-                    ItemStack saltStack = new ItemStack(itemSalt, newServings);
-                    mealContainer.SetContents(null, outputStack, null, 0.0f);
-                    outputSlot.TryPutInto(world, inv[1]);
-                    if (outputSlot.Empty)
-                    {
-                        outputSlot.Itemstack = saltStack;
-                        mealContainer = null;
-                        outputStack = saltStack;
-                        contentStacks = new ItemStack[] { outputStack };
-                        outputSlot.MarkDirty();
-                    }
+                    string itemName = outputStack.Collectible.Code.Path.Equals("salt") ? "game:lime" : "game:salt";
+                    outputStack.StackSize = size0;
+                    Item itemLime = world.GetItem(new AssetLocation(itemName));
+                    ItemStack stack = itemLime != null && size1 > 0 ? new ItemStack(itemLime, size1) : null;
+                    slot.Itemstack = stack;
+                    slot.MarkDirty();
+                    outputSlot.MarkDirty();
                 }
             }
-            else if (mealContainer != null)
+
+            if (mealContainer != null)
             {
                 //Happy meal
                 playerAbility = skill[this.HappyMealId];
@@ -513,7 +504,11 @@ namespace XSkills
                     {
                         if (mealContainer == null)
                         {
-                            freshHoursAttribute.value[0] = outputStack.Collectible.TransitionableProps[0].FreshHours.avg * (1.0f + playerAbility.SkillDependentFValue());
+                            TransitionableProperties[] transProps = outputStack.Collectible.TransitionableProps;
+                            if (transProps != null)
+                            {
+                                freshHoursAttribute.value[0] = transProps[0].FreshHours.avg * (1.0f + playerAbility.SkillDependentFValue());
+                            }
                         }
                         else
                         {
@@ -666,23 +661,6 @@ namespace XSkills
             }
         }
     }//!class Cooking
-
-    public class XSkillsCookingRecipeNaming : ICookingRecipeNamingHelper
-    {
-        public string GetNameForIngredients(IWorldAccessor world, string recipeCode, ItemStack[] stacks)
-        {
-            string str = "";
-            bool first = true;
-            foreach (ItemStack stack in stacks)
-            {
-                if (!first) str += ", ";
-                if (stack?.Collectible.Code.Path == "waterportion") return Lang.Get("game:item-salt");
-                else if (stack != null) str += stack.GetName();
-                first = false;
-            }
-            return str;
-        }
-    }//!class XSkillsCookingRecipeNaming
 
     [ProtoContract]
     public class CookingSkillConfig : CustomSkillConfig

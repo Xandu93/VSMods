@@ -300,7 +300,7 @@
 	 "ability-dilution": "Просто добавь воды",
 	 "abilitydesc-dilution": "Повышает количество порций приготовленных блюд на {0}%, плюс ещё на {1}% за каждый уровень навыка кулинарии. Максимальное значение: {2}%.",
 	 "ability-desalinate": "Выпаривание",
-	 "abilitydesc-desalinate": "Позволяет получать в котелке соль из воды. Для этого нужно заполнить водой все ячейки котелка. Количество воды для получения 1 соли: 4*{0} л.",
+  "abilitydesc-desalinate": "Allows you to fill a pot with water to create salt or other items. You need to fill all cooking slots with water. You receive {0} primary items and {1} secondary items for every 4*6 liters of water.",
 	 "ability-saltybackpack": "Просоленный рюкзак",
 	 "abilitydesc-saltybackpack": "Скорость порчи ингредиентов для готовки в вашем рюкзаке составляет {0}% от обычной.",
 	 "ability-gourmet" : "Гурман",

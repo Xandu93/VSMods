@@ -1,5 +1,5 @@
 {
-  "code": "salt",
+  "code": "lime",
   "perishableProps": {
     "freshHours": { "avg": 1 },
     "transitionHours": { "avg": 1 },
@@ -16,7 +16,7 @@
       "validStacks": [
         {
           "type": "item",
-          "code": "game:saltwaterportion",
+          "code": "game:waterportion",
           "shapeElement": "bowl/water"
         }
       ],
@@ -25,5 +25,5 @@
       "portionSizeLitres": 6
     }
   ],
-  "cooksInto": { "type": "Item", "code": "game:salt", "quantity": 1 }
+  "cooksInto": { "type": "Item", "code": "game:lime", "quantity": 1 }
 }

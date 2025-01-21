@@ -58,7 +58,7 @@ namespace XLib.XEffects
         public override void FromTree(ITreeAttribute tree)
         {
             base.FromTree(tree);
-            this.DamageSource.Source = (EnumDamageSource)tree.GetInt("DamageSource", (int)EnumDamageSource.Unknown);
+            this.DamageSource.Source = (EnumDamageSource)tree.GetInt("DamageSource", (int)EnumDamageSource.Internal);
             this.DamageSource.DamageTier = tree.GetInt("DamageTier", 0);
             this.DamageSource.Type = (EnumDamageType)tree.GetInt("DamageType", (int)EnumDamageType.Injury);
         }

@@ -305,7 +305,7 @@
   "ability-dilution": "希釈",
   "abilitydesc-dilution": "調理時に得る料理数を{0}%増加させ、さらに調理スキルのレベル毎に{1}%増加させます。上限は{2}%です。",
   "ability-desalinate": "脱塩",
-  "abilitydesc-desalinate": "塩を得る為に、鍋に水を入れることが出来るようになります。塩を得る為には、すべての調理スロットに水を満たす必要があります。水4*{0}L毎に塩1個が得られます。",
+  "abilitydesc-desalinate": "Allows you to fill a pot with water to create salt or other items. You need to fill all cooking slots with water. You receive {0} primary items and {1} secondary items for every 4*6 liters of water.",
   "ability-saltybackpack": "塩塗れの鞄",
   "abilitydesc-saltybackpack": "リュックの中の食材は、通常より腐敗が{0}%遅くなります。",
   "ability-gourmet" : "美食家",

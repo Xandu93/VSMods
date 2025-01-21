@@ -259,7 +259,9 @@ namespace XLib.XEffects
                     if (this.Effects.ContainsKey(attributeTrigger.ToTrigger.Name)) continue;
                     if (attributeTrigger.ShouldTrigger(this.entity, 1.0f, system.Config.tiggerInterval))
                     {
-                        if (this.IsAffectedBy(trigger.ToTrigger?.Name)) continue;
+                        if (trigger.ToTrigger == null) continue;
+                        if (this.IsAffectedBy(trigger.ToTrigger.Name)) continue;
+                        if (IsImmune(trigger.ToTrigger.Name)) continue;
                         Effect effect = trigger.ToTrigger.CreateEffect();
                         if (effect == null) continue;
 

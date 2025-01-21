@@ -10,10 +10,18 @@
           "cures": [
             {
               "effect": "xdiseases:bleeding",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
               "ingredient": true
             },
             {
               "effect": "xdiseases:cold",
+              "intensity": 0.0,
+              "minintensity": 0.5,
+              "healinggain": 0.0002,
+              "maxhealing": 0.0004,
               "ingredient": true
             }
           ]
@@ -25,10 +33,18 @@
           "cures": [
             {
               "effect": "xdiseases:rabies",
+              "intensity": 0.1,
+              "minintensity": 0.2,
+              "healinggain": 0.0003,
+              "maxhealing": 0.0002,
               "ingredient": true
             },
             {
               "effect": "xdiseases:scurvy",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.000005,
+              "maxhealing": 0.005,
               "ingredient": true
             }
           ]
@@ -40,10 +56,18 @@
           "cures": [
             {
               "effect": "xdiseases:diarrhea",
+              "intensity": 0.0,
+              "minintensity": 0.5,
+              "healinggain": 0.0002,
+              "maxhealing": 0.0004,
               "ingredient": true
             },
             {
               "effect": "xdiseases:foodpoisoning",
+              "intensity": 0.0,
+              "minintensity": 0.3,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             }
           ]
@@ -55,10 +79,18 @@
           "cures": [
             {
               "effect": "xdiseases:infection",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.0001,
+              "maxhealing": 0.001,
               "ingredient": true
             },
             {
               "effect": "xdiseases:fracture",
+              "intensity": 0.0,
+              "minintensity": 0.5,
+              "healinggain": 0.0002,
+              "maxhealing": 0.0004,
               "ingredient": true
             }
           ]
@@ -70,6 +102,10 @@
           "cures": [
             {
               "effect": "xdiseases:bleeding",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.0001,
+              "maxhealing": 0.001,
               "ingredient": true
             },
             {
@@ -89,10 +125,18 @@
           "cures": [
             {
               "effect": "xdiseases:diarrhea",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.000005,
+              "maxhealing": 0.005,
               "ingredient": true
             },
             {
               "effect": "xdiseases:rabies",
+              "intensity": 0.0,
+              "minintensity": 0.3,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             }
           ]
@@ -104,6 +148,10 @@
           "cures": [
             {
               "effect": "xdiseases:tetanus",
+              "intensity": 0.1,
+              "minintensity": 0.2,
+              "healinggain": 0.0003,
+              "maxhealing": 0.0002,
               "ingredient": true
             }
           ]
@@ -115,6 +163,10 @@
           "cures": [
             {
               "effect": "xdiseases:scurvy",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.0001,
+              "maxhealing": 0.001,
               "ingredient": true
             }
           ]
@@ -126,10 +178,18 @@
           "cures": [
             {
               "effect": "xdiseases:blindness",
+              "intensity": 0.0,
+              "minintensity": 0.5,
+              "healinggain": 0.0002,
+              "maxhealing": 0.0004,
               "ingredient": true
             },
             {
               "effect": "xdiseases:tetanus",
+              "intensity": 0.2,
+              "minintensity": 0.5,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             }
           ]
@@ -141,10 +201,18 @@
           "cures": [
             {
               "effect": "xdiseases:diarrhea",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
               "ingredient": true
             },
             {
               "effect": "xdiseases:foodpoisoning",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.000005,
+              "maxhealing": 0.005,
               "ingredient": true
             }
           ]
@@ -156,10 +224,18 @@
           "cures": [
             {
               "effect": "xdiseases:cold",
+              "intensity": 0.2,
+              "minintensity": 0.5,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             },
             {
               "effect": "xdiseases:pneumonia",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
               "ingredient": true
             }
           ]
@@ -186,10 +262,18 @@
           "cures": [
             {
               "effect": "xdiseases:blindness",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.000005,
+              "maxhealing": 0.005,
               "ingredient": true
             },
             {
               "effect": "xdiseases:rabies",
+              "intensity": 0.0,
+              "minintensity": 0.5,
+              "healinggain": 0.0002,
+              "maxhealing": 0.0004,
               "ingredient": true
             }
           ]
@@ -209,6 +293,10 @@
             },
             {
               "effect": "xdiseases:tetanus",
+              "intensity": 0.0,
+              "minintensity": 0.3,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             }
           ]
@@ -220,10 +308,18 @@
           "cures": [
             {
               "effect": "xdiseases:blindness",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
               "ingredient": true
             },
             {
               "effect": "xdiseases:infection",
+              "intensity": 0.0,
+              "minintensity": 0.3,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             }
           ]
@@ -235,10 +331,18 @@
           "cures": [
             {
               "effect": "xdiseases:diarrhea",
+              "intensity": 0.2,
+              "minintensity": 0.5,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             },
             {
               "effect": "xdiseases:infection",
+              "intensity": 0.0,
+              "minintensity": 0.5,
+              "healinggain": 0.0002,
+              "maxhealing": 0.0004,
               "ingredient": true
             }
           ]
@@ -250,10 +354,18 @@
           "cures": [
             {
               "effect": "xdiseases:blindness",
+              "intensity": 0.2,
+              "minintensity": 0.5,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             },
             {
               "effect": "xdiseases:infection",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
               "ingredient": true
             }
           ]
@@ -265,10 +377,18 @@
           "cures": [
             {
               "effect": "xdiseases:cold",
+              "intensity": 0.0,
+              "minintensity": 0.3,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             },
             {
               "effect": "xdiseases:rabies",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
               "ingredient": true
             }
           ]
@@ -288,6 +408,10 @@
             },
             {
               "effect": "xdiseases:pneumonia",
+              "intensity": 0.0,
+              "minintensity": 0.5,
+              "healinggain": 0.0002,
+              "maxhealing": 0.0004,
               "ingredient": true
             }
           ]
@@ -299,10 +423,18 @@
           "cures": [
             {
               "effect": "xdiseases:infection",
+              "intensity": 0.1,
+              "minintensity": 0.2,
+              "healinggain": 0.0003,
+              "maxhealing": 0.0002,
               "ingredient": true
             },
             {
               "effect": "xdiseases:scurvy",
+              "intensity": 0.3,
+              "minintensity": 0.5,
+              "healinggain": 0.0001,
+              "maxhealing": 0.0002,
               "ingredient": true
             }
           ]
@@ -314,10 +446,18 @@
           "cures": [
             {
               "effect": "xdiseases:diarrhea",
+              "intensity": 0.0,
+              "minintensity": 0.3,
+              "healinggain": 0.0,
+              "maxhealing": 0.0,
               "ingredient": true
             },
             {
               "effect": "xdiseases:rabies",
+              "intensity": 0.1,
+              "minintensity": 0.4,
+              "healinggain": 0.0001,
+              "maxhealing": 0.001,
               "ingredient": true
             }
           ]

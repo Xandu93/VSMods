@@ -304,7 +304,7 @@
   "ability-dilution": "Verd\u00fcnnung",
   "abilitydesc-dilution": "Erh\u00f6ht die Anzahl der Portionen, die du beim Kochen erh\u00e4lst, um {0}% und zus\u00e4tzlich {1}% f\u00fcr jede Stufe der Kochfertigkeit. Begrenzt auf {2}%.",
   "ability-desalinate": "Entsalzen",
-  "abilitydesc-desalinate": "Erm\u00f6glicht es dir, einen Topf mit Wasser zu f\u00fcllen, um Salz zu kochen. Du musst alle Kochpl\u00e4tze mit Wasser f\u00fcllen, um Salz zu kochen. Du erh\u00e4lst 1 Salz pro 4 * {0} Liter Wasser.",
+  "abilitydesc-desalinate": "Ermöglicht es dir, einen Topf mit Wasser zu füllen, um Salz oder andere Gegenstände herzustellen. Du musst alle Kochplätze mit Wasser füllen. Du erhälst {0} Primärgegenstände und {1} Sekundärgegenstände für jeweils 4*6 Liter Wasser.",
   "ability-saltybackpack": "Salziger Rucksack",
   "abilitydesc-saltybackpack": "Kochzutaten in deinem Rucksack verderben nur {0}% so schnell wie normal.",
   "ability-gourmet" : "Gourmet",

@@ -300,7 +300,7 @@
   "ability-dilution": "Zředěný",
   "abilitydesc-dilution": "Zvyšuje počet porcí které získáte při vaření o {0}% a o další {1}% za každou úroveň Gastronomie. Limitováno do {2}%.",
   "ability-desalinate": "Odsolování",
-  "abilitydesc-desalinate": "Dovolí ti naplnit hrnec vodou a vyvařit ji na sůl. Musíš vyplnit všechny sloty vodou aby se ti to povedlo. Získáš takto 1 sůl za každé 4*{0} liters of water.",
+  "abilitydesc-desalinate": "Allows you to fill a pot with water to create salt or other items. You need to fill all cooking slots with water. You receive {0} primary items and {1} secondary items for every 4*6 liters of water.",
   "ability-saltybackpack": "Přesolený batoh",
   "abilitydesc-saltybackpack": "Uvařené věci ve tvém batohu se kazí jen z {0}% jak běžně.",
   "ability-gourmet" : "Gurmán",

@@ -8,7 +8,6 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.Client.NoObf;
 using Vintagestory.Common;
-using Vintagestory.GameContent;
 using Vintagestory.Server;
 using XLib.XLeveling;
 
@@ -44,7 +43,6 @@ namespace XSkills
 
                 BlockEntityAnvilPatch.Apply(harmony, api.ClassRegistry.GetBlockEntity("Anvil"));
                 BlockEntityOvenPatch.Apply(harmony, api.ClassRegistry.GetBlockEntity("Oven"), xskills);
-                CookingRecipePatch.Apply(harmony, typeof(CookingRecipe));
 
                 type = api.ClassRegistry.GetBlockEntity("ExpandedOven");
                 if (type != null) BlockEntityOvenPatch.Apply(harmony, type, xskills);

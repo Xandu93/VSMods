@@ -298,7 +298,7 @@
   "ability-dilution": "Розчинення",
   "abilitydesc-dilution": "Підвищує кількість порцій приготованих страв на {0}% плюс ще на {1}% за кожен рівень навику Кулінарія. Максимальне значення: {2}%.",
   "ability-desalinate": "Випаровування",
-  "abilitydesc-desalinate": "Дозволяє отримувати в казанку сіль із води. Для цього потрібно заповнити водою всі комірки казанка. Кількість води для одержання 1 солі: 4*{0} л.",
+  "abilitydesc-desalinate": "Allows you to fill a pot with water to create salt or other items. You need to fill all cooking slots with water. You receive {0} primary items and {1} secondary items for every 4*6 liters of water.",
   "ability-saltybackpack": "Засолений рюкзак",
   "abilitydesc-saltybackpack": "Швидкість псування інгредієнтів для готування у рюкзаку становить {0}% від звичайної.",
   "ability-gourmet" : "Гурман",

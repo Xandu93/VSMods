@@ -6809,9 +6809,9 @@
             </summary>
             <param name="playerSkillSet">The player skill set.</param>
         </member>
-        <member name="M:XLib.XLeveling.XLevelingServer.OnPlayerJoin(Vintagestory.API.Server.IServerPlayer)">
+        <member name="M:XLib.XLeveling.XLevelingServer.OnPlayerCreate(Vintagestory.API.Server.IServerPlayer)">
             <summary>
-            Called when a player joins the game.
+            Called when a player joins the game for the first time.
             Sets up the player group.
             </summary>
             <param name="byPlayer"></param>

@@ -107,7 +107,7 @@ namespace XLib.XLeveling
 
             api.Event.PlayerNowPlaying += OnPlayerNowPlaying;
             api.Event.PlayerDisconnect += OnPlayerDisconnect;
-            api.Event.PlayerJoin += OnPlayerJoin;
+            api.Event.PlayerCreate += OnPlayerCreate;
             api.Event.GameWorldSave += OnWorldSave;
             api.Event.PlayerDeath += OnPlayerDeath;
             this.Config = new Config();
@@ -131,7 +131,8 @@ namespace XLib.XLeveling
             this.LoadData();
 
             //create chat channel
-            if (api.Groups.GetPlayerGroupByName(XLeveling.XLibGroupName) == null)
+            PlayerGroup = api.Groups.GetPlayerGroupByName(XLeveling.XLibGroupName);
+            if (PlayerGroup == null)
             {
                 PlayerGroup = new PlayerGroup();
                 PlayerGroup.Name = XLeveling.XLibGroupName;
@@ -139,6 +140,7 @@ namespace XLib.XLeveling
                 api.Groups.AddPlayerGroup(PlayerGroup);
                 PlayerGroup.Md5Identifier = GameMath.Md5Hash(PlayerGroup.Uid + "null");
             }
+            PlayerGroup.JoinPolicy = "everyone";
 
             //create network channel and register handlers
             this.channel = api.Network.RegisterChannel("XLeveling");
@@ -375,11 +377,11 @@ namespace XLib.XLeveling
         }
 
         /// <summary>
-        /// Called when a player joins the game.
+        /// Called when a player joins the game for the first time.
         /// Sets up the player group.
         /// </summary>
         /// <param name="byPlayer"></param>
-        private void OnPlayerJoin(IServerPlayer byPlayer)
+        private void OnPlayerCreate(IServerPlayer byPlayer)
         {
             if (PlayerGroup == null) return;
             if (byPlayer.GetGroup(PlayerGroup.Uid) == null)

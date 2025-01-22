@@ -84,7 +84,8 @@ namespace XSkills
                 3, 3, new int[] { 10, 1, 20, 20, 1, 30, 20, 1, 40 }));
 
             // you can cook water into salt
-            // 0: water needed per salt
+            // 0: primary result
+            // 1: secondary result
             DesalinateId = this.AddAbility(new Ability(
                 "desalinate",
                 "xskills:ability-desalinate",

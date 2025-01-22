@@ -327,6 +327,13 @@ namespace XInvTweaks
                         int demand = collectibles[key];
                         WeightedSlot dest = destInv.GetBestSuitedSlot(slot);
                         if (dest == null || dest.slot == null) break;
+                        if (dest.slot.Itemstack != null)
+                        {
+                            //for some reason the game can say it would be a good idea to merge two cooking pots
+                            //and then crashes when you actually try to merge them
+                            //this should prevent it
+                            if (dest.slot.Itemstack.StackSize >= dest.slot.Itemstack.Collectible.MaxStackSize) break;
+                        }
 
                         if (slot is ItemSlotOffhand) break;
                         int transfer = demand > 0 ? Math.Min(demand, slot.StackSize) : slot.StackSize;

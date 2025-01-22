@@ -32,15 +32,6 @@
             The mining speed modifiers.
             </value>
         </member>
-        <member name="P:XLib.XEffects.AffectedEntityBehavior.Immunities">
-            <summary>
-            Gets the immunities.
-            </summary>
-            <value>
-            The immunities. If a player is immune to an effect, he can not get the same effect 
-            for a limited amount of time.
-            </value>
-        </member>
         <member name="F:XLib.XEffects.AffectedEntityBehavior.effectTimer">
             <summary>
             The timer for effects
@@ -185,6 +176,12 @@
             </summary>
             <param name="name">The name of the effect.</param>
             <param name="duration">The immunity duration.</param>
+        </member>
+        <member name="M:XLib.XEffects.AffectedEntityBehavior.GetImmunity(System.String)">
+            <summary>
+            Gets how long the entity is immune to an effect.
+            </summary>
+            <param name="name">The name of the effect.</param>
         </member>
         <member name="T:XLib.XEffects.CureProps">
             <summary>

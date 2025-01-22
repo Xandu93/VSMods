@@ -37,39 +37,5 @@
         ]
       }
     }]
-  },
-  {
-    "file": "game:blocktypes/clay/jug",
-    "op": "addmerge",
-    "path": "/behaviors",
-    "value": [{
-      "name": "XLibConsumable"
-    }]
-  },
-  {
-    "file": "game:blocktypes/wood/bucket",
-    "op": "addmerge",
-    "path": "/behaviors",
-    "value": [{
-      "name": "XLibConsumable"
-    }]
-  },
-  {
-    "file": "aculinaryartillery:blocktypes/bottle",
-    "op": "addmerge",
-    "path": "/behaviorsByType/*",
-    "value": [{
-      "name": "XLibConsumable",
-      "properties": { "consumes": 0.25 }
-    }]
-  },
-  {
-    "file": "tavernadditions:blocktypes/mug/mug",
-    "op": "addmerge",
-    "path": "/behaviors",
-    "value": [{
-      "name": "XLibConsumable",
-      "properties": { "consumes": 0.5 }
-    }]
-  },
+  }
 ]

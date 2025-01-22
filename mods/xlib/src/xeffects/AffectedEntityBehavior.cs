@@ -18,7 +18,6 @@ namespace XLib.XEffects
         /// <returns></returns>
         public override string PropertyName() => "Affected";
 
-
         /// <summary>
         /// Gets the effects.
         /// </summary>
@@ -34,15 +33,6 @@ namespace XLib.XEffects
         /// The mining speed modifiers.
         /// </value>
         protected Dictionary<EnumTool, float> MiningSpeedModifiers { get; private set; }
-
-        /// <summary>
-        /// Gets the immunities.
-        /// </summary>
-        /// <value>
-        /// The immunities. If a player is immune to an effect, he can not get the same effect 
-        /// for a limited amount of time.
-        /// </value>
-        protected Dictionary<string, float> Immunities { get; private set; }
 
         /// <summary>
         /// The timer for effects
@@ -82,7 +72,7 @@ namespace XLib.XEffects
             if (this.entity as EntityPlayer != null)
             {
                 this.MiningSpeedModifiers = new Dictionary<EnumTool, float>();
-                this.Immunities = new Dictionary<string, float>();
+                this.entity.WatchedAttributes.GetOrAddTreeAttribute("immunities");
 
                 for (EnumTool tool = 0; tool <= EnumTool.Scythe; tool++)
                 {
@@ -213,18 +203,22 @@ namespace XLib.XEffects
                     this.Effects.Remove(effect.EffectType.Name);
                 }
                 List<string> toRemove2 = new List<string>();
-                foreach (KeyValuePair<string, float> pair in Immunities)
+                ITreeAttribute immunities = entity.WatchedAttributes.GetTreeAttribute("immunities");
+                if (immunities != null)
                 {
-                    float value = pair.Value - effectTimer;
-                    if(value < 0.0f)
+                    foreach (KeyValuePair<string, IAttribute> pair in immunities)
                     {
-                        toRemove2.Add(pair.Key);
+                        float value = (float)pair.Value.GetValue() - effectTimer;
+                        if (value < 0.0f)
+                        {
+                            toRemove2.Add(pair.Key);
+                        }
+                        else immunities.SetFloat(pair.Key, value);
                     }
-                    else Immunities[pair.Key] = value;
-                }
-                foreach (string key in toRemove2)
-                {
-                    Immunities.Remove(key);
+                    foreach (string key in toRemove2)
+                    {
+                        immunities.RemoveAttribute(key);
+                    }
                 }
 
                 effectTimer = 0;
@@ -339,11 +333,11 @@ namespace XLib.XEffects
         /// Adds an effect.
         /// </summary>
         /// <param name="effect">The effect.</param>
-        public void AddEffect(Effect effect)
+        public bool AddEffect(Effect effect)
         {
-            if (effect == null) return;
-            if (Immunities.ContainsKey(effect.EffectType.Name)) return;
-            if (!entity.Alive && effect.ExpiresAtDeath) return;
+            if (effect == null) return false;
+            if (IsImmune(effect.EffectType.Name)) return false;
+            if (!entity.Alive && effect.ExpiresAtDeath) return false;
 
             effect.Behavior = this;
             foreach (Effect other in Effects.Values)
@@ -351,7 +345,7 @@ namespace XLib.XEffects
                 if (other.EffectType.Name == effect.EffectType.Name)
                 {
                     other.OnRenewed(effect);
-                    return;
+                    return true;
                 }
 
                 if (other.EffectType.EffectGroup != null &&
@@ -367,6 +361,7 @@ namespace XLib.XEffects
             this.Effects.Add(effect.EffectType.Name, effect);
             MarkDirty();
             effect.OnStart();
+            return true;
         }
 
         /// <summary>
@@ -468,7 +463,7 @@ namespace XLib.XEffects
         /// </returns>
         public bool IsImmune(string name)
         {
-            return Immunities.ContainsKey(name);
+            return entity.WatchedAttributes.GetTreeAttribute("immunities")?.HasAttribute(name) ?? false;
         }
 
         /// <summary>
@@ -478,8 +473,20 @@ namespace XLib.XEffects
         /// <param name="duration">The immunity duration.</param>
         public void SetImmunity(string name, float duration)
         {
-            this.Immunities.TryGetValue(name, out float old);
-            this.Immunities[name] = Math.Max(duration, old);
+            ITreeAttribute immunities = entity.WatchedAttributes.GetTreeAttribute("immunities");
+            if (immunities == null) return;
+            float old = immunities.GetFloat(name);
+            immunities.SetFloat(name, Math.Max(duration, old));
+        }
+
+        /// <summary>
+        /// Gets how long the entity is immune to an effect.
+        /// </summary>
+        /// <param name="name">The name of the effect.</param>
+        public float GetImmunity(string name)
+        {
+            float result = entity.WatchedAttributes.GetTreeAttribute("immunities")?.GetFloat(name) ?? 0.0f;
+            return result;
         }
     }//!class EffectedEntityBehavior
 }//!namespace XLib.XEffects

@@ -540,10 +540,16 @@ namespace XLib.XEffects
             {
                 effect.Update(intensity);
                 effect.Duration = duration;
-                affected.AddEffect(effect);
-
-                string msg = string.Format("Added {0} effect to player {1}.", effect, player.PlayerName);
-                return TextCommandResult.Success(msg);
+                if (affected.AddEffect(effect))
+                {
+                    string msg = string.Format("Added {0} effect to player {1}.", effectName, player.PlayerName);
+                    return TextCommandResult.Success(msg);
+                }
+                else
+                {
+                    string msg = string.Format("Effect {0} could not be added. The player may be immune or dead.", effectName);
+                    return TextCommandResult.Error(msg, msg);
+                }
             }
         }
 

@@ -267,7 +267,7 @@ namespace XLib.XEffects
             this.ExpiresOverTime = tree.GetBool("expiresovertime", this.ExpiresOverTime);
             this.ExpiresThroughIntensity = tree.GetBool("expiresthroughintensity", this.ExpiresThroughIntensity);
             this.Accumulates = tree.GetBool("accumulates", this.Accumulates);
-            this.ImmunityDuration = tree.GetFloat("immunityduration", this.ImmunityDuration);
+            this.ImmunityDuration = (float)tree.GetDecimal("immunityduration", this.ImmunityDuration);
 
             if (Running)
             {

@@ -458,6 +458,12 @@ namespace XSkills
                 {
                     string itemName = outputStack.Collectible.Code.Path.Equals("salt") ? "game:lime" : "game:salt";
                     outputStack.StackSize = size0;
+                    if (outputStack.StackSize == 0)
+                    {
+                        outputStack = null;
+                        outputSlot.Itemstack = null;
+                    }
+
                     Item itemLime = world.GetItem(new AssetLocation(itemName));
                     ItemStack stack = itemLime != null && size1 > 0 ? new ItemStack(itemLime, size1) : null;
                     slot.Itemstack = stack;
@@ -465,6 +471,7 @@ namespace XSkills
                     outputSlot.MarkDirty();
                 }
             }
+            if (outputStack == null) return;
 
             if (mealContainer != null)
             {

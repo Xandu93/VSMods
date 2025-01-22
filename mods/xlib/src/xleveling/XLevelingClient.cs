@@ -191,16 +191,23 @@ namespace XLib.XLeveling
                 long seconds = DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
                 if (seconds - AccumulatedTimeStamp > 10)
                 {
+                    List<int> remove = new List<int>();
                     AccumulatedTimeStamp = seconds;
+                    PlayerGroupMembership membership = Array.Find(playerSkill.PlayerSkillSet.Player.Groups, (membership) => membership.GroupName == XLeveling.XLibGroupName);
+                    if (membership == null) return;
+
                     foreach (KeyValuePair<int, float> pair in AccumulatedExperience)
                     {
+                        if (pair.Value < 0.01) continue;
                         Skill skill = LocalPlayerSkillSet[pair.Key].Skill;
-                        PlayerGroupMembership membership = Array.Find(playerSkill.PlayerSkillSet.Player.Groups, (membership) => membership.GroupName == XLeveling.XLibGroupName);
-                        if (membership == null) return;
-                        string msg = Lang.Get("You received {0} experience for the {1} skill.", pair.Value, skill.DisplayName);
+                        string msg = Lang.Get("You received {0:0.00} experience for the {1} skill.", pair.Value, skill.DisplayName);
                         (world as ClientMain).eventManager.TriggerNewServerChatLine(membership.GroupUid, msg, EnumChatType.Notification, null);
+                        remove.Add(pair.Key);
                     }
-                    AccumulatedExperience.Clear();
+                    foreach (int ii in remove)
+                    {
+                        AccumulatedExperience.Remove(ii);
+                    }
                 }
             }
         }

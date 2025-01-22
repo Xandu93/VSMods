@@ -532,19 +532,19 @@ namespace XLib.XEffects
 
                     if (cure.duration != 0.0f || cure.minduration != 0.0f)
                     {
-                        dsc.Append(string.Format("\n\t\t{0}: {1:0.##} / {2:0.##}", Lang.Get("xeffects:duration"), cure.duration, cure.minduration));
+                        dsc.Append(string.Format("\n\t\t{0}: {1:0.##} » {2:0.##}", Lang.Get("xeffects:duration"), cure.duration, cure.minduration));
                     }
                     if (cure.intensity != 0.0f || cure.minintensity != 0.0f )
                     {
-                        dsc.Append(string.Format("\n\t\t{0}: {1:0.###} / {2:0.###}", Lang.Get("xeffects:intensity"), cure.intensity, cure.minintensity));
+                        dsc.Append(string.Format("\n\t\t{0}: {1:0.###} » {2:0.###}", Lang.Get("xeffects:intensity"), cure.intensity, cure.minintensity));
                     }
                     if (cure.healingrate != 0.0f || cure.maxhealingrate != 0.0f)
                     {
-                        dsc.Append(string.Format("\n\t\t{0}: {1:0.#####} / {2:0.#####}", Lang.Get("xeffects:healingrate"), cure.healingrate * 60.0f, cure.maxhealingrate * 60.0f));
+                        dsc.Append(string.Format("\n\t\t{0}: {1:0.#####} » {2:0.#####}", Lang.Get("xeffects:healingrate"), cure.healingrate * 60.0f, cure.maxhealingrate * 60.0f));
                     }
                     if (cure.healinggrowth != 0.0f || cure.maxhealinggrowth != 0.0f)
                     {
-                        dsc.Append(string.Format("\n\t\t{0}: {1:0.######} / {2:0.######}", Lang.Get("xeffects:healinggrowth"), cure.healinggrowth * 60.0f, cure.maxhealinggrowth * 60.0f));
+                        dsc.Append(string.Format("\n\t\t{0}: {1:0.######} » {2:0.######}", Lang.Get("xeffects:healinggrowth"), cure.healinggrowth * 60.0f, cure.maxhealinggrowth * 60.0f));
                     }
                 }
                 dsc.Append('\n');
@@ -624,40 +624,40 @@ namespace XLib.XEffects
                         }
                         value.Add(cureProp);
                     }
+                }
 
-                    foreach (List<CureProps> value in curesDic.Values)
+                foreach (List<CureProps> value in curesDic.Values)
+                {
+                    if (value.Count < 2) continue;
+                    CureProps result = new CureProps();
+                    foreach (CureProps props in value)
                     {
-                        if (value.Count < 2) continue;
-                        CureProps result = new CureProps();
-                        foreach (CureProps props in value)
-                        {
-                            result.ingredient = false;
-                            result.domain = props.domain;
-                            result.effect = props.effect;
-                            result.effectType ??= props.effectType;
-                            result.duration = Math.Max(result.duration, props.duration);
-                            result.minduration =
-                                result.minduration == 0 ? props.minduration :
-                                props.minduration == 0 ? result.minduration :
-                                Math.Min(result.minduration, props.minduration);
-                            result.intensity += props.intensity;
-                            result.minintensity =
-                                result.minintensity == 0 ? props.minintensity :
-                                props.minintensity == 0 ? result.minintensity :
-                                Math.Min(result.minintensity, props.minintensity);
-                            result.healinggrowth += props.healinggrowth;
-                            result.maxhealinggrowth =
-                                result.maxhealinggrowth == 0 ? props.maxhealinggrowth :
-                                props.maxhealinggrowth == 0 ? result.maxhealinggrowth :
-                                Math.Max(result.maxhealinggrowth, props.maxhealinggrowth);
-                            result.healingrate += props.healingrate;
-                            result.maxhealingrate =
-                                result.maxhealingrate == 0 ? props.maxhealingrate :
-                                props.maxhealingrate == 0 ? result.maxhealingrate :
-                                Math.Max(result.maxhealingrate, props.maxhealingrate);
-                        }
-                        cures.Add(result);
+                        result.ingredient = false;
+                        result.domain = props.domain;
+                        result.effect = props.effect;
+                        result.effectType ??= props.effectType;
+                        result.duration = Math.Max(result.duration, props.duration);
+                        result.minduration =
+                            result.minduration == 0 ? props.minduration :
+                            props.minduration == 0 ? result.minduration :
+                            Math.Min(result.minduration, props.minduration);
+                        result.intensity += props.intensity;
+                        result.minintensity =
+                            result.minintensity == 0 ? props.minintensity :
+                            props.minintensity == 0 ? result.minintensity :
+                            Math.Min(result.minintensity, props.minintensity);
+                        result.healinggrowth += props.healinggrowth;
+                        result.maxhealinggrowth =
+                            result.maxhealinggrowth == 0 ? props.maxhealinggrowth :
+                            props.maxhealinggrowth == 0 ? result.maxhealinggrowth :
+                            Math.Max(result.maxhealinggrowth, props.maxhealinggrowth);
+                        result.healingrate += props.healingrate;
+                        result.maxhealingrate =
+                            result.maxhealingrate == 0 ? props.maxhealingrate :
+                            props.maxhealingrate == 0 ? result.maxhealingrate :
+                            Math.Max(result.maxhealingrate, props.maxhealingrate);
                     }
+                    cures.Add(result);
                 }
             }
             if (contents != null)

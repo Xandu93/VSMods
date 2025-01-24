@@ -105,7 +105,7 @@ namespace XLib.XEffects
             dialogBounds.WithChild(bgBounds);
 
             this.effectTooltip?.TryClose();
-            this.effectTooltip = new EffectTooltip(this.capi, dialogBounds);
+            this.effectTooltip = this.effectTooltip ?? new EffectTooltip(this.capi, dialogBounds);
 
             SingleComposer = capi.Gui.CreateCompo("EffectFrame", dialogBounds)
                 .AddGrayBG(bgBounds)
@@ -150,7 +150,7 @@ namespace XLib.XEffects
             if (this.effectTooltip != null)
             {
                 this.effectTooltip.TryClose();
-                this.effectTooltip = null;
+                //this.effectTooltip = null;
             }
             return base.TryClose();
         }

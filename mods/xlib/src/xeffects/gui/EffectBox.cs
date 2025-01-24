@@ -96,7 +96,10 @@ namespace XLib.XEffects
             else if (this.CursorHovers)
             {
                 this.CursorHovers = false;
-                this.Tooltip.TryClose();
+                if (this.Tooltip.Effect == this.Effect)
+                {
+                    this.Tooltip.TryClose();
+                }
             }
         }
     }//!class EffectBox

@@ -385,8 +385,8 @@ namespace XLib.XLeveling
                 EnumRequirementType ignored = EnumRequirementType.WeakRequirement;
                 playerAbility.PlayerSkill.PlayerSkillSet.CheckRequirements(ignored);
 
-                playerSkillSet.UnlearnPoints -= 
-                    this.GetPointsForUnlearn() * reversedTierChange > 1 ? reversedTierChange * 1.5f : 1;
+                playerSkillSet.UnlearnPoints -=
+                    this.GetPointsForUnlearn() * ((reversedTierChange > 1) ? reversedTierChange * 1.5f : 1);
                 playerSkillSet.UnlearnCooldown = this.Config.unlearnCooldown * 60.0f;
             }
 

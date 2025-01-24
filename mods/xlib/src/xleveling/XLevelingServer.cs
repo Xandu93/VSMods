@@ -516,7 +516,7 @@ namespace XLib.XLeveling
                 playerSkillSet.CheckRequirements(ignored);
 
                 playerSkillSet.UnlearnPoints -= 
-                    this.GetPointsForUnlearn() * reversedTierChange > 1 ? reversedTierChange * 1.5f : 1;
+                    this.GetPointsForUnlearn() * ((reversedTierChange > 1) ? reversedTierChange * 1.5f : 1);
                 playerSkillSet.UnlearnCooldown = this.Config.unlearnCooldown * 60.0f;
             }
 

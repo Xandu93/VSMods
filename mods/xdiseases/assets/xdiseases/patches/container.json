@@ -96,5 +96,23 @@
     "value": [{
       "name": "XLibConsumable"
     }]
+  },
+  {
+    "file": "alchemy:blocktypes/flasks/potionflask",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "useTime": 1.45 }
+    }]
+  },
+  {
+    "file": "alchemy:blocktypes/flasks/claypotionflask",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "useTime": 1.45 }
+    }]
   }
 ]

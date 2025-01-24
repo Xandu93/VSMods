@@ -118,4 +118,24 @@
       "name": "XLibConsumable"
     }]
   },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "alchemy:blocktypes/flasks/potionflask",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "useTime": 1.45 }
+    }]
+  },
+  {
+    "dependsOn": [{ "modid": "xdiseases", "invert": true }],
+    "file": "alchemy:blocktypes/flasks/claypotionflask",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [{
+      "name": "XLibConsumable",
+      "properties": { "useTime": 1.45 }
+    }]
+  }
 ]

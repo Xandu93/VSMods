@@ -10,7 +10,7 @@ namespace XSkills
     /// <summary>
     /// Contains a collection of methods for the pottery skill.
     /// </summary>
-    public class PotteryHelper
+    public class PotteryUtil
     {
         /// <summary>
         /// Converts clay in a player inventory to usable voxels for clay form entities.
@@ -61,11 +61,11 @@ namespace XSkills
             if (clayForm == null) return;
             int ymax = Math.Min(16, clayForm.SelectedRecipe.QuantityLayers);
 
-            for (int x = 0; x < 16; x++)
+            for (int y = 0; y < ymax; ++y)
             {
-                for (int y = 0; y < ymax; y++)
+                for (int x = 0; x < 16; ++x)
                 {
-                    for (int z = 0; z < 16; z++)
+                    for (int z = 0; z < 16; ++z)
                     {
                         if (clayForm.SelectedRecipe.Voxels[x, y, z] != clayForm.Voxels[x, y, z])
                         {
@@ -219,5 +219,5 @@ namespace XSkills
             return true;
         }
 
-    }//!class PotteryHelper
+    }//!class PotteryUtil
 }//!namespace XSkills

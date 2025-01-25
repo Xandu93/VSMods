@@ -1,0 +1,176 @@
+[
+  {
+    "file": "swordz:itemtypes/axes/parts/beardedhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/clubs/parts/nadziakhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/clubs/parts/pernachhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/clubs/parts/warhammerhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/knives/parts/seaxblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/knives/parts/stilettoblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/misc/metalhaft",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/atgeirhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/becdecorbinhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/boarspearhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/halberdhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/naginatahead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/pilahead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/pollaxehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/ranseurhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/polearms/parts/voulgehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/armingswordblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/gladiusblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/khopeshblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/kilijblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/longswordblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/sabreblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/swordzshortblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/spathablade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/zweihanderblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/swords/parts/zweihandercrossguard",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/tool/parts/excavatorhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/tool/parts/sledgehammerhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "swordz:itemtypes/tool/parts/tunnelerhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  }
+]

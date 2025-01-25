@@ -3,7 +3,6 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
-using XLib.XLeveling;
 
 namespace XSkills
 {
@@ -104,6 +103,44 @@ namespace XSkills
             float quality = GetQuality(world, pos);
             if (quality <= 0.0f) return;
             stack.Attributes.SetFloat("quality", quality);
+        }
+
+        /// <summary>
+        /// Gets the type of the quality for a collectible.
+        /// Types can be: "tool", "armor", "weapon"
+        /// </summary>
+        /// <param name="collectible">The collectible.</param>
+        /// <returns></returns>
+        public static string GetQualityType(CollectibleObject collectible)
+        {
+            if (collectible == null) return null;
+            int type = collectible.Attributes?["qualityType"]?.AsInt(-1) ?? -1;
+            if (type == -1)
+            {
+                switch (collectible.Tool)
+                {
+                    case EnumTool.Chisel:
+                    case EnumTool.Shears:
+                    case EnumTool.Wrench:
+                        type = 0;
+                        break;
+                }
+            }
+            if (type < 0) return null;
+            string str = null;
+            switch (type)
+            {
+                case 0:
+                    str = "tool";
+                    break;
+                case 1:
+                    str = "armor";
+                    break;
+                case 2:
+                    str = "weapon";
+                    break;
+            }
+            return str;
         }
 
         /// <summary>

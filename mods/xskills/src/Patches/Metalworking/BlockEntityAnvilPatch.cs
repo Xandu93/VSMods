@@ -22,7 +22,6 @@ namespace XSkills
         public static void SetHelveHammered(this BlockEntityAnvil anvil, bool value) => anvil.WorkItemStack?.Attributes.SetBool("helveHammered", value);
         public static bool GetWasPlate(this BlockEntityAnvil anvil) => anvil.WorkItemStack?.Attributes.GetBool("wasPlate") ?? false;
         public static void SetWasPlate(this BlockEntityAnvil anvil, bool value) => anvil.WorkItemStack?.Attributes.SetBool("wasPlate", value);
-
         public static Vec3i[] FindFreeVoxels(this BlockEntityAnvil anvil, int count, Vec3i center, int range)
         {
 
@@ -130,6 +129,8 @@ namespace XSkills
 
     internal class BlockEntityAnvilPatch : ManualPatch
     {
+        public const int MAXFORGED = 200;
+
         public static void Apply(Harmony harmony, Type anvilType)
         {
             Type patch = typeof(BlockEntityAnvilPatch);
@@ -291,21 +292,36 @@ namespace XSkills
             }
 
             //heating hits
+            CollectibleObject collectible = __state.workItemStack.Collectible;
             playerAbility = playerSkill[__state.metalworking.HeatingHitsId];
             if (playerAbility == null || __state.anvilItemStack == null) return true;
-            float temperature = __state.workItemStack.Collectible.GetTemperature(__instance.Api.World, __state.workItemStack);
-            float meltingpoint = __state.workItemStack.Collectible.GetMeltingPoint(__instance.Api.World, null, new DummySlot(__state.anvilItemStack.GetBaseMaterial(__state.workItemStack)));
-            if (meltingpoint > 0.0f) temperature = Math.Min(temperature + playerAbility.Value(0), meltingpoint);
+            float temperature = collectible.GetTemperature(__instance.Api.World, __state.workItemStack);
+            float meltingpoint = collectible.GetMeltingPoint(__instance.Api.World, null, new DummySlot(__state.anvilItemStack.GetBaseMaterial(__state.workItemStack)));
+            if (meltingpoint > 0.0f)
+            {
+                if (temperature < meltingpoint)
+                {
+                    temperature = Math.Min(temperature + playerAbility.Value(0), meltingpoint);
+                }
+            }
             else temperature = temperature + playerAbility.Value(0);
-            __state.workItemStack.Collectible.SetTemperature(__instance.Api.World, __state.workItemStack, temperature);
+            collectible.SetTemperature(__instance.Api.World, __state.workItemStack, temperature);
 
             //blacksmith
+            collectible = __state.recipe.Output.ResolvedItemstack.Collectible;
             playerAbility = playerSkill[__state.metalworking.BlacksmithId];
-            if (playerAbility.Tier > 0 && !(__state.wasPlate && __state.recipe.Output.ResolvedItemstack.Collectible is ItemMetalPlate) && !(__state.recipe.Output.ResolvedItemstack.Collectible is ItemIngot))
+            string type = QualityUtil.GetQualityType(collectible);
+
+            if (playerAbility.Tier > 0 && 
+                !(__state.wasPlate && collectible is ItemMetalPlate) && 
+                (type != null || collectible.Tool != null))
             {
-                float quality = playerAbility.Value(0) * (Math.Min(playerSkill.Level, 20) * 0.25f);
-                quality *= 0.5f;
-                quality = Math.Min(quality + (float)byPlayer.Entity.World.Rand.NextDouble() * quality, playerAbility.Value(1));
+                int forged = type != null ?
+                    byPlayer.Entity.WatchedAttributes.GetTreeAttribute("forged")?.GetInt(type) ?? -1 : -1;
+                float quality = Math.Min(forged, MAXFORGED) * 0.01f + Math.Min(playerSkill.Level, 25) * 0.1f;
+                quality = Math.Min(quality * playerAbility.Value(0), playerAbility.Value(1) * 0.5f - 1.0f);
+                //subtract 2.0f for quenching
+                quality = Math.Min(quality + (float)byPlayer.Entity.World.Rand.NextDouble() * quality, playerAbility.Value(1) - 2.0f);
                 __state.recipe.Output.ResolvedItemstack.Attributes.SetFloat("quality", quality);
             }
 
@@ -316,8 +332,9 @@ namespace XSkills
         public static void CheckIfFinishedPostfix(BlockEntityAnvil __instance, ref AnvilState __state, IPlayer byPlayer)
         {
             //if the workitemstack was set to null, the item was finished
-            float quality = __state.recipe?.Output.ResolvedItemstack.Attributes.GetFloat("quality") ?? 0.0f;
-            __state.recipe?.Output.ResolvedItemstack.Attributes.RemoveAttribute("quality");
+            ItemStack resolvedStack = __state.recipe?.Output.ResolvedItemstack;
+            float quality = resolvedStack?.Attributes.GetFloat("quality") ?? 0.0f;
+            resolvedStack?.Attributes.RemoveAttribute("quality");
             if (__instance.WorkItemStack != null || __state.metalworking == null) return;
 
             PlayerSkill playerSkill = null;
@@ -364,13 +381,13 @@ namespace XSkills
             if (__instance.Api.Side == EnumAppSide.Client || !allowAbilities) return;
 
             //duplicator
-            if ((__state.recipe?.Output.ResolvedItemstack?.Collectible.CombustibleProps == null || __state.metalworking.IsDuplicatable(__state.recipe)) && !__state.wasPlate)
+            if ((resolvedStack?.Collectible.CombustibleProps == null || __state.metalworking.IsDuplicatable(__state.recipe)) && !__state.wasPlate)
             {
                 playerAbility = playerSkill[__state.metalworking.DuplicatorId];
                 if (playerAbility == null) return;
                 if (playerAbility.SkillDependentFValue() >= __instance.Api.World.Rand.NextDouble())
                 {
-                    ItemStack outstack = __state.recipe.Output.ResolvedItemstack.Clone();
+                    ItemStack outstack = resolvedStack.Clone();
                     outstack.Collectible.SetTemperature(__instance.Api.World, outstack, __state.workItemStack.Collectible.GetTemperature(__instance.Api.World, __state.workItemStack));
                     if (quality > 0.0f) outstack.Attributes.SetFloat("quality", quality);
                     if (helveHammer || !byPlayer.InventoryManager.TryGiveItemstack(outstack))
@@ -404,9 +421,9 @@ namespace XSkills
             }
 
             //count how much tools, armor, weapons have been crafted
-            //ITreeAttribute tree = byPlayer.Entity.WatchedAttributes.GetOrAddTreeAttribute("forged");
-            //string type = __state.recipe?.Output.ResolvedItemstack?.Collectible.Attributes["type"]?.AsString();
-            //if (type != null) tree.SetInt(type, tree.GetInt(type, 0));
+            ITreeAttribute tree = byPlayer.Entity.WatchedAttributes.GetOrAddTreeAttribute("forged");
+            string type = QualityUtil.GetQualityType(resolvedStack?.Collectible);
+            if (type != null) tree.SetInt(type, Math.Min(tree.GetInt(type, 0) + 1, MAXFORGED));
         }
 
         public static bool recipeVoxelsPrefix(BlockEntityAnvil __instance, out bool[,,] __result)

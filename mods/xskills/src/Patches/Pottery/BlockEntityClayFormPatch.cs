@@ -143,11 +143,11 @@ namespace XSkills
             if (playerAbility == null) return;
             if (playerAbility.Tier > 0)
             {
-                float finished = PotteryHelper.FinishedProportion(__instance);
+                float finished = PotteryUtil.FinishedProportion(__instance);
                 float chanceMult = Math.Min(playerAbility.Value(0) + playerAbility.Value(1) * 0.1f, playerAbility.Value(2)) * 0.01f;
                 if (chanceMult * finished * finished >= byPlayer.Entity.World.Rand.NextDouble())
                 {
-                    PotteryHelper.FinishRecipe(__instance, byPlayer.InventoryManager.ActiveHotbarSlot, byPlayer.Entity);
+                    PotteryUtil.FinishRecipe(__instance, byPlayer.InventoryManager.ActiveHotbarSlot, byPlayer.Entity);
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace XSkills
         {
             if (___workItemStack != null || byPlayer == null || __state.playerSkill == null) return;
 
-            int voxelCount = PotteryHelper.CountVoxels(__state.recipe);
+            int voxelCount = PotteryUtil.CountVoxels(__state.recipe);
 
             //experience
             __state.playerSkill.AddExperience(1.0f + voxelCount * 0.002f);
@@ -263,7 +263,7 @@ namespace XSkills
                             clayForm.AvailableVoxels--;
                             if (clayForm.AvailableVoxels < 0)
                             {
-                                PotteryHelper.AddClay(clayForm, byPlayer.InventoryManager.ActiveHotbarSlot, byPlayer.Entity);
+                                PotteryUtil.AddClay(clayForm, byPlayer.InventoryManager.ActiveHotbarSlot, byPlayer.Entity);
                             }
                             didadd = true;
                         }
@@ -374,7 +374,7 @@ namespace XSkills
                             didplace = true;
                             if (clayForm.AvailableVoxels < 0)
                             {
-                                PotteryHelper.AddClay(clayForm, byPlayer.InventoryManager.ActiveHotbarSlot, byPlayer.Entity);
+                                PotteryUtil.AddClay(clayForm, byPlayer.InventoryManager.ActiveHotbarSlot, byPlayer.Entity);
                             }
                         }
                     }

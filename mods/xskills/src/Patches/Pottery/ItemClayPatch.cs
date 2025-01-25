@@ -45,7 +45,7 @@ namespace XSkills
         {
             if (blockSel == null) return;
             BlockEntityClayForm bea = byEntity.World.BlockAccessor.GetBlockEntity(blockSel.Position) as BlockEntityClayForm;
-            PotteryHelper.AddClay(bea, slot, byEntity);
+            PotteryUtil.AddClay(bea, slot, byEntity);
         }
     }//!class ItemClayPatch
 }//!namespace XSkills

@@ -74,7 +74,7 @@ namespace XSkills
             if (player == null) return;
             foreach (ItemSlot slot in groundStorage.Inventory)
             {
-                if (slot.Itemstack != null) PotteryHelper.ApplyOnStack(player, __instance.Api.World, slot);
+                if (slot.Itemstack != null) PotteryUtil.ApplyOnStack(player, __instance.Api.World, slot);
                 __instance.MarkDirty(true);
             }
         }

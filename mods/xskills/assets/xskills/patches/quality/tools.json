@@ -1,0 +1,56 @@
+﻿[
+  {
+    "file": "game:itemtypes/toolhead/axehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/hammerhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/hoehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/knifeblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/pickaxehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/prospectingpickhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/sawblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/scythehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  },
+  {
+    "file": "game:itemtypes/toolhead/shovelhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 0}
+  }
+]

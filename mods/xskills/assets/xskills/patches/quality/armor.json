@@ -1,0 +1,44 @@
+[
+  {
+    "file": "game:itemtypes/resource/metalchain",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 1}
+  },
+  //{
+  //  "file": "game:itemtypes/resource/metallamellae",
+  //  "op": "addmerge",
+  //  "path": "/attributes",
+  //  "value": {"qualityType": 1}
+  //},
+  {
+    "file": "game:itemtypes/resource/metalnailsandstrips",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 1}
+  },
+  {
+    "file": "game:itemtypes/resource/metalplate",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 1}
+  },
+  {
+    "file": "game:itemtypes/resource/metalscale",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 1}
+  },
+  {
+    "file": "game:itemtypes/part/boss",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 1}
+  },
+  {
+    "file": "game:itemtypes/part/hoop",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 1}
+  }
+]

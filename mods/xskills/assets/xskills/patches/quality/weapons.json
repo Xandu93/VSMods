@@ -1,0 +1,20 @@
+[
+  {
+    "file": "game:itemtypes/toolhead/arrowhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "game:itemtypes/toolhead/bladehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "game:itemtypes/toolhead/spearhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  }
+]

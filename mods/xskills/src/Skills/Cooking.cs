@@ -539,7 +539,7 @@ namespace XSkills
                 else
                 {
                     float toCalc = playerAbility.Value(1) - sourceQuality;
-                    quality = skill.Level * 0.1f + 2.0f * freshness + ingredientCount * 0.2f + ingredientDiversity;
+                    quality = Math.Min(skill.Level, 25) * 0.1f + 2.0f * freshness + ingredientCount * 0.2f + ingredientDiversity;
                     quality *= 0.3125f * playerAbility.Value(0);
                     quality = Math.Min(quality + (float)world.Rand.NextDouble() * quality, playerAbility.Value(1));
                     quality = quality / playerAbility.Value(1) * toCalc;

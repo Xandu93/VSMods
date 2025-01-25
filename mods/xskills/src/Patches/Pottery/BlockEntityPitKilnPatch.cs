@@ -86,7 +86,7 @@ namespace XSkills
             if (__state == null || __instance.Inventory == null) return;
             foreach (ItemSlot slot in __instance.Inventory)
             {
-                if (slot.Itemstack != null) PotteryHelper.ApplyOnStack(__state, __instance.Api.World, slot);
+                if (slot.Itemstack != null) PotteryUtil.ApplyOnStack(__state, __instance.Api.World, slot);
                 __instance.MarkDirty(true);
             }
         }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Datastructures;
 using XLib.XLeveling;
 
 namespace XSkills
@@ -21,6 +22,20 @@ namespace XSkills
         //    }
         //    else return true;
         //}
+
+        [HarmonyPrefix]
+        [HarmonyPatch("SetTemperature")]
+        public static void SetTemperaturePrefix(IWorldAccessor world, ItemStack itemstack, float temperature, bool delayCooldown = true)
+        {
+            ITreeAttribute attr = (ITreeAttribute)itemstack?.Attributes["temperature"];
+            if (attr == null) return;
+            float diff = temperature - (float)attr.GetDecimal("temperature");
+            if (diff > -4.5f) return;
+            float quality = itemstack.Attributes.GetFloat("quality", 0.0f);
+            if (quality <= 0.0f) return;
+            //equals roughly 2.1 quality at 1200 °C
+            itemstack.Attributes.SetFloat("quality", quality - diff * 0.00175f);
+        }
 
         [HarmonyPatch("OnBlockBrokenWith")]
         public static void Prefix(ref Block __state, IWorldAccessor world, BlockSelection blockSel)
@@ -123,7 +138,7 @@ namespace XSkills
                     quality += (inputQuality ?? 0.0f) * 8.0f;
                     count += 8;
                 }
-                else if (slot.Itemstack.Collectible.Attributes?.IsTrue("useQuality") ?? false)
+                else if (slot.Itemstack.Collectible.Attributes?.KeyExists("qualityType") ?? false)
                 {
                     useQuality = true;
                     quality += inputQuality ?? 0.0f;
@@ -148,7 +163,7 @@ namespace XSkills
         {
             __state = op.SourceSlot.Itemstack;
             if (op.CurrentPriority != EnumMergePriority.AutoMerge) return true;
-            if (!(op.SourceSlot.Itemstack.Collectible.Attributes?.IsTrue("useQuality") ?? false)) return true;
+            if (!(op.SourceSlot.Itemstack.Collectible.Attributes?.KeyExists("qualityType") ?? false)) return true;
             if (op.SourceSlot.Itemstack.Attributes.GetDecimal("quality") == 
                 op.SinkSlot.Itemstack.Attributes.GetDecimal("quality")) return true;
             return XSkills.Instance.XLeveling.Config.mergeQualities;

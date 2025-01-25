@@ -131,6 +131,7 @@ namespace XSkills
                     Collectible.GetBehavior<ArmorBehavior>())?.
                     Resists.Resists[EnumDamageType.SlashingAttack] ?? 0.0f;
             }
+            if (stacks == 0) return 0;
             protectionTier = (protectionTier * filled / stacks) / (filled + open);
             protectionTier *= 0.55f;
             return protectionTier;

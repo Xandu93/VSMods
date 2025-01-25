@@ -1,0 +1,56 @@
+[
+  {
+    "file": "armory:itemtypes/parts/greatsword",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/halberd",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/hammerhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/javelinhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/longaxe",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/longsword",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/macehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/poleaxe",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  },
+  {
+    "file": "armory:itemtypes/parts/shortsword",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": {"qualityType": 2}
+  }
+]

@@ -256,7 +256,7 @@
   "ability-heavyhits": "Heavy Hits",
   "abilitydesc-heavyhits": "Your heavy hits on slag works as a split.",
   "ability-blacksmith": "Blacksmith",
-  "abilitydesc-blacksmith":  "Items you forge on an anvil can now have quality with a base value of {0} and a maximum value of {1} quality. Creating tools or armor with quality parts will also create items with quality. Armor and tools with quality will have increased stats.",
+  "abilitydesc-blacksmith":  "Items you forge on an anvil can now have quality with a base value of {0} and a maximum value of {1} quality. Creating tools or armor with quality parts will also create items with quality. Armor and tools with quality will have increased stats. You can quench items to increase their quality.",
   "ability-metalworker": "Metalworker",
   "abilitydesc-metalworker": "You will receive {0}% more experience for the metalworking skill. The amount of professions you can learn is limited.",
   "ability-finishingtouch": "Finishing Touch",
@@ -368,6 +368,8 @@
   "itemdesc-metalbit-titanium": "Small bits of titanium",
   "itemdesc-metalbit-uranium": "Small bits of uranium",
   "itemdesc-metalbit-zinc": "Small bits of zinc",
+  "item-everlastingcharcoal": "Everlasting Charcoal",
+  "itemdesc-everlastingcharcoal": "A piece of charcoal that burns quite long.",
 
   "quality-bad": "Quality: bad",
   "quality-common": "Quality: common",

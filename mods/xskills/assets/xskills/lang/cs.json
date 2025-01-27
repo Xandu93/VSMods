@@ -252,7 +252,7 @@
    "ability-heavyhits": "Těžký úderník",
    "abilitydesc-heavyhits": "Vaše těžké údery na strusku fungují jako rozbití.",
    "ability-blacksmith": "Kovář",
-   "abilitydesc-blacksmith": "Předměty, které vykováte na kovadlině, mohou mít nyní kvalitu se základní hodnotou {0} a maximální hodnotou kvality {1}. Vytváření nástrojů nebo brnění s kvalitními součástmi vytvoří také kvalitní předměty. Brnění a nástroje s kvalitou budou mít zvýšené statistiky.",
+   "abilitydesc-blacksmith": "Předměty, které vykováte na kovadlině, mohou mít nyní kvalitu se základní hodnotou {0} a maximální hodnotou kvality {1}. Vytváření nástrojů nebo brnění s kvalitními součástmi vytvoří také kvalitní předměty. Brnění a nástroje s kvalitou budou mít zvýšené statistiky. You can quench items to increase their quality.",
    "ability-metalworker": "Obráběč kovů",
    "abilitydesc-metalworker": "Dostanete o {0} % více zkušeností za dovednost Tavič. Počet profesí, které se můžete naučit, je omezený.",
    "ability-finishingtouch": "Poslední dotek",

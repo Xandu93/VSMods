@@ -1,0 +1,59 @@
+{
+	code: "everlastingcharcoal",
+	shape: { base: "game:item/ore/ungraded/charcoal" },
+	creativeinventory: { "general": ["*"], "meta": ["*"] },
+	class: "ItemCoal",
+	maxstacksize: 64,
+	attributes: {
+		displayInsideCrate: true,
+		placeSound: "game:block/charcoal",
+		pigment: {
+			name: "Carbon black",
+			color: { red: 25, green: 24, blue: 22 },
+		},
+		handbook: {
+			exclude: true
+		},
+		displaycaseable: true,
+		shelvable: true
+	},
+	behaviors: [{
+		name: "ArtPigment",
+		properties: {
+			decorBlockCodes: ["caveart-charcoal-1-*"],
+			paintableOnBlockMaterials: ["Stone", "Wood", "Brick", "Ceramic", "Metal", "Meta" ],
+			consumeChance: 0.0
+		}
+	}],
+	grindingProps: {
+		groundStack: { type: "item", code: "game:powder-charcoal" }
+	},
+	materialDensity: 300,
+	combustibleProps: {
+		burnTemperature: 1300,
+		burnDuration: 3600000,
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 9, y: 13, z: 0 },
+		scale: 1.67
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 146, y: 50, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 3.28
+	},
+	tpHandTransform: {
+		translation: { x: -0.93, y: -0.19, z: -0.77 },
+		rotation: { x: -48, y: -180, z: 23 },
+		origin: { x: 0.5, y: 0.12, z: 0.5 },
+		scale: 0.6
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4.5
+	}
+}

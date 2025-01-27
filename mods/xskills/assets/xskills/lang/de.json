@@ -256,7 +256,7 @@
   "ability-heavyhits": "Schwere Schl\u00e4ge",
   "abilitydesc-heavyhits": "Deine schweren Schl\u00e4ge auf Schlacke wirken wie ein Split.",
   "ability-blacksmith": "Schmied",
-  "abilitydesc-blacksmith":  "Gegenstände, die du auf einem Amboss schmiedest, können jetzt Qualität mit einem Grundwert von {0} und einem Höchstwert von {1} Qualität haben. Wenn du Werkzeuge oder Rüstungen aus Teilen mit Qualität hestellst, werden auch die Gegenstände mit Qualität hergestellt. Rüstungen und Werkzeuge mit Qualität haben erhöhte Werte.",
+  "abilitydesc-blacksmith":  "Gegenstände, die du auf einem Amboss schmiedest, können jetzt Qualität mit einem Grundwert von {0} und einem Höchstwert von {1} Qualität haben. Wenn du Werkzeuge oder Rüstungen aus Teilen mit Qualität hestellst, werden auch die Gegenstände mit Qualität hergestellt. Rüstungen und Werkzeuge mit Qualität haben erhöhte Werte. Du kannst Gegenstände abschrecken, um deren Qualität zu verbessern.",
   "ability-metalworker": "Metallarbeiter",
   "abilitydesc-metalworker": "Du erh\u00e4lst {0}% mehr Erfahrung f\u00fcr die Metallbearbeitungs Fertigkeit. Die Anzahl der Berufe, die du lernen kannst, ist begrenzt.",
   "ability-finishingtouch": "Feinschliff",

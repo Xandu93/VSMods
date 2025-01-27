@@ -652,7 +652,7 @@ namespace XSkills
         public void OnSaltyBackpack(PlayerAbility playerAbility, int oldTier)
         {
             IPlayer player = playerAbility.PlayerSkill.PlayerSkillSet.Player;
-            player.Entity.Stats.Set("perishMult", "ability", -playerAbility.FValue(0));
+            player.Entity.Stats.Set("perishMult", "ability", - 1.0f + playerAbility.FValue(0));
 
             InventoryBase backPackInv = player.InventoryManager.GetOwnInventory(GlobalConstants.backpackInvClassName) as InventoryBase;
             InventoryBase hotBarInv = player.InventoryManager.GetOwnInventory(GlobalConstants.hotBarInvClassName) as InventoryBase;

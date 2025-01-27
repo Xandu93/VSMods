@@ -129,7 +129,7 @@ namespace XSkills
                 "shovelknight",
                 "xskills:ability-shovelknight",
                 "xskills:abilitydesc-shovelknight",
-                5, 2, new int[] { 3, 20, 5, 25 }));
+                5, 2, new int[] { 1, 10, 2, 15 }));
 
             //chance to trigger an adrenaline rush
             //0: threshold

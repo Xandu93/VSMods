@@ -252,7 +252,7 @@
   "ability-heavyhits": "Ciężkie trafienia",
   "abilitydesc-heavyhits": "Twoje ciężkie trafienia w żużel działają jak podział.",
   "ability-blacksmith": "Kowal",
-  "abilitydesc-blacksmith":  "Przedmioty, które wykuwasz na kowadle, mogą teraz mieć jakość o wartości bazowej {0} i maksymalnej {1}. Tworzenie narzędzi lub zbroi z częściami o wysokiej jakości stworzy również przedmioty o wysokiej jakości. Zbroje i narzędzia z jakością będą miały zwiększone statystyki.",
+  "abilitydesc-blacksmith":  "Przedmioty, które wykuwasz na kowadle, mogą teraz mieć jakość o wartości bazowej {0} i maksymalnej {1}. Tworzenie narzędzi lub zbroi z częściami o wysokiej jakości stworzy również przedmioty o wysokiej jakości. Zbroje i narzędzia z jakością będą miały zwiększone statystyki. You can quench items to increase their quality.",
   "ability-metalworker": "Metaloplastyk",
   "abilitydesc-metalworker": "Otrzymasz {0}% więcej doświadczenia dla umiejętności metaloplastyka. Ilość profesji, których możesz się nauczyć jest ograniczona.",
   "ability-finishingtouch": "Ostatni Szlif",

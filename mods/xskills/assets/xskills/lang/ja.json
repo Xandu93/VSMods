@@ -257,7 +257,7 @@
   "ability-heavyhits": "強打",
   "abilitydesc-heavyhits": "強打が鉱滓に対しては割るとしても機能します。",
   "ability-blacksmith": "鍛冶屋",
-  "abilitydesc-blacksmith":  "金床で鍛えたアイテムに、基本値{0}、最大値{1}の品質の差が出るようになります。品質の高いパーツで道具や防具を作成すると、品質が高いアイテムも作成されます。品質のある防具や道具は、ステータスが上昇します。",
+  "abilitydesc-blacksmith":  "金床で鍛えたアイテムに、基本値{0}、最大値{1}の品質の差が出るようになります。品質の高いパーツで道具や防具を作成すると、品質が高いアイテムも作成されます。品質のある防具や道具は、ステータスが上昇します。 You can quench items to increase their quality.",
   "ability-metalworker": "金属加工職人",
   "abilitydesc-metalworker": "金属加工スキルの経験値が{0}%増加します。習得出来る専門職は限定されています。",
   "ability-finishingtouch": "画龍点睛",

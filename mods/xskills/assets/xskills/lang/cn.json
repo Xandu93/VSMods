@@ -252,7 +252,7 @@
   "ability-heavyhits": "重击",
   "abilitydesc-heavyhits": "你对矿渣的重击起到了分割\n的作用。",
   "ability-blacksmith": "工匠精神",
-  "abilitydesc-blacksmith": "你在铁砧上锻造的物品会\n获得一个“品质”属性，基础\n品质值为{0}，最大品质值为\n{1}。使用品质零件制作工具或\n护甲也会产生具有品质的\n物品。具有品质的护甲和\n工具将具有增加的属性。",
+  "abilitydesc-blacksmith": "你在铁砧上锻造的物品会\n获得一个“品质”属性，基础\n品质值为{0}，最大品质值为\n{1}。使用品质零件制作工具或\n护甲也会产生具有品质的\n物品。具有品质的护甲和\n工具将具有增加的属性。You can quench items to increase their quality.",
   "ability-metalworker": "铁匠",
   "abilitydesc-metalworker": "你将获得额外{0}%的铁匠技能\n经验。你可以学习的专业\n数量是有限的。",
   "ability-finishingtouch": "画龙点睛",

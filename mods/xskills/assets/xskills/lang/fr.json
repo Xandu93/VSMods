@@ -252,7 +252,7 @@
   "ability-heavyhits": "Coups puissants",
   "abilitydesc-heavyhits": "Vos coups puissants sur la pièce à forger comptent comme des séparations.",
   "ability-blacksmith": "Forgeron",
-  "abilitydesc-blacksmith":  "Les objets que vous forgez sur une enclume peuvent maintenant avoir une qualité minimum de {0} et une qualité maximale de {1}. Créer des outils et des armures avec des parties de qualité crééront des objets de qualité également. Les armures et les outils de qualité auront des statistiques améliorées.",
+  "abilitydesc-blacksmith":  "Les objets que vous forgez sur une enclume peuvent maintenant avoir une qualité minimum de {0} et une qualité maximale de {1}. Créer des outils et des armures avec des parties de qualité crééront des objets de qualité également. Les armures et les outils de qualité auront des statistiques améliorées. You can quench items to increase their quality.",
   "ability-metalworker": "Travailleur du métal",
   "abilitydesc-metalworker": "Vous recevrez {0}% d'expérience en plus pour toutes les activités de la compétence Travail des métaux. Le nombre de professions pouvant être apprises est limité.",
   "ability-finishingtouch": "Touche finale",

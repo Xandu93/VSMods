@@ -10,7 +10,7 @@ namespace XSkills
     /// The patch for the InventorySmelting class.
     /// </summary>
     [HarmonyPatch(typeof(InventorySmelting))]
-    public class InventorySmeltingPatch
+    public static class InventorySmeltingPatch
     {
         /// <summary>
         /// Prepares the Harmony patch.
@@ -39,6 +39,54 @@ namespace XSkills
                 cooking[cooking.HappyMealId].Enabled;
         }
 
+        [HarmonyPostfix]
+        [HarmonyPatch("LateInitialize")]
+        public static void LateInitializePostfix(InventorySmelting __instance)
+        {
+            __instance.OnInventoryOpened += __instance.OnInvOpened;
+            //__instance.SlotModified += __instance.OnSlotModified;
+        }
+
+        //private static void SetSlotStackSize(InventorySmelting inventory, IPlayer player, ICoreAPI api)
+        //{
+        //    ////canteen cook
+        //    if (!inventory.HaveCookingContainer) return;
+        //    Cooking cooking = api.ModLoader.GetModSystem<XLeveling>()?.GetSkill("cooking") as Cooking;
+        //    if (cooking == null) return;
+        //    PlayerAbility ability = player.Entity.GetBehavior<PlayerSkillSet>()?[cooking.Id]?[cooking.CanteenCookId];
+        //    if (ability == null) return;
+        //    int size = inventory[1]?.Itemstack.ItemAttributes["maxContainerSlotStackSize"].AsInt(0) ?? 0;
+        //    if (size == 0) return;
+        //    size *= (int)(1.0f + ability.FValue(0));
+        //    foreach (ItemSlot slot in inventory.CookingSlots)
+        //    {
+        //        slot.MaxSlotStackSize = size;
+        //        if (slot is ItemSlotWatertight watertight) watertight.capacityLitres = size;
+        //    }
+        //}
+
+        //public static void OnSlotModified(this InventorySmelting inventory, int id)
+        //{
+        //    if (id != 1) return;
+
+        //    BlockEntity blockEntity = inventory.Api.World.BlockAccessor.GetBlockEntity(inventory.Pos);
+        //    BlockEntityBehaviorOwnable ownable = blockEntity?.GetBehavior<BlockEntityBehaviorOwnable>();
+        //    if (ownable.Owner != null) SetSlotStackSize(inventory, ownable.Owner, inventory.Api);
+        //}
+
+        public static void OnInvOpened(this InventorySmelting inventory, IPlayer player)
+        {
+            if (player == null) return;
+            ICoreAPI api = inventory?.Api;
+            if (api == null) return;
+
+            BlockEntity blockEntity = inventory.Api.World.BlockAccessor.GetBlockEntity(inventory.Pos);
+            BlockEntityBehaviorOwnable ownable = blockEntity?.GetBehavior<BlockEntityBehaviorOwnable>();
+            if (ownable == null) return;
+            ownable.Owner = player;
+            //SetSlotStackSize(inventory, player, api);
+        }
+
         /// <summary>
         /// Harmony postfix for the GetBestSuitedSlot method.
         /// Should set the owner when the player shifts click an
@@ -47,19 +95,19 @@ namespace XSkills
         /// <param name="__instance">The instance.</param>
         /// <param name="__result">The result.</param>
         /// <param name="sourceSlot">The source slot.</param>
-        [HarmonyPostfix]
-        [HarmonyPatch("GetBestSuitedSlot")]
-        public static void GetBestSuitedSlotPostfix(InventorySmelting __instance, WeightedSlot __result, ItemSlot sourceSlot)
-        {
-            if (__result == null) return;
-            IPlayer player = (sourceSlot.Inventory as InventoryBasePlayer)?.Player;
-            if (player == null) return;
+        //[HarmonyPostfix]
+        //[HarmonyPatch("GetBestSuitedSlot")]
+        //public static void GetBestSuitedSlotPostfix(InventorySmelting __instance, WeightedSlot __result, ItemSlot sourceSlot)
+        //{
+        //    if (__result == null) return;
+        //    IPlayer player = (sourceSlot.Inventory as InventoryBasePlayer)?.Player;
+        //    if (player == null) return;
 
-            BlockEntity blockEntity = __instance.Api.World.BlockAccessor.GetBlockEntity(__instance.Pos);
-            BlockEntityBehaviorOwnable ownable = blockEntity?.GetBehavior<BlockEntityBehaviorOwnable>();
-            if (ownable == null) return;
-            ownable.Owner = player;
-        }
+        //    BlockEntity blockEntity = __instance.Api.World.BlockAccessor.GetBlockEntity(__instance.Pos);
+        //    BlockEntityBehaviorOwnable ownable = blockEntity?.GetBehavior<BlockEntityBehaviorOwnable>();
+        //    if (ownable == null) return;
+        //    ownable.Owner = player;
+        //}
 
         /// <summary>
         /// Harmony prefix for NewSlot method.

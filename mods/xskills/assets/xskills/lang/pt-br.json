@@ -252,7 +252,7 @@
   "ability-heavyhits": "Golpes Pesados",
   "abilitydesc-heavyhits": "Seus golpes pesados em escórias funcionam como uma divisão.",
   "ability-blacksmith": "Ferreiro",
-  "abilitydesc-blacksmith": "Itens que você forja em uma bigorna agora podem ter qualidade com um valor base de {0} e um valor máximo de {1} qualidade. Criar ferramentas ou armaduras com peças de qualidade também criará itens com qualidade. Armaduras e ferramentas com qualidade terão estatísticas aumentadas.",
+  "abilitydesc-blacksmith": "Itens que você forja em uma bigorna agora podem ter qualidade com um valor base de {0} e um valor máximo de {1} qualidade. Criar ferramentas ou armaduras com peças de qualidade também criará itens com qualidade. Armaduras e ferramentas com qualidade terão estatísticas aumentadas. You can quench items to increase their quality.",
   "ability-metalworker": "Metalúrgico",
   "abilitydesc-metalworker": "Você receberá {0}% mais experiência pela habilidade de metalurgia. A quantidade de profissões que você pode aprender é limitada.",
   "ability-finishingtouch": "Toque Final",

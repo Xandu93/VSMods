@@ -252,7 +252,7 @@
   "ability-heavyhits": "Golpes pesados",
   "abilitydesc-heavyhits": "Tus fuertes golpes en la escoria funcionan como una división.",
   "ability-blacksmith": "Marca registrada",
-  "abilitydesc-blacksmith":  "Los artículos que forjas en un yunque ahora pueden tener calidad con un valor base de {0} y un valor máximo de calidad {1}. Crear herramientas o armaduras con piezas de calidad les otorgará estadísticas mejoradas.",
+  "abilitydesc-blacksmith":  "Los artículos que forjas en un yunque ahora pueden tener calidad con un valor base de {0} y un valor máximo de calidad {1}. Crear herramientas o armaduras con piezas de calidad les otorgará estadísticas mejoradas. You can quench items to increase their quality.",
   "ability-metalworker": "-Metalúrgico-",
   "abilitydesc-metalworker": "PROFESION. Recibirás un {0}% más de experiencia por la habilidad de Metalurgia. La cantidad de profesiones que puedes aprender es limitada.",
   "ability-finishingtouch": "Toque final",

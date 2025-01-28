@@ -133,7 +133,7 @@ namespace XSkills
                 "juicer",
                 "xskills:ability-juicer",
                 "xskills:abilitydesc-juicer",
-                6, 2, new int[] { 33, 66 }));
+                6, 2, new int[] { 33, 60 }));
 
             // sends a message to the player when cooking a meal was finished
             EggTimerId = this.AddAbility(new Ability(

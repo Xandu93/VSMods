@@ -3,6 +3,17 @@
   "resourcereduction": "Resource reduction: {0:P2}",
   "owner-desc": "Owner: {0}",
 
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "the-day-after-tomorrow": "The day after tomorrow",
+  "in-days": "In {0} days",
+  "weather-forecast-from": "Weather forecast from {0}",
+  "temperature-range": "Temperature from {0:0.0}°C to {1:0.0}°C",
+  "probability-of-precipitation-range": "Probability of rain from {0:P2} to {1:P2}",
+  "cloudiness-range": "Cloudiness between {0:P2} and {1:P2}",
+  "sunrise-at": "Sunrise at {0}",
+  "sunset-at": "Sunset at {0}",
+
   "skill-survival": "Survival",
   "skill-farming": "Farming",
   "skill-digging": "Digging",

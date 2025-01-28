@@ -720,9 +720,9 @@ namespace XSkills
                     if (playerAbility != null && playerAbility2 != null)
                     {
                         if (playerAbility2.Tier > 0)
-                            dropStabilityMultipier = 0.0001f * playerAbility.Value(0) * (100 + playerAbility2.Value(0)) * (1.0f - stability);
+                            dropStabilityMultipier = (1.0f - stability) * playerAbility.FValue(0) * (1.0f + playerAbility2.FValue(0));
                         else
-                            dropStabilityMultipier = 0.01f * playerAbility.Value(0) * stability;
+                            dropStabilityMultipier = stability * playerAbility.FValue(0);
                     }
                 }
             }

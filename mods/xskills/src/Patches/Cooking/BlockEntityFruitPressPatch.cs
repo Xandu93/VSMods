@@ -103,7 +103,7 @@ namespace XSkills
         [HarmonyPatch("getJuiceableProps")]
         public static void getJuiceablePropsPostfix(BlockEntityFruitPress __instance, JuiceableProperties __result)
         {
-            if (__result == null) return;
+            if (__result?.LitresPerItem == null) return;
             BlockEntityBehaviorOwnable ownable = __instance?.GetBehavior<BlockEntityBehaviorOwnable>();
             IPlayer player = ownable?.Owner;
             if (player == null) return;
@@ -113,7 +113,15 @@ namespace XSkills
 
             PlayerAbility ability = player.Entity?.GetBehavior<PlayerSkillSet>()?[cooking.Id]?[cooking.JuicerId];
             if (ability == null) return;
-            __result.LitresPerItem *= 1.0f + ability.FValue(0);
+            int value = ability.Value(0);
+            if (value == 33) __result.LitresPerItem *= 1.0f + 1.0f/3.0f;
+            else __result.LitresPerItem *= 1.0f + value * 0.01f;
+
+            float litres = (float)(__instance.MashSlot.Itemstack?.Attributes.GetDecimal("juiceableLitresLeft") ?? 0.0);
+            if (litres <= 10.0f && litres + __result.LitresPerItem > 10.0f)
+            {
+                __result.LitresPerItem = 10.0f - litres;
+            }
         }
     }
 }

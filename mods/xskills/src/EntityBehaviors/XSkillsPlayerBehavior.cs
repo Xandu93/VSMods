@@ -356,7 +356,7 @@ namespace XSkills
                     PlayerAbility ability = entity.GetBehavior<PlayerSkillSet>()?[survival.Id]?[survival.MeteorologistId];
                     if (ability?.Tier > 0)
                     {
-                        Survival.GenerateWheatherForecast(entity.Api, entity.Pos, ability.Value(0), ability.FValue(1));
+                        Survival.GenerateWeatherForecast(entity.Api, entity.Pos, ability.Value(0), ability.FValue(1));
                     }
                     lastWeatherForecast = (uint)this.entity.World.Calendar.TotalDays;
                 }

@@ -33,8 +33,8 @@ namespace XSkills
             if (diff > -4.5f) return;
             float quality = itemstack.Attributes.GetFloat("quality", 0.0f);
             if (quality <= 0.0f) return;
-            //equals roughly 2.1 quality at 1200 °C
-            itemstack.Attributes.SetFloat("quality", quality - diff * 0.00175f);
+            //equals 2.0 quality at 1000 °C
+            itemstack.Attributes.SetFloat("quality", quality - diff * 0.002f);
         }
 
         [HarmonyPatch("OnBlockBrokenWith")]

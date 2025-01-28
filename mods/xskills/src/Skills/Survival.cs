@@ -404,7 +404,7 @@ namespace XSkills
             physics.StepHeight *= mult;
         }
 
-        public static string GenerateWheatherForecast(ICoreAPI api, EntityPos pos, int days = 3, float inaccuracy = 0.5f)
+        public static string GenerateWeatherForecast(ICoreAPI api, EntityPos pos, int days = 3, float inaccuracy = 0.5f)
         {
             WeatherSystemBase weather = api.ModLoader.GetModSystem<WeatherSystemBase>();
             IGameCalendar calendar = api.World.Calendar;
@@ -422,6 +422,8 @@ namespace XSkills
 
             float[] sunrise = new float[days];
             float[] sunset = new float[days];
+
+            EnumPrecipitationType[] precipitationTypes = new EnumPrecipitationType[days];
 
             for (int ii = 0; ii < days; ++ii)
             {
@@ -446,6 +448,10 @@ namespace XSkills
                     float temperature = conds.Temperature;
                     float rainfall = conds.Rainfall;
                     double cloudness = weather.GetRainCloudness(conds, pos.X, pos.Z, time);
+                    PrecipitationState precipitation = weather.GetPrecipitationState(pos.XYZ, time);
+                    EnumPrecipitationType precipitationType = precipitation.Level > 0.0 ? precipitation.Type : EnumPrecipitationType.Rain;
+                    if (precipitationTypes[ii] == EnumPrecipitationType.Rain)
+                        precipitationTypes[ii] = precipitationType;
 
                     minTemperature[ii] = Math.Min(minTemperature[ii], temperature);
                     maxTemperature[ii] = Math.Max(maxTemperature[ii], temperature);
@@ -506,24 +512,24 @@ namespace XSkills
             }
 
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine(Lang.Get("Wheather forecast from {0}", calendar.PrettyDate()));
+            builder.AppendLine(Lang.Get("xskills:weather-forecast-from", calendar.PrettyDate()));
             for (int ii = 0; ii < days; ++ii)
             {
-                if (ii == 0) builder.AppendLine(Lang.Get("Today"));
-                else if (ii == 1) builder.AppendLine(Lang.Get("Tomorrow"));
-                else if (ii == 2) builder.AppendLine(Lang.Get("The day after tomorrow"));
-                else builder.AppendLine(Lang.Get("In {0} days", ii));
-                builder.AppendLine(Lang.Get("Temperature from {0:0.0}°C to {1:0.0}°C", minTemperature[ii], maxTemperature[ii]));
-                builder.AppendLine(Lang.Get("Probability of rain from {0:P2} to {1:P2}", minRainfall[ii], maxRainfall[ii]));
-                builder.AppendLine(Lang.Get("Cloudiness between {0:P2} and {1:P2}", minCloudness[ii], maxCloudness[ii]));
+                if (ii == 0) builder.AppendLine(Lang.Get("xskills:today"));
+                else if (ii == 1) builder.AppendLine(Lang.Get("xskills:tomorrow"));
+                else if (ii == 2) builder.AppendLine(Lang.Get("xskills:in-days"));
+                else builder.AppendLine(Lang.Get("xskills:in-days", ii));
+                builder.AppendLine(Lang.Get("xskills:temperature-range", minTemperature[ii], maxTemperature[ii]));
+                builder.AppendLine(Lang.Get("xskills:probability-of-precipitation-range", minRainfall[ii], maxRainfall[ii]));
+                builder.AppendLine(Lang.Get("xskills:cloudiness-range", minCloudness[ii], maxCloudness[ii]));
 
                 int sunHour = (int)(sunrise[ii] * calendar.HoursPerDay);
                 int sunMinute = (int)(sunrise[ii] * calendar.HoursPerDay * 60) % 60;
-                builder.AppendLine(Lang.Get("Sunrise at {0}", string.Format("{0}:{1:00}", sunHour, sunMinute)));
+                builder.AppendLine(Lang.Get("xskills:sunrise-at", string.Format("{0}:{1:00}", sunHour, sunMinute)));
 
                 sunHour = (int)(sunset[ii] * calendar.HoursPerDay);
                 sunMinute = (int)(sunset[ii] * calendar.HoursPerDay * 60) % 60;
-                builder.AppendLine(Lang.Get("Sunset at {0}", string.Format("{0}:{1:00}", sunHour, sunMinute)));
+                builder.AppendLine(Lang.Get("xskills:sunset-at", string.Format("{0}:{1:00}", sunHour, sunMinute)));
             }
 
             SystemTemporalStability temporal = api.ModLoader.GetModSystem<SystemTemporalStability>();

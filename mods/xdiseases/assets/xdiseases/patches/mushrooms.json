@@ -1,0 +1,59 @@
+[
+  {
+    "file": "game:blocktypes/plant/mushroom",
+    "op": "addmerge",
+    "path": "/behaviorsByType",
+    "value": {
+      "*-funeralbell-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:pneumonia",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.001,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:infection",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.001,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-deathcap-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:rabies",
+                "intensity": 0.1,
+                "minintensity": 0.2,
+                "healingrate": 0.0003,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:tetanus",
+                "intensity": 0.0,
+                "minintensity": 0.3,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -418,7 +418,7 @@ namespace XSkills
             //dilution
             playerAbility = skill[this.DilutionId];
             float scaledCooked = servings;
-            int totalCooked = 1;
+            int totalCooked = (int)cookedAmount;
             if (playerAbility?.Tier > 0 && firstStage)
             {
                 scaledCooked = servings * (1.0f + playerAbility.SkillDependentFValue());
@@ -433,7 +433,6 @@ namespace XSkills
                 }
                 else if (mealContainer == null || mealContainer is BlockPie)
                 {
-                    totalCooked = (int)scaledCooked;
                     float rel = scaledCooked - (int)totalCooked;
                     totalCooked += world.Rand.NextDouble() < rel ? 1 : 0;
                     if (outputStack.StackSize > cookedAmount) outputStack.StackSize += totalCooked - (int)(cookedAmount + 0.25f);

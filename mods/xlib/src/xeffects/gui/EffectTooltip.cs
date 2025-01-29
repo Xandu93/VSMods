@@ -70,6 +70,30 @@ namespace XLib.XEffects
             EffectType type = effect.EffectType;
             this.Effect = effect;
 
+            ElementBounds parent = SingleComposer.CurParentBounds.ParentBounds;
+            if (parent.absX + parent.OuterWidth * 0.5f > SingleComposer.Api.Gui.WindowBounds.OuterWidth * 0.5f)
+            {
+                if (parent.absY + parent.OuterHeight * 0.5f < SingleComposer.Api.Gui.WindowBounds.OuterHeight * 0.5f)
+                {
+                    SingleComposer.Bounds.WithAlignment(EnumDialogArea.LeftTop).WithFixedPosition(-320, 0);
+                }
+                else
+                {
+                    SingleComposer.Bounds.WithAlignment(EnumDialogArea.LeftBottom).WithFixedPosition(-320, 0);
+                }
+            }
+            else
+            {
+                if (parent.absY + parent.OuterHeight * 0.5f < SingleComposer.Api.Gui.WindowBounds.OuterHeight * 0.5f)
+                {
+                    SingleComposer.Bounds.WithAlignment(EnumDialogArea.RightTop).WithFixedPosition(320, 0);
+                }
+                else
+                {
+                    SingleComposer.Bounds.WithAlignment(EnumDialogArea.RightBottom).WithFixedPosition(320, 0);
+                }
+            }
+
             string description = "\n" + 
                 (type.EffectGroup != null ? Lang.Get("xeffects:group") + ": " + Lang.Get(type.Domain + ':' + type.EffectGroup) + "\n" : "") +
                 (type.EffectCategory != null ? Lang.Get("xeffects:category") + ": " + Lang.Get(type.Domain + ':' + type.EffectCategory) + "\n" : "") +

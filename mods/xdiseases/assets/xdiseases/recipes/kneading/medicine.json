@@ -16,10 +16,22 @@
           {"type": "item", "code": "game:alcoholportion", "quantity": 10}
         ]},
       { "inputs": [{"type": "item", "code": "game:honeyportion", "quantity": 20}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]}
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]},
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]},
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]},
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]}
     ],
 	"output": { "type": "item", "code": "xdiseases:medicineportion", "stackSize": 30}
   },
@@ -40,9 +52,18 @@
           {"type": "item", "code": "game:alcoholportion", "quantity": 10}
         ]},
       { "inputs": [{"type": "item", "code": "game:honeyportion", "quantity": 20}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]}
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]},
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]},
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]}
     ],
 	"output": { "type": "item", "code": "xdiseases:medicineportion", "stackSize": 30}
   },
@@ -63,8 +84,14 @@
           {"type": "item", "code": "game:alcoholportion", "quantity": 10}
         ]},
       { "inputs": [{"type": "item", "code": "game:honeyportion", "quantity": 20}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]},
-      { "inputs": [{"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}]}
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]},
+      { "inputs": [
+          {"type": "item", "code": "wildcraftherb:herb-*", "quantity": 3}, 
+          {"type": "block", "code": "game:mushroom-*", "quantity": 3}
+        ]}
     ],
 	"output": { "type": "item", "code": "xdiseases:medicineportion", "stackSize": 30}
   }

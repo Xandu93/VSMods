@@ -4,9 +4,9 @@
   "name": "XDiseases",
   "authors": [ "Xandu" ],
   "description": "Adds diseases",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "game": "1.20.0",
-    "xlib": "0.8.9"
+    "xlib": "0.8.10"
   }
 }

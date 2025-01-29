@@ -517,7 +517,7 @@ namespace XSkills
             {
                 if (ii == 0) builder.AppendLine(Lang.Get("xskills:today"));
                 else if (ii == 1) builder.AppendLine(Lang.Get("xskills:tomorrow"));
-                else if (ii == 2) builder.AppendLine(Lang.Get("xskills:in-days"));
+                else if (ii == 2) builder.AppendLine(Lang.Get("xskills:the-day-after-tomorrow"));
                 else builder.AppendLine(Lang.Get("xskills:in-days", ii));
                 builder.AppendLine(Lang.Get("xskills:temperature-range", minTemperature[ii], maxTemperature[ii]));
                 builder.AppendLine(Lang.Get("xskills:probability-of-precipitation-range", minRainfall[ii], maxRainfall[ii]));

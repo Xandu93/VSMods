@@ -1,0 +1,38 @@
+[
+  {
+    "file": "ancientarmory:itemtypes/crafting/axehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": { "qualityType": 2 }
+  },
+  {
+    "file": "ancientarmory:itemtypes/crafting/bladehead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": { "qualityType": 2 }
+  },
+  {
+    "file": "ancientarmory:itemtypes/crafting/clubhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": { "qualityType": 2 }
+  },
+  {
+    "file": "ancientarmory:itemtypes/crafting/extraswordhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": { "qualityType": 2 }
+  },
+  {
+    "file": "ancientarmory:itemtypes/crafting/knifeblade",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": { "qualityType": 2 }
+  },
+  {
+    "file": "ancientarmory:itemtypes/crafting/spearhead",
+    "op": "addmerge",
+    "path": "/attributes",
+    "value": { "qualityType": 2 }
+  }
+]

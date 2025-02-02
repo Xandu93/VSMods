@@ -1,4 +1,17 @@
 {
+  "classexpmult": {
+    "commoner": 0.1,
+    "miner": 0.2,
+    "hunter": -0.2,
+    "malefactor": -0.1,
+    "clockmaker": 0.15,
+    "blackguard": 0.15,
+    "forager": -0.15,
+    "archer": -0.1,
+    "vanguard": 0.05,
+    "gatherer": -0.15,
+    "mercenary": 0.05
+  },
   "stonebreaker": {
     "requirements": [
       {

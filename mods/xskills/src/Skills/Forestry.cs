@@ -131,18 +131,6 @@ namespace XSkills
             api.RegisterBlockBehaviorClass("XSkillsWood", typeof(XSkillsWoodBehavior));
             api.RegisterBlockBehaviorClass("XSkillsLeaves", typeof(XSkillsLeavesBehavior));
             api.RegisterBlockBehaviorClass("XSkillsCharcoal", typeof(XSkillsCharcoalBehavior));
-
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["forager"] = 0.2f;
-            ClassExpMultipliers["hunter"] = 0.1f;
-            ClassExpMultipliers["malefactor"] = -0.2f;
-            ClassExpMultipliers["clockmaker"] = -0.15f;
-            ClassExpMultipliers["blackguard"] = -0.05f;
-            ClassExpMultipliers["miner"] = 0.1f;
-            ClassExpMultipliers["archer"] = 0.15f;
-            ClassExpMultipliers["vanguard"] = -0.15f;
-            ClassExpMultipliers["gatherer"] = 0.2f;
-            ClassExpMultipliers["mercenary"] = -0.15f;
         }
     }//!class Forestry
 

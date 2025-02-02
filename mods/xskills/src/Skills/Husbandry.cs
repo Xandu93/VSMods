@@ -168,18 +168,6 @@ namespace XSkills
                 "xskills:abilitydesc-masshusbandry",
                 10, 1, new int[] { 0, 1, 1, 30 }));
 
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["hunter"] = 0.2f;
-            ClassExpMultipliers["clockmaker"] = -0.2f;
-            ClassExpMultipliers["malefactor"] = 0.15f;
-            ClassExpMultipliers["blackguard"] = -0.1f;
-            ClassExpMultipliers["miner"] = -0.15f;
-            ClassExpMultipliers["forager"] = 0.1f;
-            ClassExpMultipliers["archer"] = 0.1f;
-            ClassExpMultipliers["vanguard"] = -0.1f;
-            ClassExpMultipliers["gatherer"] = 0.1f;
-            ClassExpMultipliers["mercenary"] = -0.1f;
-
             //behaviors
             api.RegisterEntityBehaviorClass("XSkillsAnimal", typeof(XSkillsAnimalBehavior));
             api.RegisterBlockBehaviorClass("XSkillsCarcass", typeof(XSkillsCarcassBehavior));

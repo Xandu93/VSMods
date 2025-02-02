@@ -131,18 +131,6 @@ namespace XSkills
             api.RegisterBlockBehaviorClass("XSkillsClay", typeof(XSkillsClayBehavior));
             api.RegisterBlockBehaviorClass("XSkillsSalpeter", typeof(XSkillsSalpeterBehavior));
             api.RegisterBlockBehaviorClass("XSkillsSand", typeof(XSkillsSandBehavior));
-
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["miner"] = 0.2f;
-            ClassExpMultipliers["archer"] = -0.2f;
-            ClassExpMultipliers["hunter"] = -0.15f;
-            ClassExpMultipliers["malefactor"] = 0.1f;
-            ClassExpMultipliers["clockmaker"] = -0.15f;
-            ClassExpMultipliers["blackguard"] = 0.1f;
-            ClassExpMultipliers["forager"] = 0.15f;
-            ClassExpMultipliers["vanguard"] = -0.05f;
-            ClassExpMultipliers["gatherer"] = 0.15f;
-            ClassExpMultipliers["mercenary"] = -0.05f;
         }
 
         protected void LoadPanningDrops()

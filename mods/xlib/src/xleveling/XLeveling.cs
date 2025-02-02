@@ -298,6 +298,17 @@ namespace XLib.XLeveling
 
                 while (enumerator2.MoveNext())
                 {
+                    if (enumerator2.Current.Key == "classexpmult")
+                    {
+                        TreeAttribute enumerator3 = (enumerator2.Current.Value as TreeAttribute);
+                        foreach (string classname in enumerator3.Keys)
+                        {
+                            float mult = (float)enumerator3.GetDecimal(classname);
+                            skill.ClassExpMultipliers[classname] = mult;
+                        }
+                        continue;
+                    }
+
                     Ability ability = skill.FindAbility(enumerator2.Current.Key);
                     ArrayAttribute<TreeAttribute> requirements = (enumerator2.Current.Value as TreeAttribute)?.GetAttribute("requirements") as ArrayAttribute<TreeAttribute>;
                     if (ability == null || requirements == null) continue;

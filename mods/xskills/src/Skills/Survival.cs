@@ -243,18 +243,6 @@ namespace XSkills
                 registry.RegisterInventoryClass("xskillshotbar", typeof(XSkillsPlayerInventory));
             }
 
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["hunter"] = 0.2f;
-            ClassExpMultipliers["malefactor"] = 0.15f;
-            ClassExpMultipliers["clockmaker"] = -0.2f;
-            ClassExpMultipliers["blackguard"] = -0.05f;
-            ClassExpMultipliers["miner"] = -0.05f;
-            ClassExpMultipliers["forager"] = -0.15f;
-            ClassExpMultipliers["archer"] = 0.05f;
-            ClassExpMultipliers["vanguard"] = 0.05f;
-            ClassExpMultipliers["gatherer"] = -0.15f;
-            ClassExpMultipliers["mercenary"] = 0.1f;
-
             this.ExperienceEquation = QuadraticEquation;
             this.ExpBase = 10;
             this.ExpMult = 5.0f;

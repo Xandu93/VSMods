@@ -173,18 +173,6 @@ namespace XSkills
             api.RegisterBlockBehaviorClass("XSkillsGems", typeof(XSkillsGemBehavior));
             api.RegisterBlockBehaviorClass("XSkillsBomb", typeof(XSkillsBombBehavior));
             api.RegisterCollectibleBehaviorClass("XSkillsPickaxeBehaivor", typeof(PickaxeBehaivor));
-
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["miner"] = 0.2f;
-            ClassExpMultipliers["hunter"] = -0.2f;
-            ClassExpMultipliers["malefactor"] = -0.1f;
-            ClassExpMultipliers["clockmaker"] = 0.15f;
-            ClassExpMultipliers["blackguard"] = 0.15f;
-            ClassExpMultipliers["forager"] = -0.15f;
-            ClassExpMultipliers["archer"] = -0.1f;
-            ClassExpMultipliers["vanguard"] = 0.05f;
-            ClassExpMultipliers["gatherer"] = -0.15f;
-            ClassExpMultipliers["mercenary"] = 0.05f;
         }
 
         internal void RegisterExplosion(BlockPos pos, IPlayer player)

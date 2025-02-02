@@ -113,16 +113,6 @@ namespace XSkills
                 "xskills:abilitydesc-timeless",
                 10, 1, new int[] { }));
 
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["clockmaker"] = 0.2f;
-            ClassExpMultipliers["vanguard"] = 0.15f;
-            ClassExpMultipliers["miner"] = 0.1f;
-            ClassExpMultipliers["archer"] = -0.2f;
-            ClassExpMultipliers["hunter"] = -0.15f;
-            ClassExpMultipliers["malefactor"] = -0.05f;
-            ClassExpMultipliers["blackguard"] = 0.1f;
-            ClassExpMultipliers["forager"] = -0.15f;
-
             this.ExperienceEquation = QuadraticEquation;
             this.ExpBase = 200;
             this.ExpMult = 100.0f;

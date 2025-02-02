@@ -144,18 +144,6 @@ namespace XSkills
 
             this[SaltyBackpackId].OnPlayerAbilityTierChanged += OnSaltyBackpack;
 
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["hunter"] = 0.15f;
-            ClassExpMultipliers["malefactor"] = 0.05f;
-            ClassExpMultipliers["clockmaker"] = 0.0f;
-            ClassExpMultipliers["blackguard"] = -0.15f;
-            ClassExpMultipliers["miner"] = -0.15f;
-            ClassExpMultipliers["forager"] = 0.2f;
-            ClassExpMultipliers["archer"] = 0.1f;
-            ClassExpMultipliers["vanguard"] = -0.2f;
-            ClassExpMultipliers["gatherer"] = 0.2f;
-            ClassExpMultipliers["mercenary"] = -0.1f;
-
             this.ExperienceEquation = QuadraticEquation;
             this.ExpBase = 40;
             this.ExpMult = 10.0f;

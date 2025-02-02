@@ -1,4 +1,17 @@
 {
+  "classexpmult": {
+    "commoner": 0.1,
+    "hunter": 0.2,
+    "malefactor": 0.15,
+    "clockmaker": -0.2,
+    "blackguard": -0.05,
+    "miner": -0.05,
+    "forager": -0.15,
+    "archer": 0.05,
+    "vanguard": 0.05,
+    "gatherer": -0.15,
+    "mercenary": 0.1
+  },
   "longlife": {
     "requirements": [
       {
@@ -293,7 +306,7 @@
       {
         "code": "knowledge",
         "minimumTier": 1,
-        "hideUntilFulfilled" : true,
+        "hideUntilFulfilled": true,
         "name": "xskills:meteorology",
         "level": 1
       }

@@ -1,4 +1,17 @@
 {
+  "classexpmult": {
+    "commoner": 0.1,
+    "hunter": 0.15,
+    "malefactor": 0.05,
+    "clockmaker": 0.0,
+    "blackguard": -0.15,
+    "miner": -0.15,
+    "forager": 0.2,
+    "archer": 0.1,
+    "vanguard": -0.2,
+    "gatherer": 0.2,
+    "mercenary": -0.1
+  },
   "fastfood": {
     "requirements": [
       {
@@ -57,7 +70,7 @@
         "skill": "cooking",
         "ability": "chef",
         "requiredTier": 1
-      },
+      }
     ]
   },
   "happymeal": {

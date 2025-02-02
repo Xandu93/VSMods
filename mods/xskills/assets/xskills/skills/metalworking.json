@@ -1,4 +1,17 @@
 {
+  "classexpmult": {
+    "commoner": 0.1,
+    "clockmaker": 0.2,
+    "forager": -0.2,
+    "hunter": -0.15,
+    "malefactor": -0.15,
+    "blackguard": 0.15,
+    "miner": 0.15,
+    "archer": -0.1,
+    "vanguard": 0.1,
+    "gatherer": -0.2,
+    "mercenary": 0.1
+  },
   "metalrecovery": {
     "requirements": [
       {
@@ -29,7 +42,7 @@
         "skill": "metalworking",
         "ability": "metalworker",
         "requiredTier": 1
-      },
+      }
     ]
   },
   "finishingtouch": {

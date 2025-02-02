@@ -112,18 +112,6 @@ namespace XSkills
                 "xskills:abilitydesc-inspiration",
                 7, 2, new int[] { 10, 20 }));
 
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["blackguard"] = -0.2f;
-            ClassExpMultipliers["hunter"] = 0.15f;
-            ClassExpMultipliers["malefactor"] = 0.05f;
-            ClassExpMultipliers["clockmaker"] = 0.2f;
-            ClassExpMultipliers["miner"] = -0.15f;
-            ClassExpMultipliers["forager"] = -0.05f;
-            ClassExpMultipliers["archer"] = 0.1f;
-            ClassExpMultipliers["vanguard"] = -0.1f;
-            ClassExpMultipliers["gatherer"] = -0.05f;
-            ClassExpMultipliers["mercenary"] = -0.1f;
-
             InspirationCollectibles = new Dictionary<string, List<CollectibleObject>>();
             InspirationCollectibles.Add("clayplanter-burnt", null);
             InspirationCollectibles.Add("flowerpot-burnt", null);

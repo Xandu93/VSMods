@@ -200,18 +200,6 @@ namespace XSkills
             api.RegisterBlockBehaviorClass("XSkillsSkep", typeof(XSkillsSkepBehavior));
             api.RegisterBlockBehaviorClass("XSkillsBerryBush", typeof(XSkillsBerryBushBehavior));
 
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["forager"] = 0.2f;
-            ClassExpMultipliers["blackguard"] = -0.15f;
-            ClassExpMultipliers["miner"] = -0.2f;
-            ClassExpMultipliers["hunter"] = -0.15f;
-            ClassExpMultipliers["malefactor"] = 0.1f;
-            ClassExpMultipliers["clockmaker"] = 0.15f;
-            ClassExpMultipliers["archer"] = -0.05f;
-            ClassExpMultipliers["vanguard"] = 0.1f;
-            ClassExpMultipliers["gatherer"] = 0.1f;
-            ClassExpMultipliers["mercenary"] = 0.0f;
-
             this.ExperienceEquation = QuadraticEquation;
             this.ExpBase = 200;
             this.ExpMult = 100.0f;

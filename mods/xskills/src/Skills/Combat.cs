@@ -196,21 +196,7 @@ namespace XSkills
                 sapi.Event.PlayerJoin += OnPlayerJoin;
             }
 
-
             this.Config = new CombatSkillConfig();
-
-            ClassExpMultipliers["commoner"] = 0.1f;
-            ClassExpMultipliers["blackguard"] = 0.2f;
-            ClassExpMultipliers["vanguard"] = 0.15f;
-            ClassExpMultipliers["archer"] = 0.15f;
-            ClassExpMultipliers["clockmaker"] = -0.2f;
-            ClassExpMultipliers["hunter"] = 0.0f;
-            ClassExpMultipliers["malefactor"] = -0.1f;
-            ClassExpMultipliers["miner"] = -0.05f;
-            ClassExpMultipliers["forager"] = -0.15f;
-            ClassExpMultipliers["gatherer"] = -0.15f;
-            ClassExpMultipliers["mercenary"] = 0.15f;
-
             this.ExperienceEquation = QuadraticEquation;
             this.ExpBase = 100;
             this.ExpMult = 50.0f;

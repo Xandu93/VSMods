@@ -2917,12 +2917,12 @@
             </summary>
             <seealso cref="T:Vintagestory.API.Common.ModSystem" />
         </member>
-        <member name="F:XLib.XEffects.XEffectsSystem.EffectsAssetCategory">
+        <member name="P:XLib.XEffects.XEffectsSystem.EffectsAssetCategory">
             <summary>
             the asset category
             </summary>
         </member>
-        <member name="F:XLib.XEffects.XEffectsSystem.EffectTriggerAssetCategory">
+        <member name="P:XLib.XEffects.XEffectsSystem.EffectTriggerAssetCategory">
             <summary>
             the asset category
             </summary>
@@ -6249,7 +6249,7 @@
             an instance of the XLeveling mod interface, if it was found; otherwise, null
             </returns>
         </member>
-        <member name="F:XLib.XLeveling.XLeveling.SkillsAssetCategory">
+        <member name="P:XLib.XLeveling.XLeveling.SkillsAssetCategory">
             <summary>
             the asset category
             </summary>

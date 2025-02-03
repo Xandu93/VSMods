@@ -9,6 +9,6 @@
   "dependencies": {
     "game": "1.20.0",
     "survival": "1.20.0",
-    "xlib": "0.8.10"
+    "xlib": "0.8.11"
   }
 }

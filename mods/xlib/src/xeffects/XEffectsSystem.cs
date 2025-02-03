@@ -20,12 +20,12 @@ namespace XLib.XEffects
         /// <summary>
         /// the asset category
         /// </summary>
-        public static AssetCategory EffectsAssetCategory = new AssetCategory("effects", true, EnumAppSide.Universal);
+        public AssetCategory EffectsAssetCategory { get; private set; }
 
         /// <summary>
         /// the asset category
         /// </summary>
-        public static AssetCategory EffectTriggerAssetCategory = new AssetCategory("effecttrigger", true, EnumAppSide.Server);
+        public AssetCategory EffectTriggerAssetCategory { get; private set; }
 
         /// <summary>
         /// If you need mods to be executed in a certain order, adjust this methods return value.
@@ -118,6 +118,9 @@ namespace XLib.XEffects
         {
             base.StartPre(api);
             this.Api = api;
+            EffectsAssetCategory ??= new AssetCategory("effects", true, EnumAppSide.Universal);
+            EffectTriggerAssetCategory ??= new AssetCategory("effecttrigger", true, EnumAppSide.Server);
+
             this.LoadConfig();
             this.Api.RegisterEntityBehaviorClass("Affected", typeof(AffectedEntityBehavior));
             this.Api.RegisterEntityBehaviorClass("Infectious", typeof(InfectiousEntityBehavior));

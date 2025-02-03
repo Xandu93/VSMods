@@ -30,7 +30,7 @@ namespace XLib.XLeveling
         /// <summary>
         /// the asset category
         /// </summary>
-        public static AssetCategory SkillsAssetCategory = new AssetCategory("skills", true, EnumAppSide.Universal);
+        public AssetCategory SkillsAssetCategory { get; private set; }
 
         /// <summary>
         /// If you need mods to be executed in a certain order, adjust this methods return value.
@@ -139,6 +139,8 @@ namespace XLib.XLeveling
         public override void StartPre(ICoreAPI api)
         {
             this.Api = api;
+            SkillsAssetCategory ??= new AssetCategory("skills", true, EnumAppSide.Universal);
+
             api.RegisterItemClass("ItemSkillBook", typeof(ItemSkillBook));
         }
 

@@ -96,7 +96,7 @@ namespace XSkills
                 "meatshield",
                 "xskills:ability-meatshield",
                 "xskills:abilitydesc-meatshield",
-                3, 3, new int[] { 10, 20, 10, 15, 30, 10 }));
+                3, 3, new int[] { 10, 20, 15, 15, 20, 10 }));
 
             // lesser oxygen consumption
             // 0: oxygen consumption reduction

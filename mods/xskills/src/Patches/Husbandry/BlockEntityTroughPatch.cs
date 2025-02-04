@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
+using System.Text;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.GameContent;
 using XLib.XLeveling;
 
@@ -56,5 +58,13 @@ namespace XSkills
             return true;
         }
 
+        [HarmonyPostfix]
+        [HarmonyPatch("GetBlockInfo")]
+        public static void GetBlockInfoPostfix(BlockEntityTrough __instance, StringBuilder dsc)
+        {
+            IPlayer player = __instance.GetOwner();
+            if (player == null) return;
+            dsc.AppendLine(Lang.Get("xskills:owner-desc", player.PlayerName));
+        }
     }//!class BlockEntityTroughPatch
 }//!namespace XSkills

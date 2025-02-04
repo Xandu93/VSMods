@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.GameContent;
 using XLib.XLeveling;
@@ -12,7 +14,11 @@ namespace XSkills
         protected Husbandry husbandry;
         protected float xp;
 
-        public IPlayer Feeder { get; internal set; }
+        public IPlayer Feeder 
+        { 
+            get => entity.Api.World.PlayerByUid(entity.WatchedAttributes.GetString("owner"));
+            set => entity.WatchedAttributes.SetString("owner", value.PlayerUID);
+        }
         public bool Catchable { get; set; }
 
         public override string PropertyName() => "XSkillsAnimal";
@@ -63,5 +69,13 @@ namespace XSkills
             float generationBonus = 1.0f + (Math.Min(entity.WatchedAttributes.GetInt("generation", 0), 20) * 0.05f) ;
             playerSkill.AddExperience(generationBonus * this.xp);
         }
+
+        public override void GetInfoText(StringBuilder infotext)
+        {
+            IPlayer player = Feeder;
+            if (player == null) return;
+            infotext.AppendLine(Lang.Get("xskills:owner-desc", player.PlayerName));
+        }
+
     }//!class XSkillsAnimalBehavior
 }//!namespace XSkills

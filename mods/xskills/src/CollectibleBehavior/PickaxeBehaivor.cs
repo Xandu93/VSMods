@@ -95,6 +95,7 @@ namespace XSkills
             if (slot.Itemstack == null) return null;
             SkillItem[] modes = GetToolModeItems(slot);
             int modeID = slot.Itemstack.Collectible.GetToolMode(slot, forPlayer, blockSel);
+            if (modeID >= modes.Length || modeID < 0) return modes[0];
             return modes[modeID];
         }
 

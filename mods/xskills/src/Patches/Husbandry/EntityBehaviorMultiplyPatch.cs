@@ -12,8 +12,19 @@ using XLib.XLeveling;
 namespace XSkills
 {
     [HarmonyPatch(typeof(EntityBehaviorMultiply))]
-    public class EntityBehaviorMultiplyPatch
+    public static class EntityBehaviorMultiplyPatch
     {
+        public static float GetPregnancyDays(this EntityBehaviorMultiply multiply)
+        {
+            return multiply.entity.WatchedAttributes.GetTreeAttribute("multiply").GetFloat("pregnancyDays", 3.0f);
+        }
+
+        public static void SetPregnancyDays(this EntityBehaviorMultiply multiply, float days)
+        {
+            multiply.entity.WatchedAttributes.GetTreeAttribute("multiply").SetFloat("pregnancyDays", days);
+        }
+
+
         [HarmonyPatch("SpawnQuantityMin", MethodType.Getter)]
         public static void Postfix1(EntityBehaviorMultiply __instance, ref float __result)
         {
@@ -33,6 +44,15 @@ namespace XSkills
                 playerAbility.FValue(2) * __instance.entity.WatchedAttributes.GetInt("generation");
             multiplier = Math.Min(multiplier, playerAbility.FValue(3));
             __result *= multiplier;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch("Initialize")]
+        public static void InitializePostfix(EntityBehaviorMultiply __instance)
+        {
+            if (__instance.entity.Api.Side != EnumAppSide.Server) return;
+            float pregnancyDays = (float)(typeof(EntityBehaviorMultiply).GetProperty("PregnancyDays", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance));
+            __instance.SetPregnancyDays(pregnancyDays);
         }
 
         [HarmonyPatch("SpawnQuantityMax", MethodType.Getter)]
@@ -56,14 +76,16 @@ namespace XSkills
             __result *= multiplier;
         }
 
-        [HarmonyPatch("TryGetPregnant")]
-        public static void Prefix(EntityBehaviorMultiply __instance, out bool __state)
+        [HarmonyPrefix]
+        [HarmonyPatch("CheckMultiply")]
+        public static void CheckMultiplyPrefix(EntityBehaviorMultiply __instance, out bool __state)
         {
             __state = __instance.IsPregnant;
         }
 
-        [HarmonyPatch("TryGetPregnant")]
-        public static void Postfix(EntityBehaviorMultiply __instance, bool __state)
+        [HarmonyPostfix]
+        [HarmonyPatch("CheckMultiply")]
+        public static void CheckMultiplyPostfix(EntityBehaviorMultiply __instance, bool __state)
         {
             if (__state || !__instance.IsPregnant) return;
             IPlayer player = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>()?.Feeder;
@@ -82,8 +104,8 @@ namespace XSkills
                 playerAbility.FValue(2) * __instance.entity.WatchedAttributes.GetInt("generation");
             multiplier = Math.Min(multiplier, playerAbility.FValue(3));
 
-            float pregnancyDays = (float)(typeof(EntityBehaviorMultiply).GetProperty("PregnancyDays", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance));
-            __instance.TotalDaysPregnancyStart = __instance.entity.World.Calendar.TotalDays - pregnancyDays * multiplier;
+            float pregnancyDays = __instance.GetPregnancyDays();
+            __instance.TotalDaysPregnancyStart = __instance.TotalDaysPregnancyStart - pregnancyDays * multiplier;
         }
 
         //original: https://github.com/anegostudios/vsessentialsmod/blob/master/Entity/Behavior/BehaviorMultiply.cs
@@ -99,7 +121,7 @@ namespace XSkills
 
             if (__instance.IsPregnant)
             {
-                float pregnancyDays = (float)(typeof(EntityBehaviorMultiply).GetProperty("PregnancyDays", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance));
+                float pregnancyDays = __instance.GetPregnancyDays();
                 double pregnantDays = __instance.entity.World.Calendar.TotalDays - __instance.TotalDaysPregnancyStart;
                 infotext.AppendLine(Lang.Get("Is pregnant") + string.Format(" ({0:N1}/{1:N1})", pregnantDays, pregnancyDays));
             }

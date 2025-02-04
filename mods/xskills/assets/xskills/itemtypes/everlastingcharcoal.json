@@ -20,7 +20,7 @@
 	behaviors: [{
 		name: "ArtPigment",
 		properties: {
-			decorBlockCodes: ["caveart-charcoal-1-*"],
+			decorBlockCodes: ["game:caveart-charcoal-1-*"],
 			paintableOnBlockMaterials: ["Stone", "Wood", "Brick", "Ceramic", "Metal", "Meta" ],
 			consumeChance: 0.0
 		}

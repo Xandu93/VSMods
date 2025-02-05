@@ -155,9 +155,14 @@ namespace XSkills
                 EntityProjectile projectile = dmgSource.SourceEntity as EntityProjectile;
                 CollectibleObject collectible = null;
                 if (projectile != null) collectible = projectile.ProjectileStack?.Collectible;
-                else if (dmgSource.SourceEntity.Class.Contains("Projectile"))
+                else if (dmgSource.SourceEntity.Class.Contains("Projectile") && !dmgSource.SourceEntity.Class.Contains("Spell"))
                 {
-                    collectible = COProjectiles(dmgSource);
+                    try
+                    {
+                        collectible = COProjectiles(dmgSource);
+                    }
+                    catch (System.IO.FileNotFoundException)
+                    {}
                 }
 
                 if (collectible != null)

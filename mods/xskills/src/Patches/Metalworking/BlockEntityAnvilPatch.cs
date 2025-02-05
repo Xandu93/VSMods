@@ -312,12 +312,12 @@ namespace XSkills
             playerAbility = playerSkill[__state.metalworking.BlacksmithId];
             string type = QualityUtil.GetQualityType(collectible);
 
-            if (playerAbility.Tier > 0 && 
+            if (playerAbility.Tier > 0 &&
                 !(__state.wasPlate && collectible is ItemMetalPlate) && 
-                (type != null || collectible.Tool != null))
+                (type != null || collectible.Tool != null || collectible.Code.Path.Contains("head")))
             {
                 int forged = type != null ?
-                    byPlayer.Entity.WatchedAttributes.GetTreeAttribute("forged")?.GetInt(type) ?? -1 : -1;
+                    byPlayer.Entity.WatchedAttributes.GetTreeAttribute("forged")?.GetInt(type) ?? 0 : 0;
                 float quality = Math.Min(forged, MAXFORGED) * 0.01f + Math.Min(playerSkill.Level, 25) * 0.1f;
                 quality = Math.Min(quality * playerAbility.Value(0), playerAbility.Value(1) * 0.5f - 1.0f);
                 //subtract 2.0f for quenching

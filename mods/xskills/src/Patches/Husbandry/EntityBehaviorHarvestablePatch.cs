@@ -1,63 +1,43 @@
 ﻿using HarmonyLib;
 using System;
-using System.Collections.Generic;
 using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.GameContent;
 using XLib.XLeveling;
-using XSkills;
 
 namespace XSkills
 {
     [HarmonyPatch(typeof(EntityBehaviorHarvestable))]
-    public class EntityBehaviorHarvestablePatch
+    public static class EntityBehaviorHarvestablePatch
     {
-        [HarmonyPatch("SetHarvested")]
-        public static void Prefix(EntityBehaviorHarvestable __instance, IPlayer byPlayer, ref float dropQuantityMultiplier)
+        private static bool TrySetHarvestedAnimal(EntityBehaviorHarvestable harvestable, IPlayer byPlayer, InventoryGeneric inv)
         {
-            if (__instance.entity.World.Side == EnumAppSide.Client || byPlayer?.Entity == null) return;
-            XSkillsAnimalBehavior animalBehavior = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>();
-            if (animalBehavior == null)
-            {
-                Combat combat = XLeveling.Instance(byPlayer.Entity.Api)?.GetSkill("combat") as Combat;
-                if (combat == null) return;
-                PlayerSkill playerSkill = byPlayer?.Entity.GetBehavior<PlayerSkillSet>()?[combat.Id];
-                if (playerSkill == null) return;
-                dropQuantityMultiplier += playerSkill[combat.LooterId].SkillDependentFValue();
-            }
-        }
-        [HarmonyPatch("SetHarvested")]
-        public static void Postfix(EntityBehaviorHarvestable __instance, IPlayer byPlayer, InventoryGeneric ___inv)
-        {
-            if (__instance.entity.World.Side == EnumAppSide.Client || byPlayer?.Entity == null) return;
-            if (___inv.Empty) return;
-            XSkillsAnimalBehavior animalBehavior = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>();
-            if (animalBehavior == null) return;
+            XSkillsAnimalBehavior animalBehavior = harvestable.entity?.GetBehavior<XSkillsAnimalBehavior>();
+            if (animalBehavior == null) return false;
 
             Husbandry husbandry = XLeveling.Instance(byPlayer.Entity.Api)?.GetSkill("husbandry") as Husbandry;
-            if (husbandry == null) return;
+            if (husbandry == null) return false;
             PlayerSkill playerSkill = byPlayer?.Entity.GetBehavior<PlayerSkillSet>()?[husbandry.Id];
-            if (playerSkill == null) return;
-            int generation = __instance.entity.WatchedAttributes.GetInt("generation", 0);
+            if (playerSkill == null) return false;
+            int generation = harvestable.entity.WatchedAttributes.GetInt("generation", 0);
 
-            for (int ii = 0; ii < ___inv.Count; ii++)
+            for (int ii = 0; ii < inv.Count; ii++)
             {
                 PlayerAbility ability = null;
 
-                if (___inv[ii].Itemstack?.Collectible.FirstCodePart() == "hide")
+                if (inv[ii].Itemstack?.Collectible.FirstCodePart() == "hide")
                 {
                     ability = playerSkill[husbandry.FurrierId];
                 }
-                else if (___inv[ii].Itemstack?.Collectible.FirstCodePart(1) == "raw")
+                else if (inv[ii].Itemstack?.Collectible.FirstCodePart(1) == "raw")
                 {
                     ability = playerSkill[husbandry.ButcherId];
                 }
-                else if (___inv[ii].Itemstack?.Collectible.FirstCodePart() == "fat")
+                else if (inv[ii].Itemstack?.Collectible.FirstCodePart() == "fat")
                 {
                     ability = playerSkill[husbandry.ButcherId];
                 }
-                else if (___inv[ii].Itemstack?.Collectible.FirstCodePart() == "feather")
+                else if (inv[ii].Itemstack?.Collectible.FirstCodePart() == "feather")
                 {
                     ability = playerSkill[husbandry.FurrierId];
                 }
@@ -65,17 +45,17 @@ namespace XSkills
                 if (ability?.Tier > 0)
                 {
                     float multiplier = 1.0f + ability.SkillDependentFValue() + (ability.FValue(3) * Math.Min(generation, ability.Value(4)));
-                    float stackSize = multiplier * ___inv[ii].Itemstack.StackSize;
+                    float stackSize = multiplier * inv[ii].Itemstack.StackSize;
                     int quantity = (int)stackSize;
-                    quantity += (stackSize - quantity) > __instance.entity.World.Rand.NextDouble() ? 1 : 0;
-                    ___inv[ii].Itemstack.StackSize = quantity;
+                    quantity += (stackSize - quantity) > harvestable.entity.World.Rand.NextDouble() ? 1 : 0;
+                    inv[ii].Itemstack.StackSize = quantity;
                 }
 
                 //preserver
-                if (___inv[ii].Itemstack != null)
+                if (inv[ii].Itemstack != null)
                 {
-                    ___inv[ii].Itemstack.Collectible.UpdateAndGetTransitionState(__instance.entity.World, ___inv[ii], EnumTransitionType.Perish);
-                    ITreeAttribute attr = (___inv[ii].Itemstack.Attributes as TreeAttribute)?.GetTreeAttribute("transitionstate");
+                    inv[ii].Itemstack.Collectible.UpdateAndGetTransitionState(harvestable.entity.World, inv[ii], EnumTransitionType.Perish);
+                    ITreeAttribute attr = (inv[ii].Itemstack.Attributes as TreeAttribute)?.GetTreeAttribute("transitionstate");
                     ability = playerSkill[husbandry.PreserverId];
                     if (attr != null && ability?.Tier > 0)
                     {
@@ -91,11 +71,59 @@ namespace XSkills
             }
 
             TreeAttribute tree = new TreeAttribute();
-            ___inv.ToTreeAttributes(tree);
-            __instance.entity.WatchedAttributes["harvestableInv"] = tree;
-            __instance.entity.WatchedAttributes.MarkPathDirty("harvestableInv");
-            __instance.entity.WatchedAttributes.MarkPathDirty("harvested");
+            inv.ToTreeAttributes(tree);
+            harvestable.entity.WatchedAttributes["harvestableInv"] = tree;
+            harvestable.entity.WatchedAttributes.MarkPathDirty("harvestableInv");
+            harvestable.entity.WatchedAttributes.MarkPathDirty("harvested");
+            return true;
         }
 
+        //private static bool TrySetHarvestedEnemy(EntityBehaviorHarvestable harvestable, IPlayer byPlayer, InventoryGeneric inv)
+        //{
+        //    Combat combat = XLeveling.Instance(byPlayer.Entity.Api)?.GetSkill("combat") as Combat;
+        //    if (combat == null) return false;
+        //    PlayerSkill playerSkill = byPlayer?.Entity.GetBehavior<PlayerSkillSet>()?[combat.Id];
+        //    if (playerSkill == null) return false;
+        //    float multiplier = playerSkill[combat.LooterId].SkillDependentFValue();
+
+        //    if (multiplier > 0.0f)
+        //    {
+        //        for (int ii = 0; ii < inv.Count; ii++)
+        //        {
+        //            float stackSize = multiplier * inv[ii].Itemstack.StackSize;
+        //            int quantity = (int)stackSize;
+        //            quantity += (stackSize - quantity) > harvestable.entity.World.Rand.NextDouble() ? 1 : 0;
+        //            inv[ii].Itemstack.StackSize = quantity;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        [HarmonyPrefix]
+        [HarmonyPatch("SetHarvested")]
+        public static void SetHarvestedPrefix(EntityBehaviorHarvestable __instance, IPlayer byPlayer, ref float dropQuantityMultiplier)
+        {
+            if (__instance.entity.World.Side == EnumAppSide.Client || byPlayer?.Entity == null) return;
+            XSkillsAnimalBehavior animalBehavior = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>();
+            if (animalBehavior == null)
+            {
+                Combat combat = XLeveling.Instance(byPlayer.Entity.Api)?.GetSkill("combat") as Combat;
+                if (combat == null) return;
+                PlayerSkill playerSkill = byPlayer?.Entity.GetBehavior<PlayerSkillSet>()?[combat.Id];
+                if (playerSkill == null) return;
+                dropQuantityMultiplier += playerSkill[combat.LooterId].SkillDependentFValue();
+            }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch("SetHarvested")]
+        public static void SetHarvestedPostfix(EntityBehaviorHarvestable __instance, IPlayer byPlayer, InventoryGeneric ___inv)
+        {
+            if (__instance.entity.World.Side == EnumAppSide.Client || byPlayer?.Entity == null) return;
+            if (___inv.Empty) return;
+
+            if (TrySetHarvestedAnimal(__instance, byPlayer, ___inv)) return;
+            //if (TrySetHarvestedEnemy(__instance, byPlayer, ___inv)) return;
+        }
     }//!class EntityBehaviorHarvestablePatch
 }//!namespace XSkills

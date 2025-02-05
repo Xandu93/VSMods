@@ -415,6 +415,9 @@ namespace XSkills
 
             for (int ii = 0; ii < days; ++ii)
             {
+                float yearRel = calendar.YearRel + (float)ii / calendar.DaysPerYear;
+                if (yearRel > 1.0f) { yearRel -= 1.0f; }
+
                 minTemperature[ii] =  100.0f;
                 maxTemperature[ii] = -100.0f;
 
@@ -449,37 +452,49 @@ namespace XSkills
 
                     minCloudness[ii] = Math.Min(minCloudness[ii], cloudness);
                     maxCloudness[ii] = Math.Max(maxCloudness[ii], cloudness);
+                }
 
-                    float yearRel = calendar.YearRel + ii / calendar.DaysPerYear;
-                    if (yearRel > 1.0f) { yearRel -= 1.0f; }
+                float ftime = 0.25f;
+                float step = 0.05f;
+                int steps = 0;
+                int maxsteps = 50;
+                while (ftime > 0.0f && ftime < 1.0f && steps < maxsteps)
+                {
+                    float zenith = calendar.OnGetSolarSphericalCoords(
+                        pos.X, pos.Z,
+                        yearRel, ftime).ZenithAngle;
 
-                    float ftime = 0.25f;
-                    while (ftime > 0.0f && ftime < 1.0f)
+                    if (zenith >= foo) ftime -= step;
+                    else ftime += step;
+                    if (sunrise[ii] == ftime)
                     {
-                        float zenith = calendar.OnGetSolarSphericalCoords(
-                            pos.X, pos.Z, 
-                            calendar.YearRel,
-                            ftime).ZenithAngle;
-
-                        if (zenith >= foo) ftime -= 0.005f;
-                        else ftime += 0.005f;
-                        if (sunrise[ii] == ftime) break;
-                        if (zenith >= foo) sunrise[ii] = Math.Min(sunrise[ii], ftime);
+                        if (step < 0.0001f) break;
+                        sunrise[ii] += step;
+                        step *= 0.1f;
                     }
+                    else if (zenith >= foo) sunrise[ii] = Math.Min(sunrise[ii], ftime);
+                    ++steps;
+                }
 
-                    ftime = 0.75f;
-                    while (ftime > 0.0f && ftime < 1.0f)
+                ftime = 0.75f;
+                step = 0.05f;
+                steps = 0;
+                while (ftime > 0.0f && ftime < 1.0f && steps < maxsteps)
+                {
+                    float zenith = calendar.OnGetSolarSphericalCoords(
+                        pos.X, pos.Z,
+                        yearRel, ftime).ZenithAngle;
+
+                    if (zenith <= foo) ftime -= step;
+                    else ftime += step;
+                    if (sunset[ii] == ftime)
                     {
-                        float zenith = calendar.OnGetSolarSphericalCoords(
-                            pos.X, pos.Z,
-                            calendar.YearRel,
-                            ftime).ZenithAngle;
-
-                        if (zenith <= foo) ftime -= 0.005f;
-                        else ftime += 0.005f;
-                        if (sunset[ii] == ftime) break;
-                        if (zenith <= foo) sunset[ii] = Math.Max(sunset[ii], ftime);
+                        if (step < 0.0001f) break;
+                        sunset[ii] -= step;
+                        step *= 0.1f;
                     }
+                    if (zenith <= foo) sunset[ii] = Math.Max(sunset[ii], ftime);
+                    ++steps;
                 }
 
                 //adding some inaccuracy. later days have more inaccuracy

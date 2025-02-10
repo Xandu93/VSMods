@@ -35,6 +35,7 @@ namespace XSkills
         public int SteeplechaserId { get; private set; }
         public int SprinterId { get; private set; }
         public int AbundanceAdaptationId { get; private set; }
+        //public int LongArmsId { get; private set; }
         public int SoulboundBagId { get; private set; }
         public int LuminiferousId { get; private set; }
         public int CatEyesId { get; private set; }
@@ -192,6 +193,14 @@ namespace XSkills
                 "xskills:abilitydesc-abundanceadaptation",
                 6, 2, new int[] { 5, 10, 10, 20 }));
 
+            //increase block selection range
+            //0: value
+            //LongArmsId = this.AddAbility(new Ability(
+            //    "longarms",
+            //    "xskills:ability-longarms",
+            //    "xskills:abilitydesc-longarms",
+            //    6, 1, new int[] { 1 }));
+
             // items in the strong back inventory are not dropped on death
             SoulboundBagId = -1;
             if (api.World.Config.GetString("deathPunishment", "drop") != "keep")
@@ -236,6 +245,7 @@ namespace XSkills
             this[NudistId].OnPlayerAbilityTierChanged += OnNudist;
             this[StrongBackId].OnPlayerAbilityTierChanged += OnStrongBack;
             this[SteeplechaserId].OnPlayerAbilityTierChanged += OnSteeplechaser;
+            //this[LongArmsId].OnPlayerAbilityTierChanged += OnLongArms;
 
             ClassRegistry registry = (api as ServerCoreAPI)?.ClassRegistryNative ?? (api as ClientCoreAPI)?.ClassRegistryNative;
             if (registry != null)
@@ -390,6 +400,11 @@ namespace XSkills
             EntityBehaviorControlledPhysics physics = playerAbility.PlayerSkill.PlayerSkillSet.Player.Entity.GetBehavior<EntityBehaviorControlledPhysics>();
             if (physics == null) return;
             physics.StepHeight *= mult;
+        }
+
+        public static void OnLongArms(PlayerAbility playerAbility, int oldTier)
+        {
+            playerAbility.PlayerSkill.PlayerSkillSet.Player.WorldData.PickingRange = 4.5f + playerAbility.Value(0);
         }
 
         public static string GenerateWeatherForecast(ICoreAPI api, EntityPos pos, int days = 3, float inaccuracy = 0.5f)
@@ -575,7 +590,9 @@ namespace XSkills
             nightVisionRenderer = new NightVisionRenderer(capi, nightVisionShaderProg);
             capi.Event.RegisterRenderer(nightVisionRenderer, EnumRenderStage.AfterFinalComposition);
 
+#if !DEBUG
             if (!(this.Config as SurvivalSkillConfig).allowCatEyesToggle) return;
+#endif
 
             capi.Input.RegisterHotKey("cateyestoggle", "Cat eyes toggle", GlKeys.P, HotkeyType.CharacterControls);
             capi.Input.SetHotKeyHandler("cateyestoggle", (KeyCombination key) =>
@@ -787,7 +804,7 @@ namespace XSkills
         public void OnRenderFrame(float deltaTime, EnumRenderStage stage)
         {
             EntityPlayer player = capi.World.Player.Entity;
-            if (player == null) return;
+            if (player == null || deltaTime <= 0.0f) return;
 
             if (ability == null)
             {
@@ -807,10 +824,10 @@ namespace XSkills
             IPlayer[] players = capi.World.GetPlayersAround(player.Pos.XYZ, 32.0f, 32.0f);
             foreach (IPlayer player1 in players)
             {
-                byte playerBrightness = player1.Entity?.LightHsv?[2] ?? 0;
+                int playerBrightness = player1.Entity?.LightHsv?[2] ?? 0;
                 if (playerBrightness == 0) continue;
 
-                playerBrightness -= (byte)player1.Entity.Pos.DistanceTo(player.Pos);
+                playerBrightness -= (int)player1.Entity.Pos.DistanceTo(player.Pos);
                 light = Math.Max(light, playerBrightness);
             }
 

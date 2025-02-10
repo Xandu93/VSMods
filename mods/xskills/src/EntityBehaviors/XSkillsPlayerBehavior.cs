@@ -90,6 +90,13 @@ namespace XSkills
 
             Entity entity = dmgSource.SourceEntity;
 
+            //fall damage
+            //if (dmgSource.Source == EnumDamageSource.Fall && dmgSource.Type == EnumDamageType.Gravity)
+            //{
+            //    PlayerAbility playerAbility = ;
+            //    damage = Math.Max(damage - playerAbility.Value(0), 0);
+            //}
+
             //timeless
             if (this.adaptation != null && dmgSource.Source == EnumDamageSource.Machine && dmgSource.SourceEntity == null && dmgSource.Type == EnumDamageType.Poison)
             {

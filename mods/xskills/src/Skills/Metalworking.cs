@@ -264,7 +264,7 @@ namespace XSkills
                         recipe.Name.Path.Contains("ingot") ||
                         recipe.Name.Path.Contains("recycling"))
                     {
-                        if (recipe.Ingredients.Count != 2) continue;
+                        if (recipe.resolvedIngredients.Length != 2) continue;
                         CraftingRecipeIngredient ingredient = null;
                         bool foundTool = false;
 
@@ -290,7 +290,7 @@ namespace XSkills
             foreach (SmithingRecipe recipe in this.XLeveling.Api.ModLoader.GetModSystem<RecipeRegistrySystem>().SmithingRecipes)
             {
                 CollectibleObject collectible = recipe.Output?.ResolvedItemstack?.Collectible;
-                if (collectible == null) return;
+                if (collectible == null) continue;
 
                 int neededVoxels = 0;
                 if (collectible.CombustibleProps?.SmeltedStack?.ResolvedItemstack  != null)
@@ -312,8 +312,8 @@ namespace XSkills
                     float proportion = 1.0f + ability.Values[ability.Values.Length - 1] * 0.01f;
 
                     if (recipe.Output.ResolvedItemstack.StackSize == 0) continue;
-                    int returnedIngots = neededVoxels / 42;
                     int voxelsPerItem = neededVoxels / recipe.Output.ResolvedItemstack.StackSize;
+                    int returnedIngots = voxelsPerItem / 42;
 
                     if (returnedIngots == 0)
                     {
@@ -327,7 +327,7 @@ namespace XSkills
 
                     recipe.Output.ResolvedItemstack.Collectible.CombustibleProps.SmeltedStack.ResolvedItemstack.StackSize = returnedIngots;
                     recipe.Output.ResolvedItemstack.Collectible.CombustibleProps.SmeltedStack.StackSize = returnedIngots;
-                    if ((float)neededVoxels / (returnedIngots * 42) > proportion) 
+                    if ((float)neededVoxels / (returnedIngots * 42) > proportion)
                         this.duplicatable.Add(recipe);
                 }
             }

@@ -8,7 +8,7 @@
   "unlearnpoints": "Punkty Zapomnienia",
   "unlearncooldown": "Czas odnowienia umiejętności",
   "unlearn": "Zapomnij",
-  "unlearnAbility": "Unlearn ability",
+  "unlearnAbility": "Zapomnij umiejętność",
   "sparringmode": "Tryb sparingowy",
   "requirements": "Wymagania",
 
@@ -30,12 +30,12 @@
   "specialisations": "Specjalizacje",
 
   "skills-desc": "<strong>Umiejętności</strong><br><br><strong>Umiejętności</strong><br>Umiejętność jest zbiorem twojej wiedzy i zdolności w konkretnej dziedzinie. Każda z twoich umiejętności ma określony poziom. Możesz podnieść ten poziom poprzez zbieranie doświadczenia wykonując czynności związane z tą umiejętnością. Z każdym poziomem otrzymujesz również punkt zdolności dla tej umiejętności. Aby zobaczyć przegląd swoich umiejętności i zdolności wciśnij klawisz [O]. Możesz zmienić ten klawisz w menu ustawień.<br><br><strong>Zdolności</strong><br>Zdolność daje ci przewagę w konkretnym działaniu związanym z daną umiejętnością. Większość zdolności ma więcej niż jeden poziom. Wyższe poziomy umiejętności dają więcej korzyści. Aby podnieść poziom zdolności, potrzebujesz jednego punktu umiejętności, do której należy dana zdolność. Następnie możesz kliknąć na umiejętność w oknie dialogowym umiejętności, aby zwiększyć jej poziom. Możesz również obniżyć poziom umiejętności. Aby to zrobić, musisz przełączyć tryb na <strong>Zapomnij</strong>, klikając na przycisk. Teraz możesz kliknąć na umiejętność, aby obniżyć jej poziom. Pamiętaj, aby ponownie przełączyć przycisk, aby wyłączyć tryb <strong>Zapomnij</strong>. Zauważ, że potrzebujesz punktów zapomnienia, aby obniżyć poziom umiejętności. Kiedy obniżysz poziom umiejętności, otrzymasz z powrotem punkty umiejętności, które wykorzystałeś. Podczas gdy punkty umiejętności są związane z konkretną umiejętnością, punkty zapomnienia są wspólne dla wszystkich umiejętności. Możesz otrzymać punkty zapomnienia za spożywanie określonych przedmiotów. Przedmioty te można znaleźć w podręczniku.",
-  "sparring-desc": "<strong>Sparring</strong><br>If two players have sparring mode enabled and kill each other, neither of them will loose experience points upon dying.",
+  "sparring-desc": "<strong>Sparring</strong><br>Jeśli dwóch graczy ma włączony tryb sparingu i zabiją się nawzajem, żaden z nich nie straci punktów doświadczenia po śmierci.",
 
   "rested-effect": "Dobrze wypoczęty",
   "rested-effectdesc": "Zwiększa doświadczenie zdobywane za każdą umiejętność o {0:P} przez {1} sekund.",
   "rested-effectsdesc": "Zwiększa doświadczenie zdobywane za każdą umiejętność o {0:P}.",
-    
+
   "skillbook-dsc": "Daje ci {1} doświadczenia za umiejętność {0}.",
-  "skillbook-dsc2": "Grants you knowledge of {0}."
+  "skillbook-dsc2": "Zapewnia wiedzę z zakresu {0}."
 }

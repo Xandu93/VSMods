@@ -16,7 +16,7 @@ namespace XSkills
             get
             {
                 //set this after all pickaxe behaviors are loaded to have a full array
-                toolModes ??= ObjectCacheUtil.TryGet<SkillItem[]>(api, "pickaxeToolModes");
+                toolModes ??= api != null ? ObjectCacheUtil.TryGet<SkillItem[]>(api, "pickaxeToolModes") : null;
                 return toolModes;
             }
         }

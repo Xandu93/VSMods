@@ -496,38 +496,42 @@ namespace XInvTweaks
                         destDic.Remove(containerFlags);
                         continue;
                     }
-                    ItemSlot dest = destList[0];
-                    if (dest == source)
-                    {
-                        destList.RemoveAt(0);
-                        if (destList.Count == 0)
-                        {
-                            destDic.Remove(containerFlags);
-                        }
-                        continue;
-                    }
-                    
-                    if (dest.Itemstack != null)
-                    {
-                        //updates the slot list so that it stays correct after switching the items in the slots
-                        slots.TryGetValue(dest.Itemstack.Collectible, out List<ItemSlot> otherList);
-                        int index = 0;
-                        try
-                        {
-                            while (otherList[index] != dest) index++;
-                            otherList[index] = source;
-                        }
-                        catch(ArgumentOutOfRangeException) { continue; }
-                    }
 
-                    object obj = dest.Inventory.TryFlipItems(dest.Inventory.GetSlotId(dest), source);
-                    if (obj != null)
+                    foreach (ItemSlot dest in destList)
                     {
-                        capi.Network.SendPacketClient(obj);
-                        destList.RemoveAt(0);
-                        if (destList.Count == 0)
+                        if (dest == source)
                         {
-                            destDic.Remove(containerFlags);
+                            destList.Remove(dest);
+                            if (destList.Count == 0)
+                            {
+                                destDic.Remove(containerFlags);
+                            }
+                            break;
+                        }
+
+                        if (dest.Itemstack != null)
+                        {
+                            //updates the slot list so that it stays correct after switching the items in the slots
+                            slots.TryGetValue(dest.Itemstack.Collectible, out List<ItemSlot> otherList);
+                            int index = 0;
+                            try
+                            {
+                                while (otherList[index] != dest) index++;
+                                otherList[index] = source;
+                            }
+                            catch (ArgumentOutOfRangeException) { break; }
+                        }
+
+                        object obj = dest.Inventory.TryFlipItems(dest.Inventory.GetSlotId(dest), source);
+                        if (obj != null)
+                        {
+                            capi.Network.SendPacketClient(obj);
+                            destList.Remove(dest);
+                            if (destList.Count == 0)
+                            {
+                                destDic.Remove(containerFlags);
+                            }
+                            break;
                         }
                     }
                 }

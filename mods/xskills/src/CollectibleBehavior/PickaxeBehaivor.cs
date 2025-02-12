@@ -16,7 +16,7 @@ namespace XSkills
             get
             {
                 //set this after all pickaxe behaviors are loaded to have a full array
-                toolModes ??= api != null ? ObjectCacheUtil.TryGet<SkillItem[]>(api, "pickaxeToolModes") : null;
+                toolModes ??= (api != null ? ObjectCacheUtil.TryGet<SkillItem[]>(api, "pickaxeToolModes") : null);
                 return toolModes;
             }
         }
@@ -77,6 +77,7 @@ namespace XSkills
 
         public override void OnUnloaded(ICoreAPI api)
         {
+            this.api = api;
             if (ToolModes == null) return;
             for (int ii = offset; ii < offset + 2; ++ii)
             {

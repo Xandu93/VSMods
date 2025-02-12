@@ -7,7 +7,7 @@
   "requiredOnClient": false,
   "requiredOnServer": false,
   "description": "Provides a collection of small tweaks to improve the inventory handling.",
-  "version": "1.6.10",
+  "version": "1.6.11",
   "dependencies": {
     "game": "1.20.0",
     "survival": "1.20.0"

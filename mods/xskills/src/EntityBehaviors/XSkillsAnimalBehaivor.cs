@@ -16,8 +16,17 @@ namespace XSkills
 
         public IPlayer Feeder 
         { 
-            get => entity.Api.World.PlayerByUid(entity.WatchedAttributes.GetString("owner"));
-            set => entity.WatchedAttributes.SetString("owner", value.PlayerUID);
+            get 
+            {
+                string uid = entity.WatchedAttributes.GetString("owner");
+                if (uid == null) return null;
+                return entity.Api.World.PlayerByUid(uid); 
+            }
+            set 
+            {
+                if (value != null) entity.WatchedAttributes.SetString("owner", value.PlayerUID);
+                else entity.WatchedAttributes.RemoveAttribute("owner");
+            }
         }
         public bool Catchable { get; set; }
 

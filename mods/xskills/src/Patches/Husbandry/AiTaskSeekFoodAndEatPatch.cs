@@ -8,17 +8,19 @@ namespace XSkills
     [HarmonyPatch(typeof(AiTaskSeekFoodAndEat))]
     public class AiTaskSeekFoodAndEatPatch
     {
+        [HarmonyPrefix]
         [HarmonyPatch("ContinueExecute")]
-        public static void Prefix(AiTaskSeekFoodAndEat __instance, IAnimalFoodSource ___targetPoi)
+        public static void ContinueExecutePrefix(AiTaskSeekFoodAndEat __instance, IAnimalFoodSource ___targetPoi)
         {
-            BlockEntityTrough Trough = ___targetPoi as BlockEntityTrough;
+            BlockEntityTrough trough = ___targetPoi as BlockEntityTrough;
             XSkillsAnimalBehavior beh = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>();
-            if (beh == null || Trough == null) return;
-            beh.Feeder = Trough.GetOwner();
+            if (beh == null || trough == null) return;
+            beh.Feeder = trough.GetOwner();
         }
 
+        [HarmonyPrefix]
         [HarmonyPatch("FinishExecute")]
-        public static void Prefix(AiTaskSeekFoodAndEat __instance, float ___quantityEaten)
+        public static void FinishExecutePrefix(AiTaskSeekFoodAndEat __instance, float ___quantityEaten)
         {
             if (___quantityEaten < 1.0f) return;
             IPlayer player = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>()?.Feeder;

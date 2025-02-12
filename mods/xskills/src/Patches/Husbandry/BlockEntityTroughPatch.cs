@@ -11,9 +11,14 @@ namespace XSkills
     {
         public static IPlayer GetOwner(this BlockEntityTrough trough)
         {
-            string owner = trough.Inventory[0].Itemstack?.Attributes?.GetString("owner");
+            string owner = trough.Inventory[0].Itemstack?.Attributes.GetString("owner");
             if (owner == null) return null;
             return trough.Api.World.PlayerByUid(owner);
+        }
+
+        public static void SetOwner(this BlockEntityTrough trough, IPlayer owner)
+        {
+            trough.Inventory[0].Itemstack?.Attributes.SetString("owner", owner.PlayerUID);
         }
     }//!class BlockEntityTroughExtension
 
@@ -30,7 +35,7 @@ namespace XSkills
         public static void Postfix(BlockEntityTrough __instance, int __state, IPlayer byPlayer)
         {
             if (__state >= (__instance.Inventory[0].Itemstack?.StackSize ?? 0)) return;
-            __instance.Inventory[0].Itemstack.Attributes.SetString("owner", byPlayer.PlayerUID);
+            __instance.SetOwner(byPlayer);
         }
 
         [HarmonyPatch("ConsumeOnePortion")]

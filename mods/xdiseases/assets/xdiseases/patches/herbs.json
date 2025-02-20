@@ -177,7 +177,7 @@
         "properties": {
           "cures": [
             {
-              "effect": "xdiseases:blindness",
+              "effect": "xdiseases:d-blindness",
               "intensity": 0.0,
               "minintensity": 0.5,
               "healingrate": 0.0002,
@@ -261,7 +261,7 @@
         "properties": {
           "cures": [
             {
-              "effect": "xdiseases:blindness",
+              "effect": "xdiseases:d-blindness",
               "intensity": 0.1,
               "minintensity": 0.4,
               "healingrate": 0.000005,
@@ -307,7 +307,7 @@
         "properties": {
           "cures": [
             {
-              "effect": "xdiseases:blindness",
+              "effect": "xdiseases:d-blindness",
               "intensity": 0.3,
               "minintensity": 0.5,
               "healingrate": 0.0001,
@@ -353,7 +353,7 @@
         "properties": {
           "cures": [
             {
-              "effect": "xdiseases:blindness",
+              "effect": "xdiseases:d-blindness",
               "intensity": 0.2,
               "minintensity": 0.5,
               "healingrate": 0.0,

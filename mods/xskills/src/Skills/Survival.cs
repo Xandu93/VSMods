@@ -824,11 +824,11 @@ namespace XSkills
             IPlayer[] players = capi.World.GetPlayersAround(player.Pos.XYZ, 32.0f, 32.0f);
             foreach (IPlayer player1 in players)
             {
-                int playerBrightness = player1.Entity?.LightHsv?[2] ?? 0;
+                int playerBrightness = Math.Clamp(player1.Entity?.LightHsv?[2] ?? 0, (byte) 0, (byte) 32);
                 if (playerBrightness == 0) continue;
+                int distance = (int)player1.Entity.Pos.DistanceTo(player.Pos);
 
-                playerBrightness -= (int)player1.Entity.Pos.DistanceTo(player.Pos);
-                light = Math.Max(light, playerBrightness);
+                light = Math.Max(light, playerBrightness - distance * 2);
             }
 
             float mult = light == 0 ? 1.6f : 1.0f;

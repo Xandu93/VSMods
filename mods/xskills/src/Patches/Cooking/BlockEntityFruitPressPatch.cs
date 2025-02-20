@@ -114,13 +114,14 @@ namespace XSkills
             PlayerAbility ability = player.Entity?.GetBehavior<PlayerSkillSet>()?[cooking.Id]?[cooking.JuicerId];
             if (ability == null) return;
             int value = ability.Value(0);
-            if (value == 33) __result.LitresPerItem *= 1.0f + 1.0f/3.0f;
+            if (value == 33) __result.LitresPerItem *= 1.0f + 1.0f / 3.0f;
+            else if (value == 66) __result.LitresPerItem *= 2.0f - 1.0f / 3.0f;
             else __result.LitresPerItem *= 1.0f + value * 0.01f;
 
-            float litres = (float)(__instance.MashSlot.Itemstack?.Attributes.GetDecimal("juiceableLitresLeft") ?? 0.0);
-            if (litres <= 10.0f && litres + __result.LitresPerItem > 10.0f)
+            float mashlitres = (float)(__instance.MashSlot.Itemstack?.Attributes.GetDecimal("juiceableLitresLeft") ?? 0.0);
+            if (mashlitres <= 10.0f && mashlitres + __result.LitresPerItem > 10.0f)
             {
-                __result.LitresPerItem = 10.0f - litres;
+                __result.LitresPerItem = 10.0f - mashlitres;
             }
         }
     }

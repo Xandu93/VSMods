@@ -490,6 +490,7 @@ namespace XLib.XLeveling
 
                     playerSkill.Experience -= loss;
                     this.channel.SendPacket(new ExperiencePackage(playerSkill.Skill.Id, -loss), byPlayer);
+                    byPlayer.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSkill.Skill.DisplayName);
                 }
             }
         }

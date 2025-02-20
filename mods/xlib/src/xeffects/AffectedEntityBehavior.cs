@@ -240,7 +240,7 @@ namespace XLib.XEffects
                 }
                 else
                 {
-                    undergroundHours -= triggerTimer * entity.World.Calendar.SpeedOfTime / 3600.0f;
+                    undergroundHours -= 4 * triggerTimer * entity.World.Calendar.SpeedOfTime / 3600.0f;
                 }
                 undergroundHours = Math.Clamp(undergroundHours, 0.0f, 168.0f);
                 entity.WatchedAttributes.SetFloat("undergroundHours", undergroundHours);

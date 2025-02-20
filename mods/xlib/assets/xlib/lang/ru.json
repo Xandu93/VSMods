@@ -1,7 +1,7 @@
 ﻿{
-	// Перевод по версии Jay
-	// Translation variant by Jay (kousko@gmail.com)
-	
+  // Перевод по версии Jay
+  // Translation variant by Jay (kousko@gmail.com)
+
   "skill": "Навык",
   "skills": "Навыки",
   "level": "Уровень",
@@ -23,6 +23,7 @@
   "notenoughpoints": "\nYou don't have enough points!",
   "you receive": "Вы получаете",
   "levelup": "Вы достигли {0} уровня в навыке «{1}»!",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "все перечисленные навыки: ",
   "orrequirement": "любой из навыков: ",
@@ -38,7 +39,7 @@
   "rested-effect": "Отдохнувший",
   "rested-effectdesc": "Увеличивает опыт, получаемый за каждый навык на {0:P} в течение {1} сек.",
   "rested-effectsdesc": "Увеличивает опыт, получаемый за каждый навык на{0:P}.",
-    
+
   "skillbook-dsc": "Grants you {1} experience for the {0} skill.",
   "skillbook-dsc2": "Grants you knowledge of {0}."
 }

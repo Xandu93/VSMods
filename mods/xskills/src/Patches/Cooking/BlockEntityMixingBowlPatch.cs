@@ -94,6 +94,7 @@ namespace XSkills
             if (inv == null) return;
 
             __state.quality = inv[1].Itemstack?.Attributes.GetFloat("quality") ?? 0.0f;
+            __state.outputStackSize = __instance.OutputStack?.StackSize ?? 0;
 
             for (int ii = 2; ii <= 7; ++ii)
             {
@@ -114,7 +115,9 @@ namespace XSkills
 
             Cooking cooking = byPlayer.Entity?.Api.ModLoader.GetModSystem<XLeveling>()?.GetSkill("cooking") as Cooking;
             if (cooking == null) return;
-            cooking.ApplyAbilities(__instance.OutputSlot, byPlayer, __state.quality, 1.0f, __state.stacks);
+            int cooked = (__instance.OutputStack?.StackSize ?? 0) - __state.outputStackSize;
+            if (cooked <= 0) return;
+            cooking.ApplyAbilities(__instance.OutputSlot, byPlayer, __state.quality, cooked, __state.stacks);
         }
     }//!class BlockEntityMixingBowlPatch
 }//!namespace XSkills

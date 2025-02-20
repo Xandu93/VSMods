@@ -509,22 +509,22 @@ namespace XInvTweaks
                             break;
                         }
 
-                        if (dest.Itemstack != null)
-                        {
-                            //updates the slot list so that it stays correct after switching the items in the slots
-                            slots.TryGetValue(dest.Itemstack.Collectible, out List<ItemSlot> otherList);
-                            int index = 0;
-                            try
-                            {
-                                while (otherList[index] != dest) index++;
-                                otherList[index] = source;
-                            }
-                            catch (ArgumentOutOfRangeException) { break; }
-                        }
-
                         object obj = dest.Inventory.TryFlipItems(dest.Inventory.GetSlotId(dest), source);
                         if (obj != null)
                         {
+                            if (source.Itemstack != null)
+                            {
+                                //updates the slot list so that it stays correct after switching the items in the slots
+                                slots.TryGetValue(source.Itemstack.Collectible, out List<ItemSlot> otherList);
+                                int index = 0;
+                                try
+                                {
+                                    while (otherList[index] != dest) index++;
+                                    otherList[index] = source;
+                                }
+                                catch (ArgumentOutOfRangeException) { break; }
+                            }
+
                             capi.Network.SendPacketClient(obj);
                             destList.Remove(dest);
                             if (destList.Count == 0)

@@ -1,8 +1,8 @@
 {
-    "comment_description": "Japanese localization file for 'XLib'.",
-    "comment_version": "Mod Version: v0.8.0-rc.1",
-    "comment_author": "Translated By: Macoto Hino",
-    "comment_technical_details": "Machine translation using PCOT and DeepL.",
+  "comment_description": "Japanese localization file for 'XLib'.",
+  "comment_version": "Mod Version: v0.8.0-rc.1",
+  "comment_author": "Translated By: Macoto Hino",
+  "comment_technical_details": "Machine translation using PCOT and DeepL.",
 
   "skill": "スキル",
   "skills": "XLib and XSkills:スキル",
@@ -25,6 +25,7 @@
   "notenoughpoints": "\nポイントが足りません！",
   "you receive": "受け取りました。",
   "levelup": "スキル{1}のレベル{0}に到達しました！",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "以下のすべて: ",
   "orrequirement": "以下のいずれか: ",
@@ -40,7 +41,7 @@
   "rested-effect": "よく眠った",
   "rested-effectdesc": "{1}秒間、全スキルの獲得経験値を{0:P}増加します。",
   "rested-effectsdesc": "全スキルの獲得経験値を{0:P}増加します。",
-    
+
   "skillbook-dsc": "{0}のスキルに対して{1}の経験値を付与します。",
   "skillbook-dsc2": "Grants you knowledge of {0}."
 }

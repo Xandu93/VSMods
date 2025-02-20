@@ -20,6 +20,7 @@
   "notenoughpoints": "\nVous n'avez pas assez de points!",
   "you receive": "Vous recevez",
   "levelup": "Vous avez atteint le niveau {0} dans la compétence {1}!",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "Tout ce qui suit: ",
   "orrequirement": "Un de ceux-là: ",
@@ -35,7 +36,7 @@
   "rested-effect": "Bien reposé",
   "rested-effectdesc": "Augmente l'expérience que vous gagnez pour chaque compétence de {0:P} pendant {1} secondes.",
   "rested-effectsdesc": "Augmente l'expérience que vous gagnez pour chaque compétence de {0:P}.",
-    
+
   "skillbook-dsc": "Grants you {1} experience for the {0} skill.",
   "skillbook-dsc2": "Grants you knowledge of {0}."
 }

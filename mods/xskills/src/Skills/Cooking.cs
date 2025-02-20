@@ -152,7 +152,7 @@ namespace XSkills
 
         public static void ApplyQuality(float quality, float eaten, float temperature, EnumFoodCategory food0, EnumFoodCategory food1, EntityAgent byEntity)
         {
-            if (quality <= 0.0f || byEntity.Api.Side == EnumAppSide.Client) return;
+            if (quality <= 0.0f || float.IsNaN(quality) || byEntity.Api.Side == EnumAppSide.Client) return;
             if (eaten <= 0.0f) return;
             float duration = eaten * 600.0f;
 
@@ -318,9 +318,15 @@ namespace XSkills
                 {
                     FloatArrayAttribute freshHoursAttribute = attr["freshHours"] as FloatArrayAttribute;
                     FloatArrayAttribute transitionedHoursAttribute = attr["transitionedHours"] as FloatArrayAttribute;
-                    if (freshHoursAttribute?.value.Length >= 1 && transitionedHoursAttribute?.value.Length >= 1)
+                    if (freshHoursAttribute == null || transitionedHoursAttribute == null) continue;
+
+                    for (int ii = 0; ii < freshHoursAttribute.value.Length; ++ii)
                     {
-                        freshness *= Math.Min(1.0f - transitionedHoursAttribute.value[0] / freshHoursAttribute.value[0], 1.0f);
+                        if (freshHoursAttribute.value[ii] != 0.0f)
+                        {
+                            freshness *= Math.Clamp(1.0f - transitionedHoursAttribute.value[ii] / freshHoursAttribute.value[ii], 0.0f, 1.0f);
+                            break;
+                        }
                     }
                 }
 
@@ -495,24 +501,30 @@ namespace XSkills
                 {
                     FloatArrayAttribute freshHoursAttribute = attr["freshHours"] as FloatArrayAttribute;
                     FloatArrayAttribute transitionedHoursAttribute = attr["transitionedHours"] as FloatArrayAttribute;
-                    if (freshHoursAttribute.value.Length >= 1 && transitionedHoursAttribute.value.Length >= 1)
+                    if (freshHoursAttribute == null || transitionedHoursAttribute == null) continue;
+
+                    for (int ii = 0; ii < freshHoursAttribute.value.Length; ++ii)
                     {
-                        if (mealContainer == null)
+                        if (freshHoursAttribute.value[ii] != 0.0f)
                         {
-                            TransitionableProperties[] transProps = outputStack.Collectible.TransitionableProps;
-                            if (transProps != null)
+                            if (mealContainer == null)
                             {
-                                freshHoursAttribute.value[0] = transProps[0].FreshHours.avg * (1.0f + playerAbility.SkillDependentFValue());
+                                TransitionableProperties[] transProps = outputStack.Collectible.TransitionableProps;
+                                if (transProps != null)
+                                {
+                                    freshHoursAttribute.value[ii] = transProps[ii].FreshHours.avg * (1.0f + playerAbility.SkillDependentFValue());
+                                }
                             }
-                        }
-                        else
-                        {
-                            freshHoursAttribute.value[0] = freshHoursAttribute.value[0] * (1.0f + playerAbility.SkillDependentFValue());
+                            else
+                            {
+                                freshHoursAttribute.value[ii] = freshHoursAttribute.value[ii] * (1.0f + playerAbility.SkillDependentFValue());
+                            }
                         }
                     }
                 }
             }
             FreshnessAndQuality(sourceStacks ?? contentStacks, out float freshness, out float sourceQuality);
+            if (float.IsNaN(sourceQuality)) sourceQuality = 0.0f;
 
             //gourmet
             playerAbility = skill[this.GourmetId];

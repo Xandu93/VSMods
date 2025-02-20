@@ -319,9 +319,12 @@ namespace XSkills
                 int forged = type != null ?
                     byPlayer.Entity.WatchedAttributes.GetTreeAttribute("forged")?.GetInt(type) ?? 0 : 0;
                 float quality = Math.Min(forged, MAXFORGED) * 0.01f + Math.Min(playerSkill.Level, 25) * 0.1f;
+
+                //subtract 1.0f for quenching
                 quality = Math.Min(quality * playerAbility.Value(0), playerAbility.Value(1) * 0.5f - 1.0f);
                 //subtract 2.0f for quenching
                 quality = Math.Min(quality + (float)byPlayer.Entity.World.Rand.NextDouble() * quality, playerAbility.Value(1) - 2.0f);
+
                 __state.recipe.Output.ResolvedItemstack.Attributes.SetFloat("quality", quality);
             }
 

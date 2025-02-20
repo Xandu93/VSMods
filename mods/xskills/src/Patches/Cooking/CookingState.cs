@@ -9,5 +9,6 @@ namespace XSkills
     {
         internal ItemStack[] stacks;
         internal float quality;
+        internal int outputStackSize;
     }
 }

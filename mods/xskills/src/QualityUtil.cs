@@ -126,7 +126,11 @@ namespace XSkills
                         break;
                 }
             }
-            if (type < 0) return null;
+            if (type < 0)
+            {
+                if (collectible is ItemWearableAttachment) type = 1;
+                else return null;
+            }
             string str = null;
             switch (type)
             {

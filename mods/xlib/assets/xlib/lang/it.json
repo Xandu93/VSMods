@@ -20,6 +20,7 @@
   "notenoughpoints": "\nYou don't have enough points!",
   "you receive": "You receive",
   "levelup": "You reached level {0} in the {1} skill!",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "All of the following: ",
   "orrequirement": "One of the following: ",
@@ -35,7 +36,7 @@
   "rested-effect": "Well Rested",
   "rested-effectdesc": "Increases the experience you gain for every skill by {0:P} for {1} seconds.",
   "rested-effectsdesc": "Increases the experience you gain for every skill by {0:P}.",
-    
+
   "skillbook-dsc": "Grants you {1} experience for the {0} skill.",
   "skillbook-dsc2": "Grants you knowledge of {0}."
 }

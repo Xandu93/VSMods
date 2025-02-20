@@ -1,7 +1,7 @@
 {
-		//Переклад на українську мову здійснив Sp0wN
-		//The translation into Ukrainian was made by Sp0wN
-		
+  //Переклад на українську мову здійснив Sp0wN
+  //The translation into Ukrainian was made by Sp0wN
+
   "skill": "Навик",
   "skills": "Навички",
   "level": "Рівень",
@@ -23,6 +23,7 @@
   "notenoughpoints": "\nУ вас не вистачає балів!",
   "you receive": "Ви отримаєте",
   "levelup": "Ви досягли рівня {0} у навичці {1}!",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "усі перераховані навики: ",
   "orrequirement": "любий з навиків: ",
@@ -38,7 +39,7 @@
   "rested-effect": "Добре відпочив",
   "rested-effectdesc": "Збільшує досвід, який ви отримуєте за кожен навик, на {0:P} на {1} секунд.",
   "rested-effectsdesc": "Збільшує досвід, який ви отримуєте для кожної навички, на {0:P}.",
-    
+
   "skillbook-dsc": "Grants you {1} experience for the {0} skill.",
   "skillbook-dsc2": "Grants you knowledge of {0}."
 }

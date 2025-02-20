@@ -1,10 +1,11 @@
 ﻿using System;
-using Vintagestory.API;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
+using Vintagestory.Server;
 using Vintagestory.ServerMods;
 using XLib.XEffects;
 using XLib.XLeveling;
@@ -459,7 +460,10 @@ namespace XSkills
                 survival.XLeveling.Api.World.Calendar.CalendarSpeedMul / 3600.0f;
             if (cooldown + playerSurvival.PlayerSkillSet.LastDeath >= survival.XLeveling.Api.World.Calendar.TotalHours) return;
 
-            playerSurvival.AddExperience(-playerSurvival.Experience * (this.survival.Config as SurvivalSkillConfig).expLoss);
+            float loss = -playerSurvival.Experience * (this.survival.Config as SurvivalSkillConfig).expLoss;
+            if (loss == 0.0f) return;
+            playerSurvival.AddExperience(loss);
+            ((entity as EntityPlayer)?.Player as ServerPlayer)?.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSurvival.Skill.DisplayName);
         }
 
         //public void MaxSaturationFix()

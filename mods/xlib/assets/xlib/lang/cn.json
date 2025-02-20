@@ -19,6 +19,7 @@
   "notenoughpoints": "\n你的点数不够！",
   "you receive": "你得到",
   "levelup": "你的{1}技能达到了{0}级！",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "以下所有： ",
   "orrequirement": "以下其中一项： ",

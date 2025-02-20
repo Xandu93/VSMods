@@ -70,29 +70,38 @@ namespace XInvTweaks
             return true;
         }
 
+        public void OpenDialog(ElementBounds parent)
+        {
+            GuiElementDialogTitleBar title = SingleComposer["element-2"] as GuiElementDialogTitleBar;
+            if (title?.Movable ?? false) parent = null;
+            if (parent != null)
+            {
+                SingleComposer.Bounds.WithAlignment(EnumDialogArea.CenterBottom).WithParent(parent);
+                SingleComposer.Bounds.WithFixedPosition(0, SingleComposer.Bounds.OuterHeightInt + 10);
+            }
+            else
+            {
+                ElementBounds bounds = SingleComposer.Bounds;
+                parent = this.capi.Gui.WindowBounds;
+                if ((bounds.absX + bounds.OuterWidth) > parent.InnerWidth || bounds.absX < 0.0 ||
+                    (bounds.absY + bounds.OuterHeight) > parent.InnerHeight || bounds.absY < 0.0)
+                {
+                    bounds.WithFixedPosition(
+                        ((bounds.absX + bounds.OuterWidth) > parent.InnerWidth) || bounds.absX < 0.0 ? 0.0 : bounds.absX,
+                        ((bounds.absY + bounds.OuterHeight) > parent.InnerHeight) || bounds.absY < 0.0 ? 0.0 : bounds.absY);
+                    bounds.WithAlignment(EnumDialogArea.LeftTop).WithParent(parent);
+                }
+            }
+            SingleComposer.ReCompose();
+            TryOpen();
+        }
+
         public void OnInventoryOpend(ElementBounds parent)
         {
             openedContainers++;
             if (openedContainers == 1)
             {
-                GuiElementDialogTitleBar title = SingleComposer["element-2"] as GuiElementDialogTitleBar;
-                if (title?.Movable ?? false) parent = null;
-                if (parent != null)
-                {
-                    SingleComposer.Bounds.WithAlignment(EnumDialogArea.CenterBottom).WithParent(parent);
-                    SingleComposer.Bounds.WithFixedPosition(0, SingleComposer.Bounds.OuterHeightInt + 10);
-                }
-                else
-                {
-                    ElementBounds bounds = SingleComposer.Bounds;
-                    parent = this.capi.Gui.WindowBounds;
-                    bounds.WithFixedPosition(
-                        bounds.absX + bounds.OuterWidth > parent.OuterWidth ? 0.0 : bounds.absX,
-                        bounds.absY + bounds.OuterHeight > parent.OuterHeight ? 0.0 : bounds.absY);
-                    bounds.WithAlignment(EnumDialogArea.LeftTop).WithParent(this.capi.Gui.WindowBounds);
-                }
-                SingleComposer.ReCompose();
-                TryOpen();
+                OpenDialog(parent);
             }
         }
 

@@ -20,6 +20,7 @@
   "notenoughpoints": "\nNemáte dostatek bodů!",
   "you receive": "Dostanete",
   "levelup": "Dosáhli jste úrovně {0} v {1} dovednosti!",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "Všechny následující: ",
   "orrequirement": "Jedna z těchto: ",
@@ -31,7 +32,7 @@
 
   "skills-desc": "<strong>Dovednosti</strong><br><br><strong>Dovednost</strong><br>Dovednost je soubor vašich znalostí a schopností v určité oblasti. Každá z vašich dovednosti má určitou úroveň. Tuto úroveň můžete zvýšit sbíráním zkušeností při činnostech souvisejících s touto dovedností. S každou úrovní získáte také bod schopností za tuto dovednost. Chcete-li zobrazit přehled svých dovedností a schopností, stiskněte klávesu [O] (výchozí nastavení můžete změnit v nabídce nastavení.<br><br><strong>Schopnost</strong><br>Schopnost vám poskytuje konkrétní výhodu pro konkrétní činnost související s dovedností). Jedna úroveň schopnosti poskytuje více výhod. Ke zvýšení úrovně schopnosti potřebujete jeden bod schopnosti, ke kterému můžete kliknout na schopnost v dialogu dovednosti také snížit úroveň schopnosti. Chcete-li tak učinit, musíte přepnout režim na režim odučení kliknutím na tlačítko odučení. Nyní můžete kliknout na možnost snížit úroveň schopnosti. Nezapomeňte znovu přepnout tlačítko odučení, abyste deaktivovali režim odučení. Všimněte si, že ke snížení úrovně schopnosti potřebujete body odnaučení. Když snížíte úroveň schopnosti, získáte zpět bod schopnosti, který jste použili. Zatímco body schopností jsou vázány na konkrétní dovednost, body za odnaučení jsou sdíleny napříč všemi dovednostmi. Body za odučení můžete získat za konzumaci konkrétních předmětů. Tyto položky lze nalézt v příručce.",
   "sparring-desc": "<strong>Sparring</strong><br>If two players have sparring mode enabled and kill each other, neither of them will loose experience points upon dying.",
- 
+
   "rested-effect": "Dobře odpočinutý",
   "rested-effectdesc": "Zvyšuje zkušenost, kterou získáte pro každou dovednost, o {0:P} na {1} vteřin.",
   "rested-effectsdesc": "Zvyšuje zkušenosti, které získáte pro každou dovednost o {0:P}.",

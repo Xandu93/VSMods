@@ -20,6 +20,7 @@
   "notenoughpoints": "\nDu hast nicht genügend Punkte!",
   "you receive": "Du erh\u00e4lst",
   "levelup": "Du hast level {0} in der {1} Fertigkeit erreicht!",
+  "explossondeath": "Durch deinen Tod hast du {0:n2} Erfahrung in der Fertigkeit {1} verloren.",
 
   "andrequirement": "Alle folgenden: ",
   "orrequirement": "Einer der folgenden: ",
@@ -35,7 +36,7 @@
   "rested-effect": "Gut Ausgeruht",
   "rested-effectdesc": "Erhöht die Erfahrung, die du für jede Fertigkeit sammelst, um {0:P} für {1} Sekunden.",
   "rested-effectsdesc": "Erhöht die Erfahrung, die du für jede Fertigkeit sammelst, um {0:P}.",
-  
+
   "skillbook-dsc": "Gewährt dir {1} Erfahrung für die {0} Fertigkeit.",
   "skillbook-dsc2": "Gewährt dir Wissen über {0}."
 }

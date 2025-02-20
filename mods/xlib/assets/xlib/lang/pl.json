@@ -20,6 +20,7 @@
   "notenoughpoints": "\nNie masz wystarczającej liczby punktów!",
   "you receive": "Otrzymujesz",
   "levelup": "Osiągnąłeś poziom {0} w umiejętności {1}!",
+  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
 
   "andrequirement": "Wszystkie z poniższych: ",
   "orrequirement": "Jedno z poniższych: ",

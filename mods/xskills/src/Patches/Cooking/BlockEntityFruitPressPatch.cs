@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using System;
 using System.Reflection;
 using Vintagestory.API.Common;
 using Vintagestory.GameContent;
@@ -118,10 +119,17 @@ namespace XSkills
             else if (value == 66) __result.LitresPerItem *= 2.0f - 1.0f / 3.0f;
             else __result.LitresPerItem *= 1.0f + value * 0.01f;
 
-            float mashlitres = (float)(__instance.MashSlot.Itemstack?.Attributes.GetDecimal("juiceableLitresLeft") ?? 0.0);
-            if (mashlitres <= 10.0f && mashlitres + __result.LitresPerItem > 10.0f)
+            ItemStack handStack = player.InventoryManager.ActiveHotbarSlot.Itemstack;
+            int desiredTransferAmount = Math.Min(handStack.StackSize, player.Entity.Controls.ShiftKey ? 1 : player.Entity.Controls.CtrlKey ? handStack.Item.MaxStackSize : 4);
+
+            double mashlitres = (__instance.MashSlot.Itemstack?.Attributes.GetDecimal("juiceableLitresLeft") ?? 0.0);
+            if (mashlitres < 10.0 && mashlitres + __result.LitresPerItem * (desiredTransferAmount + 1) > 10.0)
             {
-                __result.LitresPerItem = 10.0f - mashlitres;
+                while (mashlitres + __result.LitresPerItem * desiredTransferAmount > 10.0) desiredTransferAmount--;
+                if (desiredTransferAmount > 0)
+                {
+                    __result.LitresPerItem = (float)((10.0 - mashlitres) / desiredTransferAmount);
+                }
             }
         }
     }

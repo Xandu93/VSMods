@@ -44,8 +44,8 @@ namespace XSkills
                 BlockEntityAnvilPatch.Apply(harmony, api.ClassRegistry.GetBlockEntity("Anvil"));
                 BlockEntityOvenPatch.Apply(harmony, api.ClassRegistry.GetBlockEntity("Oven"), xskills);
 
-                type = api.ClassRegistry.GetBlockEntity("ExpandedOven");
-                if (type != null) BlockEntityOvenPatch.Apply(harmony, type, xskills);
+                //type = api.ClassRegistry.GetBlockEntity("ExpandedOven");
+                //if (type != null) BlockEntityOvenPatch.Apply(harmony, type, xskills);
 
                 type = api.ClassRegistry.GetBlockEntity("OvenBakingTop");
                 if (type != null) BlockEntityOvenPatch.Apply(harmony, type, xskills);

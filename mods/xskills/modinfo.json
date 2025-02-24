@@ -5,10 +5,10 @@
   "authors": [ "Xandu" ],
   "description": "Adds skills to the game.",
   "website": "https://www.vintagestory.at/forums/topic/1720-xlib-and-xskills/",
-  "version": "0.8.14",
+  "version": "0.8.15",
   "dependencies": {
-    "game": "1.20.4-rc.3",
-    "survival": "1.20.4-rc.3",
+    "game": "1.20.4",
+    "survival": "1.20.4",
     "xlib": "0.8.11"
   }
 }

@@ -185,12 +185,6 @@ namespace XLib.XLeveling
             }
             sparringToggle.On = this.Client.LocalPlayerSkillSet.Sparring;
 
-            dialogBounds.BothSizing = ElementSizing.FitToChildren;
-            dialogBounds.WithChild(bgBounds);
-
-            bgBounds.BothSizing = ElementSizing.FitToChildren;
-            bgBounds.WithChildren(groupTabBounds, skillTabBounds, textBounds, unlearnBounds, unlearnAbilityBounds, sparringButton);
-
             //creates a gui tab for each skill group
             GuiTab[] groupTabs = new GuiTab[this.groups.Keys.Count];
             List<PlayerSkill> activeList = null;
@@ -206,6 +200,14 @@ namespace XLib.XLeveling
                 }
                 count++;
             }
+
+            dialogBounds.BothSizing = ElementSizing.FitToChildren;
+            dialogBounds.WithChild(bgBounds);
+
+            bgBounds.horizontalSizing = ElementSizing.FitToChildren;
+            bgBounds.verticalSizing = ElementSizing.Fixed;
+            bgBounds.WithFixedHeight(yy + 8 * 36);
+            bgBounds.WithChildren(groupTabBounds, skillTabBounds, textBounds, unlearnBounds, unlearnAbilityBounds, sparringButton);
 
             //creates a tab for each skill within the skill group
             GuiTab[] skillTabs = new GuiTab[activeList.Count];
@@ -241,9 +243,12 @@ namespace XLib.XLeveling
             //creates a button for every ability that belongs to the chosen skill
             skillTabsActive = skillTabsActive >= activeList.Count ? 0 : skillTabsActive;
             playerSkill = activeList[skillTabsActive];
+            int abilityCount = 0;
             foreach (PlayerAbility playerAbility in playerSkill.PlayerAbilities)
             {
                 if (!playerAbility.IsVisible()) continue;
+                abilityCount++;
+                if (abilityCount > 7) bgBounds.verticalSizing = ElementSizing.FitToChildren;
                 buttonBounds = ElementBounds.Fixed(144, yy, 200, 20);
                 bgBounds.WithChild(buttonBounds);
                 yy += 36;

@@ -413,7 +413,7 @@ namespace XSkills
             playerAbility = skill[this.DilutionId];
             float scaledCooked = servings;
             int totalCooked = (int)cookedAmount;
-            if (playerAbility?.Tier > 0 && firstStage)
+            if (playerAbility?.Tier > 0 && firstStage && !outputStack.Collectible.Code.Path.Equals("glueportion-pitch-hot"))
             {
                 scaledCooked = servings * (1.0f + playerAbility.SkillDependentFValue());
                 if (liquidContainer != null)
@@ -444,7 +444,9 @@ namespace XSkills
                 outputStack.Collectible.Code.Path.Equals("salt") ||
                 outputStack.Collectible.Code.Path.Equals("lime")))
             {
-                ItemSlot slot = (outputSlot.Inventory as InventorySmelting)?.CookingSlots[1];
+                ItemSlot[] slots = (outputSlot.Inventory as InventorySmelting)?.CookingSlots;
+                ItemSlot slot = (slots?.Length ?? 0) > 1 ? slots[1] : null;
+
                 int size0 = outputStack.StackSize * playerAbility.Value(0);
                 int size1 = outputStack.StackSize * playerAbility.Value(1);
                 if (slot != null && slot.Itemstack == null)

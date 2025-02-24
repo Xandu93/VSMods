@@ -15,6 +15,7 @@ namespace XInvTweaks
         internal static List<string> stackOrder = new List<string>();
         internal static List<EnumItemStorageFlags> storageFlagsOrder = new List<EnumItemStorageFlags>();
         internal static Dictionary<string, int> priorities = new Dictionary<string, int>();
+        internal static string priority = null;
 
         internal class CollectibleComparer : IComparer<CollectibleObject>
         {
@@ -36,6 +37,25 @@ namespace XInvTweaks
             public int Compare(CollectibleObject x, CollectibleObject y)
             {
                 if (x == y) return 0;
+
+                if (priority != null)
+                {
+                    bool xmatch = x.WildCardMatch(priority);
+                    bool ymatch = y.WildCardMatch(priority);
+                    if (xmatch != ymatch)
+                    {
+                        if (xmatch) return -1;
+                        if (ymatch) return  1;
+                    }
+                    xmatch = x.GetHeldItemName(new ItemStack(x)).Contains(priority, StringComparison.OrdinalIgnoreCase);
+                    ymatch = y.GetHeldItemName(new ItemStack(y)).Contains(priority, StringComparison.OrdinalIgnoreCase);
+                    if (xmatch != ymatch)
+                    {
+                        if (xmatch) return -1;
+                        if (ymatch) return 1;
+                    }
+                }
+
                 if (sortOrder.Count == 0)
                 {
                     return x.Id.CompareTo(y.Id);
@@ -522,7 +542,10 @@ namespace XInvTweaks
                                     while (otherList[index] != dest) index++;
                                     otherList[index] = source;
                                 }
-                                catch (ArgumentOutOfRangeException) { break; }
+                                catch (ArgumentOutOfRangeException) 
+                                { 
+                                    break; 
+                                }
                             }
 
                             capi.Network.SendPacketClient(obj);

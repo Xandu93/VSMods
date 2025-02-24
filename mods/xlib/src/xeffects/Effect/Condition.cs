@@ -106,6 +106,8 @@ namespace XLib.XEffects
         public override void FromTree(ITreeAttribute tree)
         {
             TreeAttribute attributes = tree as TreeAttribute;
+            this.SynchronizedMaxStackSize = tree.GetBool("synchronizedmaxstack", this.SynchronizedMaxStackSize);
+            this.SynchronizedInterval = tree.GetBool("synchronizedinterval", this.SynchronizedInterval);
             TreeAttribute effectsTree = attributes.GetTreeAttribute("effects") as TreeAttribute;
             if (effectsTree != null)
             {
@@ -130,9 +132,6 @@ namespace XLib.XEffects
             this.Running = false;
             base.FromTree(tree);
             this.Running = running;
-
-            this.SynchronizedMaxStackSize = tree.GetBool("synchronizedmaxstack", this.SynchronizedMaxStackSize);
-            this.SynchronizedInterval = tree.GetBool("synchronizedinterval", this.SynchronizedInterval);
         }
 
         /// <summary>
@@ -171,6 +170,10 @@ namespace XLib.XEffects
             {
                 effect.MaxStacks = this.MaxStacks;
                 effect.Stacks = this.Stacks;
+            }
+            if (this.SynchronizedInterval)
+            {
+                effect.Interval = this.Interval;
             }
             if (shouldStart) effect.OnStart();
         }
@@ -306,17 +309,19 @@ namespace XLib.XEffects
         public override bool OnTick(float dt)
         {
             this.Runtime += dt;
+
+            if (!this.SynchronizedInterval)
+            {
+                foreach (Effect effect in this.Effetcs.Values)
+                {
+                    effect.OnTick(dt);
+                }
+            }
+
             if (this.Interval > 0.0f && this.LastTriggered + this.Interval < this.Runtime)
             {
                 this.OnInterval();
                 this.LastTriggered += this.Interval;
-                if (!this.SynchronizedInterval)
-                {
-                    foreach (Effect effect in this.Effetcs.Values)
-                    {
-                        effect.OnTick(dt);
-                    }
-                }
                 return true;
             }
             return false;

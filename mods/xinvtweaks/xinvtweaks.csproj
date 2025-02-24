@@ -48,6 +48,6 @@
   </ItemGroup>
   <PropertyGroup />
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;copy &quot;$(TargetDir)\$(TargetName).pdb&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call tar.exe -a -c  -f  &quot;..\..\releases\$(TargetName)\$(TargetName)_vout.zip&quot; &quot;$(TargetName).dll&quot; &quot;modinfo.json&quot;" />
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;copy &quot;$(TargetDir)\$(TargetName).pdb&quot; &quot;$(ProjectDir)&quot; &#xD;&#xA;cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call tar.exe -a -c  -f  &quot;..\..\releases\$(TargetName)\$(TargetName)_vout.zip&quot; &quot;$(TargetName).dll&quot; &quot;modinfo.json&quot; &quot;assets&quot;" />
   </Target>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using ProtoBuf;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace XLib.XLeveling
@@ -63,6 +64,14 @@ namespace XLib.XLeveling
         public bool mergeQualities;
 
         /// <summary>
+        /// Can be used to disable specific requirements.
+        /// Primarily used to disable class requirements.
+        /// </summary>
+        [ProtoMember(8)]
+        [DefaultValue(default(List<string>))]
+        public List<string> disabledRequirements;
+
+        /// <summary>
         /// A value indicating if a chat message should be send if the player got experience
         /// </summary>
         public bool trackExpGain;
@@ -79,6 +88,7 @@ namespace XLib.XLeveling
             this.specialisationLimit = 1;
             this.expMult = 1.0f;
             this.mergeQualities = true;
+            this.disabledRequirements = new List<string>();
             this.trackExpGain = false;
         }
     }//!class Config

@@ -2990,7 +2990,7 @@
             The effect frame
             </summary>
         </member>
-        <member name="M:XLib.XEffects.XEffectsSystem.DoHarmonyPatch">
+        <member name="M:XLib.XEffects.XEffectsSystem.DoHarmonyPatch(Vintagestory.API.Common.ICoreAPI)">
             <summary>
             Applies the harmony patches.
             </summary>
@@ -3163,6 +3163,12 @@
             A value indicating if items with different qualities should be merged
             Quality is a feature of xskills. But I put it here so I don't have a
             seperate config file for it.
+            </summary>
+        </member>
+        <member name="F:XLib.XLeveling.Config.disabledRequirements">
+            <summary>
+            Can be used to disable specific requirements.
+            Primarily used to disable class requirements.
             </summary>
         </member>
         <member name="F:XLib.XLeveling.Config.trackExpGain">
@@ -6422,6 +6428,13 @@
             <returns>
               a requirement if it was successfully resolved; otherwise, null
             </returns>
+        </member>
+        <member name="M:XLib.XLeveling.XLeveling.RemoveRequirements(System.Collections.Generic.List{System.String})">
+            <summary>
+            Removes requirements.
+            Uses Config.disabledRequirements to filter requirements by default
+            </summary>
+            <param name="requirements">Names of the requirements that should be removed.</param>
         </member>
         <member name="M:XLib.XLeveling.XLeveling.CreateDescriptionFile">
             <summary>

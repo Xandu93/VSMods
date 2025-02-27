@@ -93,12 +93,19 @@ namespace XLib.XEffects
         /// <summary>
         /// Applies the harmony patches.
         /// </summary>
-        private static void DoHarmonyPatch()
+        private static void DoHarmonyPatch(ICoreAPI api)
         {
             if (Harmony == null)
             {
-                Harmony = new Harmony("XEffectsPatch");
-                Harmony.PatchAll(Assembly.GetExecutingAssembly());
+                try
+                {
+                    Harmony = new Harmony("XEffectsPatch");
+                    Harmony.PatchAll(Assembly.GetExecutingAssembly());
+                }
+                catch(Exception e)
+                {
+                    api.Logger.Error(e);
+                }
             }
         }
 
@@ -135,7 +142,7 @@ namespace XLib.XEffects
         public override void Start(ICoreAPI api)
         {
             base.Start(api);
-            DoHarmonyPatch();
+            DoHarmonyPatch(api);
 
             this.EntityTrigger = new Dictionary<string, List<EntityTrigger>>();
             this.Trigger = new Dictionary<string, List<EffectTrigger>>();

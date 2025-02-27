@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 
 namespace XLib.XLeveling
 {
@@ -377,6 +378,49 @@ namespace XLib.XLeveling
                 if (requirement.FromTree(attribute, this)) return requirement;
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Removes requirements.
+        /// Uses Config.disabledRequirements to filter requirements by default
+        /// </summary>
+        /// <param name="requirements">Names of the requirements that should be removed.</param>
+        public void RemoveRequirements(List<string> requirements)
+        {
+            requirements ??= Config?.disabledRequirements;
+            if (requirements == null) return;
+
+            foreach (Skill skill in this.SkillSetTemplate.Skills)
+            {
+                foreach (Ability ability in skill.Abilities)
+                {
+                    RemoveRequirementsRecursive(ability.Requirements, requirements);
+                }
+            }
+        }
+
+        private void RemoveRequirementsRecursive(List<Requirement> requirements, List<string> remove)
+        {
+            if (requirements == null || remove == null) return;
+            if (remove.Count == 0) return;
+            requirements.RemoveAll(
+                (Requirement requirement) =>
+            {
+                if (requirement is NotRequirement notRequirement)
+                {
+                    return remove.Contains(notRequirement.Requirement.Name);
+                }
+                return remove.Contains(requirement.Name);
+            });
+
+            foreach (Requirement requirement in requirements)
+            {
+                if (requirement is AndRequirement andRequirement)
+                {
+                    RemoveRequirementsRecursive(andRequirement.Requirements, remove);
+                }
+            }
+            requirements.RemoveAll((Requirement requirement) => (requirement as AndRequirement)?.Requirements.Count == 0);
         }
 
         /// <summary>

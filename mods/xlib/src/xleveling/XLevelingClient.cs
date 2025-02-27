@@ -273,6 +273,9 @@ namespace XLib.XLeveling
             LimitationRequirement specialisations;
             this.XLeveling.Limitations.TryGetValue("specialisations", out specialisations);
             if (specialisations != null) specialisations.Limit = this.Config.specialisationLimit;
+
+            //remove requirements
+            XLeveling.RemoveRequirements(Config.disabledRequirements);
         }
 
         /// <summary>

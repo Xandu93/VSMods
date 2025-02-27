@@ -261,6 +261,9 @@ namespace XLib.XLeveling
                 skillConfig = new SkillConfig(skill);
                 api.StoreModConfig(skillConfig, path);
             }
+
+            //remove requirements
+            XLeveling.RemoveRequirements(Config.disabledRequirements);
         }
 
         /// <summary>

@@ -13,6 +13,19 @@
     ]
   },
   {
+    "file": "game:blocktypes/plant/saguarocactus",
+    "op": "addmerge",
+    "path": "/behaviorsByType/*-topripe",
+    "value": [
+      {
+        "name": "XSkillsBerryBush",
+        "properties": {
+          "xp": 0.33
+        }
+      }
+    ]
+  },
+  {
     "file": "game:blocktypes/plant/smallberrybush",
     "op": "addmerge",
     "path": "/behaviorsByType/*-ripe",

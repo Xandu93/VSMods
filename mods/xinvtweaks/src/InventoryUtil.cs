@@ -5,6 +5,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
+using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
 
 namespace XInvTweaks
@@ -270,6 +271,7 @@ namespace XInvTweaks
 
         public static bool FillBackpack(ICoreClientAPI capi)
         {
+            IInventory hotbar = capi.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.hotBarInvClassName);
             IInventory backpack = capi.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.backpackInvClassName);
             
             List<IInventory> inventories = capi.World.Player.InventoryManager.OpenedInventories;
@@ -277,8 +279,10 @@ namespace XInvTweaks
             {
                 if (inventory is InventoryBasePlayer) continue;
                 if (inventory is InventoryTrader) continue;
+                FillInventory(capi, inventory, hotbar);
                 FillInventory(capi, inventory, backpack);
             }
+            FillInventory(capi, backpack, hotbar);
             return true;
         }
 
@@ -535,17 +539,16 @@ namespace XInvTweaks
                             if (source.Itemstack != null)
                             {
                                 //updates the slot list so that it stays correct after switching the items in the slots
-                                slots.TryGetValue(source.Itemstack.Collectible, out List<ItemSlot> otherList);
+                                slots.TryGetValue(source.Itemstack.Collectible, out List<ItemSlot> sourceList);
+
                                 int index = 0;
-                                try
+                                if (sourceList.Count == 0) return;
+                                while (sourceList[index] != dest)
                                 {
-                                    while (otherList[index] != dest) index++;
-                                    otherList[index] = source;
+                                    index++;
+                                    if (index >= sourceList.Count) return;
                                 }
-                                catch (ArgumentOutOfRangeException) 
-                                { 
-                                    break; 
-                                }
+                                sourceList[index] = source;
                             }
 
                             capi.Network.SendPacketClient(obj);
@@ -662,6 +665,86 @@ namespace XInvTweaks
                     if (obj != null) capi.Network.SendPacketClient(obj);
                 }
             }
+        }
+
+        public static bool ClearHandSlot(ICoreClientAPI capi)
+        {
+            ItemSlot slot = capi.World.Player.InventoryManager.ActiveHotbarSlot;
+            if (slot == null) return false;
+            if (slot.Empty) return false;
+            ItemStackMoveOperation op = new ItemStackMoveOperation(capi.World, EnumMouseButton.None, EnumModifierKey.SHIFT, EnumMergePriority.AutoMerge);
+            object[] objs = capi.World.Player.InventoryManager.TryTransferAway(slot, ref op, true, true);
+            if (objs == null) return false;
+            foreach (object obj in objs)
+            {
+                if (obj != null) capi.Network.SendPacketClient(obj);
+            }
+            return true;
+        }
+
+        public static void FindBestSlot(CollectibleObject collectible, IPlayer player, ref ItemSlot bestSlot)
+        {
+            if (collectible == null) return;
+            if (player == null) return;
+            ItemSlot tempSlot = null;
+
+            player.InventoryManager.Find((ItemSlot slot) =>
+            {
+                if (slot.Itemstack?.Collectible == collectible)
+                {
+                    if (tempSlot != null)
+                    {
+                        if (tempSlot.Inventory == slot.Inventory)
+                        {
+                            if (slot.StackSize < tempSlot.StackSize)
+                            {
+                                tempSlot = slot;
+                            }
+                        }
+                        else if (slot.Inventory.ClassName == GlobalConstants.hotBarInvClassName)
+                        {
+                            tempSlot = slot;
+                        }
+                    }
+                    else tempSlot = slot;
+                }
+                return false;
+            });
+            if (tempSlot != null) bestSlot = tempSlot;
+        }
+
+        public static int GetSlotID(ItemSlot slot)
+        {
+            int slotID = -1;
+            if (slot == null) return -1;
+            for (int ii = 0; ii < slot.Inventory.Count; ++ii)
+            {
+                if (slot.Inventory[ii] == slot)
+                {
+                    slotID = ii;
+                    break;
+                }
+            }
+            return slotID;
+        }
+
+        static public void FindPushableCollectible(InventoryBase inv, IPlayer player)
+        {
+            if (!player.Entity.Controls.ShiftKey) return;
+            ItemSlot hotbarSlot = player.InventoryManager.ActiveHotbarSlot;
+            ItemSlot bestSlot = null;
+            foreach (ItemSlot slot in inv)
+            {
+                if (slot.Empty) continue;
+                CollectibleObject collectible = slot.Itemstack.Collectible;
+                if (collectible == hotbarSlot.Itemstack?.Collectible) return;
+                FindBestSlot(collectible, player, ref bestSlot);
+            }
+
+            int slotID = GetSlotID(bestSlot);
+            if (slotID == -1 || bestSlot == null) return;
+            object packet = bestSlot.Inventory.TryFlipItems(slotID, player.InventoryManager.ActiveHotbarSlot);
+            if (packet != null) (player.Entity.Api as ClientCoreAPI)?.Network.SendPacketClient(packet);
         }
 
         public static bool IsBlacklisted(IInventory inventory)

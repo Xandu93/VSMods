@@ -6,6 +6,7 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
+using Vintagestory.GameContent.Mechanics;
 using XLib.XLeveling;
 
 namespace XSkills
@@ -258,22 +259,26 @@ namespace XSkills
             float finished = -1.0f;
 
             if (__state.metalworking == null || __state.workItemStack == null) return true;
+            bool helveHammer = false;
 
             //machine learning
             if (byPlayer == null)
             {
+                helveHammer = true;
                 byPlayer = __instance.GetUsedByPlayer();
                 playerSkill = byPlayer?.Entity?.GetBehavior<PlayerSkillSet>()?[__state.metalworking.Id];
                 if (playerSkill == null) return true;
                 if (playerSkill[__state.metalworking.MachineLearningId]?.Tier <= 0) return true;
             }
 
-            //finishing touch
+            IWorldAccessor world = __instance.Api.World;
+            CollectibleObject collectible = __state.workItemStack.Collectible;
+            float temperature = collectible.GetTemperature(world, __state.workItemStack);
             playerSkill = playerSkill ?? byPlayer.Entity.GetBehavior<PlayerSkillSet>()?[__state.metalworking.Id];
-            playerAbility = playerSkill?[__state.metalworking.FinishingTouchId];
-            if (playerAbility == null) return true;
 
-            if (playerAbility.Tier > 0)
+            //finishing touch
+            playerAbility = playerSkill?[__state.metalworking.FinishingTouchId];
+            if (playerAbility?.Tier > 0)
             {
                 finished = __instance.FinishedProportion();
 
@@ -284,20 +289,48 @@ namespace XSkills
 
                 float chanceMult = Math.Min(playerAbility.Value(0) + playerAbility.Value(1) * 0.1f, playerAbility.Value(2)) * 0.01f;
 
-                if (finished > 0.0f && chanceMult * finished * finished >= byPlayer.Entity.World.Rand.NextDouble())
+                if (finished > 0.0f && chanceMult * finished * finished >= world.Rand.NextDouble())
                 {
                     __state.splitCount += __instance.FinishRecipe();
                     finished = 1.0f;
                 }
             }
 
+            //metal recovery
+            playerAbility = playerSkill?[__state.metalworking.MetalRecoveryId];
+            int divideBy = playerAbility?.Value(0) ?? 0;
+            if (divideBy > 0 && !__state.wasIronBloom)
+            {
+                int bitsCount = __state.splitCount / divideBy;
+                if (bitsCount > 0)
+                {
+                    string domain = (__state.metalworking.Config as MetalworkingConfig).useVanillaBits ? "game" : "xskills";
+                    string baseMaterial = __state.anvilItemStack.GetBaseMaterial(__state.workItemStack).Collectible.LastCodePart();
+                    if (baseMaterial == "steel" && !__instance.Api.ModLoader.IsModEnabled("smithingplus")) baseMaterial = "blistersteel";
+
+                    AssetLocation MetalBitsCode = new AssetLocation(domain, "metalbit" + "-" + baseMaterial);
+                    Item metalBitsItem = world.GetItem(MetalBitsCode);
+                    __instance.SetSplitCount(__state.splitCount - divideBy * bitsCount);
+
+                    if (metalBitsItem != null)
+                    {
+                        ItemStack metalBitsStack = new ItemStack(metalBitsItem, bitsCount);
+                        metalBitsItem.SetTemperature(world, metalBitsStack, temperature);
+                        if (helveHammer || !byPlayer.InventoryManager.TryGiveItemstack(metalBitsStack))
+                        {
+                            __instance.Api.World.SpawnItemEntity(metalBitsStack, __instance.Pos.ToVec3d().Add(0.5, 1.5, 0.5));
+                        }
+                    }
+                }
+            }
+
             //heating hits
-            CollectibleObject collectible = __state.workItemStack.Collectible;
-            playerAbility = playerSkill[__state.metalworking.HeatingHitsId];
-            if (playerAbility == null || __state.anvilItemStack == null) return true;
-            float temperature = collectible.GetTemperature(__instance.Api.World, __state.workItemStack);
-            float meltingpoint = collectible.GetMeltingPoint(__instance.Api.World, null, new DummySlot(__state.anvilItemStack.GetBaseMaterial(__state.workItemStack)));
-            if (meltingpoint > 0.0f)
+            playerAbility = playerSkill?[__state.metalworking.HeatingHitsId];
+            float meltingpoint = 
+                __state.anvilItemStack != null ?
+                collectible.GetMeltingPoint(world, null, new DummySlot(__state.anvilItemStack.GetBaseMaterial(__state.workItemStack))) :
+                0.0f;
+            if (meltingpoint > 0.0f && playerAbility != null)
             {
                 if (temperature < meltingpoint)
                 {
@@ -305,16 +338,19 @@ namespace XSkills
                 }
             }
             else temperature = temperature + playerAbility.Value(0);
-            collectible.SetTemperature(__instance.Api.World, __state.workItemStack, temperature);
+            collectible.SetTemperature(world, __state.workItemStack, temperature);
 
             //blacksmith
             collectible = __state.recipe.Output.ResolvedItemstack.Collectible;
-            playerAbility = playerSkill[__state.metalworking.BlacksmithId];
+            playerAbility = playerSkill?[__state.metalworking.BlacksmithId];
             string type = QualityUtil.GetQualityType(collectible);
 
-            if (playerAbility.Tier > 0 &&
+            if (playerAbility?.Tier > 0 &&
                 !(__state.wasPlate && collectible is ItemMetalPlate) && 
-                (type != null || collectible.Tool != null || collectible.Code.Path.Contains("head")))
+                (type != null || 
+                collectible.Tool != null || 
+                collectible.Code.Path.Contains("head") || 
+                collectible.GetMaxDurability(__state.recipe.Output.ResolvedItemstack) > 1))
             {
                 int forged = type != null ?
                     byPlayer.Entity.WatchedAttributes.GetTreeAttribute("forged")?.GetInt(type) ?? 0 : 0;
@@ -344,6 +380,7 @@ namespace XSkills
             PlayerAbility playerAbility;
             bool allowAbilities = true;
             bool helveHammer = false;
+            IWorldAccessor world = __instance.Api.World;
 
             //machine learning
             if (byPlayer == null)
@@ -384,41 +421,19 @@ namespace XSkills
             if (__instance.Api.Side == EnumAppSide.Client || !allowAbilities) return;
 
             //duplicator
+            float temperature = __state.workItemStack.Collectible.GetTemperature(world, __state.workItemStack);
             if ((resolvedStack?.Collectible.CombustibleProps == null || __state.metalworking.IsDuplicatable(__state.recipe)) && !__state.wasPlate)
             {
                 playerAbility = playerSkill[__state.metalworking.DuplicatorId];
                 if (playerAbility == null) return;
-                if (playerAbility.SkillDependentFValue() >= __instance.Api.World.Rand.NextDouble())
+                if (playerAbility.SkillDependentFValue() >= world.Rand.NextDouble())
                 {
                     ItemStack outstack = resolvedStack.Clone();
-                    outstack.Collectible.SetTemperature(__instance.Api.World, outstack, __state.workItemStack.Collectible.GetTemperature(__instance.Api.World, __state.workItemStack));
+                    outstack.Collectible.SetTemperature(world, outstack, temperature);
                     if (quality > 0.0f) outstack.Attributes.SetFloat("quality", quality);
                     if (helveHammer || !byPlayer.InventoryManager.TryGiveItemstack(outstack))
                     {
-                        __instance.Api.World.SpawnItemEntity(outstack, __instance.Pos.ToVec3d().Add(0.5, 1.5, 0.5));
-                    }
-                }
-            }
-
-            //metal recovery
-            playerAbility = playerSkill[__state.metalworking.MetalRecoveryId];
-            if (playerAbility == null) return;
-            int divideBy = playerAbility.Value(0);
-            if (divideBy > 0 && !__state.wasIronBloom)
-            {
-                int bitsCount = __state.splitCount / divideBy;
-                string domain = (__state.metalworking.Config as MetalworkingConfig).useVanillaBits ? "game" : "xskills";
-                string baseMaterial = __state.anvilItemStack.GetBaseMaterial(__state.workItemStack).Collectible.LastCodePart();
-                if (baseMaterial == "steel") baseMaterial = "blistersteel";
-
-                AssetLocation MetalBitsCode = new AssetLocation(domain, "metalbit" + "-" + baseMaterial);
-                Item metalBitsItem = __instance.Api.World.GetItem(MetalBitsCode);
-                if (metalBitsItem != null && bitsCount > 0)
-                {
-                    ItemStack metalBitsStack = new ItemStack(metalBitsItem, bitsCount);
-                    if (helveHammer || !byPlayer.InventoryManager.TryGiveItemstack(metalBitsStack))
-                    {
-                        __instance.Api.World.SpawnItemEntity(metalBitsStack, __instance.Pos.ToVec3d().Add(0.5, 1.5, 0.5));
+                        world.SpawnItemEntity(outstack, __instance.Pos.ToVec3d().Add(0.5, 1.5, 0.5));
                     }
                 }
             }

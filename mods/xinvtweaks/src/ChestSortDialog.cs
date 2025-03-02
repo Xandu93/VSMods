@@ -19,19 +19,21 @@ namespace XInvTweaks
             ElementBounds buttonSortBounds = ElementBounds.Fixed(0, GuiStyle.TitleBarHeight, 100, 40);
             ElementBounds buttonPushBounds = ElementBounds.Fixed(105, GuiStyle.TitleBarHeight, 40, 40);
             ElementBounds buttonPullBounds = ElementBounds.Fixed(150, GuiStyle.TitleBarHeight, 40, 40);
-            ElementBounds inputBounds = ElementBounds.Fixed(0, GuiStyle.TitleBarHeight + 40 + GuiStyle.HalfPadding, 160, 40);
-            ElementBounds clearBounds = ElementBounds.Fixed(160 + GuiStyle.HalfPadding, GuiStyle.TitleBarHeight + 40 + GuiStyle.HalfPadding, 40, 40);
+            ElementBounds buttonFillBounds = ElementBounds.Fixed(195, GuiStyle.TitleBarHeight, 40, 40);
+            ElementBounds inputBounds = ElementBounds.Fixed(0, GuiStyle.TitleBarHeight + 40 + GuiStyle.HalfPadding, 190, 40);
+            ElementBounds clearBounds = ElementBounds.Fixed(195, GuiStyle.TitleBarHeight + 40 + GuiStyle.HalfPadding, 40, 40);
 
             ElementBounds bgBounds = ElementBounds.Fill.WithFixedPadding(GuiStyle.HalfPadding);
             bgBounds.BothSizing = ElementSizing.FitToChildren;
-            bgBounds.WithChildren(buttonSortBounds, buttonPushBounds, buttonPullBounds, inputBounds, clearBounds);
+            bgBounds.WithChildren(buttonSortBounds, buttonPushBounds, buttonPullBounds, buttonFillBounds, inputBounds, clearBounds);
 
             SingleComposer = capi.Gui.CreateCompo("ChestSortDialog", dialogBounds)
                 .AddDialogBG(bgBounds, true)
                 .AddDialogTitleBar("")
                 .AddSmallButton(Lang.Get("xinvtweaks:sort"), OnSort, buttonSortBounds)
-                .AddButton(Lang.Get("xinvtweaks:^"), OnPush, buttonPushBounds)
+                .AddSmallButton(Lang.Get("xinvtweaks:Λ"), OnPush, buttonPushBounds)
                 .AddSmallButton(Lang.Get("xinvtweaks:V"), OnPull, buttonPullBounds)
+                .AddSmallButton(Lang.Get("xinvtweaks:V\n¯"), OnFill, buttonFillBounds)
                 .AddTextInput(inputBounds, OnTextChanged, null, "input")
                 .AddSmallButton(Lang.Get("xinvtweaks:X"), OnClearText, clearBounds)
                 .Compose();
@@ -80,6 +82,12 @@ namespace XInvTweaks
         public bool OnPull()
         {
             InventoryUtil.PullInventories(capi);
+            return true;
+        }
+
+        public bool OnFill()
+        {
+            InventoryUtil.FillBackpack(capi);
             return true;
         }
 

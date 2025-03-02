@@ -1,7 +1,15 @@
 {
+  "pushinventory": "Push Inventory",
+  "sortinventories": "Sort Inventories",
+  "pullinventory": "Pull Inventories",
+  "sortbackpack": "Sort Backpack",
+  "fillbackpack": "Fill Backpack",
+  "clearhandslot": "Clear Hand Slot",
+
   "sort": "Sort",
   "priority": "Priority",
-  "^": "^",
+  "Λ": "Λ",
   "V": "V",
+  "V\n¯": "V\n¯",
   "X": "X"
 }

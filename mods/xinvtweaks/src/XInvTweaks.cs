@@ -8,6 +8,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 using Vintagestory.Client.NoObf;
+using Vintagestory.API.Config;
 
 namespace XInvTweaks
 {
@@ -52,7 +53,7 @@ namespace XInvTweaks
             this.api = api;
 
             PatchClient();
-            RegisterKey();
+            RegisterKeys();
 
             if (Config.extendChestUi)
             {
@@ -215,10 +216,12 @@ namespace XInvTweaks
         {
             DoHarmonyPatch();
             if (Config.tools) ManualPatch.PatchMethod(harmony, typeof(CollectibleObject), typeof(CollectibleObjectPatch), "DamageItem");
-            if (Config.groundStorage) ManualPatch.PatchMethod(harmony, typeof(CollectibleBehaviorGroundStorable), typeof(CollectibleObjectPatch), "Interact");
+            //if (Config.groundStorage) ManualPatch.PatchMethod(harmony, typeof(CollectibleBehaviorGroundStorable), typeof(CollectibleObjectPatch), "Interact");
+            if (Config.groundStorage) ManualPatch.PatchMethod(harmony, typeof(BlockEntityGroundStorage), typeof(BlockEntityGroundStoragePatch), "OnPlayerInteractStart");
             if (Config.blocks) ManualPatch.PatchMethod(harmony, typeof(Block), typeof(CollectibleObjectPatch), "TryPlaceBlock");
             if (Config.stairs) ManualPatch.PatchMethod(harmony, typeof(BlockStairs), typeof(CollectibleObjectPatch), "TryPlaceBlock");
-            if (Config.piles) ManualPatch.PatchMethod(harmony, typeof(BlockEntityItemPile), typeof(CollectibleObjectPatch), "OnPlayerInteract");
+            //if (Config.piles) ManualPatch.PatchMethod(harmony, typeof(BlockEntityItemPile), typeof(CollectibleObjectPatch), "OnPlayerInteract");
+            if (Config.piles) ManualPatch.PatchMethod(harmony, typeof(BlockEntityItemPile), typeof(BlockEntityItemPilePatch), "OnPlayerInteract");
             if (Config.extendChestUi) ManualPatch.PatchMethod(harmony, typeof(GuiDialogBlockEntityInventory), typeof(GuiDialogBlockEntityInventoryPatch), "OnGuiOpened");
             if (Config.extendChestUi) ManualPatch.PatchMethod(harmony, typeof(GuiDialogBlockEntityInventory), typeof(GuiDialogBlockEntityInventoryPatch), "OnGuiClosed");
             if (Config.crateSwitch) ManualPatch.PatchMethod(harmony, typeof(BlockEntityCrate), typeof(BlockEntityCratePatch), "OnBlockInteractStart");
@@ -242,19 +245,21 @@ namespace XInvTweaks
             capi.Event.LevelFinalize += OnWorldLoaded;
         }
 
-        public void RegisterKey()
+        public void RegisterKeys()
         {
-            capi.Input.RegisterHotKey("pushinventory", "Push Inventory", GlKeys.Z, HotkeyType.InventoryHotkeys, false, false, false);
-            capi.Input.RegisterHotKey("sortinventories", "Sort Inventories", GlKeys.Z, HotkeyType.InventoryHotkeys, false, false, true);
-            capi.Input.RegisterHotKey("pullinventory", "Pull Inventory", GlKeys.Z, HotkeyType.InventoryHotkeys, false, true, false);
-            capi.Input.RegisterHotKey("sortbackpack", "Sort Backpack", GlKeys.Z, HotkeyType.InventoryHotkeys, true, false, false);
-            capi.Input.RegisterHotKey("fillbackpack", "Fill Backpack", GlKeys.Z, HotkeyType.InventoryHotkeys, true, true, false);
+            capi.Input.RegisterHotKey("pushinventory", Lang.Get("xinvtweaks:pushinventory"), GlKeys.Z, HotkeyType.InventoryHotkeys, false, false, false);
+            capi.Input.RegisterHotKey("sortinventories", Lang.Get("xinvtweaks:sortinventories"), GlKeys.Z, HotkeyType.InventoryHotkeys, false, false, true);
+            capi.Input.RegisterHotKey("pullinventory", Lang.Get("xinvtweaks:pullinventory"), GlKeys.Z, HotkeyType.InventoryHotkeys, false, true, false);
+            capi.Input.RegisterHotKey("sortbackpack", Lang.Get("xinvtweaks:sortbackpack"), GlKeys.Z, HotkeyType.InventoryHotkeys, true, false, false);
+            capi.Input.RegisterHotKey("fillbackpack", Lang.Get("xinvtweaks:fillbackpack"), GlKeys.Z, HotkeyType.InventoryHotkeys, true, true, false);
+            capi.Input.RegisterHotKey("clearhandslot", Lang.Get("xinvtweaks:clearhandslot"), GlKeys.F, HotkeyType.InventoryHotkeys, false, false, false);
 
             capi.Input.SetHotKeyHandler("pushinventory", (KeyCombination key) => InventoryUtil.PushInventory(capi));
             capi.Input.SetHotKeyHandler("sortinventories", (KeyCombination key) => InventoryUtil.SortInventories(capi));
             capi.Input.SetHotKeyHandler("pullinventory", (KeyCombination key) => InventoryUtil.PullInventory(capi));
             capi.Input.SetHotKeyHandler("sortbackpack", (KeyCombination key) => InventoryUtil.SortBackpack(capi));
             capi.Input.SetHotKeyHandler("fillbackpack", (KeyCombination key) => InventoryUtil.FillBackpack(capi));
+            capi.Input.SetHotKeyHandler("clearhandslot", (KeyCombination key) => InventoryUtil.ClearHandSlot(capi));
         }
 
         public void OnInventoryOpend(ElementBounds parent)

@@ -20,28 +20,9 @@ namespace XInvTweaks
             if (player.InventoryManager.ActiveHotbarSlot is ItemSlotBackpack) return;
 
             ItemSlot bestSlot = null;
-            player.InventoryManager.Find((ItemSlot slot) =>
-            {
-                if(slot.Itemstack?.Collectible?.Id == block.Id)
-                {
-                    bestSlot = slot;
-                    return true;
-                }
-                return false;
-            });
-
-            if(bestSlot == null) return;
-
-            int slotID = -1;
-            for (int ii = 0; ii <= bestSlot.Inventory.Count; ++ii)
-            {
-                if (bestSlot.Inventory[ii] == bestSlot)
-                {
-                    slotID = ii;
-                    break;
-                }
-            }
-
+            InventoryUtil.FindBestSlot(block, player, ref bestSlot);
+            int slotID = InventoryUtil.GetSlotID(bestSlot);
+            if (slotID == -1 || bestSlot == null) return;
             object packet = bestSlot.Inventory.TryFlipItems(slotID, player.InventoryManager.ActiveHotbarSlot);
             (player.Entity.Api as ClientCoreAPI)?.Network.SendPacketClient(packet);
         }

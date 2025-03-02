@@ -358,7 +358,7 @@ namespace XSkills
 
             if (entity.Api.Side == EnumAppSide.Client)
             {
-                //MaxSaturationFix();
+                MaxSaturationFix();
                 if (lastWeatherForecast < (uint)this.entity.World.Calendar.TotalDays)
                 {
                     PlayerAbility ability = entity.GetBehavior<PlayerSkillSet>()?[survival.Id]?[survival.MeteorologistId];
@@ -466,19 +466,20 @@ namespace XSkills
             ((entity as EntityPlayer)?.Player as ServerPlayer)?.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSurvival.Skill.DisplayName);
         }
 
-        //public void MaxSaturationFix()
-        //{
-        //    ITreeAttribute hungerTree = entity.WatchedAttributes.GetTreeAttribute("hunger");
-        //    float maxSaturation = hungerTree.GetFloat("maxsaturation");
-        //    if (maxSaturation != 1500.0f || this.survival == null) return;
+        //the game sometimes randomly resets the max saturation to 1500
+        public void MaxSaturationFix()
+        {
+            ITreeAttribute hungerTree = entity.WatchedAttributes.GetTreeAttribute("hunger");
+            float maxSaturation = hungerTree.GetFloat("maxsaturation");
+            if (maxSaturation != 1500.0f || this.survival == null) return;
 
-        //    PlayerSkill playerSurvival = this.entity.GetBehavior<PlayerSkillSet>()?[this.survival.Id];
-        //    if (playerSurvival == null) return;
-        //    PlayerAbility playerAbility = playerSurvival[this.survival.HugeStomachId];
-        //    if (playerAbility == null) return;
-        //    if (playerAbility.Tier >= 0) return;
-        //    maxSaturation = (1500 + playerAbility.Value(0));
-        //    hungerTree.SetFloat("maxSaturation", maxSaturation);
-        //}
+            PlayerSkill playerSurvival = this.entity.GetBehavior<PlayerSkillSet>()?[this.survival.Id];
+            if (playerSurvival == null) return;
+            PlayerAbility playerAbility = playerSurvival[this.survival.HugeStomachId];
+            if (playerAbility == null) return;
+            if (playerAbility.Tier <= 0) return;
+            maxSaturation = (1500 + playerAbility.Value(0));
+            hungerTree.SetFloat("maxSaturation", maxSaturation);
+        }
     }//! XSkillsPlayerBehavior
 }//!namespace XSkills

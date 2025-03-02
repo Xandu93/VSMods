@@ -4,25 +4,93 @@
     "op": "addmerge",
     "path": "/behaviorsByType",
     "value": {
-      "*-funeralbell-normal": [
+      "*-flyagaric-normal": [
         {
           "name": "XLibConsumable",
           "properties": {
             "cures": [
               {
-                "effect": "xdiseases:pneumonia",
+                "effect": "xdiseases:d-blindness",
                 "intensity": 0.1,
                 "minintensity": 0.4,
-                "healingrate": 0.0001,
-                "maxhealingrate": 0.001,
+                "healingrate": 0.000005,
+                "maxhealingrate": 0.005,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-bitterbolete-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:cold",
+                "intensity": 0.0,
+                "minintensity": 0.5,
+                "healingrate": 0.0002,
+                "maxhealingrate": 0.0004,
                 "ingredient": true
               },
               {
                 "effect": "xdiseases:infection",
                 "intensity": 0.1,
+                "minintensity": 0.2,
+                "healingrate": 0.0003,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-blacktrumpet-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:infection",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-chanterelle-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:scurvy",
+                "intensity": 0.1,
                 "minintensity": 0.4,
                 "healingrate": 0.0001,
                 "maxhealingrate": 0.001,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-commonmorel-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:infection",
+                "intensity": 0.0,
+                "minintensity": 0.5,
+                "healingrate": 0.0002,
+                "maxhealingrate": 0.0004,
                 "ingredient": true
               }
             ]
@@ -48,6 +116,327 @@
                 "minintensity": 0.3,
                 "healingrate": 0.0,
                 "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-devilstooth-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:cold",
+                "intensity": 0.0,
+                "minintensity": 0.3,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:scurvy",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-devilbolete-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:scurvy",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.000005,
+                "maxhealingrate": 0.005,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-earthball-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:diarrhea",
+                "intensity": 0.2,
+                "minintensity": 0.5,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-elfinsaddle-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:d-blindness",
+                "intensity": 0.0,
+                "minintensity": 0.5,
+                "healingrate": 0.0002,
+                "maxhealingrate": 0.0004,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-golddropmilkcap-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:cold",
+                "intensity": 0.1,
+                "minintensity": 0.2,
+                "healingrate": 0.0003,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-greencrackedrussula-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:infection",
+                "intensity": 0.0,
+                "minintensity": 0.3,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-indigomilkcap-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:rabies",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:diarrhea",
+                "intensity": 0.0,
+                "minintensity": 0.3,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-jackolantern-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:tetanus",
+                "intensity": 0.1,
+                "minintensity": 0.2,
+                "healingrate": 0.0003,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:foodpoisoning",
+                "intensity": 0.2,
+                "minintensity": 0.5,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-kingbolete-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:tetanus",
+                "intensity": 0.2,
+                "minintensity": 0.5,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-lobster-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:rabies",
+                "intensity": 0.0,
+                "minintensity": 0.5,
+                "healingrate": 0.0002,
+                "maxhealingrate": 0.0004,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-orangeoakbolete-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:diarrhea",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-paddystraw-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:rabies",
+                "intensity": 0.0,
+                "minintensity": 0.3,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-puffball-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:cold",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.001,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-redwinecap-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:d-blindness",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-saffronmilkcap-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:cold",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.000005,
+                "maxhealingrate": 0.005,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-violetwebcap-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:tetanus",
+                "intensity": 0.0,
+                "minintensity": 0.3,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:fracture",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.000005,
+                "maxhealingrate": 0.005,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-witchhat-normal": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:foodpoisoning",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.000005,
+                "maxhealingrate": 0.005,
                 "ingredient": true
               }
             ]

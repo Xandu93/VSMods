@@ -104,6 +104,7 @@ namespace XInvTweaks
             if (player?.Entity?.Api.Side != EnumAppSide.Client || slot == null) return;
             if (!player.InventoryManager.Inventories.ContainsValue(slot.Inventory)) return;
             if (slot.Itemstack != null) return;
+            if (slot is ItemSlotBackpack) return;
 
             ItemSlot bestResult = null;
             player.InventoryManager.Find((ItemSlot slot2) =>

@@ -1,0 +1,237 @@
+[
+  {
+    "file": "game:blocktypes/plant/mushroom-side",
+    "op": "addmerge",
+    "path": "/behaviorsByType",
+    "value": {
+      "*-beardedtooth-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:d-blindness",
+                "intensity": 0.2,
+                "minintensity": 0.5,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-chickenofthewoods-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:bleeding",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.001,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:rabies",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.001,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-dryadsaddle-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:cold",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-pinkoyster-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:fracture",
+                "intensity": 0.0,
+                "minintensity": 0.5,
+                "healingrate": 0.0002,
+                "maxhealingrate": 0.0004,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-tinderhoof-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:bleeding",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:scurvy",
+                "intensity": 0.2,
+                "minintensity": 0.5,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-whiteoyster-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:infection",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.001,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-reishi-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:diarrhea",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.000005,
+                "maxhealingrate": 0.005,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-funeralbell-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:pneumonia",
+                "intensity": 0.1,
+                "minintensity": 0.4,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.001,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-deerear-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:cold",
+                "intensity": 0.2,
+                "minintensity": 0.5,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              },
+              {
+                "effect": "xdiseases:pneumonia",
+                "intensity": 0.0,
+                "minintensity": 0.5,
+                "healingrate": 0.0002,
+                "maxhealingrate": 0.0004,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-livermushroom-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:foodpoisoning",
+                "intensity": 0.0,
+                "minintensity": 0.3,
+                "healingrate": 0.0,
+                "maxhealingrate": 0.0,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-pinkbonnet-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:diarrhea",
+                "intensity": 0.0,
+                "minintensity": 0.5,
+                "healingrate": 0.0002,
+                "maxhealingrate": 0.0004,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ],
+      "*-shiitake-normal-*": [
+        {
+          "name": "XLibConsumable",
+          "properties": {
+            "cures": [
+              {
+                "effect": "xdiseases:pneumonia",
+                "intensity": 0.3,
+                "minintensity": 0.5,
+                "healingrate": 0.0001,
+                "maxhealingrate": 0.0002,
+                "ingredient": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

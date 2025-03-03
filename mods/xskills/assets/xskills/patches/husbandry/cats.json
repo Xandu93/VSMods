@@ -1,0 +1,74 @@
+[
+  {
+    "file": "cats:entities/land/cat-female",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "cats:entities/land/cat-female",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "cats:entities/land/cat-kitten",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "cats:entities/land/cat-kitten",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "cats:entities/land/cat-male",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "cats:entities/land/cat-male",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "file": "moreanimals:entities/capercaillie-chick",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/capercaillie-chick",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/capercaillie",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/capercaillie",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/goldenpheasant-chick",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/goldenpheasant-chick",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/goldenpheasant",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/goldenpheasant",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/pheasant-chick",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/pheasant-chick",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/pheasant",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/pheasant",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/wildturkey-chick",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/wildturkey-chick",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/wildturkey",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "moreanimals:entities/wildturkey",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  }
+]

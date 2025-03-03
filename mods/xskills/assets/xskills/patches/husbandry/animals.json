@@ -1,21 +1,5 @@
 [
   {
-    "file": "game:blocktypes/bone/carcass",
-    "op": "add",
-    "path": "/behaviors/-",
-    "value": {
-      "name": "XSkillsCarcass"
-    }
-  },
-  {
-    "file": "game:blocktypes/bone/bonyremains",
-    "op": "add",
-    "path": "/behaviors/-",
-    "value": {
-      "name": "XSkillsCarcass"
-    }
-  },
-  {
     "file": "game:entities/land/chicken-baby",
     "op": "add",
     "path": "/client/behaviors/-",
@@ -639,66 +623,6 @@
         "*-baby": 1.0,
         "*-adult": 1.0
       }
-    }
-  },
-  {
-    "file": "lichen:entities/land/deer-female",
-    "op": "add",
-    "path": "/client/behaviors/-",
-    "value": {
-      "code": "XSkillsAnimal",
-      "xp": 1.5,
-      "catchable": "false"
-    }
-  },
-  {
-    "file": "lichen:entities/land/deer-female",
-    "op": "add",
-    "path": "/server/behaviors/-",
-    "value": {
-      "code": "XSkillsAnimal",
-      "xp": 1.5,
-      "catchable": "false"
-    }
-  },
-  {
-    "file": "lichen:entities/land/deer-male",
-    "op": "add",
-    "path": "/client/behaviors/-",
-    "value": {
-      "code": "XSkillsAnimal",
-      "xp": 1.5,
-      "catchable": "false"
-    }
-  },
-  {
-    "file": "lichen:entities/land/deer-male",
-    "op": "add",
-    "path": "/server/behaviors/-",
-    "value": {
-      "code": "XSkillsAnimal",
-      "xp": 1.5,
-      "catchable": "false"
-    }
-  },
-  {
-    "file": "lichen:entities/land/deer-fawn",
-    "op": "add",
-    "path": "/client/behaviors/-",
-    "value": {
-      "code": "XSkillsAnimal",
-      "xp": 0.0,
-      "catchable": "true"
-    }
-  },
-  {
-    "file": "lichen:entities/land/deer-fawn",
-    "op": "add",
-    "path": "/server/behaviors/-",
-    "value": {
-      "code": "XSkillsAnimal",
-      "xp": 0.0,
-      "catchable": "true"
     }
   },
   {

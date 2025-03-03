@@ -2,6 +2,7 @@
   "isnearby": " 就在附近！",
   "resourcereduction": "资源减少：{0:P2}",
   "owner-desc": "所有者：{0}",
+  "catchable": "Catchable",
 
   "skill-survival": "生存",
   "skill-farming": "农耕",

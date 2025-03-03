@@ -2,6 +2,7 @@
   "isnearby": " is nearby!",
   "resourcereduction": "Resource reduction: {0:P2}",
   "owner-desc": "Owner: {0}",
+  "catchable": "Catchable",
 
   "today": "Today",
   "tomorrow": "Tomorrow",
@@ -76,7 +77,7 @@
   "ability-gatherer": "Gatherer",
   "abilitydesc-gatherer": "Increases the yield from harvesting grass, berry bushes, reeds and mushrooms by {0}% and additional {1}% for every level at the farming skill. Maxed out at {2}%.",
   "ability-orchardist": "Orchardist",
-  "abilitydesc-orchardist": "Increases the yield from fruit trees by {0}% and additional {1}% for every level at the farming skill. Maxed out at {2}%.",  
+  "abilitydesc-orchardist": "Increases the yield from fruit trees by {0}% and additional {1}% for every level at the farming skill. Maxed out at {2}%.",
   "ability-repotting": "Repotting",
   "abilitydesc-repotting": "Harvesting non-matured crops drops always the seeds.",
   "ability-recycler": "Recycler",
@@ -267,7 +268,7 @@
   "ability-heavyhits": "Heavy Hits",
   "abilitydesc-heavyhits": "Your heavy hits on slag works as a split.",
   "ability-blacksmith": "Blacksmith",
-  "abilitydesc-blacksmith":  "Items you forge on an anvil can now have quality with a base value of {0} and a maximum value of {1} quality. Creating tools or armor with quality parts will also create items with quality. Armor and tools with quality will have increased stats. You can quench items to increase their quality.",
+  "abilitydesc-blacksmith": "Items you forge on an anvil can now have quality with a base value of {0} and a maximum value of {1} quality. Creating tools or armor with quality parts will also create items with quality. Armor and tools with quality will have increased stats. You can quench items to increase their quality.",
   "ability-metalworker": "Metalworker",
   "abilitydesc-metalworker": "You will receive {0}% more experience for the metalworking skill. The amount of professions you can learn is limited.",
   "ability-finishingtouch": "Finishing Touch",
@@ -318,7 +319,7 @@
   "abilitydesc-desalinate": "Allows you to fill a pot with water to create salt or other items. You need to fill all cooking slots with water. You receive {0} primary items and {1} secondary items for every 4*6 liters of water.",
   "ability-saltybackpack": "Salty Backpack",
   "abilitydesc-saltybackpack": "Cooking ingredients in your backpack perish only {0}% as fast as normal.",
-  "ability-gourmet" : "Gourmet",
+  "ability-gourmet": "Gourmet",
   "abilitydesc-gourmet": "Food you cook can now have quality with a base value of {0} and a maximum value of {1} quality. Eating food with quality gives the eating player a positive effect for 10 minutes. The effect depends on the nutrition values of the food. The intensity of the effect depends on the quality of the food. You can have only one of these effects at the same time.",
   "ability-chef": "Chef",
   "abilitydesc-chef": "You will receive {0}% more experience for the cooking skill. The amount of professions you can learn is limited.",
@@ -329,10 +330,10 @@
   "ability-eggtimer": "Egg Timer",
   "abilitydesc-eggtimer": "You will receive a message when a meal has finished cooking.",
 
-  "block-cage-wooden-north" : "Cage",
-  "block-cage-wooden-south" : "Cage",
-  "block-cage-wooden-east" : "Cage",
-  "block-cage-wooden-west" : "Cage",
+  "block-cage-wooden-north": "Cage",
+  "block-cage-wooden-south": "Cage",
+  "block-cage-wooden-east": "Cage",
+  "block-cage-wooden-west": "Cage",
 
   "item-metalbit-*": "Metal Bits",
   "item-metalbit-bismuth": "Bismuth Bits",
@@ -422,5 +423,5 @@
   "monster": "Monster",
   "book-monster": "Monster compendium",
   "meteorology": "Meteorology",
-  "book-meteorology": "Meteorology for beginners",
+  "book-meteorology": "Meteorology for beginners"
 }

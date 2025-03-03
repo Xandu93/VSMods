@@ -1,0 +1,146 @@
+[
+  {
+    "file": "primitivesurvival:entities/land/crab-bairdicrab",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/crab-bairdicrab",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/crab-landcrab",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/crab-landcrab",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-blackrat",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-blackrat",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-chainviper",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-chainviper",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-coachwhip",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-coachwhip",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-pitviper",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "primitivesurvival:entities/land/snake-pitviper",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  }
+]

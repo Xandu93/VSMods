@@ -81,10 +81,10 @@ namespace XSkills
 
         public override void GetInfoText(StringBuilder infotext)
         {
+            if (Catchable) infotext.AppendLine(Lang.Get("xskills:catchable"));
             IPlayer player = Feeder;
             if (player == null) return;
             infotext.AppendLine(Lang.Get("xskills:owner-desc", player.PlayerName));
         }
-
     }//!class XSkillsAnimalBehavior
 }//!namespace XSkills

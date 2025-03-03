@@ -1,0 +1,46 @@
+[
+  {
+    "file": "lichen:entities/land/gemsbok",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xpByType": {
+          "*-baby": 0.0,
+          "*-adult": 1.5
+        },
+        "catchableByType": {
+          "*-baby": "true",
+          "*-adult": "false"
+        },
+        "scaleByType": {
+          "*-baby": 0.8,
+          "*-adult": 1.0
+        }
+      }
+    ]
+  },
+  {
+    "file": "lichen:entities/land/gemsbok",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xpByType": {
+          "*-baby": 0.0,
+          "*-adult": 1.5
+        },
+        "catchableByType": {
+          "*-baby": "true",
+          "*-adult": "false"
+        },
+        "scaleByType": {
+          "*-baby": 0.8,
+          "*-adult": 1.0
+        }
+      }
+    ]
+  }
+]

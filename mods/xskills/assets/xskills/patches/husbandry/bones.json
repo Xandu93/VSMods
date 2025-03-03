@@ -1,0 +1,18 @@
+[
+  {
+    "file": "game:blocktypes/bone/carcass",
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "XSkillsCarcass"
+    }
+  },
+  {
+    "file": "game:blocktypes/bone/bonyremains",
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "XSkillsCarcass"
+    }
+  }
+]

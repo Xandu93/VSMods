@@ -63,8 +63,9 @@ namespace XSkills
         public string ResolvedEntityName(ItemStack itemStack)
         {
             string name = itemStack.Attributes.GetString("entityName");
+            string domain = itemStack.Attributes.GetString("entityShape")?.Split(":")?[0] ?? "game";
             if (name == null) return null;
-            else return Lang.Get("item-creature-" + name);
+            else return Lang.Get(domain + ":item-creature-" + name);
         }
 
         /// <summary>

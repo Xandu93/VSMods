@@ -2,6 +2,7 @@
   "isnearby": "Está próximo!",
   "resourcereduction": "Redução de recursos: {0:P2}",
   "owner-desc": "Dono: {0}",
+  "catchable": "Catchable",
 
   "skill-survival": "Sobrevivência",
   "skill-farming": "Agricultura",
@@ -13,10 +14,10 @@
   "skill-temporaladaptation": "Adaptação temporal",
   "skill-metalworking": "Metalurgia",
   "skill-pottery": "Cerâmica",
-  "skill-cooking": "Cozinha", 
+  "skill-cooking": "Cozinha",
 
   "xskills:group-survival": "Sobrevivência",
-  "xskills:group-collecting": "Coleta", 
+  "xskills:group-collecting": "Coleta",
   "xskills:group-processing": "Processamento",
 
   "ability-longlife": "Vida Longa",
@@ -403,5 +404,5 @@
   "bloodlust-effectdesc": "",
 
   "monster": "Monster",
-  "book-monster": "Monster compendium",
+  "book-monster": "Monster compendium"
 }

@@ -70,6 +70,9 @@ namespace XSkills
 
                 type = api.ClassRegistry.GetBlockClass("hivetop");
                 if (type != null) ClayHiveTopPatch.Apply(harmony, type, xskills);
+
+                type = api.ClassRegistry.GetBlockEntity("BlockNestbox");
+                if (type != null) BlockEntityNestBoxPatch.Apply(harmony, type, xskills);
             }
         }
 

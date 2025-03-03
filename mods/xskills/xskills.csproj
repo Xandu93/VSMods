@@ -78,6 +78,8 @@
     <Content Include="assets\xskills\patches\digging.json" />
     <Content Include="assets\xskills\patches\farming\crops.json" />
     <Content Include="assets\xskills\patches\forestry\forestry.json" />
+    <Content Include="assets\xskills\patches\husbandry\primitivesurvival.json" />
+    <Content Include="assets\xskills\patches\husbandry\moreanimals.json" />
     <Content Include="assets\xskills\patches\metalworking.json" />
     <Content Include="assets\xskills\patches\mining.json" />
     <Content Include="assets\xskills\patches\xskills.json" />
@@ -99,7 +101,7 @@
     <ProjectReference Include="..\xlib\xlib.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\xskills\patches\husbandry.json" />
+    <Content Include="assets\xskills\patches\husbandry\animals.json" />
     <Content Include="assets\xskills\blocktypes\cage.json" />
     <Content Include="assets\xskills\effects\saturated.json" />
     <Content Include="assets\xskills\recipes\grid\cage.json" />

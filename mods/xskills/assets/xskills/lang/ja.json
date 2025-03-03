@@ -1,12 +1,13 @@
 ﻿{
-    "comment_description": "Japanese localization file for 'XSkills'.",
-    "comment_version": "Mod Version: v0.8.0-rc.1",
-    "comment_author": "Translated By: Macoto Hino",
-    "comment_technical_details": "Machine translation using PCOT and DeepL.",
-	
+  "comment_description": "Japanese localization file for 'XSkills'.",
+  "comment_version": "Mod Version: v0.8.0-rc.1",
+  "comment_author": "Translated By: Macoto Hino",
+  "comment_technical_details": "Machine translation using PCOT and DeepL.",
+
   "isnearby": " までもう少し！",
   "resourcereduction": "資源の削減: {0:P2}",
   "owner-desc": "所有者: {0}",
+  "catchable": "Catchable",
 
   "skill-survival": "生存",
   "skill-farming": "農業",
@@ -35,7 +36,7 @@
   "ability-meatshield": "肉の盾",
   "abilitydesc-meatshield": "被ダメージの{0}%を吸収します。吸収したダメージの{1}倍を満腹度として失います。",
   "ability-diver": "ダイバー",
-  "abilitydesc-diver": "酸素消費量を{0}%減少させます。",  
+  "abilitydesc-diver": "酸素消費量を{0}%減少させます。",
   "ability-allrounder": "万能選手",
   "abilitydesc-allrounder": "さらに{0}個の専門職を習得することが出来ます。",
   "ability-photosynthesis": "光合成",
@@ -68,7 +69,7 @@
   "ability-gatherer": "採取者",
   "abilitydesc-gatherer": "草、ベリーの茂み、キノコの収穫量を{0}%増加、さらに農業スキルのレベルに応じて{1}%増加します。最大で{2}%になります。",
   "ability-orchardist": "果樹栽培者",
-  "abilitydesc-orchardist": "果樹の収穫量を{0}%増加させ、農業スキルが1レベル上がるごとに{1}%追加されます。最大で{2}%になります。",    
+  "abilitydesc-orchardist": "果樹の収穫量を{0}%増加させ、農業スキルが1レベル上がるごとに{1}%追加されます。最大で{2}%になります。",
   "ability-repotting": "植え替え",
   "abilitydesc-repotting": "成熟していない作物を収穫すると、必ず種が落ちます。",
   "ability-recycler": "リサイクル者",
@@ -130,7 +131,7 @@
   "ability-charcoalburner": "炭焼き人",
   "abilitydesc-charcoalburner": "積み重なった木炭から得られる木炭の量が{0}%増加します。",
   "ability-grafter": "接ぎ木人",
-  "abilitydesc-grafter": "果樹の枝の接ぎ木と発根の成功率が{0}%増加します。",  
+  "abilitydesc-grafter": "果樹の枝の接ぎ木と発根の成功率が{0}%増加します。",
   "ability-resinextractor": "樹脂抽出人",
   "abilitydesc-resinextractor": "伐採した木から樹脂を得るチャンスがあります。その確率は、あなたのアビリティ「樹脂農家」の{0}%です。",
 
@@ -157,7 +158,7 @@
   "ability-veinminer": "鉱脈採掘者",
   "abilitydesc-veinminer": "鉱石や宝石のブロックを採掘する場合、採掘スキルが{1}レベルごとに{0}+1のブロックを追加で採掘します。最大で{2}ブロックまでとなります。採掘したブロックが増えるごとに、道具は{3}%の追加の損耗を受け、{4}の耐久値を失います。",
   "ability-tunneldigger": "トンネル掘削者",
-  "abilitydesc-tunneldigger": "3×3の範囲にある石のブロックを一度に採掘出来るようになります。採掘したブロックが増えるごとに、道具は{0}%の追加の損耗を受け、{1}の耐久値を失います。",  
+  "abilitydesc-tunneldigger": "3×3の範囲にある石のブロックを一度に採掘出来るようになります。採掘したブロックが増えるごとに、道具は{0}%の追加の損耗を受け、{1}の耐久値を失います。",
   "ability-blaster": "発破作業者",
   "abilitydesc-blaster": "アビリティ「石割り工」、「石切り工」、「鉱石採掘者」、「宝石採掘者」は、岩や鉱石を爆弾で爆破した場合にも適用されます。",
 
@@ -257,7 +258,7 @@
   "ability-heavyhits": "強打",
   "abilitydesc-heavyhits": "強打が鉱滓に対しては割るとしても機能します。",
   "ability-blacksmith": "鍛冶屋",
-  "abilitydesc-blacksmith":  "金床で鍛えたアイテムに、基本値{0}、最大値{1}の品質の差が出るようになります。品質の高いパーツで道具や防具を作成すると、品質が高いアイテムも作成されます。品質のある防具や道具は、ステータスが上昇します。 You can quench items to increase their quality.",
+  "abilitydesc-blacksmith": "金床で鍛えたアイテムに、基本値{0}、最大値{1}の品質の差が出るようになります。品質の高いパーツで道具や防具を作成すると、品質が高いアイテムも作成されます。品質のある防具や道具は、ステータスが上昇します。 You can quench items to increase their quality.",
   "ability-metalworker": "金属加工職人",
   "abilitydesc-metalworker": "金属加工スキルの経験値が{0}%増加します。習得出来る専門職は限定されています。",
   "ability-finishingtouch": "画龍点睛",
@@ -269,7 +270,7 @@
   "ability-mastersmith": "鍛治の達人",
   "abilitydesc-mastersmith": "強打すると、単に拡散するのではなく、最大で{0}個のボクセルを適切な位置に移動させます。すべてのボクセルを{1}の位置まで動かすことが出来ます。",
   "ability-senseoftime": "時間感覚",
-  "abilitydesc-senseoftime": "坩堝での製錬が終了すると、メッセージが表示されます。",  
+  "abilitydesc-senseoftime": "坩堝での製錬が終了すると、メッセージが表示されます。",
   "ability-machinelearning": "機械学習",
   "abilitydesc-machinelearning": "鍛冶の知識を柄付きハンマーと共有し、アビリティの一部を役立てます。",
   "ability-bloomeryexpert": "塊鉄炉の達人",
@@ -308,7 +309,7 @@
   "abilitydesc-desalinate": "Allows you to fill a pot with water to create salt or other items. You need to fill all cooking slots with water. You receive {0} primary items and {1} secondary items for every 4*6 liters of water.",
   "ability-saltybackpack": "塩塗れの鞄",
   "abilitydesc-saltybackpack": "リュックの中の食材は、通常より腐敗が{0}%遅くなります。",
-  "ability-gourmet" : "美食家",
+  "ability-gourmet": "美食家",
   "abilitydesc-gourmet": "調理した料理は、基本値{0}、最大値{1}の品質に差が出るようになります。品質を持つ食品を食べると、食べたプレイヤーは10分間プラスの効果を得られます。効果は食べ物の栄養価に依存します。効果の強さは食べ物の品質によって異なります。効果は同時に1つだけです。",
   "ability-chef": "料理人",
   "abilitydesc-chef": "料理スキルの経験値が{0}%増加します。習得出来る専門職は限定されています。",
@@ -319,10 +320,10 @@
   "ability-eggtimer": "エッグタイマー",
   "abilitydesc-eggtimer": "食事が調理完了するとメッセージが表示されます。",
 
-  "block-cage-wooden-north" : "檻",
-  "block-cage-wooden-south" : "檻",
-  "block-cage-wooden-east" : "檻",
-  "block-cage-wooden-west" : "檻",
+  "block-cage-wooden-north": "檻",
+  "block-cage-wooden-south": "檻",
+  "block-cage-wooden-east": "檻",
+  "block-cage-wooden-west": "檻",
 
   "item-metalbit-*": "金属の破片",
   "item-metalbit-bismuth": "ビスマスの破片",
@@ -408,5 +409,5 @@
   "bloodlust-effectdesc": "",
 
   "monster": "Monster",
-  "book-monster": "Monster compendium",
+  "book-monster": "Monster compendium"
 }

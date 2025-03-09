@@ -1,15 +1,18 @@
 ﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using Vintagestory.Client.NoObf;
 using Vintagestory.Common;
 using Vintagestory.Server;
 using XLib.XLeveling;
+using Vintagestory.API.Datastructures;
 
 namespace XSkills
 {
@@ -199,6 +202,7 @@ namespace XSkills
         public override void AssetsLoaded(ICoreAPI api)
         {
             base.AssetsLoaded(api);
+            PatchEntities();
 
             Survival survival = (this.Skills["survival"] as Survival);
             LimitationRequirement specialisations = this.XLeveling.Limitations["specialisations"];
@@ -223,6 +227,117 @@ namespace XSkills
             if (inv == null) return false;
             inv.SwitchInventories();
             return true;
+        }
+
+        /// <summary>
+        /// Patches entities.
+        /// Adds husbandry and combat related behaviors to entities that don't have explicit compatibility.
+        /// </summary>
+        public void PatchEntities()
+        {
+            if (Api.Side.IsClient()) return;
+
+            foreach (EntityProperties entity in Api.World.EntityTypes)
+            {
+                float damage = 0.0f;
+                int damageTier = -1;
+                float health = 0.0f;
+                bool isHostile = false;
+                bool isMultipliable = false;
+                bool isXskillsEntity = false;
+                bool isXskillsAnimal = false;
+
+                isHostile = entity.Server?.SpawnConditions?.Runtime?.Group == "hostile";
+
+                JsonObject[] serverBehaviors = entity.Server?.BehaviorsAsJsonObj;
+                JsonObject[] clientBehaviors = entity.Client?.BehaviorsAsJsonObj;
+
+                foreach (JsonObject json in serverBehaviors)
+                {
+                    string code = json["code"].AsString();
+                    if (code == "taskai")
+                    {
+                        JsonObject[] tasks = json["aitasks"].AsArray();
+                        foreach (JsonObject aitask in tasks)
+                        {
+                            code = aitask["code"].AsString();
+                            if (!(code == "meleeattack" || code == "melee")) continue;
+
+                            damage = Math.Max(aitask["damage"].AsFloat(), damage);
+                            damageTier = Math.Max(aitask["damageTier"].AsInt(), damageTier);
+                        }
+                    }
+                    else if (code == "health")
+                    {
+                        health = json["maxhealth"].AsFloat();
+                    }
+                    else if (code == "multiply")
+                    {
+                        //is probably an animal
+                        isMultipliable = true;
+                    }
+                    else if (code == "XSkillsEntity")
+                    {
+                        isXskillsEntity = true;
+                        break;
+                    }
+                    else if (code == "XSkillsAnimal")
+                    {
+                        isXskillsAnimal = true;
+                        break;
+                    }
+                }
+
+                if (isXskillsEntity || isXskillsAnimal) continue;
+
+                if (!isMultipliable && entity.Code.Path.Contains("male"))
+                {
+                    //is also an animal when the female version can multiply
+                    AssetLocation assetLocation = new AssetLocation(entity.Code.Domain, entity.Code.Path.Replace("male", "female"));
+                    EntityProperties female = Api.World.GetEntityType(assetLocation);
+                    if (female != null)
+                    {
+                        JsonObject[] behaviors2 = female.Server?.BehaviorsAsJsonObj ?? female.Client?.BehaviorsAsJsonObj;
+                        foreach (JsonObject json in behaviors2)
+                        {
+                            string code = json["code"].AsString();
+                            if (code == "multiply")
+                            {
+                                //is probably an animal
+                                isMultipliable = true;
+                            }
+                        }
+                    }
+                }
+
+                if (health > 0.0f && ((damage > 1.0f && damageTier >= 0) || isMultipliable))
+                {
+                    string str;
+                    List<JsonObject> newBehaviors = new List<JsonObject>();
+
+                    float newXp = health * 0.025f + (damage - 1.0f) * 0.05f + damageTier * 0.25f + (isHostile ? 0.25f : 0.0f);
+                    if (isMultipliable && !isXskillsAnimal)
+                    {
+                        newXp *= 0.5f;
+                        str = "{\"code\": \"XSkillsAnimal\", \"xp\": " +
+                            newXp.ToString(new CultureInfo("en-US")) +
+                            ", \"catchable\": \"false\"}";
+                        newBehaviors.Add(JsonObject.FromJson(str));
+                    }
+                    else
+                    {
+                        str = "{\"code\": \"XSkillsEntity\", \"xp\": " + newXp.ToString(new CultureInfo("en-US")) + "}";
+                        newBehaviors.Add(JsonObject.FromJson(str));
+                    }
+
+                    JsonObject[] newBehaviorsArray = newBehaviors.ToArray();
+                    JsonObject[] newServerBeh = serverBehaviors.AddRangeToArray(newBehaviorsArray);
+                    JsonObject[] newClientBeh = clientBehaviors.AddRangeToArray(newBehaviorsArray);
+
+                    if (entity.Server != null) entity.Server.BehaviorsAsJsonObj = newServerBeh;
+                    if (entity.Client != null) entity.Client.BehaviorsAsJsonObj = newClientBeh;
+                }
+            }
         }
     }//!class XSkills
 }//!namespace XSkills

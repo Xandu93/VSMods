@@ -43,8 +43,6 @@ namespace XSkills
             this.metalworking = XLeveling.Instance(entity.Api)?.GetSkill("metalworking") as Metalworking;
             this.cooking = XLeveling.Instance(entity.Api)?.GetSkill("cooking") as Cooking;
             this.temporalAdaptation = XLeveling.Instance(entity.Api)?.GetSkill("temporaladaptation") as TemporalAdaptation;
-            EntityBehaviorHealth behaviorHealth = (this.entity.GetBehavior("health") as EntityBehaviorHealth);
-            if (behaviorHealth != null) behaviorHealth.onDamaged += OnDamage;
             this.xp = 0.0f;
         }
 
@@ -52,6 +50,18 @@ namespace XSkills
         {
             base.Initialize(properties, attributes);
             this.xp = attributes["xp"].AsFloat(0.0f);
+            EntityBehaviorHealth behaviorHealth = (this.entity.GetBehavior("health") as EntityBehaviorHealth);
+            if (behaviorHealth != null) behaviorHealth.onDamaged += OnDamage;
+        }
+
+        /// <summary>
+        /// Gets the skill associated with the behavior.
+        /// Used for experience distribution.
+        /// </summary>
+        /// <returns>The skill associated with the behavior</returns>
+        protected virtual Skill GetPlayerSkill()
+        {
+            return this.combat;
         }
 
         public override void OnEntityDeath(DamageSource damageSourceForDeath)
@@ -61,13 +71,17 @@ namespace XSkills
                 damageSourceForDeath.SourceEntity as EntityPlayer ??
                 damageSourceForDeath.CauseEntity as EntityPlayer ??
                 (damageSourceForDeath.SourceEntity as EntityThrownStone)?.FiredBy as EntityPlayer;
-            if (this.combat == null || byPlayer == null) return;
 
-            PlayerSkill playerSkill = byPlayer.GetBehavior<PlayerSkillSet>()?[this.combat.Id];
-            if (playerSkill == null) return;
+            PlayerSkillSet playerSkillSet = byPlayer?.GetBehavior<PlayerSkillSet>();
+            if (playerSkillSet == null) return;
 
             //experience
-            playerSkill.AddExperience(this.xp);
+            Skill skill = this.GetPlayerSkill();
+            PlayerSkill playerSkill = skill != null ? playerSkillSet[skill.Id] : null;
+            playerSkill?.AddExperience(this.xp);
+
+            if (this.combat == null) return;
+            playerSkill = playerSkillSet[combat.Id];
 
             //fresh flesh
             PlayerAbility playerAbility = playerSkill[combat.FreshFleshId];
@@ -137,7 +151,7 @@ namespace XSkills
             return protectionTier;
         }
 
-        public float OnDamage(float damage, DamageSource dmgSource)
+        public virtual float OnDamage(float damage, DamageSource dmgSource)
         {
             EntityPlayer byPlayer = 
                 dmgSource.SourceEntity as EntityPlayer ??

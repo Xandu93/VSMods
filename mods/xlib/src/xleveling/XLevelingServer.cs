@@ -68,11 +68,31 @@ namespace XLib.XLeveling
         /// <value>
         /// The name of the save directory.
         /// </value>
-        public string SaveFileDirectory
+        public string SaveFileDirectory => Path.Combine(GamePaths.Saves, "XLeveling");
+
+        /// <summary>
+        /// Gets or sets the backup file directory.
+        /// </summary>
+        /// <value>
+        /// The backup file directory.
+        /// </value>
+        public string BackupFileDirectory => Path.Combine(GamePaths.Backups, "XLeveling");
+
+        /// <summary>
+        /// Gets or sets the name of the file.
+        /// </summary>
+        /// <value>
+        /// The name of the file.
+        /// </value>
+        private string FileName
         {
             get
             {
-                return Path.Combine(GamePaths.Saves, "XLeveling");
+                string invalidChars = new string(Path.GetInvalidFileNameChars());
+                Regex regex = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));
+                string str = this.XLeveling.Api.World.Config.GetString("XLevelingSkillsFile") ?? (this.XLeveling.Api as ICoreServerAPI).WorldManager.SaveGame.WorldName;
+                str = regex.Replace(str, "");
+                return str + ".json";
             }
         }
 
@@ -86,11 +106,21 @@ namespace XLib.XLeveling
         {
             get 
             {
-                string invalidChars = new string(Path.GetInvalidFileNameChars());
-                Regex regex = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));
-                string str = this.XLeveling.Api.World.Config.GetString("XLevelingSkillsFile") ?? (this.XLeveling.Api as ICoreServerAPI).WorldManager.SaveGame.WorldName;
-                str = regex.Replace(str, "");
-                return Path.Combine(SaveFileDirectory, str + ".json");
+                return Path.Combine(SaveFileDirectory, FileName);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the backup save file.
+        /// </summary>
+        /// <value>
+        /// The name of the backup save file.
+        /// </value>
+        public string BackupSaveFileName
+        {
+            get
+            {
+                return Path.Combine(BackupFileDirectory, FileName);
             }
         }
 
@@ -281,35 +311,61 @@ namespace XLib.XLeveling
         }
 
         /// <summary>
+        /// Loads save data from a specific file.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>
+        ///  1, if the method succeeded<br></br>
+        ///  0, if the file does not exist<br></br>
+        /// -1, if the method failed
+        /// </returns>
+        private int LoadFromFile(string fileName)
+        {
+            if (fileName == null) return 0;
+            if (!File.Exists(fileName)) return 0;
+            try
+            {
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.Error = (object sender, Newtonsoft.Json.Serialization.ErrorEventArgs err) => 
+                {
+                    XLeveling.Api.Logger.Log(EnumLogType.Error, "[XLeveling] Error while loading: " + fileName + ": \n" + err.ErrorContext.Error.Message);
+                    err.ErrorContext.Handled = true;
+                };
+
+                this.DiscPlayerSkillSets = JsonConvert.DeserializeObject<Dictionary<string, SavedPlayerSkillSet>>(File.ReadAllText(fileName), settings);
+                if (DiscPlayerSkillSets == null)
+                {
+                    this.DiscPlayerSkillSets = new Dictionary<string, SavedPlayerSkillSet>();
+                    XLeveling.Api.Logger.Log(EnumLogType.Error, "[XLeveling] Error while loading: " + fileName + "\nThe file seems to be damaged.");
+                    return -1;
+                }
+                foreach (PlayerSkillSet playerSkillSet in this.PlayerSkillSets.Values)
+                {
+                    this.LoadPlayerSkillSet(playerSkillSet.Player as IServerPlayer);
+                }
+            }
+            catch (Exception error)
+            {
+                XLeveling.Api.Logger.Log(EnumLogType.Error, "[XLeveling] Error while loading: " + fileName + ": \n" + error.Message);
+                return -1;
+            }
+            return 1;
+        }
+
+        /// <summary>
         /// Loads the skill data of all players form a json file.
         /// </summary>
         private void LoadData()
         {
-            if (File.Exists(this.SaveFileName))
+            int result = LoadFromFile(this.SaveFileName);
+            if (result > 0) return;
+            if (result < 0) 
             {
-                try
-                {
-                    this.DiscPlayerSkillSets = JsonConvert.DeserializeObject<Dictionary<string, SavedPlayerSkillSet>>(File.ReadAllText(this.SaveFileName));
-                    if(DiscPlayerSkillSets == null)
-                    {
-                        this.DiscPlayerSkillSets = new Dictionary<string, SavedPlayerSkillSet>();
-                        XLeveling.Api.Logger.Log(EnumLogType.Error, "[XLeveling] Error while loading: " + this.SaveFileName + "\nThe file seems to be damaged.");
-                        return;
-                    }
-                    foreach (PlayerSkillSet playerSkillSet in this.PlayerSkillSets.Values)
-                    {
-                        this.LoadPlayerSkillSet(playerSkillSet.Player as IServerPlayer);
-                    }
-                }
-                catch (Exception error)
-                {
-                    XLeveling.Api.Logger.Log(EnumLogType.Error, "[XLeveling] Error while loading: " + this.SaveFileName + ": \n" + error.Message);
-                }
+                XLeveling.Api.Logger.Warning("[XLeveling] Failed to load save file. Try to load backup.");
+                result = LoadFromFile(this.BackupSaveFileName);
             }
-            else
-            {
-                this.DiscPlayerSkillSets = new Dictionary<string, SavedPlayerSkillSet>();
-            }
+            if (result > 0) return;
+            this.DiscPlayerSkillSets = new Dictionary<string, SavedPlayerSkillSet>();
         }
 
         /// <summary>
@@ -317,12 +373,23 @@ namespace XLib.XLeveling
         /// </summary>
         private void SaveData()
         {
+            string saveFileName = this.SaveFileName;
             Dictionary<string, SavedPlayerSkillSet> toStore = new Dictionary<string, SavedPlayerSkillSet>();
+
+            try
+            {
+                string backupName = this.BackupSaveFileName;
+                string path = Path.GetDirectoryName(backupName);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                File.Move(saveFileName, backupName, true);
+            }
+            catch (Exception)
+            { }
 
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Ignore;
             serializer.Formatting = Formatting.Indented;
-            StreamWriter streamWriter = new StreamWriter(this.SaveFileName);
+            StreamWriter streamWriter = new StreamWriter(saveFileName);
             JsonWriter jsonWriter = new JsonTextWriter(streamWriter);
 
             foreach (IPlayer player in this.PlayerSkillSets.Keys)

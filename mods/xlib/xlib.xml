@@ -6764,12 +6764,36 @@
             The name of the save directory.
             </value>
         </member>
+        <member name="P:XLib.XLeveling.XLevelingServer.BackupFileDirectory">
+            <summary>
+            Gets or sets the backup file directory.
+            </summary>
+            <value>
+            The backup file directory.
+            </value>
+        </member>
+        <member name="P:XLib.XLeveling.XLevelingServer.FileName">
+            <summary>
+            Gets or sets the name of the file.
+            </summary>
+            <value>
+            The name of the file.
+            </value>
+        </member>
         <member name="P:XLib.XLeveling.XLevelingServer.SaveFileName">
             <summary>
             Gets the name of the save file.
             </summary>
             <value>
             The name of the save file.
+            </value>
+        </member>
+        <member name="P:XLib.XLeveling.XLevelingServer.BackupSaveFileName">
+            <summary>
+            Gets or sets the name of the backup save file.
+            </summary>
+            <value>
+            The name of the backup save file.
             </value>
         </member>
         <member name="M:XLib.XLeveling.XLevelingServer.#ctor(XLib.XLeveling.XLeveling)">
@@ -6790,6 +6814,17 @@
             Sends the configuration to players.
             </summary>
             <param name="byPlayer">The player.</param>
+        </member>
+        <member name="M:XLib.XLeveling.XLevelingServer.LoadFromFile(System.String)">
+            <summary>
+            Loads save data from a specific file.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+            <returns>
+             1, if the method succeeded<br></br>
+             0, if the file does not exist<br></br>
+            -1, if the method failed
+            </returns>
         </member>
         <member name="M:XLib.XLeveling.XLevelingServer.LoadData">
             <summary>

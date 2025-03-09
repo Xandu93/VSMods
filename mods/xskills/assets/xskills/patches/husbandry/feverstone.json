@@ -1,0 +1,530 @@
+[
+  {
+    "file": "feverstonehorses:entities/land/foal",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonehorses:entities/land/foal",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonehorses:entities/land/horse",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonehorses:entities/land/horse",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/foal",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/foal",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/horse",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/horse",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/bison-calf",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/bison-calf",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/bison",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.5,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/bison",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.5,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/cockatrice-chick",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/cockatrice-chick",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/cockatrice",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/cockatrice",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-cockatrice-chick",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-cockatrice-chick",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-cockatrice",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-cockatrice",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/direwolf-pup",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/direwolf-pup",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/direwolf",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/direwolf",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-direwolf-pup",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-direwolf-pup",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-direwolf",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/tame-direwolf",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/giraffe",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/giraffe",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/hellboar-piglet",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/hellboar-piglet",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/hellboar",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/hellboar",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/ostrich-chick",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/ostrich-chick",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/ostrich",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/ostrich",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.0,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/scorpion",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/scorpion",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/spider",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/spider",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/toad",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "feverstonewilds:entities/land/toad",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.75,
+        "catchable": "true"
+      }
+    ]
+  }
+]

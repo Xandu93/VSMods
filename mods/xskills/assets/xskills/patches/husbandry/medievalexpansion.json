@@ -1,0 +1,74 @@
+[
+  {
+    "file": "medievalexpansion:entities/land/aurochs-female",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.5,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-female",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.5,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-male",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.5,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-male",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 1.5,
+        "catchable": "false"
+      }
+    ]
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-lamb",
+    "op": "addmerge",
+    "path": "/client/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  },
+  {
+    "file": "medievalexpansion:entities/land/aurochs-lamb",
+    "op": "addmerge",
+    "path": "/server/behaviors",
+    "value": [
+      {
+        "code": "XSkillsAnimal",
+        "xp": 0.0,
+        "catchable": "true"
+      }
+    ]
+  }
+]

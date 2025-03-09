@@ -361,7 +361,8 @@ namespace XSkills
             MeshData meshData = null;
             if (capi != null && entityShape != null)
             {
-                Shape = capi.Assets.TryGet(new AssetLocation(entityShape)).ToObject<Shape>();
+                Shape = capi.Assets.TryGet(new AssetLocation(entityShape))?.ToObject<Shape>();
+                if (Shape == null) return null;
                 capi.Tesselator.TesselateShapeWithJointIds("cage", Shape, out meshData, this, new Vec3f());
 
                 float scale;

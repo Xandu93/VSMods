@@ -446,16 +446,20 @@ namespace XSkills
             }
             string key = entityName + "-" + entityTextureID;
 
-            if (!MeshRefs.ContainsKey(key))
+            if (!MeshRefs.TryGetValue(key, out MultiTextureMeshRef value))
             {
-                MeshData cageMeshData;
-                capi.Tesselator.TesselateBlock(this, out cageMeshData);
+                capi.Tesselator.TesselateBlock(this, out MeshData cageMeshData);
                 CagedEntityMeshData meshData = new CagedEntityMeshData(capi, entityName, entityTextureID, entityShape);
                 meshData.Generate();
-                cageMeshData.AddMeshData(meshData.MeshData);
-                MeshRefs[key] = capi.Render.UploadMultiTextureMesh(cageMeshData);
+                if (meshData.MeshData != null)
+                {
+                    cageMeshData.AddMeshData(meshData.MeshData);
+                    MeshRefs[key] = capi.Render.UploadMultiTextureMesh(cageMeshData);
+                    renderinfo.ModelRef = MeshRefs[key];
+                }
             }
-            renderinfo.ModelRef = MeshRefs[key];
+            else renderinfo.ModelRef = value;
+
         }
 
         /// <summary>

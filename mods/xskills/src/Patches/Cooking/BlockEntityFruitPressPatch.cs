@@ -102,12 +102,13 @@ namespace XSkills
         /// <param name="__result">The result</param>
         [HarmonyPostfix]
         [HarmonyPatch("getJuiceableProps")]
-        public static void getJuiceablePropsPostfix(BlockEntityFruitPress __instance, JuiceableProperties __result)
+        public static void getJuiceablePropsPostfix(BlockEntityFruitPress __instance, JuiceableProperties __result, ItemStack stack)
         {
             if (__result?.LitresPerItem == null) return;
             BlockEntityBehaviorOwnable ownable = __instance?.GetBehavior<BlockEntityBehaviorOwnable>();
             IPlayer player = ownable?.Owner;
             if (player == null) return;
+            if (__instance.MashSlot.Itemstack == stack) return;
 
             Cooking cooking = XLeveling.Instance(__instance.Api)?.GetSkill("cooking") as Cooking;
             if (cooking == null) return;

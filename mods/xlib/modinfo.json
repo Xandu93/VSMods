@@ -5,7 +5,7 @@
   "authors": [ "Xandu" ],
   "description": "Adds a leveling and an effect api to the game.",
   "website": "https://www.vintagestory.at/forums/topic/1720-xlib-and-xskills/",
-  "version": "0.8.15",
+  "version": "0.8.16",
   "dependencies": {
     "game": "1.20.4"
   }

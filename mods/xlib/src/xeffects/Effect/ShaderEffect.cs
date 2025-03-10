@@ -85,6 +85,7 @@ namespace XLib.XEffects
             base.OnStart();
             if (this.Entity.Api is ICoreClientAPI capi)
             {
+                if (this.Entity != capi.World.Player.Entity) return;
                 Renderer = new EffectRenderer(capi, ShaderName);
                 Renderer.Register();
                 Renderer.Intensity = ResultingIntensity();

@@ -148,6 +148,9 @@ namespace XSkills
             this.ExpBase = 40;
             this.ExpMult = 10.0f;
             this.ExpEquationValue = 0.8f;
+
+            CookingRecipe.NamingRegistry["lime"] = new XskillsCookingRecipeNames();
+            CookingRecipe.NamingRegistry["salt"] = new XskillsCookingRecipeNames();
         }
 
         public static void ApplyQuality(float quality, float eaten, float temperature, EnumFoodCategory food0, EnumFoodCategory food1, EntityAgent byEntity)
@@ -705,5 +708,27 @@ namespace XSkills
         [ProtoMember(2)]
         [DefaultValue(0.05f)]
         public float fruitPressExpPerLitre = 0.05f;
+    }
+
+    public class XskillsCookingRecipeNames : ICookingRecipeNamingHelper
+    {
+        public string GetNameForIngredients(IWorldAccessor worldForResolve, string recipeCode, ItemStack[] stacks)
+        {
+            if (recipeCode == null) return Lang.Get("game:unknown");
+            CookingRecipe recipe = worldForResolve.Api.GetCookingRecipe(recipeCode);
+            if (recipe == null) return Lang.Get("game:unknown");
+            ItemStack resultStack = recipe.CooksInto?.ResolvedItemstack;
+            if (resultStack == null) return Lang.Get("game:unknown");
+
+            switch (recipeCode)
+            {
+                case "lime":
+                    return resultStack.Collectible.GetHeldItemName(resultStack) + "\n" + Lang.Get("game:item-handbooktext-lime");
+                case "salt":
+                    return resultStack.Collectible.GetHeldItemName(resultStack) + "\n" + Lang.Get("game:item-handbooktext-salt");
+                default:
+                    return "";
+            }
+        }
     }
 }//!namespace XSkills

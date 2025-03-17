@@ -123,12 +123,18 @@ namespace XInvTweaks
                     Config.SortOrder.Add("name");
                     Config.SortOrder.Add("durability");
                     Config.SortOrder.Add("attackpower");
+                    Config.SortOrder.Add("satiety");
+                    Config.SortOrder.Add("health");
+                    Config.SortOrder.Add("intoxication");
                     Config.SortOrder.Add("stacksize");
+                    Config.SortOrder.Add("density");
+                    Config.SortOrder.Add("state");
                 }
                 if (Config.StackOrder.Count == 0)
                 {
                     Config.StackOrder.Add("stacksize");
                     Config.StackOrder.Add("durability");
+                    Config.StackOrder.Add("transition");
                 }
                 InventoryUtil.sortOrder = Config.SortOrder;
                 InventoryUtil.stackOrder = Config.StackOrder;

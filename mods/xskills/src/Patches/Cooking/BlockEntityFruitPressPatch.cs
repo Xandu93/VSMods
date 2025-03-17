@@ -121,12 +121,14 @@ namespace XSkills
             else __result.LitresPerItem *= 1.0f + value * 0.01f;
 
             ItemStack handStack = player.InventoryManager.ActiveHotbarSlot.Itemstack;
+            if (handStack == null) return;
             int desiredTransferAmount = Math.Min(handStack.StackSize, player.Entity.Controls.ShiftKey ? 1 : player.Entity.Controls.CtrlKey ? handStack.Item.MaxStackSize : 4);
 
             double mashlitres = (__instance.MashSlot.Itemstack?.Attributes.GetDecimal("juiceableLitresLeft") ?? 0.0);
             if (mashlitres < 10.0 && mashlitres + __result.LitresPerItem * (desiredTransferAmount + 1) > 10.0)
             {
                 while (mashlitres + __result.LitresPerItem * desiredTransferAmount > 10.0) desiredTransferAmount--;
+                if (desiredTransferAmount == 0) desiredTransferAmount = 1;
                 if (desiredTransferAmount > 0)
                 {
                     __result.LitresPerItem = (float)((10.0 - mashlitres) / desiredTransferAmount);

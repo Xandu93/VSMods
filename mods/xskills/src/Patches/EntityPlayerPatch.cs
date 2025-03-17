@@ -1,7 +1,6 @@
 ﻿using HarmonyLib;
 using System;
 using Vintagestory.API.Common;
-using XLib.XLeveling;
 
 namespace XSkills
 {
@@ -13,17 +12,12 @@ namespace XSkills
         {
             //luminiferous
             int lightLevel = __instance.World.BlockAccessor.GetLightLevel(__instance.Pos?.AsBlockPos, EnumLightLevelType.MaxTimeOfDayLight);
-
-            Survival survival = XLeveling.Instance(__instance.Api)?.GetSkill("survival") as Survival;
-            if (survival == null) return;
-            PlayerAbility ability = __instance.GetBehavior<PlayerSkillSet>()?[survival.Id]?[survival.LuminiferousId];
-            if (ability == null) return;
+            int luminiferous = __instance.WatchedAttributes.GetInt("ability-luminiferous");
 
             byte[] abilityHSV = new byte[3];
-            abilityHSV[0] = (byte) ability.Value(0);
-            abilityHSV[1] = (byte) ability.Value(1);
-            abilityHSV[2] = (byte)(ability.Value(2) * (1.0f - lightLevel / 32.0f));
-
+            abilityHSV[0] = (byte)(luminiferous >> 16 & 0xff);
+            abilityHSV[1] = (byte)(luminiferous >>  8 & 0xff);
+            abilityHSV[2] = (byte)((luminiferous & 0xff) * (1.0f - lightLevel / 32.0f));
             byte resultV = 0;
 
             if (__result == null)

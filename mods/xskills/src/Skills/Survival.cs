@@ -25,6 +25,7 @@ namespace XSkills
         public int NudistId { get; private set; }
         public int MeatShieldId { get; private set; }
         public int DiverId { get; private set; }
+        //public int FeatherFallId { get; private set; }
         public int AllRounderId { get; protected set; }
         public int PhotosynthesisId { get; private set; }
         public int StrongBackId { get; private set; }
@@ -40,6 +41,7 @@ namespace XSkills
         public int LuminiferousId { get; private set; }
         public int CatEyesId { get; private set; }
         public int MeteorologistId { get; private set; }
+        //public int LastStandId { get; private set; }
 
         private ICoreClientAPI capi;
         private NightVisionRenderer nightVisionRenderer;
@@ -106,6 +108,15 @@ namespace XSkills
                 "xskills:ability-diver",
                 "xskills:abilitydesc-diver",
                 3, 2, new int[] { 50, 75 }));
+
+            //// lesser fall damage
+            //// 0: flat base value
+            //// 1: percentage value
+            //FeatherFallId = this.AddAbility(new Ability(
+            //    "featherfall",
+            //    "xskills:ability-featherfall",
+            //    "xskills:abilitydesc-featherfall",
+            //    2, 2, new int[] { 1, 10, 2, 20 }));
 
             // additional professions
             // 0: value
@@ -240,12 +251,20 @@ namespace XSkills
                 "xskills:abilitydesc-meteorologist",
                 8, 1, new int[] { 3, 50 }));
 
+            //// guarantees to survive if health ratio larger than a random value
+            //LastStandId = this.AddAbility(new Ability(
+            //    "laststand",
+            //    "xskills:ability-laststand",
+            //    "xskills:abilitydesc-laststand",
+            //    8, 1, new int[] { }));
+
             this[LongLifeId].OnPlayerAbilityTierChanged += OnLongLife;
             this[HugeStomachId].OnPlayerAbilityTierChanged += OnHugeStomach;
             this[NudistId].OnPlayerAbilityTierChanged += OnNudist;
             this[StrongBackId].OnPlayerAbilityTierChanged += OnStrongBack;
             this[SteeplechaserId].OnPlayerAbilityTierChanged += OnSteeplechaser;
             //this[LongArmsId].OnPlayerAbilityTierChanged += OnLongArms;
+            this[LuminiferousId].OnPlayerAbilityTierChanged += OnLuminiferous;
 
             ClassRegistry registry = (api as ServerCoreAPI)?.ClassRegistryNative ?? (api as ClientCoreAPI)?.ClassRegistryNative;
             if (registry != null)
@@ -405,6 +424,14 @@ namespace XSkills
         public static void OnLongArms(PlayerAbility playerAbility, int oldTier)
         {
             playerAbility.PlayerSkill.PlayerSkillSet.Player.WorldData.PickingRange = 4.5f + playerAbility.Value(0);
+        }
+
+        public static void OnLuminiferous(PlayerAbility playerAbility, int oldTier)
+        {
+            IPlayer player = playerAbility.PlayerSkill.PlayerSkillSet.Player;
+            int value = playerAbility.Value(0) << 16 | playerAbility.Value(1) << 8 | playerAbility.Value(2);
+            if (value == 0) player.Entity.WatchedAttributes.RemoveAttribute("ability-luminiferous");
+            else player.Entity.WatchedAttributes.SetInt("ability-luminiferous", value);
         }
 
         public static string GenerateWeatherForecast(ICoreAPI api, EntityPos pos, int days = 3, float inaccuracy = 0.5f)
@@ -864,6 +891,7 @@ namespace XSkills
 
                 Dictionary<string, string> result = new Dictionary<string, string>();
                 result.Add("expLoss", this.expLoss.ToString(provider));
+                result.Add("maxExpLoss", this.maxExpLoss.ToString(provider));
                 result.Add("invSwitchCD", this.invSwitchCD.ToString(provider));
                 result.Add("allowCatEyesToggle", this.allowCatEyesToggle.ToString(provider));
                 return result;
@@ -876,6 +904,9 @@ namespace XSkills
 
                 value.TryGetValue("expLoss", out str);
                 if (str != null) float.TryParse(str, styles, provider, out this.expLoss);
+
+                value.TryGetValue("maxExpLoss", out str);
+                if (str != null) float.TryParse(str, styles, provider, out this.maxExpLoss);
 
                 value.TryGetValue("invSwitchCD", out str);
                 if (str != null) float.TryParse(str, styles, provider, out this.invSwitchCD);
@@ -890,10 +921,14 @@ namespace XSkills
         public float expLoss = 0.5f;
 
         [ProtoMember(2)]
+        [DefaultValue(30.0f)]
+        public float maxExpLoss = 30.0f;
+
+        [ProtoMember(3)]
         [DefaultValue(3.0f)]
         public float invSwitchCD = 3.0f;
 
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         [DefaultValue(false)]
         public bool allowCatEyesToggle = false;
     }//!class CombatSkillConfig

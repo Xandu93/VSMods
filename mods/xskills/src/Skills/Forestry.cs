@@ -313,25 +313,25 @@ namespace XSkills
             handling = EnumHandling.PreventDefault;
             if (block.Drops.Length == 0) return drops.ToArray();
 
-            //afforestation
-            PlayerAbility playerAbility = playerSkill[forestry.AfforestationId];
-            if (playerAbility == null) return drops.ToArray();
-            float dropMultipier = dropChanceMultiplier + playerAbility.Value(0) * 0.01f;
-            ItemStack drop = block.Drops[0].GetNextItemStack(dropMultipier);
-            if (drop != null) drops.Add(drop);
+            PlayerAbility afforestation = playerSkill[forestry.AfforestationId];
+            PlayerAbility moreLadders = playerSkill.PlayerAbilities[forestry.MoreLaddersId];
 
-            //more ladders
-            if (block.Drops.Length > 1)
+            foreach (BlockDropItemStack drop in block.Drops)
             {
-                playerAbility = playerSkill.PlayerAbilities[forestry.MoreLaddersId];
-                dropMultipier = dropChanceMultiplier + 0.01f * playerAbility.SkillDependentValue();
-                drop = block.Drops[1].GetNextItemStack(dropMultipier);
-                if (drop != null) drops.Add(drop);
-            }
-            for (int index = 2; index < block.Drops.Length; index++)
-            {
-                drop = block.Drops[index].GetNextItemStack(dropChanceMultiplier);
-                if (drop != null) drops.Add(drop);
+                float dropMultipier = dropChanceMultiplier;
+                if (drop.ResolvedItemstack == null) continue;
+                if (drop.ResolvedItemstack.Collectible is BlockSapling || drop.ResolvedItemstack.Collectible is ItemTreeSeed)
+                {
+                    if (afforestation == null) continue;
+                    dropMultipier += afforestation.FValue(0);
+                }
+                else if (drop.ResolvedItemstack.Collectible.Code.Path == "stick")
+                {
+                    if (moreLadders == null) continue;
+                    dropMultipier += moreLadders.SkillDependentFValue(0);
+                }
+                ItemStack dropStack = drop.GetNextItemStack(dropMultipier);
+                if (dropStack != null) drops.Add(dropStack);
             }
             return drops.ToArray();
         }

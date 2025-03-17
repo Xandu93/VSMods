@@ -89,33 +89,50 @@ namespace XSkills
                 dmgSource.Source != EnumDamageSource.Explosion &&
                 dmgSource.Source != EnumDamageSource.Machine) return damage;
 
-            Entity entity = dmgSource.SourceEntity;
+            Entity sourceEntity = dmgSource.SourceEntity;
+            PlayerSkillSet playerSkillSet = this.entity.GetBehavior<PlayerSkillSet>();
+            if (playerSkillSet == null) return damage;
+
+            //guarantees to survive if health ratio larger than a random value
+            //if (Health != null && dmgSource.Type != EnumDamageType.Heal)
+            //{
+            //    PlayerAbility playerAbility = playerSkillSet[survival.Id]?[survival.LastStandId];
+            //    if (damage > Health.Health && Health.MaxHealth > 0.0f && playerAbility?.Tier > 0)
+            //    {
+            //        float ratio = Health.Health / Health.MaxHealth;
+            //        if (ratio >= this.entity.World.Rand.NextDouble())
+            //        {
+            //            damage = Health.Health - 0.1f;
+            //        }
+            //    }
+            //}
 
             //fall damage
             //if (dmgSource.Source == EnumDamageSource.Fall && dmgSource.Type == EnumDamageType.Gravity)
             //{
-            //    PlayerAbility playerAbility = ;
+            //    PlayerAbility playerAbility = playerSkillSet[survival.Id]?[survival.FeatherFallId];
             //    damage = Math.Max(damage - playerAbility.Value(0), 0);
+            //    damage *= 1.0f - playerAbility.FValue(1);
             //}
 
             //timeless
             if (this.adaptation != null && dmgSource.Source == EnumDamageSource.Machine && dmgSource.SourceEntity == null && dmgSource.Type == EnumDamageType.Poison)
             {
-                PlayerAbility playerAbility = this.entity.GetBehavior<PlayerSkillSet>()?[this.adaptation.Id]?[this.adaptation.TimelessId];
+                PlayerAbility playerAbility = playerSkillSet[this.adaptation.Id]?[this.adaptation.TimelessId];
                 if (playerAbility.Tier > 0) damage = 0.0f;
             }
 
             //hunter
-            if (this.husbandry != null && entity?.GetBehavior<XSkillsAnimalBehavior>() != null)
+            if (this.husbandry != null && sourceEntity?.GetBehavior<XSkillsAnimalBehavior>() != null)
             {
-                PlayerAbility playerAbility = this.entity.GetBehavior<PlayerSkillSet>()?[this.husbandry.Id]?[this.husbandry.HunterId];
+                PlayerAbility playerAbility = playerSkillSet[this.husbandry.Id]?[this.husbandry.HunterId];
                 if (playerAbility != null) damage *= 1.0f - playerAbility.SkillDependentFValue();
             }
 
             //shifter
-            if (this.adaptation != null && entity != null)
+            if (this.adaptation != null && sourceEntity != null)
             {
-                PlayerAbility playerAbility = this.entity.GetBehavior<PlayerSkillSet>()?[this.adaptation.Id]?[this.adaptation.ShifterId];
+                PlayerAbility playerAbility = playerSkillSet[this.adaptation.Id]?[this.adaptation.ShifterId];
                 if (playerAbility != null)
                 {
                     float chance = playerAbility.FValue(0) * (1.0f - this.entity.WatchedAttributes.GetFloat("temporalStability"));
@@ -128,7 +145,7 @@ namespace XSkills
             if (this.survival != null)
             {
                 ITreeAttribute hungerTree = this.entity.WatchedAttributes.GetTreeAttribute("hunger");
-                PlayerAbility playerAbility = this.entity.GetBehavior<PlayerSkillSet>()?[this.survival.Id]?[this.survival.MeatShieldId];
+                PlayerAbility playerAbility = playerSkillSet[this.survival.Id]?[this.survival.MeatShieldId];
                 if (playerAbility != null && hungerTree != null)
                 {
                     float saturation = hungerTree.GetFloat("currentsaturation");
@@ -460,10 +477,18 @@ namespace XSkills
                 survival.XLeveling.Api.World.Calendar.CalendarSpeedMul / 3600.0f;
             if (cooldown + playerSurvival.PlayerSkillSet.LastDeath >= survival.XLeveling.Api.World.Calendar.TotalHours) return;
 
-            float loss = -playerSurvival.Experience * (this.survival.Config as SurvivalSkillConfig).expLoss;
-            if (loss == 0.0f) return;
-            playerSurvival.AddExperience(loss);
-            ((entity as EntityPlayer)?.Player as ServerPlayer)?.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSurvival.Skill.DisplayName);
+            SurvivalSkillConfig config = (this.survival.Config as SurvivalSkillConfig);
+
+            if (config.expLoss > 0.0f && config.expLoss <= 100.0f && shouldLose)
+            {
+                float loss = config.expLoss <= 1.0f ?
+                    playerSurvival.Experience * config.expLoss :
+                    Math.Min(playerSurvival.Experience, playerSurvival.RequiredExperience * config.expLoss * 0.01f);
+                if (config.maxExpLoss > 0.0f) loss = Math.Min(loss, config.maxExpLoss);
+                if (loss <= 0.0f) return;
+                playerSurvival.AddExperience(-loss, false);
+                ((entity as EntityPlayer)?.Player as ServerPlayer)?.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSurvival.Skill.DisplayName);
+            }
         }
 
         //the game sometimes randomly resets the max saturation to 1500

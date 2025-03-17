@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
@@ -74,7 +75,7 @@ namespace XInvTweaks
             public int Compare(CollectibleObject x, CollectibleObject y, string compareType)
             {
                 int result = 0;
-                switch(compareType)
+                switch (compareType)
                 {
                     case "id":
                         result = x.Id.CompareTo(y.Id);
@@ -148,6 +149,46 @@ namespace XInvTweaks
                         result = y.LightHsv[2] - x.LightHsv[2];
                         break;
 
+                    case "density":
+                        result = x.MaterialDensity - y.MaterialDensity;
+                        break;
+
+                    case "densityinvert":
+                        result = y.MaterialDensity - x.MaterialDensity;
+                        break;
+
+                    case "state":
+                        result = x.MatterState - y.MatterState;
+                        break;
+
+                    case "stateinvert":
+                        result = y.MatterState - x.MatterState;
+                        break;
+
+                    case "satiety":
+                        result = (int)(x.NutritionProps?.Satiety ?? 0.0f - y.NutritionProps?.Satiety ?? 0.0f);
+                        break;
+
+                    case "satietyinvert":
+                        result = (int)(y.NutritionProps?.Satiety ?? 0.0f - x.NutritionProps?.Satiety ?? 0.0f);
+                        break;
+
+                    case "intoxication":
+                        result = (int)(x.NutritionProps?.Intoxication ?? 0.0f - y.NutritionProps?.Intoxication ?? 0.0f);
+                        break;
+
+                    case "intoxicationinvert":
+                        result = (int)(y.NutritionProps?.Intoxication ?? 0.0f - x.NutritionProps?.Intoxication ?? 0.0f);
+                        break;
+
+                    case "health":
+                        result = (int)(x.NutritionProps?.Health ?? 0.0f - y.NutritionProps?.Health ?? 0.0f);
+                        break;
+
+                    case "healthinvert":
+                        result = (int)(y.NutritionProps?.Health ?? 0.0f - x.NutritionProps?.Health ?? 0.0f);
+                        break;
+
                     case "storageflags":
                         foreach (EnumItemStorageFlags flags in storageFlagsOrder)
                         {
@@ -181,6 +222,15 @@ namespace XInvTweaks
                         break;
 
                     default:
+                        if (compareType.EndsWith("invert"))
+                        {
+                            string name = compareType.Remove(compareType.Length - 6);
+                            result = (int)((y.Attributes?[name]?.AsDouble() ?? 0 - x.Attributes?[name]?.AsDouble() ?? 0) * 1000);
+                        }
+                        else
+                        {
+                            result = (int)((x.Attributes?[compareType]?.AsDouble() ?? 0 - y.Attributes?[compareType]?.AsDouble() ?? 0) * 1000);
+                        }
                         break;
                 }
                 return result;
@@ -237,11 +287,54 @@ namespace XInvTweaks
                         result = x.StackSize.CompareTo(y.StackSize);
                         break;
 
+                    case "transition":
+                        result = (int)((TransitionState(x) - TransitionState(y)) * 1000.0f);
+                        break;
+
+                    case "transitioninvert":
+                        result = (int)((TransitionState(y) - TransitionState(x)) * 1000.0f);
+                        break;
+
                     default:
+                        if(compareType.EndsWith("invert"))
+                        {
+                            string name = compareType.Remove(compareType.Length - 6);
+                            result = (int)((y.Attributes?.GetDecimal(name) ?? 0 - x.Attributes?.GetDecimal(name) ?? 0) * 1000);
+                        }
+                        else
+                        {
+                            result = (int)((x.Attributes?.GetDecimal(compareType) ?? 0 - y.Attributes?.GetDecimal(compareType) ?? 0) * 1000);
+                        }
                         break;
                 }
                 return result;
             }
+        }
+
+        private static float TransitionState(ItemStack itemStack)
+        {
+            ITreeAttribute attr = (ITreeAttribute)itemStack?.Attributes["transitionstate"];
+            if (attr == null) return -99999.0f;
+            float trans = -99999.0f;
+
+            float[] freshHours = (attr["freshHours"] as FloatArrayAttribute)?.value;
+            float[] transitionHours = (attr["transitionHours"] as FloatArrayAttribute)?.value;
+            float[] transitionedHours = (attr["transitionedHours"] as FloatArrayAttribute)?.value;
+            int length = Math.Max(Math.Max(freshHours.Length, transitionHours.Length), transitionedHours.Length);
+
+            for (int ii = 0; ii < length; ++ii)
+            {
+                float freshHour = freshHours.Length > ii ? freshHours[ii] : 0.0f;
+                float transitionHour = transitionHours.Length > ii ? transitionHours[ii] : 0.0f;
+                float transitionedHour = transitionedHours.Length > ii ? transitionedHours[ii] : 0.0f;
+                if (transitionHour <= 0.0f) continue;
+
+                float freshHoursLeft = Math.Max(0.0f, freshHour - transitionedHour);
+                float transitionLevel = Math.Max(0.0f, transitionedHour - freshHour) / transitionHour;
+                if (freshHoursLeft > 0.0f) trans = Math.Max(trans, -freshHoursLeft);
+                if (transitionLevel > 0.0f) trans = Math.Max(trans, transitionLevel);
+            }
+            return trans;
         }
 
         public static bool PushInventory(ICoreClientAPI capi)

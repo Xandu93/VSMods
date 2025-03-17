@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 using XLib.XLeveling;
 
@@ -17,13 +18,14 @@ namespace XSkills
         public int PeatCutterId { get; private set; }
         public int SaltpeterDiggerId { get; private set; }
         public int MixedClayId { get; private set; }
+        //public int QuickPanId { get; private set; }
+        //public int GoldDiggerId { get; private set; }
         public int ScrapDetectorId { get; private set; }
         public int ScrapSpecialistId { get; private set; }
 
-        private Dictionary<string, BlockDropItemStack[]> panningDrops;
-        internal List<PanningDrop> StoneDrops { get; private set; }
+        private Dictionary<string, PanningDrop[]> panningDrops;
 
-        public Dictionary<string, BlockDropItemStack[]> PanningDrops
+        public Dictionary<string, PanningDrop[]> PanningDrops
         {
             get
             {
@@ -100,6 +102,24 @@ namespace XSkills
                 "xskills:abilitydesc-mixedclay",
                 3, 2, new int[] { 50, 100 }));
 
+            //// faster panning
+            //// 0: value
+            //QuickPanId = this.AddAbility(new Ability(
+            //    "quickpan",
+            //    "xskills:ability-quickpan",
+            //    "xskills:abilitydesc-quickpan",
+            //    3, 2, new int[] { 50, 100 }));
+
+            //// more clay drops
+            //// 0: base value
+            //// 1: value per level
+            //// 2: max value
+            //GoldDiggerId = this.AddAbility(new Ability(
+            //    "golddigger",
+            //    "xskills:ability-golddigger",
+            //    "xskills:abilitydesc-golddigger",
+            //    1, 3, new int[] { 10, 2, 30, 20, 4, 60, 20, 4, 100 }));
+
             // profession
             // 0: ep bonus
             SpecialisationID = this.AddAbility(new Ability(
@@ -135,44 +155,87 @@ namespace XSkills
 
         protected void LoadPanningDrops()
         {
-            PanningDrops = new Dictionary<string, BlockDropItemStack[]>();
-            this.StoneDrops = new List<PanningDrop>();
-
+            PanningDrops = new Dictionary<string, PanningDrop[]>();
             ICoreAPI api = this.XLeveling?.Api;
             BlockPan pan = api?.World.GetBlock(new AssetLocation("game", "pan-wooden")) as BlockPan;
             if (pan == null) return;
-            Dictionary<string, PanningDrop[]> dropDic = pan.Attributes["panningDrops"].AsObject<Dictionary<string, PanningDrop[]>>();
-            if (dropDic == null) return;
+            PanningDrops = pan.Attributes["panningDrops"].AsObject<Dictionary<string, PanningDrop[]>>();
 
-            foreach (string key in dropDic.Keys)
+            foreach (PanningDrop[] drops in PanningDrops.Values)
             {
-                List<BlockDropItemStack> itemStacks = new List<BlockDropItemStack>();
-                PanningDrop[] panningDrops = dropDic[key];
-
-                foreach (PanningDrop drop in panningDrops)
+                for (int i = 0; i < drops.Length; i++)
                 {
-                    if (drop.Code.GetName().Contains("{rocktype}"))
-                    {
-                        this.StoneDrops.Add(drop);
-                        continue;
-                    }
-                    CollectibleObject collectible;
-                    if (drop.Type == EnumItemClass.Block) collectible = api.World.GetBlock(new AssetLocation(drop.Code.Path));
-                    else collectible = api.World.GetItem(new AssetLocation(drop.Code.Path));
-                    if (collectible != null)
-                    {
-                        BlockDropItemStack temp = new BlockDropItemStack(new ItemStack(collectible));
-                        temp.Quantity = drop.Chance;
-                        itemStacks.Add(temp);
-                    }
+                    if (drops[i].Code.Path.Contains("{rocktype}")) continue;
+                    drops[i].Resolve(api.World, "panningdrop");
                 }
-
-                if (itemStacks.Count == 0)
-                {
-                    this.XLeveling.Mod.Logger.Warning("Failed to resolve any panning drops for key: " + key);
-                }
-                PanningDrops[key] = itemStacks.ToArray();
             }
+        }
+
+        public ItemStack[] GeneratePanDrops(EntityAgent byEntity, string fromBlockCode, float dropMultiplier, int max)
+        {
+            PanningDrop[] panningDrops = null;
+            List<ItemStack> drops = new List<ItemStack>();
+
+            PlayerSkill playerSkill = byEntity.GetBehavior<PlayerSkillSet>()?[Id];
+            PlayerAbility scrapSpecialist = playerSkill?[ScrapSpecialistId];
+
+            foreach (string key in PanningDrops.Keys)
+            {
+                if (WildcardUtil.Match(key, fromBlockCode))
+                {
+                    panningDrops = PanningDrops[key];
+                    break;
+                }
+            }
+
+            if (panningDrops == null)
+            {
+                throw new InvalidOperationException("Coding error, no drops defined for source mat " + fromBlockCode);
+            }
+
+            string rocktype = XLeveling.Api.World.GetBlock(new AssetLocation(fromBlockCode))?.Variant["rock"];
+            panningDrops.Shuffle(XLeveling.Api.World.Rand);
+            int count = 0;
+
+            for (int i = 0; i < panningDrops.Length; i++)
+            {
+                PanningDrop panningDrop = panningDrops[i];
+                double rnd = XLeveling.Api.World.Rand.NextDouble();
+
+                float extraMul = 1.0f;
+                if (panningDrop.DropModbyStat != null)
+                {
+                    extraMul = byEntity.Stats.GetBlended(panningDrop.DropModbyStat);
+                }
+
+                float val = panningDrop.Chance.nextFloat();
+                ItemStack stack = panningDrop.ResolvedItemstack;
+                if (val <= scrapSpecialist?.FValue(0) * 0.5f)
+                {
+                    val *= 1.0f + scrapSpecialist.FValue(1);
+                }
+
+                val *= extraMul * dropMultiplier;
+                if (panningDrop.Code.Path.Contains("{rocktype}"))
+                {
+                    JsonItemStack temp = new JsonItemStack();
+                    temp.Attributes = panningDrop.Attributes;
+                    temp.Quantity = panningDrop.Quantity;
+                    temp.Code = panningDrop.Code.Path.Replace("{rocktype}", rocktype);
+                    temp.Type = panningDrop.Type;
+                    temp.Resolve(XLeveling.Api.World, "panningdrop");
+                    stack = temp.ResolvedItemstack;
+                }
+
+                if (rnd < val && stack != null)
+                {
+                    stack = stack.Clone();
+                    drops.Add(stack);
+                    count++;
+                    if (count >= max) break;
+                }
+            }
+            return drops.ToArray();
         }
     }//!class Digging
 
@@ -311,29 +374,10 @@ namespace XSkills
             PlayerAbility playerAbility = playerSkill[this.digging.ScrapDetectorId];
             if (playerAbility == null) return drops;
 
-            if (playerAbility.Value(0) * 0.01f > world.Rand.NextDouble())
+            if (playerAbility.FValue(0) > world.Rand.NextDouble())
             {
-                ItemStack drop;
-                BlockDropItemStack[] panningDrops;
-                if (!digging.PanningDrops.TryGetValue("@(sand|gravel)-.*", out panningDrops)) return drops;
+                drops.AddRange(digging.GeneratePanDrops(byPlayer.Entity, block.Code.Path, dropChanceMultiplier * 8.0f, 8));
                 handling = EnumHandling.PreventDefault;
-                float dropMultipier = dropChanceMultiplier * 8.0f;
-
-                //scrap specialist
-                playerAbility = playerSkill.PlayerAbilities[this.digging.ScrapSpecialistId];
-
-                for (int ii = 0; ii < panningDrops.Length; ii++)
-                {
-                    if (panningDrops[ii].Quantity.avg <= playerAbility.Value(0) * 0.005f)
-                    {
-                        drop = panningDrops[ii].GetNextItemStack(dropMultipier * ( 1.0f + playerAbility.Value(1) * 0.01f));
-                    }
-                    else
-                    {
-                        drop = panningDrops[ii].GetNextItemStack(dropMultipier);
-                    }
-                    if (drop != null) drops.Add(drop);
-                }
             }
             return drops;
         }

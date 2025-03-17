@@ -30,7 +30,8 @@ namespace XSkills
         {
             ITreeAttribute attr = (ITreeAttribute)itemstack?.Attributes["temperature"];
             if (attr == null) return;
-            float diff = temperature - (float)attr.GetDecimal("temperature");
+            float temp = (float)attr.GetDecimal("temperature");
+            float diff = Math.Min(temperature, 1050.0f) - Math.Min(temp, 1050.0f);
             float quality = itemstack.Attributes.GetFloat("quality", 0.0f);
 
             if (quality > 0.0f && (diff < -4.5f || diff > 0.0f))

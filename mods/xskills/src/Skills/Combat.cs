@@ -1,8 +1,11 @@
 ﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Server;
 using XLib.XLeveling;
 
@@ -14,6 +17,9 @@ namespace XSkills
         public int SwordsmanId { get; private set; }
         public int ArcherId { get; private set; }
         public int SpearmanId { get; private set; }
+        //public int TankId { get; private set; }
+        //public int DefenderId { get; private set; }
+        //public int GuardianId { get; private set; }
         public int ToolMasteryId { get; private set; }
         public int IronFistId { get; private set; }
         public int MonkId { get; private set; }
@@ -21,6 +27,7 @@ namespace XSkills
         public int SniperId { get; private set; }
         public int FreshFleshId { get; private set; }
         public int ShovelKnightId { get; private set; }
+        //public int HeavyArmorExpertId { get; private set; }
         public int AdrenalineRushId { get; private set; }
         public int VampireId { get; private set; }
         public int DrunkenMasterId { get; private set; }
@@ -60,6 +67,32 @@ namespace XSkills
                 "xskills:ability-spearman",
                 "xskills:abilitydesc-spearman",
                 1, 3, new int[] { 10, 1, 20, 20, 2, 40, 20, 2, 60 }));
+
+            //// increases damage absorbed by shields
+            //// 0: base value
+            //// 1: value per level
+            //// 2: max value
+            //TankId = this.AddAbility(new Ability(
+            //    "tank",
+            //    "xskills:ability-tank",
+            //    "xskills:abilitydesc-tank",
+            //    1, 2, new int[] { 10, 1, 20, 20, 1, 40 }));
+
+            //// increases active chance for damage absorption by shields
+            //// 0: base value
+            //DefenderId = this.AddAbility(new Ability(
+            //    "defender",
+            //    "xskills:ability-defender",
+            //    "xskills:abilitydesc-defender",
+            //    1, 2, new int[] { 3, 5 }));
+
+            //// increases passive chance for damage absorption by shields
+            //// 0: base value
+            //GuardianId = this.AddAbility(new Ability(
+            //    "guardian",
+            //    "xskills:ability-guardian",
+            //    "xskills:abilitydesc-guardian",
+            //    1, 2, new int[] { 5, 10 }));
 
             // increases damage with tools
             // 0: base value
@@ -130,6 +163,15 @@ namespace XSkills
                 "xskills:ability-shovelknight",
                 "xskills:abilitydesc-shovelknight",
                 5, 2, new int[] { 1, 10, 2, 15 }));
+
+            ////// increases and reduces values for some armor traits
+            ////// 0: boni
+            ////// 1: mali
+            //HeavyArmorExpertId = this.AddAbility(new HeavyArmorExpertAbility(
+            //    "heavyarmorexpert",
+            //    "xskills:ability-heavyarmorexpert",
+            //    "xskills:abilitydesc-heavyarmorexpert",
+            //    6, 2, new int[] { 20, 40, 40, 60 }));
 
             //chance to trigger an adrenaline rush
             //0: threshold
@@ -210,6 +252,9 @@ namespace XSkills
                 XSkillsEntityBehavior beh = new XSkillsEntityBehavior(byPlayer.Entity);
                 byPlayer.Entity.AddBehavior(beh);
             }
+            //IInventory inv = byPlayer.InventoryManager.GetOwnInventory(GlobalConstants.characterInvClassName);
+            //if (inv != null) inv.SlotModified += (int slotID) => 
+            //    (this[HeavyArmorExpertId] as HeavyArmorExpertAbility)?.ApplyAbility(byPlayer);
         }
 
         public override void OnConfigReceived()
@@ -246,4 +291,112 @@ namespace XSkills
         [ProtoMember(1)]
         public bool enableAbilitiesInPvP = false;
     }//!class CombatSkillConfig
+
+    public class HeavyArmorExpertAbility : Ability
+    {
+        // bonus traits have decreased values because all traits are negative
+        public List<string> BonusTraits { get; private set; }
+        public List<string> MalusTraits { get; private set; }
+        public Dictionary<string, string> TraitTranslation { get; private set; }
+
+        public HeavyArmorExpertAbility(string name, string displayName = null, string description = null, int minLevel = 1, int maxTier = 1, int valuesPerTier = 0, bool hideUntilLearnable = false)
+            : base(name, displayName, description, minLevel, maxTier, valuesPerTier, hideUntilLearnable)
+        {
+            InitTraits();
+        }
+
+        public HeavyArmorExpertAbility(string name, string displayName, string description, int minLevel, int maxTier, int[] values, bool hideUntilLearnable = false)
+            : base(name, displayName, description, minLevel, maxTier, values, hideUntilLearnable)
+        {
+            InitTraits();
+        }
+
+        private void InitTraits()
+        {
+            BonusTraits = new List<string>()
+            {
+               "healingeffectivness", "hungerrate"
+            };
+            MalusTraits = new List<string>()
+            {
+                "rangedWeaponsAcc", "rangedWeaponsSpeed", "steadyAim"
+            };
+            TraitTranslation = new Dictionary<string, string>()
+            {
+                {"healingeffectivness", "game:Healing effectivness"},
+                {"hungerrate", "game:Hunger rate"},
+                {"rangedWeaponsAcc", "game:Ranged Accuracy"},
+                {"rangedWeaponsSpeed", "game:Ranged Charge Speed"},
+                {"steadyAim", "combatoverhaul:stat-steadyAim"},
+            };
+        }
+
+        public override void OnTierChanged(PlayerAbility playerAbility, int oldTier)
+        {
+            base.OnTierChanged(playerAbility, oldTier);
+        }
+
+        public void ApplyAbility(IPlayer player)
+        {
+            PlayerSkill playerSkill = player.Entity.GetBehavior<PlayerSkillSet>()?[this.Skill.Id];
+            if (playerSkill == null) return;
+            PlayerAbility playerAbility = playerSkill[this.Id];
+            if (playerAbility == null) return;
+
+            EntityStats stats = player.Entity?.Stats;
+            if (stats == null) return;
+
+            foreach (string statName in BonusTraits)
+            {
+                EntityFloatStats stat = stats[statName];
+                if (stat == null) continue;
+                stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
+                float value = temp?.Value ?? 0.0f;
+                stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
+                value = temp?.Value ?? 0.0f;
+                stat.Set("ability-armorexpert", -value * playerAbility.FValue(0));
+            }
+
+            foreach (string statName in MalusTraits)
+            {
+                EntityFloatStats stat = stats[statName];
+                if (stat == null) continue;
+                stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
+                float value = temp?.Value ?? 0.0f;
+                stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
+                value = temp?.Value ?? 0.0f;
+                stat.Set("ability-armorexpert", value * playerAbility.FValue(1));
+            }
+        }
+
+        public override string FormattedDescription(int tier)
+        {
+            tier = Math.Min(this.MaxTier, Math.Max(tier, 1));
+            int begin = this.ValuesPerTier * (tier - 1);
+
+            try
+            {
+                string bonus = "";
+                foreach (string str in BonusTraits)
+                {
+                    bonus += Lang.Get(TraitTranslation[str]);
+                    if (str != BonusTraits.Last()) bonus += ", ";
+                }
+
+                string malus = "";
+                foreach (string str in MalusTraits)
+                {
+                    malus += Lang.Get(TraitTranslation[str]);
+                    if (str != MalusTraits.Last()) malus += ", ";
+                }
+
+                return string.Format(this.Description, this.Values[begin], this.Values[begin + 1], bonus, malus);
+            }
+            catch (Exception error)
+            {
+                this.Skill.XLeveling.Api.Logger.Error(error.Message + "[" + "Ability: " + this.Name + "]");
+                return this.Description;
+            }
+        }
+    }
 }//!namespace XSkills

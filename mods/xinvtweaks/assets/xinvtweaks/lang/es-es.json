@@ -1,0 +1,22 @@
+{
+  "_comentarios": "Inventory Tweaks v1.8.0 || Traducido por C4BR3R4 || Última Modificación: 20250318 || Publicación: https://c4br3r4.es/index.php?topic=1330.0 ",
+  "pushinventory": "Mod 'Inventory Tweaks' ► Mover a Contenedores (Z)",
+  "sortinventories": "Mod 'Inventory Tweaks' ► Ordenar Contenedores (Mayús + Z)",
+  "pullinventory": "Mod 'Inventory Tweaks' ► Mover Todo al Inventario (Ctrl + Z)",
+  "sortbackpack": "Mod 'Inventory Tweaks' ► Ordenar el Inventario (Alt + Z)",
+  "fillbackpack": "Mod 'Inventory Tweaks' ► Rellenar Bloques de la Mochila",
+  "clearhandslot": "Mod 'Inventory Tweaks' ► Liberar Mano (F)",
+
+  "sort": "Ordenar",
+  "sort-desc": "Ordenar el Inventario.<br><br><font opacity='0.6'>También puedes usar <hk>sortbackpack</hk>.</font>",
+  "priority": "Prioridad",
+  "priority-desc": "Cambiar la prioridad de ordenación. Puedes reordenar cualquier material por tipo o nombre exacto. Ejemplo: Tierra, Madera, Vasija...",
+  "Λ": "►",
+  "Λ-desc": "Mover hacia contenedores que contienen el mismo tipo de material.<br><br><font opacity='0.6'>También puedes usar <hk>pushinventory</hk>.</font>",
+  "V": "◄ T",
+  "V-desc": "Mover todos los materiales desde los Contenedores hasta completando la Mochila.<br><br><font opacity='0.6'>También puedes usar <hk>pullinventory</hk>.</font>",
+  "V\n¯": "◄",
+  "V\n¯-desc": "Mover desde los Contenedores hasta la Mochila rellenando los bloques del mismo material.<br><br><font opacity='0.6'>También puedes usar <hk>fillbackpack</hk>.</font>",
+  "X": "♦",
+  "X-desc": "Vaciar el campo «Prioridad»."
+}

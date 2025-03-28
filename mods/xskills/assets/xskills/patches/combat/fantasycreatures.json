@@ -1,0 +1,262 @@
+[
+  {
+    "file": "fantasycreatures:entities/land/cavegoblin",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/cavegoblin",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/dragon",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/dragon",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/dragon-flying",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/dragon-flying",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/ent-shepherd",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 20.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/ent-shepherd",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 20.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/lonehuntergoblin",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/lonehuntergoblin",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/ork",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/ork",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/skeleton",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/skeleton",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/skeletonblkgrd",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 3.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/skeletonblkgrd",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 3.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/skeleton-deserter",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/skeleton-deserter",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/slime",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 3.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/slime",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 3.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/surface_skeleton",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/surface_skeleton",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/surfacegoblin",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/surfacegoblin",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 1.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/treant",
+    "op": "addmerge",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  },
+  {
+    "file": "fantasycreatures:entities/land/treant",
+    "op": "addmerge",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    },
+    "dependsOn": [ { "modid": "fantasycreatures" } ]
+  }
+]

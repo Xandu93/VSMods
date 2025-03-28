@@ -143,7 +143,7 @@ namespace XSkills
             if (outputSlot?.Itemstack != null) 
                 cooking.ApplyAbilities(outputSlot, player, 0.0f);
             else if (cookingSlotsProvider?.Slots?[0].Itemstack != null) 
-                cooking.ApplyAbilities(cookingSlotsProvider.Slots[0], player, 0.0f);
+                cooking.ApplyAbilities(cookingSlotsProvider.Slots[0], player, 0.0f, cookingSlotsProvider.Slots[0]?.StackSize ?? 1.0f);
         }
 
         /// <summary>

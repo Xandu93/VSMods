@@ -108,6 +108,7 @@ namespace XSkills
             BlockEntityBehaviorOwnable ownable = __instance?.GetBehavior<BlockEntityBehaviorOwnable>();
             IPlayer player = ownable?.Owner;
             if (player == null) return;
+            if (stack?.Collectible is ItemPressedMash) return;
             if (__instance.MashSlot.Itemstack == stack) return;
 
             Cooking cooking = XLeveling.Instance(__instance.Api)?.GetSkill("cooking") as Cooking;
@@ -120,7 +121,7 @@ namespace XSkills
             else if (value == 66) __result.LitresPerItem *= 2.0f - 1.0f / 3.0f;
             else __result.LitresPerItem *= 1.0f + value * 0.01f;
 
-            ItemStack handStack = player.InventoryManager.ActiveHotbarSlot.Itemstack;
+            ItemStack handStack = player.InventoryManager?.ActiveHotbarSlot?.Itemstack;
             if (handStack == null) return;
             int desiredTransferAmount = Math.Min(handStack.StackSize, player.Entity.Controls.ShiftKey ? 1 : player.Entity.Controls.CtrlKey ? handStack.Item.MaxStackSize : 4);
 

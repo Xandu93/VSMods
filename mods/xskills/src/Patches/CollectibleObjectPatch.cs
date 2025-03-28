@@ -128,7 +128,9 @@ namespace XSkills
         public static void Postfix(ItemSlot[] allInputslots, ItemSlot outputSlot)
         {
             if (outputSlot.Itemstack == null) return;
-            if (outputSlot.Itemstack.Collectible.GetMaxDurability(outputSlot.Itemstack) <= 1) return;
+            int maxDurability = outputSlot.Itemstack.Collectible.GetMaxDurability(outputSlot.Itemstack);
+
+            if (maxDurability <= 1) return;
             float quality = 0.0f;
             int count = 0;
             bool useQuality = false;

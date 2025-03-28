@@ -487,7 +487,7 @@ namespace XSkills
                     CookingRecipe recipe = (mealContainer as BlockCookedContainer)?.GetCookingRecipe(world, outputStack) ?? (mealContainer as BlockMeal)?.GetCookingRecipe(world, outputStack);
                     if (recipe != null)
                     {
-                        ItemStack stack = GetMissingIngredient(contentStacks, recipe, world);
+                        ItemStack stack = GetMissingIngredient(contentStacks, recipe, world, true);
                         if (stack != null)
                         {
                             newStacks[ii] = stack;
@@ -604,7 +604,7 @@ namespace XSkills
             return stacks[world.Rand.Next(stacks.Count - 1)];
         }
 
-        public ItemStack GetMissingIngredient(ItemStack[] inputStacks, CookingRecipe recipe, IWorldAccessor world)
+        public ItemStack GetMissingIngredient(ItemStack[] inputStacks, CookingRecipe recipe, IWorldAccessor world, bool allowBad)
         {
             List<ItemStack> inputStacksList = new List<ItemStack>(inputStacks);
             List<CookingRecipeIngredient> ingredientList = new List<CookingRecipeIngredient>(recipe.Ingredients);
@@ -643,11 +643,20 @@ namespace XSkills
                     ingredientList.Remove(ingred);
                     continue;
                 }
-                CookingRecipeStack recipeStack = ingred.ValidStacks[world.Rand.Next(ingred.ValidStacks.Length - 1)];
-                recipeStack = GetResolvedIngredient(world, recipeStack);
-                if (recipeStack == null) continue;
-                stack = recipeStack.ResolvedItemstack?.Clone();
-                //you could check here if the ingredient stack is bad/poisonous
+
+                int tries2 = 0;
+                while (tries2 < 5 && stack == null)
+                {
+                    tries2++;
+                    CookingRecipeStack recipeStack = ingred.ValidStacks[world.Rand.Next(ingred.ValidStacks.Length - 1)];
+                    recipeStack = GetResolvedIngredient(world, recipeStack);
+                    if (recipeStack?.ResolvedItemstack == null) continue;
+
+                    if (allowBad || recipeStack.ResolvedItemstack.Collectible.NutritionProps.Health >= 0)
+                    {
+                        stack = recipeStack.ResolvedItemstack.Clone();
+                    }
+                }
             }
             if (stack != null) stack.StackSize = 1;
             return stack;

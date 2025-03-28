@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
@@ -181,8 +182,17 @@ namespace XLib.XLeveling
         public override string ShortDescription(PlayerAbility playerAbility)
         {
             PlayerAbility modifier = this.ModifierAbility != null ? playerAbility?.PlayerSkill.PlayerSkillSet[this.ModifierAbility.Skill.Id]?[this.ModifierAbility.Id] : null;
-            int limit = modifier != null ? this.Limit + modifier.Value(0) : this.Limit;  
-            return Lang.GetUnformatted("xlib:limited") + " (" + CountAbilities(playerAbility?.PlayerSkill.PlayerSkillSet) + "/" + limit + ") " + Name; ;
+            int limit = modifier != null ? this.Limit + modifier.Value(0) : this.Limit;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(Lang.GetUnformatted("xlib:limited") + " (" + CountAbilities(playerAbility?.PlayerSkill.PlayerSkillSet) + "/" + limit + ") " + Name + ": ");
+
+            foreach (Ability ability in this.abilities)
+            {
+                stringBuilder.Append("\n\t");
+                stringBuilder.Append(ability.DisplayName);
+            }
+
+            return stringBuilder.ToString();
         }
 
         /// <summary>

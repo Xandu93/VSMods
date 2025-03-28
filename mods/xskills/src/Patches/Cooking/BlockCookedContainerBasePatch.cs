@@ -1,10 +1,30 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
 
 namespace XSkills
 {
+    [HarmonyPatch(typeof(BlockContainer))]
+    public class BlockContainerPatch
+    {
+        /// <summary>
+        /// Prefix for the SetRecipeCode method.
+        /// Removes the quality attribute for empty containers.
+        /// </summary>
+        [HarmonyPrefix]
+        [HarmonyPatch("SetContents")]
+        public static void SetContentsPrefix(ItemStack containerStack, ItemStack[] stacks)
+        {
+            if (containerStack.Collectible is not BlockCookedContainerBase) return;
+            if (stacks == null || stacks.Length == 0)
+            {
+                containerStack.Attributes.RemoveAttribute("quality");
+            }
+        }
+    }
+
     /// <summary>
     /// The patch for the BlockCookedContainerBase class.
     /// Mainly to make sure that the quality value is transferred.

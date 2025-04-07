@@ -5,7 +5,6 @@ using Vintagestory.API.Common;
 
 namespace XSkills
 {
-    [HarmonyPatch(typeof(ItemStackMeleeWeaponStats))]
     public class ItemStackMeleeWeaponStatsPatch : ManualPatch
     {
         public static void Apply(Harmony harmony, Type type, XSkills xSkills)
@@ -37,7 +36,6 @@ namespace XSkills
         }
     }
 
-    [HarmonyPatch(typeof(ItemStackRangedStats))]
     public class ItemStackRangedStatsPatch : ManualPatch
     {
         public static void Apply(Harmony harmony, Type type, XSkills xSkills)

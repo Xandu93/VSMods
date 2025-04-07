@@ -468,8 +468,7 @@ namespace XSkills
             if (toolSlot?.Itemstack?.Item == null || byPlayer.CurrentBlockSelection == null) return;
             if (toolSlot.Itemstack.Item.Tool != EnumTool.Pickaxe) return;
             if (toolSlot.Itemstack.Item is ItemProspectingPick) return;
-            //if (toolSlot.Itemstack.Attributes.GetInt("toolMode") != 1) return;
-            if (PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection).Code.Path != "vein") return;
+            if (PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path != "vein") return;
             if (byPlayer.CurrentBlockSelection.Position != pos) return;
 
             PlayerAbility durabilityAbility = playerSkill[this.mining.DurabilityId];

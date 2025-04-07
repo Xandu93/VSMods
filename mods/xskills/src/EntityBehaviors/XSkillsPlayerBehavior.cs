@@ -193,26 +193,14 @@ namespace XSkills
 
         protected void ApplyAbilitiesHealth()
         {
-            if (entity.WatchedAttributes == null || entity.World == null) return;
+            EntityStats stats = entity.Stats;
             IGameCalendar calender = this.entity.World.Calendar;
+            if (stats == null || entity.World == null) return;
 
-            EntityBehaviorHealth health = Health;
-            float currentHealth;
-            if (health != null)
-            {
-                currentHealth = health.Health;
-            }
-            else
-            {
-                ITreeAttribute healthTree = entity.WatchedAttributes.GetTreeAttribute("health");
-                currentHealth = healthTree?.GetFloat("currenthealth") ?? 0.0f;
-            }
-            //was dead?
-            if (oldHealth < 0.01f) oldHealth = currentHealth;
-
-            float deltaHealth = currentHealth - oldHealth;
-            int sunLight = this.entity.World.BlockAccessor.GetLightLevel(entity.Pos.AsBlockPos, EnumLightLevelType.TimeOfDaySunLight);
-            float maxLight = 32.0f;
+            int sunLight = -1;
+            float maxLight = entity.World.SunBrightness;
+            float healingEffectiveness = 0.0f;
+            string statCode = "abilities-light";
 
             //survival
             if (this.survival != null)
@@ -226,21 +214,18 @@ namespace XSkills
 
                     //photosynthesis
                     PlayerAbility playerAbility = playerSurvival[this.survival.PhotosynthesisId];
-                    if (playerAbility != null && playerAbility.Tier > 0 && deltaHealth > 0.0f && health != null)
+                    if (playerAbility != null && playerAbility.Tier > 0)
                     {
                         int fullLight = this.entity.World.BlockAccessor.GetLightLevel(entity.Pos.AsBlockPos, EnumLightLevelType.MaxTimeOfDayLight);
+                        if (sunLight == -1) sunLight = this.entity.World.BlockAccessor.GetLightLevel(entity.Pos.AsBlockPos, EnumLightLevelType.TimeOfDaySunLight);
 
                         if (sunLight > maxLight * 0.25)
                         {
-                            currentHealth += deltaHealth * playerAbility.FValue(0) * (sunLight / maxLight);
-                            health.Health = currentHealth;
-                            health.MarkDirty();
+                            healingEffectiveness += playerAbility.FValue(0) * (sunLight / maxLight);
                         }
                         else if (fullLight < maxLight * 0.25)
                         {
-                            currentHealth -= deltaHealth * playerAbility.FValue(1) * (1.0f - fullLight / (maxLight * 0.25f));
-                            health.Health = currentHealth;
-                            health.MarkDirty();
+                            healingEffectiveness -= playerAbility.FValue(1) * (1.0f - fullLight / (maxLight * 0.25f));
                         }
                     }
                 }
@@ -254,18 +239,18 @@ namespace XSkills
                 {
                     //vampire
                     PlayerAbility playerAbility = playerCombat[this.combat.VampireId];
-                    if (playerAbility != null && playerAbility.Tier > 0 && deltaHealth > 0.0f && health != null)
+                    if (playerAbility != null && playerAbility.Tier > 0)
                     {
+                        if (sunLight == -1) sunLight = this.entity.World.BlockAccessor.GetLightLevel(entity.Pos.AsBlockPos, EnumLightLevelType.TimeOfDaySunLight);
                         if (sunLight > maxLight * 0.25)
                         {
-                            currentHealth -= deltaHealth * playerAbility.FValue(1) * (sunLight / maxLight);
-                            health.Health = currentHealth;
-                            health.MarkDirty();
+                            healingEffectiveness -= playerAbility.FValue(1) * (sunLight / maxLight);
                         }
                     }
                 }
             }
-            oldHealth = currentHealth;
+            if (healingEffectiveness == 0.0f) stats.Remove("healingeffectivness", statCode);
+            else stats.Set("healingeffectivness", statCode, healingEffectiveness, false);
         }
 
         protected void ApplyAbilitiesStability()

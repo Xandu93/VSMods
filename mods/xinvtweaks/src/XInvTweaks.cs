@@ -258,7 +258,7 @@ namespace XInvTweaks
             capi.Input.RegisterHotKey("pullinventory", Lang.Get("xinvtweaks:pullinventory"), GlKeys.Z, HotkeyType.InventoryHotkeys, false, true, false);
             capi.Input.RegisterHotKey("sortbackpack", Lang.Get("xinvtweaks:sortbackpack"), GlKeys.Z, HotkeyType.InventoryHotkeys, true, false, false);
             capi.Input.RegisterHotKey("fillbackpack", Lang.Get("xinvtweaks:fillbackpack"), GlKeys.Z, HotkeyType.InventoryHotkeys, true, true, false);
-            capi.Input.RegisterHotKey("clearhandslot", Lang.Get("xinvtweaks:clearhandslot"), GlKeys.F, HotkeyType.InventoryHotkeys, false, false, false);
+            capi.Input.RegisterHotKey("clearhandslot", Lang.Get("xinvtweaks:clearhandslot"), GlKeys.V, HotkeyType.InventoryHotkeys, false, false, false);
 
             capi.Input.SetHotKeyHandler("pushinventory", (KeyCombination key) => InventoryUtil.PushInventory(capi));
             capi.Input.SetHotKeyHandler("sortinventories", (KeyCombination key) => InventoryUtil.SortInventories(capi));

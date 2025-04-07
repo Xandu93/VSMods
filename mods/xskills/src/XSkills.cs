@@ -13,6 +13,7 @@ using Vintagestory.Common;
 using Vintagestory.Server;
 using XLib.XLeveling;
 using Vintagestory.API.Datastructures;
+using CombatOverhaul.Implementations;
 
 namespace XSkills
 {
@@ -76,7 +77,21 @@ namespace XSkills
 
                 type = api.ClassRegistry.GetBlockEntity("BlockNestbox");
                 if (type != null) BlockEntityNestBoxPatch.Apply(harmony, type, xskills);
+
+                if (api.ModLoader.IsModSystemEnabled("overhaullib"))
+                {
+                    ApplyCOPatch(xskills);
+                }
             }
+        }
+
+        /// <summary>
+        /// Apply patches for Combat Overhaul.
+        /// </summary>
+        internal static void ApplyCOPatch(XSkills xskills)
+        {
+            ItemStackMeleeWeaponStatsPatch.Apply(harmony, typeof(ItemStackMeleeWeaponStats), xskills);
+            ItemStackRangedStatsPatch.Apply(harmony, typeof(ItemStackRangedStats), xskills);
         }
 
         /// <summary>

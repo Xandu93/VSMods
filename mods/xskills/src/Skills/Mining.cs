@@ -172,7 +172,7 @@ namespace XSkills
             api.RegisterBlockBehaviorClass("XSkillsOres", typeof(XSkillsOreBehavior));
             api.RegisterBlockBehaviorClass("XSkillsGems", typeof(XSkillsGemBehavior));
             api.RegisterBlockBehaviorClass("XSkillsBomb", typeof(XSkillsBombBehavior));
-            api.RegisterCollectibleBehaviorClass("XSkillsPickaxeBehaivor", typeof(PickaxeBehaivor));
+            api.RegisterCollectibleBehaviorClass("XSkillsPickaxeBehavior", typeof(PickaxeBehavior));
         }
 
         internal void RegisterExplosion(BlockPos pos, IPlayer player)
@@ -468,7 +468,7 @@ namespace XSkills
             if (toolSlot?.Itemstack?.Item == null || byPlayer.CurrentBlockSelection == null) return;
             if (toolSlot.Itemstack.Item.Tool != EnumTool.Pickaxe) return;
             if (toolSlot.Itemstack.Item is ItemProspectingPick) return;
-            if (PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path != "vein") return;
+            if (PickaxeBehavior.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path != "vein") return;
             if (byPlayer.CurrentBlockSelection.Position != pos) return;
 
             PlayerAbility durabilityAbility = playerSkill[this.mining.DurabilityId];
@@ -621,7 +621,7 @@ namespace XSkills
                 //   !(playerSkill[mining.TunnelDiggerId]?.Tier != 0));
                 //if (!mode) return;
 
-                if (PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection).Code.Path != "vein") return;
+                if (PickaxeBehavior.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection).Code.Path != "vein") return;
 
                 int max = Math.Min(playerAbility.Value(0) + playerSkill.Level / playerAbility.Value(1), playerAbility.Value(2));
                 max = Math.Min(max, tool.GetRemainingDurability(toolSlot.Itemstack));

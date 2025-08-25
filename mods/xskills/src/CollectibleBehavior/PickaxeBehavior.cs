@@ -8,7 +8,7 @@ using Vintagestory.GameContent;
 
 namespace XSkills
 {
-    public class PickaxeBehaivor : CollectibleBehavior
+    public class PickaxeBehavior : CollectibleBehavior
     {
         private SkillItem[] toolModes;
         public SkillItem[] ToolModes
@@ -23,7 +23,7 @@ namespace XSkills
         ICoreAPI api;
         int offset = -1;
 
-        public PickaxeBehaivor(CollectibleObject collObj) : base(collObj)
+        public PickaxeBehavior(CollectibleObject collObj) : base(collObj)
         { }
 
         public static SkillItem[] CreateToolModes(ICoreAPI api)
@@ -104,7 +104,7 @@ namespace XSkills
         //works also on server not only client like GetToolModes
         public static SkillItem[] GetToolModeItems(ItemSlot slot)
         {
-            PickaxeBehaivor beh = slot.Itemstack.Collectible.GetCollectibleBehavior<PickaxeBehaivor>(false);
+            PickaxeBehavior beh = slot.Itemstack.Collectible.GetCollectibleBehavior<PickaxeBehavior>(false);
             return beh?.ToolModes;
         }
 

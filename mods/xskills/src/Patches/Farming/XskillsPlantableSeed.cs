@@ -117,7 +117,7 @@ namespace XSkills
                     BlockEntityFarmland farmland = byEntity.World.BlockAccessor.GetBlockEntity(pos) as BlockEntityFarmland;
                     if (farmland != null)
                     {
-                        bool planted = farmland.TryPlant(cropBlock);
+                        bool planted = farmland.TryPlant(cropBlock, new DummySlot(), byEntity, blockSel);
                         if (planted)
                         {
                             handHandling = EnumHandHandling.PreventDefault;

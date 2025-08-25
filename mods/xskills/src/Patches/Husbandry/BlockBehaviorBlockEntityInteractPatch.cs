@@ -11,6 +11,7 @@ namespace XSkills
         [HarmonyPatch("OnBlockInteractStart")]
         public static void Prefix(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
         {
+            if (blockSel.Block == null) return;
             if (!world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.Use)) return;
             if (blockSel.Block.Code.Path.Contains("empty")) return;
 

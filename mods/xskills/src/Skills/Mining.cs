@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -172,7 +172,7 @@ namespace XSkills
             api.RegisterBlockBehaviorClass("XSkillsOres", typeof(XSkillsOreBehavior));
             api.RegisterBlockBehaviorClass("XSkillsGems", typeof(XSkillsGemBehavior));
             api.RegisterBlockBehaviorClass("XSkillsBomb", typeof(XSkillsBombBehavior));
-            api.RegisterCollectibleBehaviorClass("XSkillsPickaxeBehaivor", typeof(PickaxeBehaivor));
+            api.RegisterCollectibleBehaviorClass("XSkillsPickaxeBehavior", typeof(PickaxeBehavior));
         }
 
         internal void RegisterExplosion(BlockPos pos, IPlayer player)

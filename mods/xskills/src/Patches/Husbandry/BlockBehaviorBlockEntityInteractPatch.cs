@@ -5,26 +5,27 @@ using XLib.XLeveling;
 
 namespace XSkills
 {
-    [HarmonyPatch(typeof(BehaviorCollectFrom))]
-    public class BehaviorCollectFromPatch
+    [HarmonyPatch(typeof(BlockBehaviorBlockEntityInteract))]
+    public class BlockBehaviorBlockEntityInteractPatch
     {
         [HarmonyPatch("OnBlockInteractStart")]
-        public static void Prefix(BehaviorCollectFrom __instance, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
+        public static void Prefix(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
         {
+            if (blockSel.Block == null) return;
             if (!world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.Use)) return;
-            if (__instance.block.Code.Path.Contains("empty")) return;
+            if (blockSel.Block.Code.Path.Contains("empty")) return;
 
-            if (__instance.block.Drops != null && __instance.block.Drops.Length > 1)
+            if (blockSel.Block.Drops != null && blockSel.Block.Drops.Length > 1)
             {
                 Husbandry husbandry = XLeveling.Instance(world.Api)?.GetSkill("husbandry") as Husbandry;
                 if (husbandry == null) return;
                 PlayerSkill playerSkill = byPlayer.Entity.GetBehavior<PlayerSkillSet>()?[husbandry.Id];
                 PlayerAbility playerAbility = playerSkill?[husbandry.RancherId];
                 if (playerAbility == null) return;
-                BlockDropItemStack drop = __instance.block.Drops[0];
+                BlockDropItemStack drop = blockSel.Block.Drops[0];
 
                 //experience
-                playerSkill.AddExperience(0.1f * __instance.block.Drops[0].Quantity.avg);
+                playerSkill.AddExperience(0.1f * blockSel.Block.Drops[0].Quantity.avg);
 
                 if (playerAbility.Tier < 1) return;
                 ItemStack stack = drop.GetNextItemStack(playerAbility.FValue(0));

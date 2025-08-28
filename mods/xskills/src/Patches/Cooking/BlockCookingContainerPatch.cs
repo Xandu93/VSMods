@@ -91,7 +91,7 @@ namespace XSkills
             if (ability != null) __instance.MaxServingSize = (int)(maxServingSize * ( 1.0f + ability.FValue(0)));
 
             ItemStack[] stacks = __instance.GetCookingStacks(cookingSlotsProvider, false);
-            CookingRecipe recipe = __instance.GetMatchingCookingRecipe(world, stacks);
+            CookingRecipe recipe = __instance.GetMatchingCookingRecipe(world, stacks, out _);
             __instance.MaxServingSize = maxServingSize;
 
             //desalinate

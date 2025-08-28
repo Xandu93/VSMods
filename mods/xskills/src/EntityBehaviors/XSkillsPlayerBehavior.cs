@@ -443,53 +443,21 @@ namespace XSkills
         //    inv.Linked = true;
         //}
 
-        public override void OnEntityDeath(DamageSource damageSourceForDeath)
-        {
-            if (this.entity.Api.Side != EnumAppSide.Server) return;
-            if (this.survival == null) return;
-            PlayerSkillSet playerSkillSet = this.entity.GetBehavior<PlayerSkillSet>();
-            if (playerSkillSet == null) return;
-            PlayerSkill playerSurvival = playerSkillSet[this.survival.Id];
-            if (playerSurvival == null) return;
-
-            PlayerSkillSet killerSkillSet = (damageSourceForDeath.GetCauseEntity()?.GetBehavior<PlayerSkillSet>());
-            bool shouldLose = !(playerSkillSet.Sparring && (killerSkillSet?.Sparring ?? false));
-            if (!shouldLose) return;
-
-            float cooldown =
-                survival.XLeveling.Config.expLossCooldown *
-                survival.XLeveling.Api.World.Calendar.SpeedOfTime *
-                survival.XLeveling.Api.World.Calendar.CalendarSpeedMul / 3600.0f;
-            if (cooldown + playerSurvival.PlayerSkillSet.LastDeath >= survival.XLeveling.Api.World.Calendar.TotalHours) return;
-
-            SurvivalSkillConfig config = (this.survival.Config as SurvivalSkillConfig);
-
-            if (config.expLoss > 0.0f && config.expLoss <= 100.0f && shouldLose)
-            {
-                float loss = config.expLoss <= 1.0f ?
-                    playerSurvival.Experience * config.expLoss :
-                    Math.Min(playerSurvival.Experience, playerSurvival.RequiredExperience * config.expLoss * 0.01f);
-                if (config.maxExpLoss > 0.0f) loss = Math.Min(loss, config.maxExpLoss);
-                if (loss <= 0.0f) return;
-                playerSurvival.AddExperience(-loss, false);
-                ((entity as EntityPlayer)?.Player as ServerPlayer)?.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSurvival.Skill.DisplayName);
-            }
-        }
-
         //the game sometimes randomly resets the max saturation to 1500
-        public void MaxSaturationFix()
-        {
-            ITreeAttribute hungerTree = entity.WatchedAttributes.GetTreeAttribute("hunger");
-            float maxSaturation = hungerTree.GetFloat("maxsaturation");
-            if (maxSaturation != 1500.0f || this.survival == null) return;
+        //but this 'fix' seems to make the issue worse
+        //public void MaxSaturationFix()
+        //{
+        //    ITreeAttribute hungerTree = entity.WatchedAttributes.GetTreeAttribute("hunger");
+        //    float maxSaturation = hungerTree.GetFloat("maxsaturation");
+        //    if (maxSaturation != 1500.0f || this.survival == null) return;
 
-            PlayerSkill playerSurvival = this.entity.GetBehavior<PlayerSkillSet>()?[this.survival.Id];
-            if (playerSurvival == null) return;
-            PlayerAbility playerAbility = playerSurvival[this.survival.HugeStomachId];
-            if (playerAbility == null) return;
-            if (playerAbility.Tier <= 0) return;
-            maxSaturation = (1500 + playerAbility.Value(0));
-            hungerTree.SetFloat("maxSaturation", maxSaturation);
-        }
+        //    PlayerSkill playerSurvival = this.entity.GetBehavior<PlayerSkillSet>()?[this.survival.Id];
+        //    if (playerSurvival == null) return;
+        //    PlayerAbility playerAbility = playerSurvival[this.survival.HugeStomachId];
+        //    if (playerAbility == null) return;
+        //    if (playerAbility.Tier <= 0) return;
+        //    maxSaturation = (1500 + playerAbility.Value(0));
+        //    hungerTree.SetFloat("maxSaturation", maxSaturation);
+        //}
     }//! XSkillsPlayerBehavior
 }//!namespace XSkills

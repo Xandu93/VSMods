@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.GameContent;
@@ -60,18 +61,38 @@ namespace AdvancedChests
 
             double hoursPast = (int)(Api.World.Calendar.TotalHours - LastUpdate);
             int repair = (int)(hoursPast * RepairPerHour);
-            if (repair < 1) return;
 
             LastUpdate += repair / RepairPerHour;
 
             foreach (ItemSlot slot in Inventory)
             {
-                if (slot.Itemstack == null) continue;
-                int max = slot.Itemstack.Collectible.GetMaxDurability(slot.Itemstack);
-                int remining = slot.Itemstack.Collectible.GetRemainingDurability(slot.Itemstack);
+                ItemStack stack = slot.Itemstack;
+                if (stack == null) continue;
+                CollectibleObject collectible = stack.Collectible;
 
-                if (remining >= max) continue;
-                slot.Itemstack.Collectible.DamageItem(Api.World, null, slot, Math.Max(-repair, remining - max));
+                if (repair > 0)
+                {
+                    int max = collectible.GetMaxDurability(stack);
+                    int remining = collectible.GetRemainingDurability(stack);
+
+                    if (remining < max)
+                    {
+                        collectible.DamageItem(Api.World, null, slot, Math.Max(-repair, remining - max));
+                    }
+                }
+
+                //transition fix. transition should not be smaller than 0
+                if (collectible.RequiresTransitionableTicking(Api.World, stack))
+                {
+                    TransitionState[] states = collectible.UpdateAndGetTransitionStates(Api.World, slot);
+                    foreach (TransitionState state in states)
+                    {
+                        if(state.TransitionedHours < 0.0f)
+                        {
+                            collectible.SetTransitionState(stack, state.Props.Type, 0.0f);
+                        }
+                    }
+                }
             }
         }
 

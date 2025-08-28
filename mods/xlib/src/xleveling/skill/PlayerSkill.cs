@@ -205,7 +205,9 @@ namespace XLib.XLeveling
         /// <param name="invokeModifiers">if set to <c>true</c> experience modifiers will be invoked.</param>
         public void AddExperience(float experience, bool invokeModifiers = true)
         {
-            float mult = (invokeModifiers ? Skill.GetExperienceMultiplier(PlayerSkillSet) : 1.0f) * ExperienceMultiplier;
+            float mult = invokeModifiers ? 
+                Skill.GetExperienceMultiplier(PlayerSkillSet) * ExperienceMultiplier : 
+                1.0f;
             this.Skill.XLeveling.IXLevelingAPI.AddExperienceToPlayerSkill(this.PlayerSkillSet.Player, this.Skill.Id, experience * mult);
         }
 

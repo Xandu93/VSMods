@@ -470,7 +470,7 @@ namespace XSkills
             if (toolSlot.Itemstack.Item is ItemProspectingPick) return;
             if (byPlayer.CurrentBlockSelection.Position != pos) return;
 
-            string toolMode = PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path;
+            string toolMode = PickaxeBehavior.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path;
             if (toolMode != "vein") return;
 
             PlayerAbility durabilityAbility = playerSkill[this.mining.DurabilityId];
@@ -617,7 +617,7 @@ namespace XSkills
                 if (tool.Tool != EnumTool.Pickaxe) return;
                 if (tool is ItemProspectingPick) return;
 
-                string toolMode = PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path;
+                string toolMode = PickaxeBehavior.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path;
                 if (toolMode != "vein") return;
 
                 int max = Math.Min(playerAbility.Value(0) + playerSkill.Level / playerAbility.Value(1), playerAbility.Value(2));

@@ -3136,16 +3136,10 @@
             The number of unlearn points you need to unleran an ability
             </summary>
         </member>
-        <member name="F:XLib.XLeveling.Config.expLossOnDeath">
+        <member name="F:XLib.XLeveling.Config.deathPenaltyCooldown">
             <summary>
-            The experience loss on death
-            Numbers smaller than or equal to 1.0 means a percentage of the earned experience.
-            Numbers greater than 1.0 means a percentage of total needed experience for the next level up.
-            </summary>
-        </member>
-        <member name="F:XLib.XLeveling.Config.expLossCooldown">
-            <summary>
-            The exp loss cooldown on death 
+            The cooldown for the penalties you receive for dying.
+            Usually that means you will lose experience for some skills.
             </summary>
         </member>
         <member name="F:XLib.XLeveling.Config.specialisationLimit">
@@ -5700,6 +5694,27 @@
               <c>true</c> if enabled; otherwise, <c>false</c>.
             </value>
         </member>
+        <member name="P:XLib.XLeveling.Skill.ExpLossOnDeath">
+            <summary>
+            Gets or sets the experience loss on death.
+            Numbers smaller than or equal to 1.0 means a percentage of the earned experience is lossed.
+            Numbers greater than 1.0 means a percentage of total needed experience for the next level up is lossed.
+            </summary>
+            <value>
+            The experience loss on death.
+            </value>
+        </member>
+        <member name="P:XLib.XLeveling.Skill.MaxExpLossOnDeath">
+            <summary>
+            Gets or sets the maximum experience loss on death.
+            Numbers smaller than or equal to 1.0 means a percentage of total needed experience for the next level up can be lossed.
+            Numbers greater than 1.0 means a fixed maximum of experience can be lossed.
+            0.0 or smaller numbers means no maximum is set.
+            </summary>
+            <value>
+            The maximum experience loss on death.
+            </value>
+        </member>
         <member name="P:XLib.XLeveling.Skill.Abilities">
             <summary>
             Gets the abilities that are associated to this skill.
@@ -5852,6 +5867,15 @@
             This function is called after the skill configuration for this skill have been received from a server.
             </summary>
         </member>
+        <member name="M:XLib.XLeveling.Skill.OnPlayerDeath(XLib.XLeveling.PlayerSkillSet,System.Boolean)">
+            <summary>
+            Called when the player dies.
+            Reduces players experience when enabled.
+            </summary>
+            <param name="playerSkillSet">The player skill set.</param>
+            <param name="invokePenalty">if set to <c>true</c> invokes penalties. Otherwise no experience is lossed. 
+            This parameter usually is <c>false</c> when the player already died recently to prevent too many penalties from chain dying.</param>
+        </member>
         <member name="M:XLib.XLeveling.Skill.FromConfig(XLib.XLeveling.SkillConfig)">
             <summary>
             Fills this skills values from a skill configuration.
@@ -5945,6 +5969,21 @@
         <member name="F:XLib.XLeveling.SkillConfig.enabled">
             <summary>
             Decides whether this skill is enabled
+            </summary>
+        </member>
+        <member name="F:XLib.XLeveling.SkillConfig.expLossOnDeath">
+            <summary>
+            The experience loss on death.
+            Numbers smaller than or equal to 1.0 means a percentage of the earned experience is lossed.
+            Numbers greater than 1.0 means a percentage of total needed experience for the next level up is lossed.
+            </summary>
+        </member>
+        <member name="F:XLib.XLeveling.SkillConfig.maxExpLossOnDeath">
+            <summary>
+            The maximum experience loss on death.
+            Numbers smaller than or equal to 1.0 means a percentage of total needed experience for the next level up can be lossed.
+            Numbers greater than 1.0 means a fixed maximum of experience can be lossed.
+            0.0 or smaller numbers means no maximum is set.
             </summary>
         </member>
         <member name="F:XLib.XLeveling.SkillConfig.abilities">

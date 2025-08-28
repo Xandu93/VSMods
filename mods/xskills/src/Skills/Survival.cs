@@ -277,6 +277,8 @@ namespace XSkills
             this.ExpBase = 10;
             this.ExpMult = 5.0f;
             this.ExpEquationValue = 0.4f;
+            this.ExpLossOnDeath = 0.5f;
+            this.MaxExpLossOnDeath = 10.0f;
         }
 
         //huge stomach
@@ -891,8 +893,6 @@ namespace XSkills
                 CultureInfo provider = new CultureInfo("en-US");
 
                 Dictionary<string, string> result = new Dictionary<string, string>();
-                result.Add("expLoss", this.expLoss.ToString(provider));
-                result.Add("maxExpLoss", this.maxExpLoss.ToString(provider));
                 result.Add("invSwitchCD", this.invSwitchCD.ToString(provider));
                 result.Add("allowCatEyesToggle", this.allowCatEyesToggle.ToString(provider));
                 return result;
@@ -903,12 +903,6 @@ namespace XSkills
                 NumberStyles styles = NumberStyles.Any;
                 CultureInfo provider = new CultureInfo("en-US");
 
-                value.TryGetValue("expLoss", out str);
-                if (str != null) float.TryParse(str, styles, provider, out this.expLoss);
-
-                value.TryGetValue("maxExpLoss", out str);
-                if (str != null) float.TryParse(str, styles, provider, out this.maxExpLoss);
-
                 value.TryGetValue("invSwitchCD", out str);
                 if (str != null) float.TryParse(str, styles, provider, out this.invSwitchCD);
 
@@ -918,18 +912,10 @@ namespace XSkills
         }
 
         [ProtoMember(1)]
-        [DefaultValue(0.5f)]
-        public float expLoss = 0.5f;
-
-        [ProtoMember(2)]
-        [DefaultValue(30.0f)]
-        public float maxExpLoss = 30.0f;
-
-        [ProtoMember(3)]
         [DefaultValue(3.0f)]
         public float invSwitchCD = 3.0f;
 
-        [ProtoMember(4)]
+        [ProtoMember(2)]
         [DefaultValue(false)]
         public bool allowCatEyesToggle = false;
     }//!class CombatSkillConfig

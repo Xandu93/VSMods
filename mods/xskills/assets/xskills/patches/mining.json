@@ -5,7 +5,7 @@
     "path": "/behaviors",
     "value": [
       {
-        "name": "XSkillsPickaxeBehaivor"
+        "name": "XSkillsPickaxeBehavior"
       }
     ]
   },
@@ -15,7 +15,7 @@
     "path": "/behaviors",
     "value": [
       {
-        "name": "XSkillsPickaxeBehaivor"
+        "name": "XSkillsPickaxeBehavior"
       }
     ]
   },
@@ -25,7 +25,17 @@
     "path": "/behaviors",
     "value": [
       {
-        "name": "XSkillsPickaxeBehaivor"
+        "name": "XSkillsPickaxeBehavior"
+      }
+    ]
+  },
+  {
+    "file": "game:itemtypes/tool/pickaxe-diamond",
+    "op": "addmerge",
+    "path": "/behaviors",
+    "value": [
+      {
+        "name": "XSkillsPickaxeBehavior"
       }
     ]
   },

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
+using Vintagestory.API.Server;
+using Vintagestory.GameContent;
 
 namespace XLib.XLeveling
 {
@@ -96,6 +99,27 @@ namespace XLib.XLeveling
         ///   <c>true</c> if enabled; otherwise, <c>false</c>.
         /// </value>
         public bool Enabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the experience loss on death.
+        /// Numbers smaller than or equal to 1.0 means a percentage of the earned experience is lossed.
+        /// Numbers greater than 1.0 means a percentage of total needed experience for the next level up is lossed.
+        /// </summary>
+        /// <value>
+        /// The experience loss on death.
+        /// </value>
+        public float ExpLossOnDeath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum experience loss on death.
+        /// Numbers smaller than or equal to 1.0 means a percentage of total needed experience for the next level up can be lossed.
+        /// Numbers greater than 1.0 means a fixed maximum of experience can be lossed.
+        /// 0.0 or smaller numbers means no maximum is set.
+        /// </summary>
+        /// <value>
+        /// The maximum experience loss on death.
+        /// </value>
+        public float MaxExpLossOnDeath { get; set; }
 
         /// <summary>
         /// Gets the abilities that are associated to this skill.
@@ -198,6 +222,8 @@ namespace XLib.XLeveling
             this.Abilities = new List<Ability>();
             this.SpecialisationID = -1;
             this.Enabled = true;
+            this.ExpLossOnDeath = 0.0f;
+            this.MaxExpLossOnDeath = 0.0f;
             this.ClassExpMultipliers = new Dictionary<string, float>();
         }
 
@@ -353,6 +379,33 @@ namespace XLib.XLeveling
         {}
 
         /// <summary>
+        /// Called when the player dies.
+        /// Reduces players experience when enabled.
+        /// </summary>
+        /// <param name="playerSkillSet">The player skill set.</param>
+        /// <param name="invokePenalty">if set to <c>true</c> invokes penalties. Otherwise no experience is lossed. 
+        /// This parameter usually is <c>false</c> when the player already died recently to prevent too many penalties from chain dying.</param>
+        virtual public void OnPlayerDeath(PlayerSkillSet playerSkillSet, bool invokePenalty)
+        {
+            if (ExpLossOnDeath <= 0.0f || ExpLossOnDeath > 100.0f) return;
+
+            PlayerSkill playerSkill = playerSkillSet?[Id];
+            if (playerSkill == null) return;
+
+            float loss = ExpLossOnDeath <= 1.0f ? 
+                playerSkill.Experience * ExpLossOnDeath :
+                Math.Min(playerSkill.Experience, playerSkill.RequiredExperience * ExpLossOnDeath * 0.01f);
+
+            float maxLoss =
+                MaxExpLossOnDeath <= 0.0f ? float.MaxValue :
+                MaxExpLossOnDeath > 1.0f ? MaxExpLossOnDeath :
+                MaxExpLossOnDeath * playerSkill.RequiredExperience;
+
+            playerSkill.AddExperience(-Math.Min(loss, maxLoss), false);
+            (playerSkillSet.Player as IServerPlayer)?.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSkill.Skill.DisplayName);
+        }
+
+        /// <summary>
         /// Fills this skills values from a skill configuration.
         /// </summary>
         /// <param name="config">The skill configuration.</param>
@@ -367,6 +420,8 @@ namespace XLib.XLeveling
             this.ExpMult = Math.Max(config.expMult, 0.0f);
             this.ExpEquationValue = Math.Max(config.expValue, 0.0f);
             this.Enabled = config.enabled;
+            this.ExpLossOnDeath = config.expLossOnDeath;
+            this.MaxExpLossOnDeath = config.maxExpLossOnDeath;
 
             if (config.expEquation == "logarithmic") this.ExperienceEquation = LogarithmicEquation;
             else if (config.expEquation == "quadratic") this.ExperienceEquation = QuadraticEquation;

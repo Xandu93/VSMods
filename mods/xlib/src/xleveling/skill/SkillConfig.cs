@@ -71,9 +71,28 @@ namespace XLib.XLeveling
         public bool enabled;
 
         /// <summary>
-        /// The configuration of the associated abilities.
+        /// The experience loss on death.
+        /// Numbers smaller than or equal to 1.0 means a percentage of the earned experience is lossed.
+        /// Numbers greater than 1.0 means a percentage of total needed experience for the next level up is lossed.
         /// </summary>
         [ProtoMember(9)]
+        [DefaultValue(0.0f)]
+        public float expLossOnDeath;
+
+        /// <summary>
+        /// The maximum experience loss on death.
+        /// Numbers smaller than or equal to 1.0 means a percentage of total needed experience for the next level up can be lossed.
+        /// Numbers greater than 1.0 means a fixed maximum of experience can be lossed.
+        /// 0.0 or smaller numbers means no maximum is set.
+        /// </summary>
+        [ProtoMember(10)]
+        [DefaultValue(0.0f)]
+        public float maxExpLossOnDeath;
+
+        /// <summary>
+        /// The configuration of the associated abilities.
+        /// </summary>
+        [ProtoMember(11)]
         public AbilityConfig[] abilities;
 
         /// <summary>
@@ -82,7 +101,7 @@ namespace XLib.XLeveling
         /// <value>
         /// The attributes.
         /// </value>
-        [ProtoMember(10)]
+        [ProtoMember(12)]
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
@@ -91,7 +110,7 @@ namespace XLib.XLeveling
         /// <value>
         /// The class exp multipliers.
         /// </value>
-        [ProtoMember(11)]
+        [ProtoMember(13)]
         public Dictionary<string, float> ClassExpMultipliers { get; set; }
 
         /// <summary>
@@ -108,7 +127,9 @@ namespace XLib.XLeveling
             this.expValue = 8.0f;
             this.expEquation = null;
             this.enabled = true;
-
+            this.expLossOnDeath = 0.0f;
+            this.maxExpLossOnDeath = 0.0f;
+            
             this.abilities = null;
             this.Attributes = null;
             this.ClassExpMultipliers = null;
@@ -127,6 +148,8 @@ namespace XLib.XLeveling
             this.expMult = skill.ExpMult;
             this.expValue = skill.ExpEquationValue;
             this.enabled = skill.Enabled;
+            this.expLossOnDeath= skill.ExpLossOnDeath;
+            this.maxExpLossOnDeath= skill.MaxExpLossOnDeath;
 
             if(skill.ExperienceEquation == Skill.LogarithmicEquation) this.expEquation = "logarithmic";
             else if (skill.ExperienceEquation == Skill.QuadraticEquation) this.expEquation = "quadratic";

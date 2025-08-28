@@ -543,25 +543,18 @@ namespace XLib.XLeveling
             PlayerSkillSet killerSkillSet = (damageSource.GetCauseEntity()?.GetBehavior<PlayerSkillSet>());
             bool shouldLose = !(playerSkillSet.Sparring && (killerSkillSet?.Sparring ?? false));
 
-            if (this.Config.expLossOnDeath > 0.0f && this.Config.expLossOnDeath <= 100.0f && shouldLose)
+            float cooldown =
+                this.Config.deathPenaltyCooldown *
+                this.XLeveling.Api.World.Calendar.SpeedOfTime / 3600.0f;
+            if (cooldown + playerSkillSet.LastDeath <= this.XLeveling.Api.World.Calendar.TotalHours)
             {
-                float cooldown =
-                    this.Config.expLossCooldown *
-                    this.XLeveling.Api.World.Calendar.SpeedOfTime / 3600.0f;
-                if (cooldown + playerSkillSet.LastDeath >= this.XLeveling.Api.World.Calendar.TotalHours) return;
                 playerSkillSet.LastDeath = this.XLeveling.Api.World.Calendar.TotalHours;
+            }
+            else shouldLose = false;
 
-                foreach (PlayerSkill playerSkill in playerSkillSet.PlayerSkills)
-                {
-                    float loss;
-                    loss = this.Config.expLossOnDeath <= 1.0f ? 
-                        playerSkill.Experience * this.Config.expLossOnDeath :
-                        Math.Min(playerSkill.Experience, playerSkill.RequiredExperience * this.Config.expLossOnDeath * 0.01f);
-
-                    playerSkill.Experience -= loss;
-                    this.channel.SendPacket(new ExperiencePackage(playerSkill.Skill.Id, -loss), byPlayer);
-                    byPlayer.SendLocalisedMessage(GlobalConstants.GeneralChatGroup, "xlib:explossondeath", loss, playerSkill.Skill.DisplayName);
-                }
+            foreach (PlayerSkill playerSkill in playerSkillSet.PlayerSkills)
+            {
+                playerSkill.Skill?.OnPlayerDeath(playerSkillSet, shouldLose);
             }
         }
 

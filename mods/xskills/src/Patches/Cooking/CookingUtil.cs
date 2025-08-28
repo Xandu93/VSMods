@@ -17,7 +17,7 @@ namespace XSkills
         public static BlockEntityBehaviorOwnable GetOwnableFromInventory(InventoryBase inventory)
         {
             if (inventory == null || inventory.Pos == null) return null;
-            BlockEntityBehaviorOwnable ownable = inventory?.Api.World.BlockAccessor.GetBlockEntity(inventory.Pos)?.GetBehavior<BlockEntityBehaviorOwnable>();
+            BlockEntityBehaviorOwnable ownable = inventory.Api.World.BlockAccessor.GetBlockEntity(inventory.Pos)?.GetBehavior<BlockEntityBehaviorOwnable>();
             if (ownable == null) return null;
             if (ownable.ShouldResolveOwner()) ownable.ResolveOwner();
             return ownable;

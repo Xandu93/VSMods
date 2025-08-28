@@ -4,9 +4,9 @@
   "name": "Advanced Chests",
   "authors": [ "Xandu" ],
   "description": "Adds chests with specific functions to the game.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "dependencies": {
-    "game": "1.20.0-rc.8",
-    "survival": "1.20.0-rc.8"
+    "game": "1.21.0",
+    "survival": "1.21.0"
   }
 }

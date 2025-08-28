@@ -1,5 +1,6 @@
 ﻿using ProtoBuf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -479,15 +480,29 @@ namespace XSkills
                 {
                     ItemStack[] newStacks = new ItemStack[contentStacks.Length + 1];
                     int ii = 0;
+                    int size = 0;
+                    ITreeAttribute attr = null;
                     for (; ii < contentStacks.Length; ii++)
                     {
                         newStacks[ii] = contentStacks[ii];
+                        size += contentStacks[ii]?.StackSize ?? 0;
+
+                        if (attr != null) continue;
+                        attr = (contentStacks[ii]?.Attributes as TreeAttribute)?.GetTreeAttribute("transitionstate");
+                        if (attr?.HasAttribute("freshHours") ?? false)
+                        {
+                            attr = attr.Clone();
+                        }
+                        else attr = null;
                     }
+                    size /= contentStacks.Length;
 
                     CookingRecipe recipe = (mealContainer as BlockCookedContainer)?.GetCookingRecipe(world, outputStack) ?? (mealContainer as BlockMeal)?.GetCookingRecipe(world, outputStack);
                     if (recipe != null)
                     {
                         ItemStack stack = GetMissingIngredient(contentStacks, recipe, world, true);
+                        stack.StackSize = size;
+                        if (attr != null) stack.Attributes["transitionstate"] = attr;
                         if (stack != null)
                         {
                             newStacks[ii] = stack;

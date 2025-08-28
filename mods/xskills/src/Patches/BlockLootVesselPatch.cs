@@ -14,7 +14,7 @@ namespace XSkills
         {
             string code = __instance.LastCodePart();
             float chance = (float)world.Rand.NextDouble();
-            float experience = 0.5f;
+            float experience = 1.0f;
             string skillName;
             string color;
 
@@ -120,7 +120,10 @@ namespace XSkills
                     return;
             }
 
-            chance /= 3.0f;
+            XLeveling xLeveling = XLeveling.Instance(world.Api);
+            if (xLeveling == null) return;
+
+            chance *= xLeveling.Config.skillBookChanceMult / 3.0f;
             if (chance < world.Rand.NextDouble()) return;
 
             chance = (float)world.Rand.NextDouble();
@@ -133,12 +136,9 @@ namespace XSkills
             Item book = world.GetItem(asset);
             if (book == null) return;
 
-            XLeveling xLeveling = XLeveling.Instance(world.Api);
-            if (xLeveling == null) return;
-
             Skill skill = xLeveling.GetSkill(skillName);
             if (skill == null) return;
-            experience *= skill.ExpBase;
+            experience *= skill.ExpBase * xLeveling.Config.skillBookExpMult;
 
             ItemStack stack = new ItemStack(book, 1);
             stack.Attributes.SetString("skill", skillName);

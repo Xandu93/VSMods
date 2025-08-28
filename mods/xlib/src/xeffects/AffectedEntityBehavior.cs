@@ -234,7 +234,7 @@ namespace XLib.XEffects
                 int light = entity.World.BlockAccessor.GetLightLevel(entity.Pos.AsBlockPos, EnumLightLevelType.OnlySunLight);
                 float undergroundHours = entity.WatchedAttributes.GetFloat("undergroundHours");
 
-                if (light < 8)
+                if (light < 4)
                 {
                     undergroundHours += triggerTimer * entity.World.Calendar.SpeedOfTime / 3600.0f;
                 }

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 using XLib.XLeveling;
 
@@ -160,7 +163,15 @@ namespace XSkills
             //inspiration
             Pottery pottery = byPlayer?.Entity?.Api.ModLoader.GetModSystem<XLeveling>()?.GetSkill("pottery") as Pottery;
             if (pottery == null || world == null) return false;
-            PlayerAbility playerAbility = byPlayer.Entity.GetBehavior<PlayerSkillSet>()?[pottery.Id]?[pottery.InspirationId];
+
+            PlayerSkill playerSkill = byPlayer.Entity.GetBehavior<PlayerSkillSet>()?[pottery.Id];
+            //PlayerAbility playerAbility = playerSkill?[pottery.];
+            //if (playerAbility?.Tier > 0)
+            //{
+            //    NotifyPlayer(world, outputSlot, byPlayer, "xskills:pottery-finished", "xskillsPotteryMsg");
+            //}
+
+            PlayerAbility playerAbility = playerSkill?[pottery.InspirationId];
             if (playerAbility == null) return false;
             if (playerAbility.Tier <= 0) return false;
 
@@ -219,5 +230,36 @@ namespace XSkills
             return true;
         }
 
+        /// <summary>
+        /// Notifies the player that a process has finished.
+        /// </summary>
+        /// <param name="world">The world.</param>
+        /// <param name="slot">The slot.</param>
+        /// <param name="player">The player.</param>
+        /// <param name="msg">The MSG.</param>
+        /// <param name="attribute">The name of the attribute. Is used for a cooldown to prohibit spam.</param>
+
+        public static void NotifyPlayer(IWorldAccessor world, ItemSlot slot, IPlayer player, string msg, string attribute)
+        {
+            BlockPos pos = slot.Inventory.Pos;
+            Block block = pos != null ? world.BulkBlockAccessor.GetBlock(pos) : null;
+
+            bool emptyInput = (slot.Inventory as InventorySmelting)?[1].Empty ?? true;
+
+            if (block != null && emptyInput)
+            {
+                double now = world.Calendar.TotalHours;
+                double lastMsg = player.Entity.Attributes.GetDouble(attribute);
+
+                if (now > lastMsg + 0.333)
+                {
+                    player.Entity.Attributes.SetDouble(attribute, now);
+                    world.PlaySoundFor(new AssetLocation("sounds/tutorialstepsuccess.ogg"), player);
+                    (player as IServerPlayer)?.SendMessage(0,
+                        Lang.Get(msg, block.GetPlacedBlockName(world, pos) +
+                        " (" + pos.X + ", " + pos.X + pos.Y + ", " + pos.Z + ")"), EnumChatType.Notification);
+                }
+            }
+        }
     }//!class PotteryUtil
 }//!namespace XSkills

@@ -3165,6 +3165,16 @@
             seperate config file for it.
             </summary>
         </member>
+        <member name="F:XLib.XLeveling.Config.skillBookChanceMult">
+            <summary>
+            The multiplier for the skill book drop chance.
+            </summary>
+        </member>
+        <member name="F:XLib.XLeveling.Config.skillBookExpMult">
+            <summary>
+            The multiplier for the skill book experience gain.
+            </summary>
+        </member>
         <member name="F:XLib.XLeveling.Config.disabledRequirements">
             <summary>
             Can be used to disable specific requirements.

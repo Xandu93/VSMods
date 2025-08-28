@@ -6,7 +6,6 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.Client.NoObf;
 using Vintagestory.GameContent;
-using Vintagestory.GameContent.Mechanics;
 using XLib.XLeveling;
 
 namespace XSkills
@@ -257,6 +256,7 @@ namespace XSkills
             PlayerSkill playerSkill = null;
             PlayerAbility playerAbility;
             float finished = -1.0f;
+            MetalworkingConfig config = __state.metalworking.Config as MetalworkingConfig;
 
             if (__state.metalworking == null || __state.workItemStack == null) return true;
             bool helveHammer = false;
@@ -282,7 +282,7 @@ namespace XSkills
             {
                 finished = __instance.FinishedProportion();
 
-                if (finished < 0.0f && ((__state.metalworking.Config as MetalworkingConfig)?.allowFinishingTouchExploit ?? false))
+                if (finished < 0.0f && (config?.allowFinishingTouchExploit ?? false))
                 {
                     finished *= -1.0f;
                 }
@@ -304,7 +304,7 @@ namespace XSkills
                 int bitsCount = __state.splitCount / divideBy;
                 if (bitsCount > 0)
                 {
-                    string domain = (__state.metalworking.Config as MetalworkingConfig).useVanillaBits ? "game" : "xskills";
+                    string domain = config.useVanillaBits ? "game" : "xskills";
                     string baseMaterial = __state.anvilItemStack.GetBaseMaterial(__state.workItemStack).Collectible.LastCodePart();
                     if (baseMaterial == "steel" && !__instance.Api.ModLoader.IsModEnabled("smithingplus")) baseMaterial = "blistersteel";
 
@@ -360,6 +360,11 @@ namespace XSkills
                 quality = Math.Min(quality * playerAbility.Value(0), playerAbility.Value(1) * 0.5f - 1.0f);
                 //subtract 2.0f for quenching
                 quality = Math.Min(quality + (float)byPlayer.Entity.World.Rand.NextDouble() * quality, playerAbility.Value(1) - 2.0f);
+
+                if (config.qualitySteps > 0.001f)
+                {
+                    quality = (int)(quality / config.qualitySteps + 0.5f) * config.qualitySteps;
+                }
 
                 __state.recipe.Output.ResolvedItemstack.Attributes.SetFloat("quality", quality);
             }

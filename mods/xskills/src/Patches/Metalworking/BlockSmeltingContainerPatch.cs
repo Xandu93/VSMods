@@ -1,9 +1,6 @@
 ﻿using HarmonyLib;
 using System.Reflection;
 using Vintagestory.API.Common;
-using Vintagestory.API.Config;
-using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 using XLib.XLeveling;
 
@@ -64,25 +61,7 @@ namespace XSkills
 
             if (playerAbility?.Tier > 0)
             {
-                BlockPos pos = outputSlot.Inventory.Pos;
-                Block block = pos != null ? world.BulkBlockAccessor.GetBlock(pos) : null;
-
-                bool emptyInput = (outputSlot.Inventory as InventorySmelting)?[1].Empty ?? true;
-
-                if (block != null && emptyInput)
-                {
-                    double now = world.Calendar.TotalHours;
-                    double lastMsg = player.Entity.Attributes.GetDouble("xskillsCookingMsg");
-
-                    if (now > lastMsg + 0.333)
-                    {
-                        player.Entity.Attributes.SetDouble("xskillsCookingMsg", now);
-                        world.PlaySoundFor(new AssetLocation("sounds/tutorialstepsuccess.ogg"), player);
-
-                        string msg = Lang.Get("xskills:cooking-finished", block.GetPlacedBlockName(world, pos) + " (" + pos.X + ", " + pos.X + pos.Y + ", " + pos.Z + ")");
-                        (player as IServerPlayer)?.SendMessage(0, msg, EnumChatType.Notification);
-                    }
-                }
+                PotteryUtil.NotifyPlayer(world, outputSlot, player, "xskills:cooking-finished", "xskillsCookingMsg");
             }
         }
     }

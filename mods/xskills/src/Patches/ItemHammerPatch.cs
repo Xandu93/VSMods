@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using System;
 using Vintagestory.API.Common;
 using Vintagestory.GameContent;
 using XLib.XLeveling;
@@ -8,16 +7,21 @@ namespace XSkills
 {
     public class ItemHammerPatch : ItemHammer
     {
-        static void Callback(EntityAgent byEntity)
+        protected void Animate(string animation, EntityAgent byEntity, bool reset)
         {
-            if (byEntity.Controls.HandUse == EnumHandInteract.HeldItemInteract)
+            if (reset) byEntity.AnimManager.ResetAnimation(animation);
+            else byEntity.AnimManager.StartAnimation(animation);
+            float framesound = CollectibleBehaviorAnimationAuthoritative.getSoundAtFrame(byEntity, animation);
+            byEntity.AnimManager.RegisterFrameCallback(new AnimFrameCallback()
             {
-                IPlayer byPlayer = (byEntity as EntityPlayer)?.Player;
-                if (byPlayer == null) return;
+                Animation = animation,
+                Frame = framesound,
+                Callback = () =>
+                    byEntity.World.PlaySoundAt(
+                        new AssetLocation("sounds/effect/anvilhit"),
+                        byEntity, (byEntity as EntityPlayer)?.Player, false, 12)
+            });
 
-                byPlayer.Entity.World.PlaySoundAt(new AssetLocation("sounds/effect/anvilhit"), byPlayer, byPlayer);
-                byEntity.World.RegisterCallback((float time) => Callback(byEntity), 628);
-            }
         }
 
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
@@ -34,7 +38,7 @@ namespace XSkills
             EntityBehaviorDisassemblable bh = entitySel?.Entity.GetBehavior<EntityBehaviorDisassemblable>();
             if (byEntity.Controls.Sneak && entitySel != null && bh != null && bh.Harvestable)
             {
-                byEntity.World.RegisterCallback((float time) => Callback(byEntity), 464);
+                Animate(bh.Animation, byEntity, false);
                 handling = EnumHandHandling.PreventDefault;
                 return;
             }
@@ -47,15 +51,10 @@ namespace XSkills
             EntityBehaviorDisassemblable bh = entitySel?.Entity.GetBehavior<EntityBehaviorDisassemblable>();
             if (entitySel != null && bh != null && bh.Harvestable)
             {
-                if (byEntity.World.Side == EnumAppSide.Client)
+                RunningAnimation state = byEntity.AnimManager.GetAnimationState(bh.Animation);
+                if (state?.AnimProgress >= 1.0f)
                 {
-                    ModelTransform tf = new ModelTransform();
-                    tf.EnsureDefaultValues();
-
-                    tf.Rotation.X = 270.0f;
-                    tf.Rotation.Y = (float)Math.Abs(Math.Sin(Math.Max(0, secondsUsed * 5 - 0.25f)) * 110);
-
-                    byEntity.Controls.UsingHeldItemTransformBefore = tf;
+                    Animate(bh.Animation, byEntity, true);
                 }
                 return secondsUsed < bh.GetHarvestDuration(byEntity) + 0.15f;
             }
@@ -65,9 +64,11 @@ namespace XSkills
         public override void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             base.OnHeldInteractStop(secondsUsed, slot, byEntity, blockSel, entitySel);
-
             EntityBehaviorDisassemblable bh = entitySel?.Entity.GetBehavior<EntityBehaviorDisassemblable>();
-            if (bh != null && bh.Harvestable && secondsUsed >= bh.GetHarvestDuration(byEntity) - 0.1f)
+            if (bh == null) return;
+            byEntity.StopAnimation(bh.Animation);
+
+            if (bh.Harvestable && secondsUsed >= bh.GetHarvestDuration(byEntity) - 0.1f)
             {
                 PlayerSkill playerSkill = byEntity.GetBehavior<PlayerSkillSet>()?.FindSkill("metalworking");
                 if (playerSkill == null) return;
@@ -79,6 +80,16 @@ namespace XSkills
                 bh.SetHarvested((byEntity as EntityPlayer)?.Player, playerAbility.SkillDependentFValue());
                 slot?.Itemstack?.Collectible.DamageItem(byEntity.World, byEntity, slot, 3);
             }
+        }
+
+        public override bool OnHeldAttackCancel(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
+        {
+            bool result = base.OnHeldAttackCancel(secondsPassed, slot, byEntity, blockSelection, entitySel, cancelReason);
+            EntityBehaviorDisassemblable bh = entitySel?.Entity.GetBehavior<EntityBehaviorDisassemblable>();
+            if (bh == null) return result;
+
+            byEntity.StopAnimation(bh.Animation);
+            return result;
         }
     }//!class ItemHammerPatch
 

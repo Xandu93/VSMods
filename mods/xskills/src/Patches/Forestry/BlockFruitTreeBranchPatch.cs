@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.GameContent;
@@ -94,6 +95,7 @@ namespace XSkills
             if (beh == null)
             {
                 beh = new BlockEntityBehaviorValue(__instance);
+                beh.Api = __instance.Api;
                 __instance.Behaviors.Add(beh);
             }
             beh.Value = value;

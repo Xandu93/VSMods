@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -468,8 +468,10 @@ namespace XSkills
             if (toolSlot?.Itemstack?.Item == null || byPlayer.CurrentBlockSelection == null) return;
             if (toolSlot.Itemstack.Item.Tool != EnumTool.Pickaxe) return;
             if (toolSlot.Itemstack.Item is ItemProspectingPick) return;
-            if (PickaxeBehavior.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path != "vein") return;
             if (byPlayer.CurrentBlockSelection.Position != pos) return;
+
+            string toolMode = PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path;
+            if (toolMode != "vein") return;
 
             PlayerAbility durabilityAbility = playerSkill[this.mining.DurabilityId];
             int toolDamage = 0;
@@ -615,13 +617,8 @@ namespace XSkills
                 if (tool.Tool != EnumTool.Pickaxe) return;
                 if (tool is ItemProspectingPick) return;
 
-                //bool mode = 
-                //     toolSlot.Itemstack.Attributes.GetInt("toolMode") == 2 || 
-                //    (toolSlot.Itemstack.Attributes.GetInt("toolMode") == 1 &&
-                //   !(playerSkill[mining.TunnelDiggerId]?.Tier != 0));
-                //if (!mode) return;
-
-                if (PickaxeBehavior.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection).Code.Path != "vein") return;
+                string toolMode = PickaxeBehaivor.GetToolModeItem(toolSlot, byPlayer, byPlayer.CurrentBlockSelection)?.Code.Path;
+                if (toolMode != "vein") return;
 
                 int max = Math.Min(playerAbility.Value(0) + playerSkill.Level / playerAbility.Value(1), playerAbility.Value(2));
                 max = Math.Min(max, tool.GetRemainingDurability(toolSlot.Itemstack));

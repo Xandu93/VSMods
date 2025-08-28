@@ -228,6 +228,8 @@ namespace XSkills
                             output.Code = new AssetLocation("game", item.Code.Path);
                             output.Type = EnumItemClass.Item;
                             output.Quantity = 1;
+                            Item resolved = XLeveling.Api.World.GetItem(output.Code);
+                            if (resolved == null || resolved.IsMissing) { continue; }
 
                             recipe.Ingredients = new Dictionary<string, CraftingRecipeIngredient>();
                             recipe.Ingredients.Add("B", ingredient);
@@ -357,6 +359,7 @@ namespace XSkills
                 result.Add("bitsForIngot", bitsForIngot.ToString(provider));
                 result.Add("chiselRecipesRatio", chiselRecipesRatio.ToString(provider));
                 result.Add("allowFinishingTouchExploit", allowFinishingTouchExploit.ToString(provider));
+                result.Add("qualitySteps", qualitySteps.ToString(provider));
                 return result;
             }
             set
@@ -379,6 +382,8 @@ namespace XSkills
                 if (str != null) float.TryParse(str, styles, provider, out chiselRecipesRatio);
                 value.TryGetValue("allowFinishingTouchExploit", out str);
                 if (str != null) bool.TryParse(str, out allowFinishingTouchExploit);
+                value.TryGetValue("qualitySteps", out str);
+                if (str != null) float.TryParse(str, out qualitySteps);
 
                 if (expPerHit > 1.0f) expPerHit *= 0.01f;
                 if (helveHammerPenalty > 1.0f) helveHammerPenalty *= 0.01f;
@@ -417,6 +422,10 @@ namespace XSkills
         [ProtoMember(8)]
         [DefaultValue(false)]
         public bool allowFinishingTouchExploit = false;
+
+        [ProtoMember(9)]
+        [DefaultValue(0.0f)]
+        public float qualitySteps = 0.0f;
     }//!class MetalworkingConfig
 
     [HarmonyPatch(typeof(BlockSmeltedContainer))]
@@ -584,6 +593,5 @@ namespace XSkills
             slot.Itemstack = null;
             return true;
         }
-
     }//!class XSkillsBloomeryBehavior
 }//!namespace XSkills

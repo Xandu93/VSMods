@@ -118,7 +118,7 @@ namespace XSkills
             //    "xskills:abilitydesc-featherfall",
             //    2, 2, new int[] { 1, 10, 2, 20 }));
 
-            // additional professions
+            // additional specializations
             // 0: value
             AllRounderId = this.AddAbility(new Ability(
                 "allrounder",
@@ -271,6 +271,7 @@ namespace XSkills
             {
                 registry.RegisterInventoryClass("xskillshotbar", typeof(XSkillsPlayerInventory));
             }
+            //GlobalConstants.FoodSpoilSatLossMulHandler += (float spoilState, ItemStack stack, EntityAgent byEntity) => 1.0f;
 
             this.ExperienceEquation = QuadraticEquation;
             this.ExpBase = 10;

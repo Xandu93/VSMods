@@ -24,6 +24,7 @@ namespace XSkills
         public int IronFistId { get; private set; }
         public int MonkId { get; private set; }
         public int LooterId { get; private set; }
+        //public int BullyId { get; private set; }
         public int SniperId { get; private set; }
         public int FreshFleshId { get; private set; }
         public int ShovelKnightId { get; private set; }
@@ -137,6 +138,16 @@ namespace XSkills
                 "xskills:ability-warrior",
                 "xskills:abilitydesc-warrior",
                 5, 1, new int[] { 40 }));
+
+            // more knockback
+            // 0: base value
+            // 1: value per level
+            // 2: max value
+            //BullyId= this.AddAbility(new Ability(
+            //    "bully",
+            //    "xskills:ability-bully",
+            //    "xskills:abilitydesc-bully",
+            //    5, 2, new int[] { 0, 1, 10, 5, 1, 25 }));
 
             string stat = api.ModLoader.IsModEnabled("combatoverhaul") ? "steadyAim" : "rangedWeaponsAcc";
             //more accuracy with bows

@@ -229,6 +229,8 @@
   "abilitydesc-looter": "Erh\u00f6ht die Anzahl von Gegenst\u00e4nden, die du beim Besiegen von Gegnern erh\u00e4ltst um {0}% und zus\u00e4tzlich {1}% f\u00fcr jedes Level in der Kampffertigkeit. Maximal bis {2}%.",
   "ability-warrior": "Krieger",
   "abilitydesc-warrior": "Du erhältst {0}% mehr Erfahrung für das Töten von Gegnern. Du kannst nur einen Beruf aus\u00fcben.",
+  "ability-bully": "Bully",
+  "abilitydesc-bully": "Erhöht die Rückstoßstärke deiner Nahkampfangriffe um {0}% und zusätzlich {1}% für jedes Level in deiner Kampffertigkeit, bis zu einem Maximum von {2} %.",
   "ability-sniper": "Scharfschütze",
   "abilitydesc-sniper": "Erhöht deine Genauigkeit mit Fernkampfwaffen um {0}%.",
   "ability-freshflesh": "Frisches Fleisch",
@@ -396,6 +398,8 @@
   "itemdesc-metalbit-titanium": "Kleine Titanst\u00fccke",
   "itemdesc-metalbit-uranium": "Kleine Uranst\u00fccke",
   "itemdesc-metalbit-zinc": "Kleine Zinkst\u00fccke",
+  "item-everlastingcharcoal": "Ewige Holzkohle",
+  "itemdesc-everlastingcharcoal": "Ein Stück Holzkohle, das ziemlich lange brennt.",
 
   "quality-bad": "Qualität: schlecht",
   "quality-common": "Qualität: gewöhnlich",
@@ -414,6 +418,7 @@
   "blockhelp-cage-catch": "Ein Tier einfangen",
   "blockhelp-cage-place": "Platziere den Käfig",
   "cooking-finished": "Kochen beendet: {0}",
+  "pottery-finished": "Brennen beendet: {0}",
 
   "saturated": "Gesättigt",
   "saturated-health-effect": "Gesättigt: Gesundheit",

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Vintagestory.API;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -15,9 +14,12 @@ namespace XSkills
         WorldInteraction[] interactions = null;
 
         public override string PropertyName() => "disassemblable";
+        public string Animation { get; set; }
 
         public EntityBehaviorDisassemblable(Entity entity) : base(entity)
-        { }
+        {
+            Animation = "hammerhit";
+        }
 
         public override void Initialize(EntityProperties properties, JsonObject attributes)
         {
@@ -34,7 +36,7 @@ namespace XSkills
                 {
                     if (item.Code == null) continue;
 
-                    if (item.Tool == EnumTool.Hammer)
+                    if (item.Tool == EnumTool.Hammer /*|| item.Tool == EnumTool.Wrench || item.Tool == EnumTool.Pickaxe*/)
                     {
                         hammerStacklist.Add(new ItemStack(item));
                     }

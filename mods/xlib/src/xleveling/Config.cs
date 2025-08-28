@@ -64,10 +64,24 @@ namespace XLib.XLeveling
         public bool mergeQualities;
 
         /// <summary>
+        /// The multiplier for the skill book drop chance.
+        /// </summary>
+        [ProtoMember(8)]
+        [DefaultValue(1.0f)]
+        public float skillBookChanceMult;
+
+        /// <summary>
+        /// The multiplier for the skill book experience gain.
+        /// </summary>
+        [ProtoMember(9)]
+        [DefaultValue(0.5f)]
+        public float skillBookExpMult;
+
+        /// <summary>
         /// Can be used to disable specific requirements.
         /// Primarily used to disable class requirements.
         /// </summary>
-        [ProtoMember(8)]
+        [ProtoMember(10)]
         [DefaultValue(default(List<string>))]
         public List<string> disabledRequirements;
 
@@ -88,6 +102,8 @@ namespace XLib.XLeveling
             this.specialisationLimit = 1;
             this.expMult = 1.0f;
             this.mergeQualities = true;
+            this.skillBookChanceMult = 1.0f;
+            this.skillBookExpMult = 0.5f;
             this.disabledRequirements = new List<string>();
             this.trackExpGain = false;
         }

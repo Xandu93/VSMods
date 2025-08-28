@@ -360,7 +360,7 @@ namespace XSkills
 
             if (entity.Api.Side == EnumAppSide.Client)
             {
-                MaxSaturationFix();
+                //MaxSaturationFix();
                 if (lastWeatherForecast < (uint)this.entity.World.Calendar.TotalDays)
                 {
                     PlayerAbility ability = entity.GetBehavior<PlayerSkillSet>()?[survival.Id]?[survival.MeteorologistId];

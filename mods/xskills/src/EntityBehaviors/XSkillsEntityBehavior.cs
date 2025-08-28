@@ -194,6 +194,7 @@ namespace XSkills
             ItemStack itemStack = byPlayer.Player.InventoryManager.ActiveHotbarSlot?.Itemstack;
             int skillLevel = 0;
 
+            bool melee = true;
             //swordsman, spearman, archer, shovel knight, tool mastery
             switch (tool)
             {
@@ -216,6 +217,7 @@ namespace XSkills
                 case EnumTool.Sling:
                 case EnumTool.Crossbow:
                 case EnumTool.Firearm:
+                    melee = false;
                     playerAbility = playerSkill[combat.ArcherId];
                     break;
                 case EnumTool.Knife:
@@ -290,6 +292,13 @@ namespace XSkills
                 }
             }
 
+            //bully
+            //if (melee)
+            //{
+            //    playerAbility = playerSkill[combat.BullyId];
+            //    dmgSource.KnockbackStrength *= 1.0f + playerAbility.SkillDependentFValue();
+            //}
+
             //burning rage
             playerAbility = playerSkill[combat.BurningRageId];
             if (playerAbility.FValue(0) > byPlayer.World.Rand.NextDouble()) this.entity.Ignite();
@@ -342,7 +351,9 @@ namespace XSkills
             base.OnEntityReceiveDamage(damageSource, ref damage);
             if (this.entity.Api.Side == EnumAppSide.Server)
             {
-                EntityPlayer byPlayer = damageSource.SourceEntity as EntityPlayer;
+                EntityPlayer byPlayer = 
+                    damageSource.SourceEntity as EntityPlayer ??
+                    damageSource.CauseEntity as EntityPlayer;
                 if (this.combat == null || byPlayer == null) return;
 
                 PlayerSkill playerSkill = byPlayer.GetBehavior<PlayerSkillSet>()?[this.combat.Id];
@@ -353,7 +364,7 @@ namespace XSkills
                 //vampire
                 if (playerAbility.Tier > 0)
                 {
-                    float health = damage * playerAbility.Value(0) * 0.01f;
+                    float health = damage * playerAbility.FValue(0);
 
                     EntityBehaviorHealth playerHealth = (byPlayer.GetBehavior("health") as EntityBehaviorHealth);
                     if (playerHealth == null) return;

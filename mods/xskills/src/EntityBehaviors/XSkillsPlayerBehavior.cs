@@ -93,27 +93,27 @@ namespace XSkills
             PlayerSkillSet playerSkillSet = this.entity.GetBehavior<PlayerSkillSet>();
             if (playerSkillSet == null) return damage;
 
-            //guarantees to survive if health ratio larger than a random value
-            //if (Health != null && dmgSource.Type != EnumDamageType.Heal)
-            //{
-            //    PlayerAbility playerAbility = playerSkillSet[survival.Id]?[survival.LastStandId];
-            //    if (damage > Health.Health && Health.MaxHealth > 0.0f && playerAbility?.Tier > 0)
-            //    {
-            //        float ratio = Health.Health / Health.MaxHealth;
-            //        if (ratio >= this.entity.World.Rand.NextDouble())
-            //        {
-            //            damage = Health.Health - 0.1f;
-            //        }
-            //    }
-            //}
+            //last stand
+            if (Health != null && dmgSource.Type != EnumDamageType.Heal)
+            {
+                PlayerAbility playerAbility = playerSkillSet[survival.Id]?[survival.LastStandId];
+                if (damage > Health.Health && Health.MaxHealth > 0.0f && playerAbility?.Tier > 0)
+                {
+                    float ratio = Health.Health / Health.MaxHealth;
+                    if (ratio * playerAbility.FValue(0) >= this.entity.World.Rand.NextDouble())
+                    {
+                        damage = Health.Health - 0.1f;
+                    }
+                }
+            }
 
-            //fall damage
-            //if (dmgSource.Source == EnumDamageSource.Fall && dmgSource.Type == EnumDamageType.Gravity)
-            //{
-            //    PlayerAbility playerAbility = playerSkillSet[survival.Id]?[survival.FeatherFallId];
-            //    damage = Math.Max(damage - playerAbility.Value(0), 0);
-            //    damage *= 1.0f - playerAbility.FValue(1);
-            //}
+            //feather fall
+            if (dmgSource.Source == EnumDamageSource.Fall && dmgSource.Type == EnumDamageType.Gravity)
+            {
+                PlayerAbility playerAbility = playerSkillSet[survival.Id]?[survival.FeatherFallId];
+                damage = Math.Max(damage - playerAbility.Value(0), 0);
+                damage *= 1.0f - playerAbility.FValue(1);
+            }
 
             //timeless
             if (this.adaptation != null && dmgSource.Source == EnumDamageSource.Machine && dmgSource.SourceEntity == null && dmgSource.Type == EnumDamageType.Poison)

@@ -23,7 +23,9 @@ namespace XSkills
         public static void FinishExecutePrefix(AiTaskSeekFoodAndEat __instance, float ___quantityEaten)
         {
             if (___quantityEaten < 1.0f) return;
-            IPlayer player = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>()?.Feeder;
+            XSkillsAnimalBehavior animal = __instance.entity?.GetBehavior<XSkillsAnimalBehavior>();
+            if (animal == null) return;
+            IPlayer player = animal.Feeder;
             if (player == null) return;
 
             Husbandry husbandry = XLeveling.Instance(__instance.entity.World.Api).GetSkill("husbandry") as Husbandry;
@@ -32,7 +34,7 @@ namespace XSkills
             if (playerSkill == null) return;
 
             //experience
-            playerSkill.AddExperience(0.025f);
+            playerSkill.AddExperience(0.025f * animal.XP);
 
             //feeder
             PlayerAbility playerAbility = playerSkill[husbandry.FeederId];

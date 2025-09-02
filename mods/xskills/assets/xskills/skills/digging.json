@@ -120,6 +120,17 @@
       }
     ]
   },
+  "golddigger": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 3,
+        "skill": "digging",
+        "ability": "digger",
+        "requiredTier": 1
+      }
+    ]
+  },
   "scrapspecialist": {
     "requirements": [
       {

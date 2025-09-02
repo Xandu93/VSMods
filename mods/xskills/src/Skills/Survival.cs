@@ -25,7 +25,7 @@ namespace XSkills
         public int NudistId { get; private set; }
         public int MeatShieldId { get; private set; }
         public int DiverId { get; private set; }
-        //public int FeatherFallId { get; private set; }
+        public int FeatherFallId { get; private set; }
         public int AllRounderId { get; protected set; }
         public int PhotosynthesisId { get; private set; }
         public int StrongBackId { get; private set; }
@@ -41,7 +41,7 @@ namespace XSkills
         public int LuminiferousId { get; private set; }
         public int CatEyesId { get; private set; }
         public int MeteorologistId { get; private set; }
-        //public int LastStandId { get; private set; }
+        public int LastStandId { get; private set; }
 
         private ICoreClientAPI capi;
         private NightVisionRenderer nightVisionRenderer;
@@ -112,11 +112,11 @@ namespace XSkills
             //// lesser fall damage
             //// 0: flat base value
             //// 1: percentage value
-            //FeatherFallId = this.AddAbility(new Ability(
-            //    "featherfall",
-            //    "xskills:ability-featherfall",
-            //    "xskills:abilitydesc-featherfall",
-            //    2, 2, new int[] { 1, 10, 2, 20 }));
+            FeatherFallId = this.AddAbility(new Ability(
+                "featherfall",
+                "xskills:ability-featherfall",
+                "xskills:abilitydesc-featherfall",
+                3, 2, new int[] { 1, 10, 2, 20 }));
 
             // additional specializations
             // 0: value
@@ -251,12 +251,13 @@ namespace XSkills
                 "xskills:abilitydesc-meteorologist",
                 8, 1, new int[] { 3, 50 }));
 
-            //// guarantees to survive if health ratio larger than a random value
-            //LastStandId = this.AddAbility(new Ability(
-            //    "laststand",
-            //    "xskills:ability-laststand",
-            //    "xskills:abilitydesc-laststand",
-            //    8, 1, new int[] { }));
+            // guarantees to survive if health ratio larger than a random value times value
+            // 0: value
+            LastStandId = this.AddAbility(new Ability(
+                "laststand",
+                "xskills:ability-laststand",
+                "xskills:abilitydesc-laststand",
+                10, 1, new int[] { 200 }));
 
             this[LongLifeId].OnPlayerAbilityTierChanged += OnLongLife;
             this[HugeStomachId].OnPlayerAbilityTierChanged += OnHugeStomach;

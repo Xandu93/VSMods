@@ -18,6 +18,7 @@ namespace XSkills
         public int ResinFarmerId { get; private set; }
         public int TreeNurseryId { get; private set; }
         public int CharcoalBurnerId { get; private set; }
+        public int StokerId { get; private set; }
         public int GrafterId { get; private set; }
         public int ResinExtractor { get; private set; }
 
@@ -109,6 +110,15 @@ namespace XSkills
                 "xskills:ability-charcoalburner",
                 "xskills:abilitydesc-charcoalburner",
                 5, 3, new int[] { 13, 26, 40 }));
+
+            // faster charcoal shoveling
+            // 0: chance to break an additional layer
+            // note: can break multiple layers at once
+            StokerId = this.AddAbility(new Ability(
+                "stoker",
+                "xskills:ability-stoker",
+                "xskills:abilitydesc-stoker",
+                5, 2, new int[] { 25, 50 }));
 
             //higher grafting and rooting success rate for fruit trees
             // 0: base value
@@ -366,7 +376,6 @@ namespace XSkills
             playerSkill?.AddExperience(this.xp);
             return base.GetDrops(world, pos, byPlayer, ref dropChanceMultiplier, ref handling);
         }
-
     }//!class XSkillsCharcoalBehavior
 
     //fixes OnLoaded method to also call OnLoaded methods from behaviors 

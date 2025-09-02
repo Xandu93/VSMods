@@ -29,6 +29,7 @@ namespace XSkills
         public int JackPotId { get; private set; }
         public int InfallibleId { get; private set; }
         public int InspirationId { get; private set; }
+        public int PotteryTimerId { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Pottery"/> class.
@@ -112,12 +113,19 @@ namespace XSkills
                 "xskills:abilitydesc-inspiration",
                 7, 2, new int[] { 10, 20 }));
 
-            InspirationCollectibles = new Dictionary<string, List<CollectibleObject>>();
-            InspirationCollectibles.Add("clayplanter-burnt", null);
-            InspirationCollectibles.Add("flowerpot-burnt", null);
-            InspirationCollectibles.Add("storagevessel-burned", null);
+            // chance to get a unique storage vessel
+            // 0: chance
+           PotteryTimerId = this.AddAbility(new Ability(
+                "potterytimer",
+                "xskills:ability-potterytimer",
+                "xskills:abilitydesc-potterytimer",
+                8));
 
-            //requirements
+            InspirationCollectibles = new Dictionary<string, List<CollectibleObject>>();
+            InspirationCollectibles.Add("clayplanter", null);
+            InspirationCollectibles.Add("flowerpot", null);
+            InspirationCollectibles.Add("storagevessel", null);
+
             this.ExperienceEquation = QuadraticEquation;
             this.ExpBase = 40;
             this.ExpMult = 10.0f;

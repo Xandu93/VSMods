@@ -87,6 +87,53 @@
       }
     ]
   },
+  "tank": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "combat",
+        "ability": "warrior",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "defender": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "combat",
+        "ability": "warrior",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 2,
+        "skill": "combat",
+        "ability": "guardian",
+        "exclusiveTier": 2
+      }
+    ]
+  },
+  "guardian": {
+    "requirements": [
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "combat",
+        "ability": "warrior",
+        "requiredTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 2,
+        "skill": "combat",
+        "ability": "defender",
+        "exclusiveTier": 2
+      }
+    ]
+  },
   "toolmastery": {
     "requirements": [
       {
@@ -172,6 +219,67 @@
         "skill": "combat",
         "ability": "warrior",
         "requiredTier": 1
+      }
+    ]
+  },
+  "heavyarmorexpert": {
+    "requirements": [
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "lightarmorexpert",
+        "exclusiveTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "armoredagility",
+        "exclusiveTier": 1
+      },
+      {
+        "code": "ability",
+        "minimumTier": 2,
+        "skill": "combat",
+        "ability": "warrior",
+        "requiredTier": 1
+      }
+    ]
+  },
+  "lightarmorexpert": {
+    "requirements": [
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "heavyarmorexpert",
+        "exclusiveTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "armoredagility",
+        "exclusiveTier": 1
+      }
+    ]
+  },
+  "armoredagility": {
+    "requirements": [
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "heavyarmorexpert",
+        "exclusiveTier": 1
+      },
+      {
+        "code": "exclusiveAbility",
+        "minimumTier": 1,
+        "skill": "combat",
+        "ability": "lightarmorexpert",
+        "exclusiveTier": 1
       }
     ]
   },

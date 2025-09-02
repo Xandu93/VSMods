@@ -30,6 +30,8 @@ namespace XSkills
         protected TemporalAdaptation temporalAdaptation;
         protected float xp;
 
+        public float XP { get =>  xp; }
+
         public override string PropertyName() => "XSkillsEntity";
 
         public XSkillsEntityBehavior(Entity entity) : base(entity)
@@ -293,11 +295,11 @@ namespace XSkills
             }
 
             //bully
-            //if (melee)
-            //{
-            //    playerAbility = playerSkill[combat.BullyId];
-            //    dmgSource.KnockbackStrength *= 1.0f + playerAbility.SkillDependentFValue();
-            //}
+            if (melee)
+            {
+                playerAbility = playerSkill[combat.BullyId];
+                dmgSource.KnockbackStrength *= 1.0f + playerAbility.SkillDependentFValue();
+            }
 
             //burning rage
             playerAbility = playerSkill[combat.BurningRageId];

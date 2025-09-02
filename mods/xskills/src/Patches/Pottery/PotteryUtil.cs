@@ -160,22 +160,22 @@ namespace XSkills
         /// <returns></returns>
         public static bool ApplyOnStack(IPlayer byPlayer, IWorldAccessor world, ItemSlot outputSlot)
         {
-            //inspiration
             Pottery pottery = byPlayer?.Entity?.Api.ModLoader.GetModSystem<XLeveling>()?.GetSkill("pottery") as Pottery;
             if (pottery == null || world == null) return false;
 
             PlayerSkill playerSkill = byPlayer.Entity.GetBehavior<PlayerSkillSet>()?[pottery.Id];
-            //PlayerAbility playerAbility = playerSkill?[pottery.];
-            //if (playerAbility?.Tier > 0)
-            //{
-            //    NotifyPlayer(world, outputSlot, byPlayer, "xskills:pottery-finished", "xskillsPotteryMsg");
-            //}
+            PlayerAbility playerAbility = playerSkill?[pottery.PotteryTimerId];
+            if (playerAbility?.Tier > 0)
+            {
+                NotifyPlayer(world, outputSlot, byPlayer, "xskills:pottery-finished", "xskillsPotteryMsg");
+            }
 
-            PlayerAbility playerAbility = playerSkill?[pottery.InspirationId];
+            //inspiration
+            playerAbility = playerSkill?[pottery.InspirationId];
             if (playerAbility == null) return false;
             if (playerAbility.Tier <= 0) return false;
 
-            string name = outputSlot.Itemstack.Collectible.Code.GetName();
+            string name = outputSlot.Itemstack.Collectible.Code.FirstCodePart();
             List<CollectibleObject> dest;
             if (!pottery.InspirationCollectibles.TryGetValue(name, out dest)) return false;
 
@@ -184,20 +184,13 @@ namespace XSkills
             {
                 dest = new List<CollectibleObject>();
                 pottery.InspirationCollectibles[name] = dest;
-                string trimmedName;
-
-                int index = name.LastIndexOf('-');
-                if (name.EndsWith("-burned") || name.EndsWith("-burnt"))
-                {
-                    trimmedName = name.Substring(0, index);
-                }
-                else trimmedName = name;
 
                 foreach(CollectibleObject collectible in world.Collectibles)
                 {
-                    if (collectible.Code.Path.Contains(trimmedName) && collectible != outputSlot.Itemstack.Collectible)
+                    if (collectible.Code.Path.Contains(name) && collectible != outputSlot.Itemstack.Collectible)
                     {
-                        if (collectible.Code.Path.Contains("raw")) continue;
+                        if (collectible.Code.Path.EndsWith("raw")) continue;
+                        if (collectible.Code.Path.EndsWith("fired")) continue;
                         dest.Add(collectible);
                     }
                 }

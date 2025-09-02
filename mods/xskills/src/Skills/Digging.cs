@@ -18,8 +18,8 @@ namespace XSkills
         public int PeatCutterId { get; private set; }
         public int SaltpeterDiggerId { get; private set; }
         public int MixedClayId { get; private set; }
-        //public int QuickPanId { get; private set; }
-        //public int GoldDiggerId { get; private set; }
+        public int QuickPanId { get; private set; }
+        public int GoldDiggerId { get; private set; }
         public int ScrapDetectorId { get; private set; }
         public int ScrapSpecialistId { get; private set; }
 
@@ -104,21 +104,21 @@ namespace XSkills
 
             //// faster panning
             //// 0: value
-            //QuickPanId = this.AddAbility(new Ability(
-            //    "quickpan",
-            //    "xskills:ability-quickpan",
-            //    "xskills:abilitydesc-quickpan",
-            //    3, 2, new int[] { 50, 100 }));
+            QuickPanId = this.AddAbility(new Ability(
+                "quickpan",
+                "xskills:ability-quickpan",
+                "xskills:abilitydesc-quickpan",
+                3, 2, new int[] { 50, 100 }));
 
-            //// more clay drops
+            //// more loot from panning
             //// 0: base value
             //// 1: value per level
             //// 2: max value
-            //GoldDiggerId = this.AddAbility(new Ability(
-            //    "golddigger",
-            //    "xskills:ability-golddigger",
-            //    "xskills:abilitydesc-golddigger",
-            //    1, 3, new int[] { 10, 2, 30, 20, 4, 60, 20, 4, 100 }));
+            GoldDiggerId = this.AddAbility(new Ability(
+                "golddigger",
+                "xskills:ability-golddigger",
+                "xskills:abilitydesc-golddigger",
+                3, 3, new int[] { 10, 2, 30, 20, 4, 60, 20, 4, 100 }));
 
             // profession
             // 0: ep bonus

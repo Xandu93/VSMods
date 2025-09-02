@@ -246,7 +246,7 @@ namespace XInvTweaks
 
             if (Config.strgClick) ManualPatch.PatchMethod(harmony, typeof(InventoryBase), typeof(InventoryBasePatch), "ActivateSlot");
             if (Config.pushPullWheel) ManualPatch.PatchMethod(harmony, typeof(GuiElementItemSlotGridBase), typeof(GuiElementItemSlotGridBasePatch), "OnMouseWheel");
-            if (Config.survivalPick) ManualPatch.PatchMethod(harmony, typeof(SystemMouseInWorldInteractions), typeof(SystemMouseInWorldInteractionsPatch), "HandleMouseInteractionsBlockSelected");
+            //if (Config.survivalPick) ManualPatch.PatchMethod(harmony, typeof(SystemMouseInWorldInteractions), typeof(SystemMouseInWorldInteractionsPatch), "HandleMouseInteractionsBlockSelected");
 
             capi.Event.LevelFinalize += OnWorldLoaded;
         }

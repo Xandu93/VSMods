@@ -60,7 +60,7 @@ namespace XSkills
                     "metalrecovery",
                     "xskills:ability-metalrecovery",
                     "xskills:abilitydesc-metalrecovery",
-                    1, 3, new int[] { 4, 3, 2 }));
+                    1, 3, new int[] { 5, 4, 3 }));
             }
 
             // increase temperature on hits

@@ -60,29 +60,6 @@ namespace XSkills
         {
             if (dmgSource.Source == EnumDamageSource.Player && !((combat?.Config as CombatSkillConfig)?.enableAbilitiesInPvP ?? false)) return damage;
 
-            if (dmgSource.Source == EnumDamageSource.Internal && dmgSource.Type == EnumDamageType.Heal)
-            {
-                AffectedEntityBehavior affected = this.entity.GetBehavior<AffectedEntityBehavior>();
-                XEffectsSystem effectSystem = this.entity.Api.ModLoader.GetModSystem<XEffectsSystem>();
-
-                if (affected != null && effectSystem != null)
-                {
-                    PlayerAbility playerAbility = this.entity.GetBehavior<PlayerSkillSet>()?[this.survival.Id]?[this.survival.HealerId];
-                    if (playerAbility?.Tier > 0)
-                    {
-                        HotEffect effect = effectSystem?.CreateEffect("hot") as HotEffect;
-                        if (effect != null)
-                        {
-                            effect.Duration = playerAbility.Value(1);
-                            effect.Heal = damage * playerAbility.FValue(0) / effect.Duration * effect.Interval;
-
-                            affected.AddEffect(effect);
-                            affected.MarkDirty();
-                        }
-                    }
-                }
-            }
-
             if (dmgSource.Source != EnumDamageSource.Player &&
                 dmgSource.Source != EnumDamageSource.Fall &&
                 dmgSource.Source != EnumDamageSource.Entity &&
@@ -388,8 +365,35 @@ namespace XSkills
             if (damage < 0.0f) return;
             oldHealth -= damage;
 
+            PlayerAbility playerAbility;
+
+            //Healer
+            //uses TicksPerDuration to identify the hot from healing items
+            if (damageSource.Source == EnumDamageSource.Internal && damageSource.Type == EnumDamageType.Heal && damageSource.TicksPerDuration > 1)
+            {
+                AffectedEntityBehavior affected = this.entity.GetBehavior<AffectedEntityBehavior>();
+                XEffectsSystem effectSystem = this.entity.Api.ModLoader.GetModSystem<XEffectsSystem>();
+
+                if (affected != null && effectSystem != null)
+                {
+                    playerAbility = this.entity.GetBehavior<PlayerSkillSet>()?[this.survival.Id]?[this.survival.HealerId];
+                    if (playerAbility?.Tier > 0)
+                    {
+                        HotEffect effect = effectSystem?.CreateEffect("hot") as HotEffect;
+                        if (effect != null)
+                        {
+                            effect.Duration = playerAbility.Value(1);
+                            effect.Heal = damage * playerAbility.FValue(0) / effect.Duration * effect.Interval;
+
+                            affected.AddEffect(effect);
+                            affected.MarkDirty();
+                        }
+                    }
+                }
+            }
+
             //adrenaline rush
-            PlayerAbility playerAbility = playerSkill[this.combat.AdrenalineRushId];
+            playerAbility = playerSkill[this.combat.AdrenalineRushId];
             if (newHealth > 0 && newHealth / healthTree.GetFloat("maxhealth") <= playerAbility.FValue(0))
             {
                 AffectedEntityBehavior affected = entity.GetBehavior<AffectedEntityBehavior>();

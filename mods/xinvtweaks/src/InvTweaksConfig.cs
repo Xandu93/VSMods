@@ -16,7 +16,7 @@ namespace XInvTweaks
         public bool piles = true;
         public bool extendChestUi = true;
         public bool strgClick = true;
-        public bool survivalPick = true;
+        //public bool survivalPick = true;
         public bool pushPullWheel = true;
         public bool crateSwitch = true;
 

@@ -30,7 +30,8 @@ namespace XSkills
                     __result.ThrownDamageTierBonus,
                     __result.ThrownAimingDifficulty * (1.0f - quality * 0.01f),
                     __result.ThrownProjectileSpeedMultiplier,
-                    __result.KnockbackMultiplier * (1.0f + quality * 0.01f)
+                    __result.KnockbackMultiplier * (1.0f + quality * 0.01f),
+                    (int)(__result.ArmorPiercingBonus * (1.0f + quality * 0.01f))
                     );
             }
         }

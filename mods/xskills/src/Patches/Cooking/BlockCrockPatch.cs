@@ -60,5 +60,35 @@ namespace XSkills
                 }
             }
         }
+
+        /// <summary>
+        /// Prefix for the OnContainedInteractStart method.
+        /// Sealing crocks reduces quality by 20%.
+        /// </summary>
+        /// <param name="slot">The slot.</param>
+        /// <param name="__state">if set to <c>true</c> the crock was sealed.</param>
+        [HarmonyPrefix]
+        [HarmonyPatch("OnContainedInteractStart")]
+        public static void OnContainedInteractStartPrefix(ItemSlot slot, out bool __state)
+        {
+            __state = slot.Itemstack.Attributes.GetBool("sealed", false);
+        }
+
+        /// <summary>
+        /// Postfix for the OnContainedInteractStart method.
+        /// Sealing crocks reduces quality by 20%.
+        /// </summary>
+        /// <param name="slot">The slot.</param>
+        /// <param name="__state">if set to <c>true</c> the crock was sealed.</param>
+        [HarmonyPostfix]
+        [HarmonyPatch("OnContainedInteractStart")]
+        public static void OnContainedInteractStart(ItemSlot slot, bool __state)
+        {
+            if (__state) return;
+            if (!slot.Itemstack.Attributes.GetBool("sealed", false)) return;
+
+            float quality = QualityUtil.GetQuality(slot);
+            if (quality > 0.0f) slot.Itemstack.Attributes.SetFloat("quality", quality * 0.8f);
+        }
     }//!class BlockCrockPatch
 }//!namespace XSkills

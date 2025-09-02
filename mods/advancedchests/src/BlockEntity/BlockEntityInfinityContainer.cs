@@ -85,6 +85,7 @@ namespace AdvancedChests
                 if (collectible.RequiresTransitionableTicking(Api.World, stack))
                 {
                     TransitionState[] states = collectible.UpdateAndGetTransitionStates(Api.World, slot);
+                    if (states == null) continue;
                     foreach (TransitionState state in states)
                     {
                         if(state.TransitionedHours < 0.0f)

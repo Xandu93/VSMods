@@ -354,5 +354,27 @@ namespace XSkills
                 }
             }
         }
+
+        /// <summary>
+        /// Adds the tool behavior to all collectibles that are defined as a tool.
+        /// </summary>
+        //public void AddToolBehaviors()
+        //{
+        //    foreach(CollectibleObject collectible in Api.World.Collectibles)
+        //    {
+        //        if (collectible == null) continue;
+        //        switch(collectible.Tool)
+        //        {
+        //            case EnumTool.Pickaxe:
+        //            case EnumTool.Axe:
+        //            case EnumTool.Shovel:
+        //                collectible.HasBehavior(typeof(XSkillsToolBehavior), true);
+        //                collectible.CollectibleBehaviors.AddItem(new XSkillsToolBehavior(collectible));
+        //                break;
+        //            default:
+        //                continue;
+        //        }
+        //    }
+        //}
     }//!class XSkills
 }//!namespace XSkills

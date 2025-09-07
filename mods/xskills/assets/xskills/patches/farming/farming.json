@@ -20,7 +20,7 @@
     "dependsOn": [{ "modid": "farmlanddropssoil", "invert": true }]
   },
   {
-    "file": "game:blocktypes/wax/skep",
+    "file": "game:blocktypes/reed/skep",
     "op": "addmerge",
     "path": "/behaviors",
     "value": [{

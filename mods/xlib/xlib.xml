@@ -3121,6 +3121,32 @@
             <param name="arguments"></param>
             <returns></returns>
         </member>
+        <member name="T:XLib.XEffects.XLibToolBehavior">
+            <summary>
+            Is used for the momentum effect.
+            </summary>
+            <seealso cref="T:Vintagestory.API.Common.CollectibleBehavior" />
+        </member>
+        <member name="M:XLib.XEffects.XLibToolBehavior.#ctor(Vintagestory.API.Common.CollectibleObject)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XLib.XEffects.XLibToolBehavior"/> class.
+            </summary>
+            <param name="collObj">The collectible object.</param>
+        </member>
+        <member name="M:XLib.XEffects.XLibToolBehavior.OnGetMiningSpeed(Vintagestory.API.Common.IItemStack,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.Block,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)">
+            <summary>
+            Multiplies resulted mining speed of the item by return value if 'bhHandling' is not equal to 'PassThrough'.
+            If 'bhHandling' is not set to 'PreventDefault', the mining speed will be multiplied by standard item mining speed.
+            </summary>
+            <param name="itemstack"></param>
+            <param name="blockSel"></param>
+            <param name="block"></param>
+            <param name="forPlayer"></param>
+            <param name="bhHandling"></param>
+            <returns>
+            Mining speed multiplier
+            </returns>
+        </member>
         <member name="T:XLib.XLeveling.Config">
             <summary>
             The xleveling config.

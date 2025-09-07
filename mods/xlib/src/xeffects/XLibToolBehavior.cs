@@ -34,11 +34,10 @@ namespace XLib.XEffects
         /// </returns>
         public override float OnGetMiningSpeed(IItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
         {
-            EnumTool? tool = itemstack?.Item?.Tool;
-            if (tool == null) return 1.0f;
+            if (collObj.Tool == null) return 1.0f;
             AffectedEntityBehavior affected = forPlayer?.Entity?.GetBehavior<AffectedEntityBehavior>();
             if (affected == null) return 1.0f;
-            float value = affected.GetMiningSpeedMultiplier(tool.Value);
+            float value = affected.GetMiningSpeedMultiplier(collObj.Tool.Value);
             if (value > 0.0f)
             {
                 bhHandling = EnumHandling.Handled;

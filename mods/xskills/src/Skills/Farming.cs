@@ -686,7 +686,7 @@ namespace XSkills
         public override void OnLoaded(ICoreAPI api)
         {
             this.farming = XLeveling.Instance(api)?.GetSkill("farming") as Farming;
-            if (block.Drops.Length > 0) HarvestedStack = block.Drops[0];
+            if (block.Drops.Length > 1) HarvestedStack = block.Drops[1];
             else HarvestedStack = null;
         }
 

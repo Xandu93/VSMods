@@ -302,9 +302,13 @@ namespace XSkills
                     value = value >= 0.0f ? playerAbility.FValue(0) : 0.0f;
                     foreach (string statName in (playerAbility.Ability as ArmorAbility)?.BonusTraits)
                     {
-                        stat = stats[statName];
-                        if (stat == null) continue;
-                        stat.Set("ability-armorexpert", value);
+                        try
+                        {
+                            stat = stats[statName];
+                            if (stat == null) continue;
+                            stat.Set("ability-armorexpert", value);
+                        } 
+                        catch (Exception _) { /* Do nothing if the stat doesn't exist on the player. */ }
                     }
                 }
             }
@@ -316,24 +320,32 @@ namespace XSkills
             if (armorAbility == null) return; 
             foreach (string statName in armorAbility.BonusTraits)
             {
-                EntityFloatStats stat = stats[statName];
-                if (stat == null) continue;
-                stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
-                float value = temp?.Value ?? 0.0f;
-                stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
-                value += temp?.Value ?? 0.0f;
-                stat.Set("ability-" + ability.Ability.Name, -value * ability.FValue(0));
+                try
+                {
+                    EntityFloatStats stat = stats[statName];
+                    if (stat == null) continue;
+                    stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
+                    float value = temp?.Value ?? 0.0f;
+                    stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
+                    value += temp?.Value ?? 0.0f;
+                    stat.Set("ability-" + ability.Ability.Name, -value * ability.FValue(0));
+                }
+                catch (Exception _) { /* Do nothing if the stat doesn't exist on the player. */ }
             }
 
             foreach (string statName in armorAbility.MalusTraits)
             {
-                EntityFloatStats stat = stats[statName];
-                if (stat == null) continue;
-                stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
-                float value = temp?.Value ?? 0.0f;
-                stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
-                value += temp?.Value ?? 0.0f;
-                stat.Set("ability-" + ability.Ability.Name, value * ability.FValue(1));
+                try
+                {
+                    EntityFloatStats stat = stats[statName];
+                    if (stat == null) continue;
+                    stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
+                    float value = temp?.Value ?? 0.0f;
+                    stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
+                    value += temp?.Value ?? 0.0f;
+                    stat.Set("ability-" + ability.Ability.Name, value * ability.FValue(1));
+                }
+                catch (Exception _) { /* Do nothing if the stat doesn't exist on the player. */ }
             }
         }
 

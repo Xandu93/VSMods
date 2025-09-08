@@ -302,9 +302,13 @@ namespace XSkills
                     value = value >= 0.0f ? playerAbility.FValue(0) : 0.0f;
                     foreach (string statName in (playerAbility.Ability as ArmorAbility)?.BonusTraits)
                     {
-                        stat = stats[statName];
-                        if (stat == null) continue;
-                        stat.Set("ability-armorexpert", value);
+                        try
+                        {
+                            stat = stats[statName];
+                            if (stat == null) continue;
+                            stat.Set("ability-armorexpert", value);
+                        } 
+                        catch (Exception _) { /* Do nothing if the stat doesn't exist on the player. */ }
                     }
                 }
             }

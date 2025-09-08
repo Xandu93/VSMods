@@ -1,7 +1,7 @@
 [
   {
     "dependsOn": [{ "modid": "xdiseases", "invert": true }],
-    "file": "game:blocktypes/clay/bowl",
+    "file": "game:blocktypes/clay/fired/bowl",
     "op": "addmerge",
     "path": "/behaviors",
     "value": [{
@@ -10,7 +10,7 @@
   },
   {
     "dependsOn": [{ "modid": "xdiseases", "invert": true }],
-    "file": "game:blocktypes/clay/jug",
+    "file": "game:blocktypes/clay/fired/jug",
     "op": "addmerge",
     "path": "/behaviors",
     "value": [{

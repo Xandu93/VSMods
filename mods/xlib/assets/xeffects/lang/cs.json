@@ -7,6 +7,11 @@
   "effects": "Efekty",
   "healingrate": "Rychlost zotavení",
   "cures": "Léčí",
+  "intensity": "Intenzita",
+  "healinggrowth": "Síla regenerace",
+  "chance": "Šance",
+  "perishweight": "Hmotnostní ztráta",
+  "ingredient": "Ingredience",
 
   "stat-effect": "Status",
   "stat-effectdesc": "Upraví status hráči",
@@ -23,7 +28,7 @@
   "heated-effect": "Vyhřívaný",
   "heated-effectdesc": "Zvyšuje vaši tělesnou teplotu každých {1:N2} vteřin o {0:N2} až na teplotu {2:N2}.",
   "receivedDamageMultiplier-effect": "Dablér vašeho poškození",
-  "receivedDamageMultiplier-effectdesc": "Vynásobí všechna příchozí poškození krát {0:N2}.",  
+  "receivedDamageMultiplier-effectdesc": "Vynásobí všechna příchozí poškození krát {0:N2}.",
   "trigger-effect": "Spouštěč",
   "trigger-effectdesc": "Spustí \"{1}\" efekt {2:N2} vteřin po zkončení tohoto efektu",
   "walkspeed-effect": "Rychlochůze",
@@ -63,5 +68,5 @@
   "blindness-effect": "Blindness",
   "blindness-effectdesc": "Limits your field of vision.",
   "colorblind-effect": "Colorblind",
-  "colorblind-effectdesc": "You lost the ability to distinguish between different colors.",
+  "colorblind-effectdesc": "You lost the ability to distinguish between different colors."
 }

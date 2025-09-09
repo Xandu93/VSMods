@@ -302,9 +302,13 @@ namespace XSkills
                     value = value >= 0.0f ? playerAbility.FValue(0) : 0.0f;
                     foreach (string statName in (playerAbility.Ability as ArmorAbility)?.BonusTraits)
                     {
-                        stat = stats[statName];
-                        if (stat == null) continue;
-                        stat.Set("ability-armorexpert", value);
+                        try
+                        {
+                            stat = stats[statName];
+                            if (stat == null) continue;
+                            stat.Set("ability-armorexpert", value);
+                        }
+                        catch (KeyNotFoundException) { }
                     }
                 }
             }
@@ -312,29 +316,30 @@ namespace XSkills
 
         private void ApplyArmorAbility(EntityStats stats, PlayerAbility ability)
         {
-            ArmorAbility armorAbility = ability.Ability as ArmorAbility;
-            if (armorAbility == null) return; 
+            if (ability.Ability is not ArmorAbility armorAbility) return;
             foreach (string statName in armorAbility.BonusTraits)
             {
-                EntityFloatStats stat = stats[statName];
-                if (stat == null) continue;
-                stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
-                float value = temp?.Value ?? 0.0f;
-                stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
-                value += temp?.Value ?? 0.0f;
-                stat.Set("ability-" + ability.Ability.Name, -value * ability.FValue(0));
+                ApplyArmorAbilityStat(stats, statName, armorAbility, -ability.FValue(0));
             }
-
             foreach (string statName in armorAbility.MalusTraits)
             {
+                ApplyArmorAbilityStat(stats, statName, armorAbility, ability.FValue(1));
+            }
+        }
+
+        private void ApplyArmorAbilityStat(EntityStats stats, string statName, ArmorAbility ability, float multiplier)
+        {
+            try
+            {
                 EntityFloatStats stat = stats[statName];
-                if (stat == null) continue;
+                if (stat == null) return;
                 stat.ValuesByKey.TryGetValue("wearablemod", out EntityStat<float> temp);
                 float value = temp?.Value ?? 0.0f;
                 stat.ValuesByKey.TryGetValue("CombatOverhaul:Armor", out temp);
                 value += temp?.Value ?? 0.0f;
-                stat.Set("ability-" + ability.Ability.Name, value * ability.FValue(1));
+                stat.Set("ability-" + ability.Name, value * multiplier);
             }
+            catch (KeyNotFoundException) { }
         }
 
         public void OnPlayerJoin(IPlayer byPlayer)

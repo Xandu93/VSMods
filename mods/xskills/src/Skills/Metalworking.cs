@@ -286,6 +286,11 @@ namespace XSkills
                         }
                     }
                 }
+
+                //foreach (string asset in )
+                //{
+                //    this.XLeveling.Api.Assets.col();
+                //}
             }
 
             this.duplicatable = new List<SmithingRecipe>();

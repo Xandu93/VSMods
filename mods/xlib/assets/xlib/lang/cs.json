@@ -8,7 +8,7 @@
   "unlearnpoints": "Body odnaučení",
   "unlearncooldown": "Odnaučení cooldown",
   "unlearn": "Odnaučení",
-  "unlearnAbility": "Unlearn ability",
+  "unlearnAbility": "Schopnost odnaučit se",
   "sparringmode": "Cvičný režim",
   "requirements": "Požadavky",
 
@@ -20,7 +20,7 @@
   "notenoughpoints": "\nNemáte dostatek bodů!",
   "you receive": "Dostanete",
   "levelup": "Dosáhli jste úrovně {0} v {1} dovednosti!",
-  "explossondeath": "You lost {0:n2} experience in the {1} skill because of your death.",
+  "explossondeath": "Kvůli své smrti jste ztratili {0:n2} zkušeností v dovednosti {1}.",
 
   "andrequirement": "Všechny následující: ",
   "orrequirement": "Jedna z těchto: ",

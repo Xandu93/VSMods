@@ -287,9 +287,12 @@ namespace XSkills
                     }
                 }
 
-                //foreach (string asset in )
+                //foreach (string asset in (Config as MetalworkingConfig)?.reduceSmeltingResult)
                 //{
-                //    this.XLeveling.Api.Assets.col();
+                //    CollectibleObject collectible = this.XLeveling.Api.World.GetBlock(asset);
+                //    collectible ??= this.XLeveling.Api.World.GetItem(asset);
+                //    if (collectible == null) continue;
+                //    collectible.CombustibleProps.SmeltedRatio = (int)(collectible.CombustibleProps.SmeltedRatio * recipeRatio);
                 //}
             }
 

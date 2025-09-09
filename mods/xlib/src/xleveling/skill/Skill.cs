@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
-using Vintagestory.GameContent;
 
 namespace XLib.XLeveling
 {
@@ -89,6 +87,14 @@ namespace XLib.XLeveling
         /// The maximum level.
         /// </value>
         public int MaxLevel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum level of this skill.
+        /// </summary>
+        /// <value>
+        /// The minimum level.
+        /// </value>
+        public int MinLevel { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Skill"/> is enabled.
@@ -219,6 +225,7 @@ namespace XLib.XLeveling
             this.ExpBase = expBase;
             this.ExpMult = expMult;
             this.MaxLevel = maxLevel;
+            this.MinLevel = 1;
             this.Abilities = new List<Ability>();
             this.SpecialisationID = -1;
             this.Enabled = true;
@@ -331,7 +338,7 @@ namespace XLib.XLeveling
         /// </returns>
         virtual public float GetRequiredExperience(int level, bool includePreviousLevels = false)
         {
-            if (level <= 1)
+            if (level <= MinLevel)
             {
                 return 0;
             }
@@ -346,7 +353,7 @@ namespace XLib.XLeveling
                 {
                     return this.ExperienceEquation(this.ExpBase, this.ExpMult, this.ExpEquationValue, level);
                 }
-                return (int)(Math.Pow(this.ExpMult, level - 2) * this.ExpEquationValue + this.ExpBase);
+                return (int)(Math.Pow(this.ExpMult, level - (MinLevel + 1)) * this.ExpEquationValue + this.ExpBase);
             }
         }
 
@@ -416,6 +423,7 @@ namespace XLib.XLeveling
             if (config.name != this.Name) throw new ArgumentException("Skill configuration mismatch. Server and client could run on different versions of the mod.");
 
             this.MaxLevel = Math.Max(config.maxLevel, 1);
+            this.MinLevel = Math.Max(config.minLevel, 1);
             this.ExpBase = Math.Max(config.expBase, 0.0f);
             this.ExpMult = Math.Max(config.expMult, 0.0f);
             this.ExpEquationValue = Math.Max(config.expValue, 0.0f);
@@ -461,9 +469,9 @@ namespace XLib.XLeveling
         /// <returns>
         ///   the experience that is required to reach a specified level.
         /// </returns>
-        static public int LogarithmicEquation(float expBase, float expMult, float expEquationValue, int level)
+        public int LogarithmicEquation(float expBase, float expMult, float expEquationValue, int level)
         {
-            return (int)(Math.Log(level - 1) * expMult + expBase);
+            return (int)(Math.Log(level - MinLevel) * expMult + expBase);
         }
 
         /// <summary>
@@ -477,9 +485,9 @@ namespace XLib.XLeveling
         /// <returns>
         ///   the experience that is required to reach a specified level.
         /// </returns>
-        static public int QuadraticEquation(float expBase, float expMult, float expEquationValue, int level)
+        public int QuadraticEquation(float expBase, float expMult, float expEquationValue, int level)
         {
-            level-= 2;
+            level-= (MinLevel + 1);
             return (int)(expEquationValue * level * level + level * expMult + expBase);
         }
     }//!class Skill

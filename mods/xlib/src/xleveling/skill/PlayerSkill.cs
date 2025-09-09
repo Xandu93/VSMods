@@ -51,7 +51,7 @@ namespace XLib.XLeveling
             internal set
             {
                 if (!this.Skill.Enabled) value = 1;
-                value = GameMath.Clamp(value, 1, this.Skill.MaxLevel);
+                value = GameMath.Clamp(value, this.Skill.MinLevel, this.Skill.MaxLevel);
                 this.AbilityPoints += value - this.level;
                 this.level = value;
                 this.RequiredExperience = this.Skill.GetRequiredExperience(this.Level + 1);

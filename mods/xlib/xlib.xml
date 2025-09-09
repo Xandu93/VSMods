@@ -5710,6 +5710,14 @@
             The maximum level.
             </value>
         </member>
+        <member name="P:XLib.XLeveling.Skill.MinLevel">
+            <summary>
+            Gets or sets the minimum level of this skill.
+            </summary>
+            <value>
+            The minimum level.
+            </value>
+        </member>
         <member name="P:XLib.XLeveling.Skill.Enabled">
             <summary>
             Gets or sets a value indicating whether this <see cref="T:XLib.XLeveling.Skill"/> is enabled.
@@ -5970,6 +5978,11 @@
         <member name="F:XLib.XLeveling.SkillConfig.maxLevel">
             <summary>
             The maximum level that a player can reach in this skill.
+            </summary>
+        </member>
+        <member name="F:XLib.XLeveling.SkillConfig.minLevel">
+            <summary>
+            The minimum level of this skill.
             </summary>
         </member>
         <member name="F:XLib.XLeveling.SkillConfig.expBase">

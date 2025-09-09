@@ -1,6 +1,24 @@
 [
   {
-    "file": "game:entities/land/drifter",
+    "file": "game:entities/lore/bell",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 5.0
+    }
+  },
+  {
+    "file": "game:entities/lore/bell",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 5.0
+    }
+  },
+  {
+    "file": "game:entities/lore/drifter",
     "op": "add",
     "path": "/client/behaviors/-",
     "value": {
@@ -16,7 +34,7 @@
     }
   },
   {
-    "file": "game:entities/land/drifter",
+    "file": "game:entities/lore/drifter",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {
@@ -32,7 +50,7 @@
     }
   },
   {
-    "file": "game:entities/land/bowtorn",
+    "file": "game:entities/lore/bowtorn",
     "op": "add",
     "path": "/client/behaviors/-",
     "value": {
@@ -48,7 +66,7 @@
     }
   },
   {
-    "file": "game:entities/land/bowtorn",
+    "file": "game:entities/lore/bowtorn",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {
@@ -64,7 +82,7 @@
     }
   },
   {
-    "file": "game:entities/land/shiver",
+    "file": "game:entities/lore/shiver",
     "op": "add",
     "path": "/client/behaviors/-",
     "value": {
@@ -82,7 +100,7 @@
     }
   },
   {
-    "file": "game:entities/land/shiver",
+    "file": "game:entities/lore/shiver",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {
@@ -100,7 +118,42 @@
     }
   },
   {
-    "file": "game:entities/land/eidolon-immobilized",
+    "file": "game:entities/lore/locust",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-bronze": 0.75,
+        "*-corrupt": 1.0,
+        "locust-corrupt-sawblade": 2.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/lore/locust",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xpByType": {
+        "*-bronze": 0.75,
+        "*-corrupt": 1.0,
+        "locust-corrupt-sawblade": 2.0
+      }
+    }
+  },
+  {
+    "file": "game:entities/lore/boss/eidolon-immobilized",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "XSkillsEntity",
+      "xp": 50.0
+    }
+  },
+  {
+    "file": "game:entities/lore/boss/eidolon-immobilized",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {
@@ -109,51 +162,25 @@
     }
   },
   {
-    "file": "game:entities/land/locust",
+    "file": "game:entities/lore/boss/erel",
     "op": "add",
     "path": "/client/behaviors/-",
     "value": {
       "code": "XSkillsEntity",
-      "xpByType": {
-        "*-bronze": 0.75,
-        "*-corrupt": 1.0,
-        "locust-corrupt-sawblade": 2.0
-      }
+      "xp": 50.0
     }
   },
   {
-    "file": "game:entities/land/locust",
+    "file": "game:entities/lore/boss/erel",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {
       "code": "XSkillsEntity",
-      "xpByType": {
-        "*-bronze": 0.75,
-        "*-corrupt": 1.0,
-        "locust-corrupt-sawblade": 2.0
-      }
+      "xp": 50.0
     }
   },
   {
-    "file": "game:entities/land/bell",
-    "op": "add",
-    "path": "/client/behaviors/-",
-    "value": {
-      "code": "XSkillsEntity",
-      "xp": 5.0
-    }
-  },
-  {
-    "file": "game:entities/land/bell",
-    "op": "add",
-    "path": "/server/behaviors/-",
-    "value": {
-      "code": "XSkillsEntity",
-      "xp": 5.0
-    }
-  },
-  {
-    "file": "game:entities/land/strawdummy",
+    "file": "game:entities/nonliving/strawdummy",
     "op": "add",
     "path": "/client/behaviors/-",
     "value": {
@@ -162,7 +189,7 @@
     }
   },
   {
-    "file": "game:entities/land/strawdummy",
+    "file": "game:entities/nonliving/strawdummy",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {

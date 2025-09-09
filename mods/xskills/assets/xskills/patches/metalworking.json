@@ -1,6 +1,6 @@
 [
   {
-    "file": "game:entities/land/locust",
+    "file": "game:entities/lore/locust",
     "op": "add",
     "path": "/client/behaviors/-",
     "value": {
@@ -9,7 +9,7 @@
     }
   },
   {
-    "file": "game:entities/land/locust",
+    "file": "game:entities/lore/locust",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {
@@ -123,7 +123,7 @@
     }
   },
   {
-    "file": "game:entities/land/bell",
+    "file": "game:entities/lore/bell",
     "op": "add",
     "path": "/client/behaviors/-",
     "value": {
@@ -132,7 +132,7 @@
     }
   },
   {
-    "file": "game:entities/land/bell",
+    "file": "game:entities/lore/bell",
     "op": "add",
     "path": "/server/behaviors/-",
     "value": {
